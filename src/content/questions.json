@@ -1,0 +1,266 @@
+{
+  "Ni": [
+    {
+      "functionId": "Ni",
+      "facet": "orientation",
+      "text": "Inner images show me the direction of a situation before the outer facts are complete."
+    },
+    {
+      "functionId": "Ni",
+      "facet": "criterion",
+      "text": "Events interest me mainly as signs of a pattern I cannot yet point to in the room."
+    },
+    {
+      "functionId": "Ni",
+      "facet": "process",
+      "text": "I often arrive at one inner conviction and only later reconstruct the steps that led there."
+    },
+    {
+      "functionId": "Ni",
+      "facet": "process",
+      "text": "I would rather follow one unfolding inner vision than keep many outer options in play."
+    },
+    {
+      "functionId": "Ni",
+      "facet": "orientation",
+      "text": "I sense where something is tending as if I had already seen the end of the story."
+    },
+    {
+      "functionId": "Ni",
+      "facet": "reverse",
+      "reverse": true,
+      "text": "I trust what is happening in front of me more than any inner picture of where it is going."
+    }
+  ],
+  "Ne": [
+    {
+      "functionId": "Ne",
+      "facet": "orientation",
+      "text": "I notice what a situation could become, not only what it presently is."
+    },
+    {
+      "functionId": "Ne",
+      "facet": "process",
+      "text": "One outer fact quickly suggests several other paths that are not yet real."
+    },
+    {
+      "functionId": "Ne",
+      "facet": "process",
+      "text": "I scent connections between things that have not been linked yet."
+    },
+    {
+      "functionId": "Ne",
+      "facet": "criterion",
+      "text": "Once a possibility has been realized, my interest often moves on to the next one."
+    },
+    {
+      "functionId": "Ne",
+      "facet": "orientation",
+      "text": "I feel most alive when the field of outer options is still open."
+    },
+    {
+      "functionId": "Ne",
+      "facet": "reverse",
+      "reverse": true,
+      "text": "I prefer to wait for one inner image of the outcome rather than chase outer possibilities."
+    }
+  ],
+  "Si": [
+    {
+      "functionId": "Si",
+      "facet": "orientation",
+      "text": "What I notice first is the impression an object leaves in me, not only its public properties."
+    },
+    {
+      "functionId": "Si",
+      "facet": "process",
+      "text": "The present is vivid to me when it echoes something I have already lived in the body."
+    },
+    {
+      "functionId": "Si",
+      "facet": "criterion",
+      "text": "I judge a new situation by how it compares with my inner store of sensory memory."
+    },
+    {
+      "functionId": "Si",
+      "facet": "process",
+      "text": "Familiar sequences and bodily baselines tell me whether something is “as it should be.”"
+    },
+    {
+      "functionId": "Si",
+      "facet": "orientation",
+      "text": "A thing can look ordinary to others and still carry a dense private texture for me."
+    },
+    {
+      "functionId": "Si",
+      "facet": "reverse",
+      "reverse": true,
+      "text": "I take the sensory world as it appears now, without referring it to past impressions."
+    }
+  ],
+  "Se": [
+    {
+      "functionId": "Se",
+      "facet": "orientation",
+      "text": "I trust the concrete facts of this moment more than a theory about them."
+    },
+    {
+      "functionId": "Se",
+      "facet": "process",
+      "text": "Texture, movement, timing, and impact tell me what is real."
+    },
+    {
+      "functionId": "Se",
+      "facet": "criterion",
+      "text": "I would rather act on what is here than wait for a hidden meaning."
+    },
+    {
+      "functionId": "Se",
+      "facet": "orientation",
+      "text": "My attention locks onto the actual object or scene in front of me."
+    },
+    {
+      "functionId": "Se",
+      "facet": "process",
+      "text": "Pleasure, pain, and aesthetic impact in the present guide my next move."
+    },
+    {
+      "functionId": "Se",
+      "facet": "reverse",
+      "reverse": true,
+      "text": "The present scene feels less real to me than the inner impression it leaves."
+    }
+  ],
+  "Ti": [
+    {
+      "functionId": "Ti",
+      "facet": "orientation",
+      "text": "I need the idea itself to be consistent, even if it is not yet useful in the world."
+    },
+    {
+      "functionId": "Ti",
+      "facet": "criterion",
+      "text": "I measure claims against an inner model of how the thing must work."
+    },
+    {
+      "functionId": "Ti",
+      "facet": "process",
+      "text": "A popular explanation bothers me if it is logically hollow."
+    },
+    {
+      "functionId": "Ti",
+      "facet": "process",
+      "text": "I would rather refine a definition than apply a ready-made formula."
+    },
+    {
+      "functionId": "Ti",
+      "facet": "orientation",
+      "text": "I think in order to understand, not first of all in order to arrange the outer world."
+    },
+    {
+      "functionId": "Ti",
+      "facet": "reverse",
+      "reverse": true,
+      "text": "I am satisfied if a plan works in practice, even when I cannot explain why."
+    }
+  ],
+  "Te": [
+    {
+      "functionId": "Te",
+      "facet": "orientation",
+      "text": "I trust a conclusion more when it follows from data others can also check."
+    },
+    {
+      "functionId": "Te",
+      "facet": "process",
+      "text": "I organize people, time, and facts according to an objective standard."
+    },
+    {
+      "functionId": "Te",
+      "facet": "criterion",
+      "text": "An argument that cannot be put to a practical test soon loses me."
+    },
+    {
+      "functionId": "Te",
+      "facet": "orientation",
+      "text": "I want thinking to produce an order that works in the shared world."
+    },
+    {
+      "functionId": "Te",
+      "facet": "process",
+      "text": "Results that can be shown matter more to me than the elegance of an inner theory."
+    },
+    {
+      "functionId": "Te",
+      "facet": "reverse",
+      "reverse": true,
+      "text": "I would rather keep an inner theory coherent than make it work outside."
+    }
+  ],
+  "Fi": [
+    {
+      "functionId": "Fi",
+      "facet": "orientation",
+      "text": "A choice is wrong for me if it violates a private value, even when it is popular."
+    },
+    {
+      "functionId": "Fi",
+      "facet": "process",
+      "text": "My feeling about something can be intense while little of it shows."
+    },
+    {
+      "functionId": "Fi",
+      "facet": "process",
+      "text": "I know what I love or reject before I can justify it in public terms."
+    },
+    {
+      "functionId": "Fi",
+      "facet": "criterion",
+      "text": "I would rather stay loyal to an inner standard than to good manners."
+    },
+    {
+      "functionId": "Fi",
+      "facet": "orientation",
+      "text": "Collective taste does not settle whether something is right for me."
+    },
+    {
+      "functionId": "Fi",
+      "facet": "reverse",
+      "reverse": true,
+      "text": "I usually take on the values that the people around me hold."
+    }
+  ],
+  "Fe": [
+    {
+      "functionId": "Fe",
+      "facet": "orientation",
+      "text": "I know what is fitting by reading the feeling-tone of the people involved."
+    },
+    {
+      "functionId": "Fe",
+      "facet": "process",
+      "text": "I adjust what I show so that the relation between us stays intact."
+    },
+    {
+      "functionId": "Fe",
+      "facet": "criterion",
+      "text": "What “one” does — the received value of the group — weighs on my choices."
+    },
+    {
+      "functionId": "Fe",
+      "facet": "orientation",
+      "text": "I feel responsible for whether the atmosphere between people is bearable."
+    },
+    {
+      "functionId": "Fe",
+      "facet": "process",
+      "text": "A decision that is logically neat still feels unfinished if it injures the group."
+    },
+    {
+      "functionId": "Fe",
+      "facet": "reverse",
+      "reverse": true,
+      "text": "The group’s mood does not change what I consider right."
+    }
+  ]
+}

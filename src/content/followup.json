@@ -1,0 +1,222 @@
+{
+  "attitude": {
+    "Ni-Ne": [
+      {
+        "prompt": "When a situation is still forming, which is more you?",
+        "aText": "I wait until one inner picture of the outcome has settled, even if I cannot yet show the steps.",
+        "bText": "I keep several outer possibilities in play and move among them while the field is still open."
+      },
+      {
+        "prompt": "What do you trust first?",
+        "aText": "A direction that arrives whole — as if I had already seen the end of the story.",
+        "bText": "What the situation could become once I have turned it around in the outer field."
+      },
+      {
+        "prompt": "After you have seen something clearly, what happens to the other options?",
+        "aText": "Further options feel like noise. I would rather follow the one unfolding vision.",
+        "bText": "Once a possibility has been realized, my interest often moves on to the next one that is not yet real."
+      },
+      {
+        "prompt": "Where do you go to find the pattern?",
+        "aText": "I withdraw from the room. The pattern is an inner image, not a fact on the table.",
+        "bText": "I stay with the room. The next connection is in the objects and people themselves."
+      },
+      {
+        "prompt": "How does the future usually appear to you?",
+        "aText": "As one trajectory — a single inner conviction of where things are tending.",
+        "bText": "As a field of forks — many paths that are not yet real, scented at once."
+      }
+    ],
+    "Si-Se": [
+      {
+        "prompt": "What do you notice first?",
+        "aText": "The impression a thing leaves in memory and body — how this kind of moment has felt before.",
+        "bText": "The thing as it is now: texture, timing, impact, what can be done in front of me."
+      },
+      {
+        "prompt": "How do you judge whether a situation can be trusted?",
+        "aText": "By whether it matches what I have already lived — precedent and familiarity.",
+        "bText": "By what can be seen, touched, and done in this moment, before a theory about it."
+      },
+      {
+        "prompt": "When a new scene opens, when does it feel complete?",
+        "aText": "When I have compared it with an inner standard of how such things feel and have gone.",
+        "bText": "When I have taken it as it is given — the object, not my history of the object."
+      },
+      {
+        "prompt": "If you have to move, what do you return to?",
+        "aText": "What has already proved itself in my experience.",
+        "bText": "What is actually happening, even if I have no precedent for it."
+      },
+      {
+        "prompt": "Which sentence is closer?",
+        "aText": "The present is incomplete until the inner sensory texture has been consulted.",
+        "bText": "The present is enough. I trust concrete actuality more than the impression it leaves."
+      }
+    ],
+    "Ti-Te": [
+      {
+        "prompt": "When is a conclusion finished?",
+        "aText": "When the inner model is consistent — the idea must be true, even if it is not yet useful.",
+        "bText": "When it works in the shared world — facts others can check, a result that can be arranged."
+      },
+      {
+        "prompt": "Which would you rather keep?",
+        "aText": "A precise idea that is not yet useful, rather than a formula that is merely efficient.",
+        "bText": "A formula that produces a result, rather than an elegant idea that cannot be arranged."
+      },
+      {
+        "prompt": "What do you notice first when a plan is wrong?",
+        "aText": "That a collective standard is logically hollow, even if everyone is using it.",
+        "bText": "That an inner theory fails to organize the facts and measures others can see."
+      },
+      {
+        "prompt": "What has to line up before you will act?",
+        "aText": "The definition. It has to be true for me.",
+        "bText": "The data. Metrics and outcomes have to hold in common."
+      },
+      {
+        "prompt": "Which work feels like yours?",
+        "aText": "Refining the idea until it holds, whether or not it is yet a procedure.",
+        "bText": "Arranging people, plans, and measures until the outcome holds."
+      }
+    ],
+    "Fi-Fe": [
+      {
+        "prompt": "How do you know a choice is right?",
+        "aText": "It matches a private standard of worth, even if I cannot display that standard.",
+        "bText": "The feeling-tone among the people involved can hold."
+      },
+      {
+        "prompt": "What happens when the group’s mood pulls the other way?",
+        "aText": "It does not change what I consider right.",
+        "bText": "A logically neat choice still feels unfinished if it injures the group."
+      },
+      {
+        "prompt": "How do your values usually show?",
+        "aText": "They are intense and often hard to display — loyalty to an inner image of worth.",
+        "bText": "They show in how I keep relation possible — custom, morale, what “one” does."
+      },
+      {
+        "prompt": "If authenticity and harmony part ways, which do you keep?",
+        "aText": "Authenticity. I remain with the inner image even if it looks like indifference.",
+        "bText": "Harmony. I adapt value to the situation so that relation remains possible."
+      },
+      {
+        "prompt": "Which test do you actually use?",
+        "aText": "Does this remain true to what I hold, whether or not the room agrees?",
+        "bText": "Can the people involved still stand together after this is done?"
+      }
+    ]
+  },
+  "rival": {
+    "Fi-Ti": [
+      {
+        "prompt": "When a decision is finished, what actually finished it?",
+        "aText": "It matches a private standard of worth, even if I cannot prove that standard to anyone.",
+        "bText": "The inner model is consistent. The idea holds, whether or not it is kind."
+      },
+      {
+        "prompt": "What bothers you first when something is wrong?",
+        "aText": "That it violates what I hold, even if the logic is neat.",
+        "bText": "That it is logically hollow, even if everyone feels fine about it."
+      },
+      {
+        "prompt": "If you cannot satisfy both, which do you keep?",
+        "aText": "What I consider right.",
+        "bText": "What I consider true."
+      },
+      {
+        "prompt": "How do you usually know?",
+        "aText": "A felt yes or no that I may not be able to display.",
+        "bText": "A definition or distinction that has to hold together."
+      },
+      {
+        "prompt": "Which sentence is closer?",
+        "aText": "A clever argument still feels unfinished if it injures what I value.",
+        "bText": "A sincere feeling still feels unfinished if the idea does not hold together."
+      }
+    ],
+    "Fe-Te": [
+      {
+        "prompt": "When a plan is finished, what made it finished?",
+        "aText": "The people involved can still stand together. Relation has been kept.",
+        "bText": "The result can be arranged and checked. The work produced what it said it would."
+      },
+      {
+        "prompt": "What do you notice first when a group effort is failing?",
+        "aText": "Morale and the feeling-tone have broken, even if the metrics still look tidy.",
+        "bText": "The procedure is not producing, even if everyone still feels loyal to it."
+      },
+      {
+        "prompt": "If you cannot satisfy both, which do you keep?",
+        "aText": "Harmony — a conclusion that injures the room is not finished.",
+        "bText": "Effectiveness — a conclusion that cannot be arranged is not finished."
+      },
+      {
+        "prompt": "What do you actually organize?",
+        "aText": "The atmosphere: who is included, what “one” does, whether the group can continue.",
+        "bText": "The shared world: people, plans, and measures so that an outcome happens."
+      },
+      {
+        "prompt": "Which test do you use?",
+        "aText": "Can we still stand together after this is done?",
+        "bText": "Did this work, in facts others can check?"
+      }
+    ],
+    "Ni-Si": [
+      {
+        "prompt": "What do you consult first?",
+        "aText": "An inner picture of where this is tending — the end of the story, not yet in the room.",
+        "bText": "The impression this kind of moment has already left in memory and body."
+      },
+      {
+        "prompt": "When the outer facts are incomplete, what do you trust?",
+        "aText": "A direction that arrives whole, as if I had already seen the pattern.",
+        "bText": "Precedent — how such things have gone, and whether this matches that texture."
+      },
+      {
+        "prompt": "What makes a new scene feel known?",
+        "aText": "I sense the trajectory. Further options feel like noise once the vision has settled.",
+        "bText": "I have compared it with what I have already lived. Familiarity is the test."
+      },
+      {
+        "prompt": "Which inner object do you follow?",
+        "aText": "The image of what is coming.",
+        "bText": "The stored impression of what has been."
+      },
+      {
+        "prompt": "Which sentence is closer?",
+        "aText": "Events interest me as signs of a pattern I cannot yet point to.",
+        "bText": "Events interest me as they compare with a standard I have already felt."
+      }
+    ],
+    "Ne-Se": [
+      {
+        "prompt": "What do you notice first in the room?",
+        "aText": "What the situation could become — paths that are not yet real.",
+        "bText": "What the situation is — texture, timing, impact, what can be done now."
+      },
+      {
+        "prompt": "What keeps you interested?",
+        "aText": "The unused door. Once a possibility is realized, my interest often moves on.",
+        "bText": "The given moment. I trust what can be seen, touched, and done more than a theory about it."
+      },
+      {
+        "prompt": "If you have to move, where do you go?",
+        "aText": "Toward the next connection between things that have not been linked yet.",
+        "bText": "Toward what is actually happening, before a possibility about it."
+      },
+      {
+        "prompt": "Which field do you stay in?",
+        "aText": "The field of outer options while it is still open.",
+        "bText": "The field of concrete actuality — the object as it is."
+      },
+      {
+        "prompt": "Which sentence is closer?",
+        "aText": "I scent what could be true.",
+        "bText": "I take what is true in front of me."
+      }
+    ]
+  }
+}
