@@ -21,3 +21,12 @@ export const PERSONALITY_TYPES: PersonalityType[] = (types as unknown as TypeCon
     image: type.image,
   }),
 )
+
+export function typeByCode(code: string) {
+  const needle = code.trim().toUpperCase()
+  return PERSONALITY_TYPES.find((type) => type.code === needle)
+}
+
+export function typePath(code: string) {
+  return `/types/${code.trim().toLowerCase()}`
+}

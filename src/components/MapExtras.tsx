@@ -14,6 +14,7 @@ type MapExtrasProps = {
   readings: TieBreakReading[]
   hero: FunctionId
   parent: FunctionId
+  image?: string
   onHeroChange: (hero: FunctionId) => void
   onParentChange: (parent: FunctionId) => void
 }
@@ -25,6 +26,7 @@ export function MapExtras({
   readings,
   hero,
   parent,
+  image,
   onHeroChange,
   onParentChange,
 }: MapExtrasProps) {
@@ -43,7 +45,7 @@ export function MapExtras({
           code: selected.code,
           title: selected.title,
           summary: selected.summary,
-          image: selected.image,
+          image: image ?? selected.image,
         }}
         onHeroChange={onHeroChange}
         onParentChange={onParentChange}

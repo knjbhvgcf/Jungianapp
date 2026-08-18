@@ -35,6 +35,42 @@ function articleHtml(guide: Guide) {
   return `<article class="section"><div class="wrap prose"><p class="eyebrow">${escapeHtml(guide.eyebrow)}</p><h1 class="serif-title">${escapeHtml(guide.title)}</h1><p class="mono-stat">${escapeHtml(guide.stat)}</p><p class="lede">${escapeHtml(guide.lede)}</p>${sections}<p><a href="/quiz">Begin the quiz</a></p></div></article>`
 }
 
+type TypePage = {
+  code: string
+  title: string
+  name: string
+  stack: string[]
+  summary: string
+  image?: string
+}
+
+const STACK_LABELS = ['Hero', 'Parent', 'Child', 'Inferior']
+
+function typeCard(type: TypePage) {
+  const img = type.image
+    ? `<img src="${escapeHtml(type.image)}" alt="" class="sketch type-portrait sketch--mini">`
+    : ''
+  return `<li><a href="/types/${type.code.toLowerCase()}">${img}<strong>${escapeHtml(type.code)}</strong><span>${escapeHtml(type.title)}</span></a></li>`
+}
+
+function typesIndexHtml(types: TypePage[]) {
+  return `<article class="section"><div class="wrap prose"><p class="eyebrow">types</p><h1 class="serif-title">Sixteen types</h1><p class="lede">Each pattern is a leading function and the function that supports it, named here as a character you can meet before you take the quiz, or after, if you want a page you can keep.</p><ul class="type-index">${types.map(typeCard).join('')}</ul><p><a href="/quiz">Begin the quiz</a></p></div></article>`
+}
+
+function typePageHtml(type: TypePage, types: TypePage[]) {
+  const stack = type.stack
+    .map(
+      (id, index) =>
+        `<li><span class="archetype-stack__label">${STACK_LABELS[index] ?? ''}</span><span>${escapeHtml(id)}</span></li>`,
+    )
+    .join('')
+  const img = type.image
+    ? `<img src="${escapeHtml(type.image)}" alt="${escapeHtml(`${type.code} ${type.title}`)}" class="sketch type-portrait">`
+    : ''
+  const others = types.filter((item) => item.code !== type.code).map(typeCard).join('')
+  return `<article class="section type-page"><header class="wrap screen dossier-hero">${img}<p class="eyebrow">type</p><h1 class="serif-title">${escapeHtml(type.code)} — ${escapeHtml(type.title)}</h1><p class="mono-stat">${escapeHtml(type.code.toLowerCase())} · ${escapeHtml(type.name.toLowerCase())}</p><p class="lede">${escapeHtml(type.summary)}</p><p><a href="/quiz">Begin the quiz</a> · <a href="/types">All types</a></p></header><div class="wrap prose"><h2>Cognitive stack</h2><ul class="archetype-stack">${stack}</ul></div><div class="wrap prose"><h2>The others</h2><ul class="type-index">${others}</ul></div></article>`
+}
+
 function indexHtml(guides: Guide[]) {
   const items = guides
     .map(
@@ -91,6 +127,26 @@ export function prerenderGuidesPlugin(): Plugin {
 
       for (const guide of guides) {
         writePage(guide.slug, guide.seoTitle, guide.seoDescription, articleHtml(guide))
+      }
+
+      const types = JSON.parse(
+        fs.readFileSync(path.resolve(process.cwd(), 'src/content/types.json'), 'utf8'),
+      ) as TypePage[]
+
+      writePage(
+        'types',
+        'Sixteen types | Jung Functions',
+        'Browse the sixteen Jungian type patterns this quiz names, each with a portrait, stack, and a short reading.',
+        typesIndexHtml(types),
+      )
+
+      for (const type of types) {
+        writePage(
+          `types/${type.code.toLowerCase()}`,
+          `${type.code} ${type.title} | Jung Functions`,
+          type.summary,
+          typePageHtml(type, types),
+        )
       }
 
       writeSitemap(

@@ -5,11 +5,12 @@ type TypePortraitProps = {
   hero: FunctionId
   image?: string
   className?: string
+  alt?: string
 }
 
-export function TypePortrait({ hero, image, className = '' }: TypePortraitProps) {
+export function TypePortrait({ hero, image, className = '', alt = '' }: TypePortraitProps) {
   if (image) {
-    return <img src={image} alt="" className={`sketch type-portrait ${className}`} />
+    return <img src={image} alt={alt} className={`sketch type-portrait ${className}`} />
   }
   return <Sketch kind={hero} className={className} />
 }

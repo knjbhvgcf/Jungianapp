@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import { FUNCTIONS, type FunctionId } from '../data/functions'
+import { typePath } from '../data/personalityTypes'
 import { TypePortrait } from './TypePortrait'
 import {
   closeLeaders,
@@ -124,7 +126,9 @@ export function StackPicker({
             <TypePortrait hero={hero} image={preview.image} className="sketch--mini" />
           </div>
           <h3 className="result-preview__title">
-            {preview.code} — {preview.title}
+            <Link to={typePath(preview.code)}>
+              {preview.code} — {preview.title}
+            </Link>
           </h3>
           <p className="mono-stat">
             {preview.code.toLowerCase()} · hero {hero} ({percentById[hero] ?? 0}%) · parent {parent}{' '}

@@ -28,6 +28,30 @@ Pick one. All of these have a free tier and work with this project:
 
 After you have a live URL, replace `YOUR_DOMAIN` in `public/robots.txt` and `public/sitemap.xml`.
 
+## Analytics (how many people take the quiz)
+
+Use **Cloudflare Web Analytics**. It is free, has no visitor cap, and does not store quiz answers.
+
+`jungianapp.pages.dev` is not a hostname you own, so **Add a site** in Web Analytics will say it does not belong to your account. Enable it from the Pages project instead:
+
+1. Cloudflare dashboard → **Workers & Pages** → the **jungianapp** project.
+2. Open **Metrics** and select **Enable** under Web Analytics.
+3. Trigger a new deploy (or **Retry deployment**) so Cloudflare can insert the snippet.
+4. Open **Analytics & Logs** → **Web Analytics** and select the Pages project.
+5. Filter by path:
+   - `/quiz` — people who opened the test
+   - `/results` — people who finished it
+
+If Metrics has no Enable button, add the JS snippet yourself:
+
+1. **Analytics & Logs** → **Web Analytics** → **Add a site**.
+2. Type `jungianapp.pages.dev`, then pick the option to **install the JS snippet** (not automatic hostname setup).
+3. Copy the `token` from the snippet: `data-cf-beacon='{"token": "THIS-PART"}'`.
+4. In the Pages project → **Settings** → **Environment variables**, add `VITE_CF_BEACON_TOKEN` with that token for Production.
+5. Redeploy. Vite only picks up the token at build time.
+
+Leave the variable empty locally so your own clicks are not counted.
+
 ## Full map (optional paid unlock)
 
 The quiz stays free. The map is a one-time unlock of a longer Beebe reading.

@@ -1,5 +1,6 @@
 import type { FunctionId } from '../data/functions'
 import type { ClarifyAnswers } from './clarify'
+import { clearPortraitChoice } from './portrait'
 import { isFunctionId, type Answers } from './scoring'
 
 const ANSWERS_KEY = 'jung-functions.answers.v2'
@@ -89,6 +90,7 @@ export function clearAnswers() {
   sessionStorage.removeItem(COMPLETED_KEY)
   sessionStorage.removeItem(STACK_KEY)
   sessionStorage.removeItem(CLARIFY_KEY)
+  clearPortraitChoice()
 }
 
 export function markCompleted() {

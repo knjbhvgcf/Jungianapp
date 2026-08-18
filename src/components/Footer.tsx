@@ -18,6 +18,8 @@ export function Footer() {
       <p>
         An educational quiz based on Jung’s psychological functions, not a medical or diagnostic
         tool, and not the MBTI® instrument.{' '}
+        <Link to="/types">Types</Link>
+        {' · '}
         <Link to="/guides">Guides</Link>
         {' · '}
         <Link to="/jung-vs-mbti">Jung and MBTI®</Link>

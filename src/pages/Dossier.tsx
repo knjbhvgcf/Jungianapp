@@ -22,6 +22,7 @@ import { closeAttitudeReadings, suggestedHeroFromTieBreak } from '../lib/tieBrea
 import { loadAnswers, loadClarifyAnswers, loadStackChoice, saveStackChoice } from '../lib/storage'
 import { siteCopy } from '../lib/copy'
 import { isProductUnlocked, tryUnlockKey } from '../lib/unlock'
+import { loadPortraitChoice, portraitSrc } from '../lib/portrait'
 
 const mapPage = siteCopy.paywall.mapPage
 
@@ -95,6 +96,7 @@ export function Dossier() {
   const copy = typeCopy(selected.code)
   const scores = profile.scores
   const beebe = beebePlacements(selected, scores)
+  const typeImage = portraitSrc(selected.code, loadPortraitChoice(), selected.image)
 
   function chooseHero(next: FunctionId) {
     const nextParent = preferredParent(next, scores)
@@ -121,7 +123,7 @@ export function Dossier() {
           <div className="sketch-stage">
             <Sparkle className="sparkle sparkle--1" />
             <Sparkle className="sparkle sparkle--2" />
-            <TypePortrait hero={hero} image={selected.image} />
+            <TypePortrait hero={hero} image={typeImage} alt={`${selected.code} ${selected.title}`} />
           </div>
           <p className="eyebrow">{mapPage.eyebrow}</p>
           <h1 className="serif-title">
@@ -143,6 +145,7 @@ export function Dossier() {
                 readings={readings}
                 hero={hero}
                 parent={parent}
+                image={typeImage}
                 onHeroChange={chooseHero}
                 onParentChange={chooseParent}
               />

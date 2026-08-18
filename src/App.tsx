@@ -10,6 +10,7 @@ import { Home } from './pages/Home'
 import { NotFound } from './pages/NotFound'
 import { Quiz } from './pages/Quiz'
 import { Results } from './pages/Results'
+import { TypePage, TypesIndex } from './pages/TypePage'
 
 export default function App() {
   return (
@@ -23,6 +24,8 @@ export default function App() {
         <Route path="/compatibility" element={<Compatibility />} />
         <Route path="/about" element={<About />} />
         <Route path="/guides" element={<GuidesIndex />} />
+        <Route path="/types" element={<TypesIndex />} />
+        <Route path="/types/:code" element={<TypePage />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/:slug" element={<GuidePage />} />
         <Route path="*" element={<NotFound />} />

@@ -17,6 +17,7 @@ import { applyFollowUpToProfile } from '../lib/clarify'
 import { loadAnswers, loadClarifyAnswers, loadStackChoice } from '../lib/storage'
 import { siteCopy } from '../lib/copy'
 import { isProductUnlocked, tryUnlockKey } from '../lib/unlock'
+import { loadPortraitChoice, portraitSrc } from '../lib/portrait'
 
 const compatPage = siteCopy.paywall.compatPage
 
@@ -71,6 +72,8 @@ export function Compatibility() {
 
   if (!selected || !hero || !parent) return null
 
+  const typeImage = portraitSrc(selected.code, loadPortraitChoice(), selected.image)
+
   return (
     <>
       <Seo
@@ -86,7 +89,7 @@ export function Compatibility() {
           <div className="sketch-stage">
             <Sparkle className="sparkle sparkle--1" />
             <Sparkle className="sparkle sparkle--2" />
-            <TypePortrait hero={hero} image={selected.image} />
+            <TypePortrait hero={hero} image={typeImage} alt={`${selected.code} ${selected.title}`} />
           </div>
           <p className="eyebrow">{compatPage.eyebrow}</p>
           <h1 className="serif-title">

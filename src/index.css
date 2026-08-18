@@ -342,7 +342,7 @@ a {
 .type-portrait {
   max-height: 280px;
   object-fit: contain;
-  background: var(--bg);
+  background: #fff;
 }
 
 .sketch--mini.type-portrait {
@@ -691,6 +691,15 @@ a {
   font-weight: 400;
 }
 
+.result-preview__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.result-preview__title a:hover {
+  text-decoration: underline;
+}
+
 .result-preview__lede {
   max-width: 36rem;
   margin: 0.55rem auto 0;
@@ -920,6 +929,133 @@ a {
 
 .guide-index p {
   margin: 0.35rem 0 0;
+}
+
+.type-index {
+  list-style: none;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+}
+
+.type-index a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.85rem 0.55rem 0.95rem;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  text-align: center;
+  min-height: 100%;
+}
+
+.type-index a:hover {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.type-index .sketch {
+  width: min(100%, 120px);
+}
+
+.type-index strong {
+  margin-top: 0.35rem;
+  font-family: var(--display);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.type-index span {
+  font-family: var(--serif);
+  font-size: 0.98rem;
+}
+
+.portrait-pick {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin: 1.4rem 0 0;
+}
+
+.portrait-pick__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.85rem 0.55rem 1rem;
+  border: 2px solid var(--ink);
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.portrait-pick__btn:hover,
+.portrait-pick__btn.is-selected {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.portrait-pick__btn .sketch {
+  width: min(100%, 180px);
+}
+
+.portrait-pick__btn strong {
+  font-family: var(--display);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portrait-switch {
+  margin: 0.2rem 0 0.6rem;
+}
+
+.portrait-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.portrait-pair figure {
+  margin: 0;
+}
+
+.portrait-pair .sketch {
+  width: min(100%, 200px);
+}
+
+.portrait-pair figcaption {
+  margin-top: 0.35rem;
+  font-family: var(--display);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.type-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1.6rem auto 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+}
+
+.type-pager a {
+  color: inherit;
+}
+
+@media (min-width: 640px) {
+  .type-index {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .guide-related ul {

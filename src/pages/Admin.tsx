@@ -907,7 +907,8 @@ function TypesEditor({
   return (
     <div className="cms-panel">
       <p className="cms-note">
-        Title and summary appear on the free results page. The longer essays appear on the map.
+        Title and summary appear on the free results page and on{' '}
+        <code>/types/{selected.code.toLowerCase()}</code>. The longer essays appear on the map.
         Leave the image blank to keep the function sketch, or upload a picture (png, jpg, webp,
         gif, or svg, under 2 MB). The stack stays fixed so scoring still works.
       </p>
