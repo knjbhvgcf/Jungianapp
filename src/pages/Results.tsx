@@ -26,13 +26,6 @@ import {
 import { fillCopy, siteCopy } from '../lib/copy'
 import { isProductUnlocked, productPrice } from '../lib/unlock'
 import { typePath } from '../data/personalityTypes'
-import { PortraitPicker } from '../components/PortraitPicker'
-import {
-  loadPortraitChoice,
-  portraitSrc,
-  savePortraitChoice,
-  type PortraitSex,
-} from '../lib/portrait'
 
 const results = siteCopy.results
 
@@ -50,7 +43,6 @@ export function Results() {
   const [copied, setCopied] = useState(false)
   const [heroId, setHeroId] = useState<FunctionId | null>(null)
   const [parentId, setParentId] = useState<FunctionId | null>(null)
-  const [sex, setSex] = useState<PortraitSex | null>(() => loadPortraitChoice())
   const readings = useMemo(
     () =>
       baseProfile && profile
@@ -120,12 +112,7 @@ export function Results() {
   const scoreLines = profile.scores.map((score) => `${score.id} ${score.percent}%`)
   const allScores = profile.scores
   const sketchKind = heroFn
-  const typeImage = portraitSrc(selectedCode, sex, selected.image)
-
-  function pickPortrait(next: PortraitSex) {
-    savePortraitChoice(next)
-    setSex(next)
-  }
+  const typeImage = selected.image
 
   function chooseHero(next: FunctionId) {
     const nextParent = preferredParent(next, allScores)
@@ -157,38 +144,6 @@ export function Results() {
     }
   }
 
-  if (!sex) {
-    return (
-      <>
-        <Seo
-          title={fillCopy(results.seoTitle, { code: selectedCode, title: selectedTitle })}
-          description={fillCopy(results.seoDescription, { heroName: FUNCTIONS[heroFn].name })}
-          path="/results"
-        />
-        <section className="section results">
-          <div className="wrap screen">
-            <p className="eyebrow">results</p>
-            <h1 className="serif-title">
-              {selectedCode} — {selectedTitle}
-            </h1>
-            <p className="mono-stat">which portrait is yours</p>
-            <p className="lede">
-              The type is the same either way. Choose the face you want on your page; you can
-              change it afterwards.
-            </p>
-            <PortraitPicker
-              code={selectedCode}
-              hero={hero}
-              title={selectedTitle}
-              fallbackImage={selected.image}
-              onPick={pickPortrait}
-            />
-          </div>
-        </section>
-      </>
-    )
-  }
-
   return (
     <>
       <Seo
@@ -210,15 +165,6 @@ export function Results() {
               alt={`${selectedCode} ${selectedTitle}`}
             />
           </div>
-          <p className="portrait-switch">
-            <button
-              type="button"
-              className="text-button"
-              onClick={() => pickPortrait(sex === 'female' ? 'male' : 'female')}
-            >
-              Use the {sex === 'female' ? 'male' : 'female'} portrait
-            </button>
-          </p>
           <h1 className="serif-title">
             {selectedCode} — {selectedTitle}
           </h1>

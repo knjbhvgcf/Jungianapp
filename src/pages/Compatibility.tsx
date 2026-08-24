@@ -17,7 +17,6 @@ import { applyFollowUpToProfile } from '../lib/clarify'
 import { loadAnswers, loadClarifyAnswers, loadStackChoice } from '../lib/storage'
 import { siteCopy } from '../lib/copy'
 import { isProductUnlocked, tryUnlockKey } from '../lib/unlock'
-import { loadPortraitChoice, portraitSrc } from '../lib/portrait'
 
 const compatPage = siteCopy.paywall.compatPage
 
@@ -72,7 +71,7 @@ export function Compatibility() {
 
   if (!selected || !hero || !parent) return null
 
-  const typeImage = portraitSrc(selected.code, loadPortraitChoice(), selected.image)
+  const typeImage = selected.image
 
   return (
     <>

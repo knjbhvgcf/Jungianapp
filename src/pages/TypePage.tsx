@@ -1,11 +1,11 @@
 import { Link, useParams } from 'react-router-dom'
 import { Button } from '../components/Button'
+import { Sparkle } from '../components/Icons'
 import { Seo } from '../components/Seo'
 import { TypePortrait } from '../components/TypePortrait'
 import { archetypePage } from '../data/archetypePages'
 import { FUNCTIONS } from '../data/functions'
 import { PERSONALITY_TYPES, typeByCode, typePath } from '../data/personalityTypes'
-import { portraitSrc } from '../lib/portrait'
 import { NotFound } from './NotFound'
 
 const STACK_LABELS = ['Hero', 'Parent', 'Child', 'Inferior'] as const
@@ -14,19 +14,46 @@ export function TypesIndex() {
   return (
     <>
       <Seo
-        title="Sixteen types | Jung Functions"
-        description="Browse the sixteen Jungian type patterns this quiz names, each with a portrait, stack, and a short reading."
+        title="Sixteen sprouts | Jung Functions"
+        description="Meet the sixteen sprouts this quiz names — each a Jungian type pattern with a portrait, stack, and a short reading."
         path="/types"
       />
       <article className="section">
         <div className="wrap prose">
-          <p className="eyebrow">types</p>
-          <h1 className="serif-title">Sixteen types</h1>
+          <p className="eyebrow">sprouts</p>
+          <h1 className="serif-title">Sixteen sprouts</h1>
           <p className="lede">
-            Each pattern is a leading function and the function that supports it, named here as a
-            character you can meet before you take the quiz, or after, if you want a page you can
-            keep.
+            Each sprout is a leading function and the function that supports it, a little character
+            you can meet before you take the quiz, or after, if you want a page you can keep. The
+            kit is a key: hood if the dominant turns inward, lantern for intuition, quill and book
+            for thinking, sword or flower for feeling, and the work of the hands for sensation.
           </p>
+          <ul className="type-key">
+            <li>
+              <strong>Hood / cape</strong>
+              introverted dominant
+            </li>
+            <li>
+              <strong>Hair shown</strong>
+              extraverted dominant
+            </li>
+            <li>
+              <strong>Lantern</strong>
+              intuition
+            </li>
+            <li>
+              <strong>Tools, keys, basket</strong>
+              sensation
+            </li>
+            <li>
+              <strong>Quill &amp; book</strong>
+              thinking
+            </li>
+            <li>
+              <strong>Sword or flower</strong>
+              feeling
+            </li>
+          </ul>
           <TypeGrid />
           <p>
             <Button to="/quiz">Begin the quiz</Button>
@@ -65,25 +92,20 @@ export function TypePage() {
       />
       <article className="section type-page">
         <header className="wrap screen dossier-hero">
-          <div className="portrait-pair">
-            <figure>
+          <div className="sketch-stage">
+            <Sparkle className="sparkle sparkle--1" />
+            <Sparkle className="sparkle sparkle--2" />
+            <Sparkle className="sparkle sparkle--3" />
+            <Sparkle className="sparkle sparkle--4" />
+            <div className="type-bob">
               <TypePortrait
                 hero={hero}
-                image={portraitSrc(selected.code, 'female', selected.image)}
-                alt={`${selected.code} ${selected.title}, female portrait`}
+                image={selected.image}
+                alt={`${selected.code} ${selected.title}`}
               />
-              <figcaption>Female</figcaption>
-            </figure>
-            <figure>
-              <TypePortrait
-                hero={hero}
-                image={portraitSrc(selected.code, 'male', selected.image)}
-                alt={`${selected.code} ${selected.title}, male portrait`}
-              />
-              <figcaption>Male</figcaption>
-            </figure>
+            </div>
           </div>
-          <p className="eyebrow">type</p>
+          <p className="eyebrow">sprout</p>
           <h1 className="serif-title">
             {selected.code} — {selected.title}
           </h1>
@@ -95,7 +117,7 @@ export function TypePage() {
           <div className="hero__actions">
             <Button to="/quiz">Begin the quiz</Button>
             <Button to="/types" variant="ghost">
-              All types
+              All sprouts
             </Button>
           </div>
         </header>
@@ -114,7 +136,7 @@ export function TypePage() {
           </ul>
           <p>
             The longer map — Beebe’s eight, the day, work, relating, and the shadow — opens after
-            the quiz, on the paid map. This page is the public face of the type.
+            the quiz, on the paid map. This page is the public face of the sprout.
           </p>
           <p>
             <Button to="/dossier">Open the map</Button>
@@ -122,7 +144,7 @@ export function TypePage() {
         </div>
 
         {previous && next ? (
-          <nav className="wrap type-pager" aria-label="Nearby types">
+          <nav className="wrap type-pager" aria-label="Nearby sprouts">
             <Link to={typePath(previous.code)}>
               ← {previous.code} {previous.title}
             </Link>
@@ -133,7 +155,7 @@ export function TypePage() {
         ) : null}
 
         <div className="wrap prose">
-          <h2>The others</h2>
+          <h2>The other sprouts</h2>
           <TypeGrid types={others} />
         </div>
       </article>
@@ -144,15 +166,22 @@ export function TypePage() {
 function TypeGrid({ types = PERSONALITY_TYPES }: { types?: typeof PERSONALITY_TYPES }) {
   return (
     <ul className="type-index">
-      {types.map((type) => (
+      {types.map((type, index) => (
         <li key={type.code}>
           <Link to={typePath(type.code)}>
-            <TypePortrait
-              hero={type.stack[0]}
-              image={portraitSrc(type.code, 'female', type.image)}
-              className="sketch--mini"
-              alt=""
-            />
+            <span className="type-index__stage">
+              <Sparkle className="sparkle sparkle--1" />
+              <Sparkle className="sparkle sparkle--2" />
+              <Sparkle className="sparkle sparkle--3" />
+              <span className="type-bob" style={{ animationDelay: `${(index % 8) * 0.14}s` }}>
+                <TypePortrait
+                  hero={type.stack[0]}
+                  image={type.image}
+                  className="sketch--mini"
+                  alt=""
+                />
+              </span>
+            </span>
             <strong>{type.code}</strong>
             <span>{type.title}</span>
           </Link>

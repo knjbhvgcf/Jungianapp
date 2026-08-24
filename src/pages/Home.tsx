@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { FunctionCard } from '../components/FunctionCard'
 import { Sparkle } from '../components/Icons'
 import { Seo } from '../components/Seo'
-import { Sketch } from '../components/Sketch'
+import { HeroParty } from '../components/HeroParty'
 import type { PagesContent } from '../content/schema'
 
 const { home } = pages as PagesContent
@@ -18,18 +18,14 @@ export function Home() {
       <Seo title={home.seoTitle} description={home.seoDescription} path="/" />
 
       <section className="hero">
+        <div className="hero-stage">
+          <Sparkle className="sparkle sparkle--1" />
+          <Sparkle className="sparkle sparkle--2" />
+          <Sparkle className="sparkle sparkle--3" />
+          <Sparkle className="sparkle sparkle--4" />
+          <HeroParty />
+        </div>
         <div className="wrap screen">
-          <div className="sketch-stage">
-            <Sparkle className="sparkle sparkle--1" />
-            <Sparkle className="sparkle sparkle--2" />
-            <Sparkle className="sparkle sparkle--3" />
-            <Sparkle className="sparkle sparkle--4" />
-            {home.image ? (
-              <img src={home.image} alt="" className="sketch type-portrait" />
-            ) : (
-              <Sketch kind="seeker" />
-            )}
-          </div>
           <h1 className="serif-title">{home.title}</h1>
           <p className="mono-stat">{home.stat}</p>
           <p className="lede">{home.lede}</p>

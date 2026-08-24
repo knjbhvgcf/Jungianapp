@@ -22,7 +22,6 @@ import { closeAttitudeReadings, suggestedHeroFromTieBreak } from '../lib/tieBrea
 import { loadAnswers, loadClarifyAnswers, loadStackChoice, saveStackChoice } from '../lib/storage'
 import { siteCopy } from '../lib/copy'
 import { isProductUnlocked, tryUnlockKey } from '../lib/unlock'
-import { loadPortraitChoice, portraitSrc } from '../lib/portrait'
 
 const mapPage = siteCopy.paywall.mapPage
 
@@ -96,7 +95,7 @@ export function Dossier() {
   const copy = typeCopy(selected.code)
   const scores = profile.scores
   const beebe = beebePlacements(selected, scores)
-  const typeImage = portraitSrc(selected.code, loadPortraitChoice(), selected.image)
+  const typeImage = selected.image
 
   function chooseHero(next: FunctionId) {
     const nextParent = preferredParent(next, scores)

@@ -7,7 +7,7 @@ const links = [
   { to: '/quiz', label: 'Take the quiz' },
   { to: '/dossier', label: 'Map' },
   { to: '/compatibility', label: 'Compatibility' },
-  { to: '/types', label: 'Types' },
+  { to: '/types', label: 'Sprouts' },
   { to: '/guides', label: 'Guides' },
   { to: '/about', label: 'About' },
   ...(import.meta.env.DEV ? [{ to: '/admin', label: 'CMS' }] : []),

@@ -315,6 +315,56 @@ a {
   padding: 1.2rem 0 2.4rem;
 }
 
+.hero-stage {
+  position: relative;
+  max-width: 32rem;
+  margin: 0 auto 0.35rem;
+  padding: 1.6rem 2.2rem 1.2rem;
+}
+
+.hero-party {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem 2.4rem;
+  align-items: end;
+  justify-items: center;
+}
+
+.hero-party__fig {
+  display: grid;
+  place-items: end center;
+  width: 100%;
+  animation: hero-play 2.7s ease-in-out infinite;
+}
+
+.hero-party__fig:nth-child(even) {
+  animation-direction: reverse;
+}
+
+.hero-party__fig:hover {
+  z-index: 2;
+  animation-play-state: paused;
+  transform: translateY(-10px) scale(1.06);
+}
+
+.hero-party__fig .sketch,
+.hero-party__fig .type-portrait {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  background: transparent;
+}
+
+@keyframes hero-play {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 .hero__actions,
 .results-actions {
   display: flex;
@@ -342,7 +392,7 @@ a {
 .type-portrait {
   max-height: 280px;
   object-fit: contain;
-  background: #fff;
+  background: transparent;
 }
 
 .sketch--mini.type-portrait {
@@ -940,13 +990,35 @@ a {
   gap: 0.8rem;
 }
 
+.type-key {
+  list-style: none;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem 1rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.type-key strong {
+  display: block;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
 .type-index a {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.15rem;
   padding: 0.85rem 0.55rem 0.95rem;
-  border: 2px solid var(--ink);
+  border: 0;
   color: var(--ink);
   text-decoration: none;
   text-align: center;
@@ -954,8 +1026,54 @@ a {
 }
 
 .type-index a:hover {
-  outline: 2px solid var(--ink);
-  outline-offset: 2px;
+  outline: 0;
+}
+
+.type-index a:hover .type-bob {
+  animation-play-state: paused;
+  transform: translateY(-8px) scale(1.05);
+}
+
+.type-index__stage {
+  position: relative;
+  display: grid;
+  place-items: end center;
+  width: 100%;
+  min-height: 138px;
+}
+
+.type-index .sparkle {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+.type-index .sparkle--1 {
+  top: 4%;
+  left: 8%;
+}
+
+.type-index .sparkle--2 {
+  top: 0;
+  right: 10%;
+  width: 0.55rem;
+  height: 0.55rem;
+}
+
+.type-index .sparkle--3 {
+  bottom: 12%;
+  left: 4%;
+  width: 0.48rem;
+  height: 0.48rem;
+}
+
+.type-bob {
+  display: grid;
+  place-items: end center;
+  animation: hero-play 2.7s ease-in-out infinite;
+}
+
+.type-index li:nth-child(even) .type-bob {
+  animation-direction: reverse;
 }
 
 .type-index .sketch {
@@ -1537,6 +1655,10 @@ a {
 @media (max-width: 520px) {
   .quiz-nav {
     display: grid;
+  }
+
+  .hero-party__fig .type-portrait {
+    max-height: 170px;
   }
 }
 
