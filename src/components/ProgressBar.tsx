@@ -19,11 +19,7 @@ export function ProgressBar({ value, max, label }: ProgressBarProps) {
       >
         <div className="progress__fill" style={{ width: `${percent}%` }} />
       </div>
-      <div className="progress__meta">
-        <span>1</span>
-        <span>{label}</span>
-        <span>{max}</span>
-      </div>
+      <p className="progress__label">{label}</p>
     </div>
   )
 }

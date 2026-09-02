@@ -55,19 +55,19 @@ export function StackPicker({
 
   return (
     <article className="panel stack-picker">
-      <h2>Arrange by strength</h2>
+      <h2>Try a different lead</h2>
       <p className="panel__intro">
         {full
           ? tied
-            ? 'Two or more functions scored close together, so you can name the lead, the support, the third, and the inferior, and each valid set is a different type.'
-            : 'Choose the four ego functions in the order of their strength, and the support, the third, and the inferior will stay a valid complement to the lead you pick.'
+            ? 'Two functions scored close, so you can try another lead and support. Each valid pair is a different type.'
+            : 'Pick the function that leads, then the one that supports it. The rest of the stack follows from that pair.'
           : tied
-            ? 'Two or more functions scored close together, so pick the leading function first, then the one that supports it.'
-            : 'Choose which function leads, and the supporting function must be the other kind of process — judging with perceiving — and the opposite attitude.'}
+            ? 'Two functions scored close. Pick the one that leads, then the one that supports it.'
+            : 'Pick the function that leads, then the one that supports it.'}
       </p>
 
       <RoleRow
-        label="Leading function (Hero)"
+        label={full ? 'Leading function (Hero)' : 'Leads'}
         group="Leading function"
         options={scores.map((score) => score.id)}
         selected={hero}
@@ -78,7 +78,7 @@ export function StackPicker({
       />
 
       <RoleRow
-        label="Supporting function (Parent)"
+        label={full ? 'Supporting function (Parent)' : 'Supports'}
         group="Supporting function"
         options={parents}
         selected={parent}

@@ -21,7 +21,11 @@ export function Seo({ title, description, path = '/', jsonLd }: SeoProps) {
   const jsonLdKey = jsonLd ? JSON.stringify(jsonLd) : ''
 
   useEffect(() => {
-    const origin = window.location.origin
+    const host = window.location.hostname
+    const origin =
+      host === 'localhost' || host === '127.0.0.1'
+        ? window.location.origin
+        : 'https://jungology.com'
     const url = `${origin}${path}`
 
     document.title = title

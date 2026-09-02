@@ -10,12 +10,12 @@
     "howHeading": "How it works",
     "steps": [
       {
-        "title": "Find the leading function",
-        "body": "The first part determines the direction of each function and what you recognise as its reason. If two leads emerge together, a short follow-up distinguishes them before the quiz continues, so the type is built from the function that actually leads."
+        "title": "Answer forty-eight statements",
+        "body": "Each one is a single claim about how you notice, decide, or take in a situation. Tap how true it is. The whole set takes most people about eight minutes."
       },
       {
-        "title": "Fill in the rest of the type",
-        "body": "The later items score how each function works and include reverse-keyed pairs, so all eight attitudes can be ranked, and the type is built from the lead outward rather than from a four-letter guess made in advance."
+        "title": "A short follow-up, only if needed",
+        "body": "If two answers finish too close for a type, you get a few forced choices at the end — not another full quiz — and then the reading."
       },
       {
         "title": "Read it as a map",
@@ -36,7 +36,7 @@
       },
       {
         "q": "How long does the quiz take?",
-        "a": "There are forty-eight statements, six for each function-attitude, including one reverse-keyed item, and the first half looks for the leading function while the rest fills in the type. Most people finish in about eight to ten minutes."
+        "a": "There are forty-eight statements. Tap a number to move on. Most people finish in about eight minutes. If two answers are too close, a few extra choices come after the forty-eight, not in the middle."
       },
       {
         "q": "Do you store my answers?",
@@ -44,7 +44,7 @@
       },
       {
         "q": "What if two attitudes are equally strong, as Fi and Ti both at 88%?",
-        "a": "When two functions land that close, the first forty-eight items are not enough to decide, so you get a short follow-up that asks which sentence sounds more like you, and those answers are folded into the percentages to name the lead. If they still split, you choose."
+        "a": "When two functions land that close, the forty-eight items are not enough, so after the quiz you get a short follow-up: which sentence sounds more like you. Those answers are folded into the percentages. If they still split, you can try a different lead on the results page."
       },
       {
         "q": "What is Your Type in Depth?",
@@ -75,7 +75,7 @@
       {
         "heading": "The item bank",
         "paragraphs": [
-          "There are forty-eight original statements, six for each function-attitude, and the quiz looks for the leading function first, so orientation and criterion items come before process and reverse-keyed ones. If two functions are still close after that stretch, a short follow-up names the lead before the rest of the type is scored. You rate each statement from 1 to 5, and the totals appear as 0–100% bars."
+          "There are forty-eight original statements, six for each function-attitude. You rate each from 1 to 5, and a tap moves you on. If two functions are still close after the forty-eight, a short follow-up at the end names the lead. The totals appear as 0–100% bars."
         ]
       },
       {
@@ -88,7 +88,7 @@
         "heading": "How a type is suggested",
         "paragraphs": [
           "Each of the sixteen types is scored with the leading function first, so a type whose dominant function is not your strongest score is set aside, while the supporting function is rewarded next, the third moderately, and the inferior only slightly. The model also wants the lead to outrank its opposite-attitude twin. If two functions score close, free results let you pick the lead and the support, and Your Type in Depth opens Child, Anima, and the full eight-role stack.",
-          "When two functions land together — Fi and Ti both high, or Ni and Ne — the totals are not enough, so before results the quiz asks a short follow-up: five forced choices between those two, not another set of ratings. Those answers are folded into the percentages, the winner’s bar rises and the other falls, and that is what names the lead. If they still split, you choose."
+          "When two functions land together — Fi and Ti both high, or Ni and Ne — the totals are not enough, so after the forty-eight the quiz asks a short follow-up: five forced choices between those two, not another set of ratings. Those answers are folded into the percentages, the winner’s bar rises and the other falls, and that is what names the lead. If they still split, you can try a different lead on the results page."
         ]
       },
       {
@@ -128,7 +128,7 @@
     "beginQuiz": "Begin the quiz",
     "scoresHeading": "Function-attitude scores",
     "scoresIntro": "Each bar is six statements drawn from Jung’s account of that function-attitude, including one reverse item, and when two leads were close the follow-up answers are folded into the total.",
-    "arrangeStack": "Arrange the stack",
+    "arrangeStack": "Not quite this type?",
     "openMap": "Open Your Type in Depth",
     "unlockMap": "Your Type in Depth",
     "openCompat": "Open compatibility",

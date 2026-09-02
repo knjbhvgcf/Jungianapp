@@ -29,7 +29,7 @@
       "functionId": "Ni",
       "facet": "reverse",
       "reverse": true,
-      "text": "I trust what is happening in front of me more than any inner picture of where it is going."
+      "text": "I rarely know where a situation is going until the outer facts have already lined up."
     }
   ],
   "Ne": [
@@ -62,7 +62,7 @@
       "functionId": "Ne",
       "facet": "reverse",
       "reverse": true,
-      "text": "I prefer to wait for one inner image of the outcome rather than chase outer possibilities."
+      "text": "Once I have one path that could work, I do not go looking for other ones."
     }
   ],
   "Si": [
@@ -95,7 +95,7 @@
       "functionId": "Si",
       "facet": "reverse",
       "reverse": true,
-      "text": "I take the sensory world as it appears now, without referring it to past impressions."
+      "text": "I do not check a new moment against how this kind of moment has felt before."
     }
   ],
   "Se": [
@@ -128,7 +128,7 @@
       "functionId": "Se",
       "facet": "reverse",
       "reverse": true,
-      "text": "The present scene feels less real to me than the inner impression it leaves."
+      "text": "I often take in the room only afterwards, if I notice the scene at all."
     }
   ],
   "Ti": [
@@ -161,7 +161,7 @@
       "functionId": "Ti",
       "facet": "reverse",
       "reverse": true,
-      "text": "I am satisfied if a plan works in practice, even when I cannot explain why."
+      "text": "I can accept an explanation that works well enough even if I cannot make it consistent."
     }
   ],
   "Te": [
@@ -194,7 +194,7 @@
       "functionId": "Te",
       "facet": "reverse",
       "reverse": true,
-      "text": "I would rather keep an inner theory coherent than make it work outside."
+      "text": "I can leave a plan unarranged if the inner idea still feels unfinished."
     }
   ],
   "Fi": [
@@ -227,7 +227,7 @@
       "functionId": "Fi",
       "facet": "reverse",
       "reverse": true,
-      "text": "I usually take on the values that the people around me hold."
+      "text": "I can set a private value aside when keeping it would make things awkward."
     }
   ],
   "Fe": [
@@ -260,7 +260,7 @@
       "functionId": "Fe",
       "facet": "reverse",
       "reverse": true,
-      "text": "The group’s mood does not change what I consider right."
+      "text": "I do not take the room’s mood as a reason to change what I will do."
     }
   ]
 }

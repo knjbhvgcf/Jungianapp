@@ -27,7 +27,12 @@ export function LikertScale({ name, value, onChange }: LikertScaleProps) {
               <span className="likert__value" aria-hidden="true">
                 {option.value}
               </span>
-              <span className="likert__label">{option.label}</span>
+              <span className="likert__label likert__label--full">{option.label}</span>
+              {option.value === 1 || option.value === 5 ? (
+                <span className="likert__label likert__label--short">
+                  {option.value === 1 ? 'Disagree' : 'Agree'}
+                </span>
+              ) : null}
             </label>
           )
         })}

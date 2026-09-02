@@ -1,21 +1,29 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { LikertScale } from '../components/LikertScale'
 import { ProgressBar } from '../components/ProgressBar'
 import { Seo } from '../components/Seo'
-import { isHeroPhaseQuestion, QUESTIONS } from '../data/questions'
+import { QUESTIONS } from '../data/questions'
 import { needsFollowUp } from '../lib/clarify'
 import { isQuizComplete, type Answers } from '../lib/scoring'
 import { clearAnswers, loadAnswers, loadClarifyAnswers, markCompleted, saveAnswers } from '../lib/storage'
 
+const ADVANCE_MS = 160
+
 export function Quiz() {
   const navigate = useNavigate()
+  const advanceTimer = useRef<number>(0)
   const [answers, setAnswers] = useState<Answers>(() => loadAnswers())
   const [index, setIndex] = useState(() => {
     const stored = loadAnswers()
     const firstUnanswered = QUESTIONS.findIndex((item) => stored[item.id] == null)
     return firstUnanswered === -1 ? 0 : firstUnanswered
+  })
+  const [showResume, setShowResume] = useState(() => {
+    const stored = loadAnswers()
+    const count = QUESTIONS.filter((item) => stored[item.id] != null).length
+    return count > 0 && count < QUESTIONS.length
   })
 
   const answeredCount = useMemo(
@@ -23,52 +31,66 @@ export function Quiz() {
     [answers],
   )
   const question = QUESTIONS[index]
+
+  useEffect(() => {
+    return () => window.clearTimeout(advanceTimer.current)
+  }, [])
+
   if (!question) return null
 
   const currentValue = answers[question.id]
   const isLast = index === QUESTIONS.length - 1
-  const canContinue = currentValue != null
-  const heroPhase = isHeroPhaseQuestion(question)
-  const leavingHeroPhase =
-    heroPhase && (isLast || !isHeroPhaseQuestion(QUESTIONS[index + 1] ?? question))
-  const heroGate = leavingHeroPhase && needsFollowUp(answers, loadClarifyAnswers())
 
-  function updateAnswer(value: number) {
-    const next = { ...answers, [question.id]: value }
-    setAnswers(next)
-    saveAnswers(next)
-  }
-
-  function goNext() {
-    if (!canContinue) return
-    if (heroGate) {
-      navigate('/clarify')
-      return
-    }
+  function goForward(nextAnswers: Answers) {
+    if (nextAnswers[question.id] == null) return
+    window.clearTimeout(advanceTimer.current)
     if (isLast) {
-      if (!isQuizComplete(answers)) return
+      if (!isQuizComplete(nextAnswers)) return
       markCompleted()
-      navigate(needsFollowUp(answers, loadClarifyAnswers()) ? '/clarify' : '/results')
+      navigate(needsFollowUp(nextAnswers, loadClarifyAnswers()) ? '/clarify' : '/results')
       return
     }
     setIndex((value) => value + 1)
   }
 
+  function dismissResume() {
+    setShowResume(false)
+  }
+
+  function choose(value: number) {
+    dismissResume()
+    const next = { ...answers, [question.id]: value }
+    setAnswers(next)
+    saveAnswers(next)
+    window.clearTimeout(advanceTimer.current)
+    advanceTimer.current = window.setTimeout(() => goForward(next), ADVANCE_MS)
+  }
+
+  function goNext() {
+    if (currentValue == null) return
+    dismissResume()
+    goForward(answers)
+  }
+
   function goBack() {
+    dismissResume()
+    window.clearTimeout(advanceTimer.current)
     setIndex((value) => Math.max(0, value - 1))
   }
 
   function restart() {
+    window.clearTimeout(advanceTimer.current)
     clearAnswers()
     setAnswers({})
     setIndex(0)
+    setShowResume(false)
   }
 
   return (
     <>
       <Seo
         title="Cognitive Functions Quiz | Jung Functions"
-        description="Forty-eight statements drawn from Psychological Types, first to find the leading function, then to fill in the rest of the type."
+        description="Forty-eight statements. Rate how true each one is, then see a type reading."
         path="/quiz"
       />
 
@@ -77,42 +99,33 @@ export function Quiz() {
           <ProgressBar
             value={answeredCount}
             max={QUESTIONS.length}
-            label={
-              heroPhase
-                ? `Leading function · ${index + 1} of ${QUESTIONS.length}`
-                : `The rest of the type · ${index + 1} of ${QUESTIONS.length}`
-            }
+            label={`Question ${index + 1} of ${QUESTIONS.length}`}
           />
+          {showResume ? (
+            <p className="quiz-resume">
+              You left off here. Continue, or{' '}
+              <button type="button" className="text-button" onClick={restart}>
+                start over
+              </button>
+              .
+            </p>
+          ) : null}
 
           <article className="quiz-card">
-            <p className="eyebrow">
-              {heroPhase ? 'leading function' : 'the rest of the type'} · statement{' '}
-              {String(index + 1).padStart(2, '0')}
-            </p>
             <h1 className="quiz-card__prompt">{question.text}</h1>
-            <LikertScale name={question.id} value={currentValue} onChange={updateAnswer} />
+            <LikertScale name={question.id} value={currentValue} onChange={choose} />
           </article>
 
           <div className="quiz-nav">
             <Button variant="ghost" onClick={goBack} disabled={index === 0}>
               Back
             </Button>
-            <Button onClick={goNext} disabled={!canContinue}>
-              {heroGate
-                ? 'Name the leading function'
-                : isLast
-                  ? needsFollowUp(answers, loadClarifyAnswers())
-                    ? 'A few more questions'
-                    : 'See results'
-                  : 'Next'}
-            </Button>
+            {currentValue != null ? (
+              <Button onClick={goNext}>{isLast ? 'See results' : 'Next'}</Button>
+            ) : (
+              <span className="quiz-nav__hint">Tap a number to continue</span>
+            )}
           </div>
-
-          <p className="quiz-reset">
-            <button type="button" className="text-button" onClick={restart}>
-              Start over
-            </button>
-          </p>
         </div>
       </section>
     </>

@@ -592,14 +592,54 @@ a {
   background: var(--ink);
 }
 
-.progress__meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.6rem;
-  margin-top: 0.4rem;
+.progress__label {
+  margin: 0.45rem 0 0;
   font-family: var(--mono);
   font-size: 0.78rem;
   color: var(--faint);
+  text-align: center;
+}
+
+.quiz-resume {
+  margin: 0.8rem 0 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+.quiz-nav__hint {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--faint);
+}
+
+.stack-fold {
+  margin: 1.6rem 0 0;
+  border: 2px solid var(--ink);
+  border-radius: 1.4rem;
+  padding: 0.4rem 1rem 0.2rem;
+}
+
+.stack-fold summary {
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  padding: 0.7rem 0;
+  list-style: none;
+}
+
+.stack-fold summary::-webkit-details-marker {
+  display: none;
+}
+
+.stack-fold[open] {
+  padding-bottom: 1rem;
+}
+
+.stack-fold .stack-picker {
+  border: 0;
+  padding: 0.2rem 0 0;
 }
 
 .likert {
@@ -665,6 +705,10 @@ a {
   font-family: var(--mono);
   font-size: 0.68rem;
   line-height: 1.25;
+}
+
+.likert__label--short {
+  display: none;
 }
 
 .results .screen {
@@ -1706,12 +1750,16 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .likert__label {
+  .likert__label--full {
     display: none;
   }
 
-  .likert__hint {
+  .likert__label--short {
     display: block;
+  }
+
+  .likert__hint {
+    display: none;
   }
 
   .likert__option {

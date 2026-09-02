@@ -1,6 +1,5 @@
 import { FUNCTION_IDS, FUNCTIONS, type FunctionId } from '../data/functions'
 import { clarifyQuestionsFor, clarifyQuestionsForPairs } from '../data/clarifyQuestions'
-import { isHeroPhaseComplete } from '../data/questions'
 import {
   beebePlacements,
   differentiationIndex,
@@ -146,23 +145,9 @@ export function applyFollowUp(
   }
 }
 
-export function pairsNeedingFollowUp(
-  quizAnswers: Answers,
-  mode: 'auto' | 'hero' | 'all' = 'auto',
-): ClosePair[] {
-  const complete = isQuizComplete(quizAnswers)
-  const heroReady = isHeroPhaseComplete(quizAnswers)
-  const scores = scoreFunctions(quizAnswers)
-  const heroOnly = mode === 'hero' || (mode === 'auto' && !complete && heroReady)
-
-  if (heroOnly) {
-    if (!heroReady) return []
-    const top = new Set(scores.slice(0, 2).map((score) => score.id))
-    return closePairs(scores).filter((pair) => top.has(pair.a) || top.has(pair.b))
-  }
-
-  if (!complete) return []
-  return closePairs(scores)
+export function pairsNeedingFollowUp(quizAnswers: Answers): ClosePair[] {
+  if (!isQuizComplete(quizAnswers)) return []
+  return closePairs(scoreFunctions(quizAnswers))
 }
 
 export function followUpQuestions(quizAnswers: Answers) {

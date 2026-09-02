@@ -26,16 +26,26 @@ export const RIVAL_PAIRS: ClosePair[] = [
   { key: 'Ne-Se', kind: 'rival', a: 'Ne', b: 'Se', label: 'extraverted perceiving' },
 ]
 
+function sameFunctions(left: FunctionId, right: FunctionId, pair: ClosePair) {
+  return (
+    (pair.a === left && pair.b === right) || (pair.a === right && pair.b === left)
+  )
+}
+
 export function pairKey(left: FunctionId, right: FunctionId) {
-  return [left, right].sort().join('-')
+  const known = [...ATTITUDE_PAIRS, ...RIVAL_PAIRS].find((pair) =>
+    sameFunctions(left, right, pair),
+  )
+  return known?.key ?? [left, right].sort().join('-')
 }
 
 export function pairFromIds(left: FunctionId, right: FunctionId): ClosePair {
-  const key = pairKey(left, right)
-  const known = [...ATTITUDE_PAIRS, ...RIVAL_PAIRS].find((pair) => pair.key === key)
+  const known = [...ATTITUDE_PAIRS, ...RIVAL_PAIRS].find((pair) =>
+    sameFunctions(left, right, pair),
+  )
   if (known) return known
   return {
-    key,
+    key: pairKey(left, right),
     kind: 'rival',
     a: left,
     b: right,
@@ -368,7 +378,10 @@ export function closePairs(scores: FunctionScore[]): ClosePair[] {
     first.percent >= STRONG_FLOOR
   ) {
     const pair = pairFromIds(first.id, second.id)
-    found.set(pair.key, pair)
+    const already = [...found.values()].some((item) =>
+      sameFunctions(pair.a, pair.b, item),
+    )
+    if (!already) found.set(pair.key, pair)
   }
   return [...found.values()]
 }

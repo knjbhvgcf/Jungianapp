@@ -236,8 +236,8 @@ export function Results() {
             />
           </h1>
           <p className="mono-stat">
-            {selectedCode.toLowerCase()} · hero {heroFn}
-            {leadScore ? ` (${leadScore.percent}%)` : ''} · parent {parentFn}
+            {selectedCode.toLowerCase()} · {heroFn}
+            {leadScore ? ` ${leadScore.percent}%` : ''} with {parentFn}
           </p>
           <Editable
             as="p"
@@ -270,15 +270,6 @@ export function Results() {
             </p>
           ) : null}
           <div className="hero__actions">
-            <EditableButton
-              variant="ghost"
-              label="Arrange stack"
-              value={results.arrangeStack}
-              onClick={() =>
-                document.getElementById('stack')?.scrollIntoView({ behavior: 'smooth' })
-              }
-              onChange={(arrangeStack) => patchResults({ arrangeStack })}
-            />
             <Button to={typePath(selectedCode)} variant="ghost">
               {selectedTitle} page
             </Button>
@@ -325,21 +316,6 @@ export function Results() {
                   ))}
                 </div>
               </article>
-              <div id="stack">
-                <StackPicker
-                  scores={allScores}
-                  hero={hero}
-                  parent={parent}
-                  preview={{
-                    code: selectedCode,
-                    title: selectedTitle,
-                    summary: selectedSummary,
-                    image: typeImage,
-                  }}
-                  onHeroChange={chooseHero}
-                  onParentChange={chooseParent}
-                />
-              </div>
             </div>
           </div>
         ) : null}
@@ -444,6 +420,35 @@ export function Results() {
             />
           </aside>
         </div>
+
+        {profile && selected && hero && parent ? (
+          <div className="wrap" id="stack">
+            <details className="stack-fold" open={editing || undefined}>
+              <summary>
+                <Editable
+                  as="span"
+                  label="Arrange stack"
+                  multiline={false}
+                  value={results.arrangeStack}
+                  onChange={(arrangeStack) => patchResults({ arrangeStack })}
+                />
+              </summary>
+              <StackPicker
+                scores={allScores}
+                hero={hero}
+                parent={parent}
+                preview={{
+                  code: selectedCode,
+                  title: selectedTitle,
+                  summary: selectedSummary,
+                  image: typeImage,
+                }}
+                onHeroChange={chooseHero}
+                onParentChange={chooseParent}
+              />
+            </details>
+          </div>
+        ) : null}
 
         <div className="wrap results-actions">
           <EditableButton

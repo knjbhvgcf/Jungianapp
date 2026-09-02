@@ -23,7 +23,7 @@ function typeCodes() {
 }
 
 export function writeSitemap(guideSlugs: string[], dest = 'public/sitemap.xml') {
-  const origin = 'https://YOUR_DOMAIN'
+  const origin = 'https://jungology.com'
   const urls = [
     ...CORE,
     ...typeCodes().map((code) => ({ loc: `/types/${code}`, priority: '0.7' })),

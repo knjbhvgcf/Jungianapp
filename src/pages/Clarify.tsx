@@ -1,16 +1,17 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { ProgressBar } from '../components/ProgressBar'
 import { Seo } from '../components/Seo'
-import { FUNCTIONS } from '../data/functions'
-import { isHeroPhaseComplete } from '../data/questions'
 import { followUpQuestions, needsFollowUp, pairsNeedingFollowUp } from '../lib/clarify'
 import { isQuizComplete } from '../lib/scoring'
 import { loadAnswers, loadClarifyAnswers, saveClarifyAnswers } from '../lib/storage'
 
+const ADVANCE_MS = 160
+
 export function Clarify() {
   const navigate = useNavigate()
+  const advanceTimer = useRef<number>(0)
   const quizAnswers = useMemo(() => loadAnswers(), [])
   const questions = useMemo(() => followUpQuestions(quizAnswers), [quizAnswers])
   const pairs = useMemo(() => pairsNeedingFollowUp(quizAnswers), [quizAnswers])
@@ -21,14 +22,16 @@ export function Clarify() {
     return firstUnanswered === -1 ? 0 : firstUnanswered
   })
 
-  const quizDone = isQuizComplete(quizAnswers)
+  useEffect(() => {
+    return () => window.clearTimeout(advanceTimer.current)
+  }, [])
 
-  if (!isHeroPhaseComplete(quizAnswers)) {
+  if (!isQuizComplete(quizAnswers)) {
     return <Navigate to="/quiz" replace />
   }
 
   if (!questions.length) {
-    return <Navigate to={quizDone ? '/results' : '/quiz'} replace />
+    return <Navigate to="/results" replace />
   }
 
   const question = questions[index]
@@ -36,45 +39,57 @@ export function Clarify() {
 
   const currentValue = answers[question.id]
   const isLast = index === questions.length - 1
-  const canContinue = currentValue != null
-  const pairLabel = `${question.a} / ${question.b}`
-  const pairNames = `${FUNCTIONS[question.a].name} or ${FUNCTIONS[question.b].name}`
   const firstOption = index % 2 === 0 ? 'a' : 'b'
-  const options = firstOption === 'a'
-    ? [
-        { id: question.a, text: question.aText },
-        { id: question.b, text: question.bText },
-      ]
-    : [
-        { id: question.b, text: question.bText },
-        { id: question.a, text: question.aText },
-      ]
+  const options =
+    firstOption === 'a'
+      ? [
+          { id: question.a, text: question.aText },
+          { id: question.b, text: question.bText },
+        ]
+      : [
+          { id: question.b, text: question.bText },
+          { id: question.a, text: question.aText },
+        ]
 
-  function updateAnswer(value: typeof question.a | typeof question.b) {
-    const next = { ...answers, [question.id]: value }
-    setAnswers(next)
-    saveClarifyAnswers(next)
-  }
-
-  function goNext() {
-    if (!canContinue) return
+  function goForward(nextAnswers: typeof answers) {
+    if (nextAnswers[question.id] == null) return
+    window.clearTimeout(advanceTimer.current)
     if (isLast) {
-      if (needsFollowUp(quizAnswers, answers)) return
-      navigate(isQuizComplete(quizAnswers) ? '/results' : '/quiz')
+      if (needsFollowUp(quizAnswers, nextAnswers)) return
+      navigate('/results')
       return
     }
     setIndex((value) => value + 1)
   }
 
+  function updateAnswer(value: typeof question.a | typeof question.b) {
+    const next = { ...answers, [question.id]: value }
+    setAnswers(next)
+    saveClarifyAnswers(next)
+    window.clearTimeout(advanceTimer.current)
+    advanceTimer.current = window.setTimeout(() => goForward(next), ADVANCE_MS)
+  }
+
+  function goNext() {
+    if (currentValue == null) return
+    goForward(answers)
+  }
+
   function goBack() {
+    window.clearTimeout(advanceTimer.current)
     setIndex((value) => Math.max(0, value - 1))
   }
+
+  const pairWords =
+    pairs.length === 1
+      ? pairs[0]?.label ?? 'two answers'
+      : pairs.map((pair) => pair.label).join(', ')
 
   return (
     <>
       <Seo
-        title="Close scores | Jung Functions"
-        description="A few more questions when two function-attitudes scored too close to name a lead."
+        title="A few more questions | Jung Functions"
+        description="A short follow-up when two answers were too close."
         path="/clarify"
       />
 
@@ -83,17 +98,16 @@ export function Clarify() {
           <ProgressBar
             value={questions.filter((item) => answers[item.id] != null).length}
             max={questions.length}
-            label={`Follow-up ${index + 1} of ${questions.length}`}
+            label={`Question ${index + 1} of ${questions.length}`}
           />
 
           <p className="note">
             {pairs.length === 1
-              ? `${pairLabel} scored too close to name a lead from the first items alone, so these questions ask which sounds more like you — ${pairNames}.`
-              : `${pairs.map((pair) => `${pair.a} / ${pair.b}`).join(', ')} scored close, and each pair needs a decision. Now: ${pairLabel}.`}
+              ? `Two answers were too close to name a type yet. Pick the sentence that sounds more like you.`
+              : `${pairWords} were close. Pick the sentence that sounds more like you.`}
           </p>
 
           <article className="quiz-card">
-            <p className="eyebrow">{question.label} · choose one</p>
             <h1 className="quiz-card__prompt">{question.prompt}</h1>
             <fieldset className="clarify-choices">
               <legend className="sr-only">Which is more you?</legend>
@@ -118,9 +132,11 @@ export function Clarify() {
             <Button variant="ghost" onClick={goBack} disabled={index === 0}>
               Back
             </Button>
-            <Button onClick={goNext} disabled={!canContinue}>
-              {isLast ? (quizDone ? 'See results' : 'Continue the quiz') : 'Next'}
-            </Button>
+            {currentValue != null ? (
+              <Button onClick={goNext}>{isLast ? 'See results' : 'Next'}</Button>
+            ) : (
+              <span className="quiz-nav__hint">Tap a sentence to continue</span>
+            )}
           </div>
         </div>
       </section>

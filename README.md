@@ -26,7 +26,7 @@ Pick one. All of these have a free tier and work with this project:
 2. **Netlify** — same build settings, or drag the `dist` folder onto [Netlify Drop](https://app.netlify.com/drop).
 3. **Vercel** — import the repo; `vercel.json` already rewrites routes to `index.html`.
 
-After you have a live URL, replace `YOUR_DOMAIN` in `public/robots.txt` and `public/sitemap.xml`.
+Live site: `https://jungology.com` (Cloudflare Pages project **jungianapp**). `robots.txt` and `sitemap.xml` already use that host.
 
 ## Analytics (how many people take the quiz)
 
@@ -57,7 +57,7 @@ Leave the variable empty locally so your own clicks are not counted.
 The quiz stays free. Your Type in Depth is a one-time unlock of a longer Beebe reading at `/type-in-depth`.
 
 1. Create a Lemon Squeezy or Stripe Payment Link.
-2. Set the success URL to `https://YOUR_DOMAIN/type-in-depth?key=YOUR-KEY`.
+2. Set the success URL to `https://jungology.com/type-in-depth?key=YOUR-KEY`.
 3. Copy `.env.example` to `.env` and fill in:
 
 ```
@@ -73,7 +73,7 @@ Old `/dossier` links redirect to `/type-in-depth`.
 Compatibility is not included in Your Type in Depth. It is a second product with its own checkout and keys.
 
 1. Create a second Payment Link.
-2. Set the success URL to `https://YOUR_DOMAIN/compatibility?key=YOUR-COMPAT-KEY`.
+2. Set the success URL to `https://jungology.com/compatibility?key=YOUR-COMPAT-KEY`.
 3. Add to `.env`:
 
 ```
