@@ -88,7 +88,7 @@ export function Clarify() {
   return (
     <>
       <Seo
-        title="A few more questions | Jung Functions"
+        title="A few more questions | Jung Functions Quiz"
         description="A short follow-up when two answers were too close."
         path="/clarify"
       />

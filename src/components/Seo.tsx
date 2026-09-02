@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { SITE_OG_IMAGE, SITE_ORIGIN } from '../lib/site'
 
 type SeoProps = {
   title: string
@@ -23,18 +24,20 @@ export function Seo({ title, description, path = '/', jsonLd }: SeoProps) {
   useEffect(() => {
     const host = window.location.hostname
     const origin =
-      host === 'localhost' || host === '127.0.0.1'
-        ? window.location.origin
-        : 'https://jungology.com'
+      host === 'localhost' || host === '127.0.0.1' ? window.location.origin : SITE_ORIGIN
     const url = `${origin}${path}`
+    const image = `${origin}${SITE_OG_IMAGE}`
 
     document.title = title
     setMeta('name', 'description', description)
     setMeta('property', 'og:title', title)
     setMeta('property', 'og:description', description)
     setMeta('property', 'og:url', url)
+    setMeta('property', 'og:image', image)
+    setMeta('name', 'twitter:card', 'summary_large_image')
     setMeta('name', 'twitter:title', title)
     setMeta('name', 'twitter:description', description)
+    setMeta('name', 'twitter:image', image)
 
     let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     if (!canonical) {

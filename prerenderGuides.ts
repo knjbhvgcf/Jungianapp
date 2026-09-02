@@ -120,13 +120,13 @@ export function prerenderGuidesPlugin(): Plugin {
 
       writePage(
         'guides',
-        'Jungian function guides | Jung Functions',
+        'Jungian function guides | Jung Functions Quiz',
         'Read Jung’s eight function-attitudes, how this quiz differs from MBTI, and the close pairs the items are built to separate.',
         indexHtml(guides),
       )
 
       for (const guide of guides) {
-        writePage(guide.slug, guide.seoTitle, guide.seoDescription, articleHtml(guide))
+        writePage(guide.slug, `${guide.seoTitle} | Jung Functions Quiz`, guide.seoDescription, articleHtml(guide))
       }
 
       const types = JSON.parse(
@@ -135,7 +135,7 @@ export function prerenderGuidesPlugin(): Plugin {
 
       writePage(
         'types',
-        'Sixteen sprouts | Jung Functions',
+        'Sixteen sprouts | Jung Functions Quiz',
         'Each sprout represents a leading function and the function that supports it — a little character you can meet before you take the quiz, or return to afterwards.',
         typesIndexHtml(types),
       )
@@ -143,11 +143,56 @@ export function prerenderGuidesPlugin(): Plugin {
       for (const type of types) {
         writePage(
           `types/${type.code.toLowerCase()}`,
-          `${type.code} ${type.title} | Jung Functions`,
+          `${type.code} ${type.title} | Jung Functions Quiz`,
           type.summary,
           typePageHtml(type, types),
         )
       }
+
+      writePage(
+        'legal',
+        'Notes on buying | Jung Functions Quiz',
+        'What Jungology sells, how unlock keys work, refunds, and that quiz answers stay in your browser.',
+        `<article class="section"><div class="wrap prose"><p class="eyebrow">jungology</p><h1 class="serif-title">Notes on buying</h1><p class="lede">The Jung Functions Quiz, the eight scores, and the choice of lead and support stay free. Two optional readings can be unlocked after Stripe checkout.</p><h2>What you are buying</h2><p>Your Type in Depth is a longer Beebe reading of the stack you just scored. Compatibility is a separate reading of how the other fifteen types sit on that stack. They are educational texts, not psychotherapy, not a diagnosis, and not the MBTI® instrument.</p><h2>Keys</h2><p>After payment, Stripe should return you to this site with a key in the link. That key unlocks the product in this browser.</p><h2>Refunds</h2><p>These are one-time digital readings. If checkout failed or the key did not unlock, write from the email on the Stripe receipt.</p><h2>Privacy</h2><p>There is no account. Quiz answers stay in this browser session. They are not sent to a server.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+      )
+
+      writePage(
+        'quiz',
+        'Jung Functions Quiz | Jungology',
+        'Forty-eight statements. Rate how true each one is, then see a type reading. A free Jung Functions Quiz from Jungology.',
+        `<article class="section"><div class="wrap prose"><p class="eyebrow">quiz</p><h1 class="serif-title">Jung Functions Quiz</h1><p class="lede">Forty-eight statements. Tap how true each one is. Enable JavaScript to take the test in this page.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+      )
+
+      const pages = JSON.parse(
+        fs.readFileSync(path.resolve(process.cwd(), 'src/content/pages.json'), 'utf8'),
+      ) as {
+        about: { seoTitle: string; seoDescription: string; title: string; lede: string }
+        paywall: {
+          mapPage: { seoLockedTitle: string; seoDescription: string }
+          compatPage: { seoLockedTitle: string; seoDescription: string }
+        }
+      }
+
+      writePage(
+        'about',
+        pages.about.seoTitle,
+        pages.about.seoDescription,
+        `<article class="section"><div class="wrap prose"><p class="eyebrow">method</p><h1 class="serif-title">${escapeHtml(pages.about.title)}</h1><p class="lede">${escapeHtml(pages.about.lede)}</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+      )
+
+      writePage(
+        'type-in-depth',
+        pages.paywall.mapPage.seoLockedTitle,
+        pages.paywall.mapPage.seoDescription,
+        `<article class="section"><div class="wrap prose"><h1 class="serif-title">Your Type in Depth</h1><p class="lede">${escapeHtml(pages.paywall.mapPage.seoDescription)}</p><p>Take the free quiz first, then unlock the longer reading.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+      )
+
+      writePage(
+        'compatibility',
+        pages.paywall.compatPage.seoLockedTitle,
+        pages.paywall.compatPage.seoDescription,
+        `<article class="section"><div class="wrap prose"><h1 class="serif-title">Compatibility</h1><p class="lede">${escapeHtml(pages.paywall.compatPage.seoDescription)}</p><p>A separate unlock from Your Type in Depth.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+      )
 
       writeSitemap(
         guides.map((guide) => guide.slug),

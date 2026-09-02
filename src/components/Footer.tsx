@@ -23,6 +23,8 @@ export function Footer() {
         <Link to="/guides">Guides</Link>
         {' · '}
         <Link to="/jung-vs-mbti">Jung and MBTI®</Link>
+        {' · '}
+        <Link to="/legal">Buying</Link>
         {import.meta.env.DEV ? (
           <>
             {' · '}

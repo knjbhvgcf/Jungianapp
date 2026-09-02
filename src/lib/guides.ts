@@ -37,7 +37,7 @@ export function emptyGuide(existing: Guide[]): Guide {
   }
   return {
     slug,
-    seoTitle: 'New article | Jung Functions',
+    seoTitle: 'New article | Jung Functions Quiz',
     seoDescription: '',
     eyebrow: 'guide',
     title: 'New article',

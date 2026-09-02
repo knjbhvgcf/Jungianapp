@@ -136,7 +136,7 @@ export function Dossier() {
     <>
       <Seo
         title={
-          showUnlocked ? `${selected.title} in depth | Jung Functions` : mapPage.seoLockedTitle
+          showUnlocked ? `${selected.title} in depth | Jung Functions Quiz` : mapPage.seoLockedTitle
         }
         description={mapPage.seoDescription}
         path={TYPE_IN_DEPTH_PATH}

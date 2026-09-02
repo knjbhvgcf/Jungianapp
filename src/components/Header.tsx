@@ -6,11 +6,11 @@ import { Face, MenuDots } from './Icons'
 const links = [
   { to: '/', label: 'Home' },
   { to: '/quiz', label: 'Take the quiz' },
-  { to: TYPE_IN_DEPTH_PATH, label: 'Your Type in Depth' },
-  { to: '/compatibility', label: 'Compatibility' },
   { to: '/types', label: 'Sprouts' },
   { to: '/guides', label: 'Guides' },
   { to: '/about', label: 'About' },
+  { to: TYPE_IN_DEPTH_PATH, label: 'Your Type in Depth' },
+  { to: '/compatibility', label: 'Compatibility' },
   ...(import.meta.env.DEV ? [{ to: '/admin', label: 'Edit' }] : []),
 ]
 
@@ -32,8 +32,8 @@ export function Header() {
         </button>
 
         <Link to="/" className="brand" onClick={() => setOpen(false)}>
-          Jung Functions
-          <small>free quiz ↑</small>
+          Jungology
+          <small>Jung Functions Quiz</small>
         </Link>
 
         <Link to="/types" className="icon-btn icon-btn--circle" aria-label="Sixteen sprouts">

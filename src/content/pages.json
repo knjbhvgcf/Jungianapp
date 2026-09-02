@@ -1,7 +1,7 @@
 {
   "home": {
-    "seoTitle": "Free Jungian Cognitive Functions Test | Jung Functions",
-    "seoDescription": "An educational reading of Jung’s eight function-attitudes — thinking, feeling, sensation, and intuition, each extraverted or introverted. No account.",
+    "seoTitle": "Jung Functions Quiz | Jungology",
+    "seoDescription": "Jungology is a free Jung Functions Quiz: an educational reading of Jung’s eight function-attitudes — thinking, feeling, sensation, and intuition, each extraverted or introverted. No account.",
     "title": "Jungology",
     "stat": "8 functions · 48 questions · John Beebe model",
     "lede": "The statements follow Psychological Types, taking each function as it turns toward the outer world or toward the inner impression a thing leaves, and what you get is a sketch of how the psyche orients rather than a verdict on who you are, which is a reading, and therefore incomplete, as all such readings are.",
@@ -58,7 +58,7 @@
     "ctaHeading": "Ready to see your Personality type?"
   },
   "about": {
-    "seoTitle": "About this Jungian functions quiz | Jung Functions",
+    "seoTitle": "About Jungology | Jung Functions Quiz",
     "seoDescription": "How this quiz uses Psychological Types and Beebe’s eight-role model to score the eight function-attitudes.",
     "eyebrow": "method & privacy",
     "title": "About",
@@ -118,9 +118,9 @@
     ]
   },
   "results": {
-    "seoTitleEmpty": "Your results | Jung Functions",
+    "seoTitleEmpty": "Your results | Jung Functions Quiz",
     "seoDescriptionEmpty": "Finish the quiz to see the eight function-attitudes and the leading function.",
-    "seoTitle": "Your result: {code} {title} | Jung Functions",
+    "seoTitle": "Your result: {code} {title} | Jung Functions Quiz",
     "seoDescription": "The superior function appears as {heroName}. A reading of the eight function-attitudes, not a diagnosis.",
     "emptyTitle": "No save",
     "emptyStat": "quiz not finished",
@@ -188,13 +188,13 @@
       "checkoutMissing": "Checkout is not configured yet. If you already have a key, enter it below."
     },
     "mapPage": {
-      "emptySeoTitle": "Your Type in Depth | Jung Functions",
+      "emptySeoTitle": "Your Type in Depth | Jung Functions Quiz",
       "emptySeoDescription": "A longer reading of the eight function-attitudes and the type they suggest.",
       "emptyTitle": "No reading yet",
       "emptyStat": "finish the quiz first",
       "emptyBody": "Your Type in Depth is written from your scores, so take the quiz, then come back.",
       "beginQuiz": "Begin the quiz",
-      "seoLockedTitle": "Your Type in Depth | Jung Functions",
+      "seoLockedTitle": "Your Type in Depth | Jung Functions Quiz",
       "seoDescription": "A Beebe eight-role reading of your Jungian function stack, with development notes and prompts.",
       "eyebrow": "your type in depth",
       "teaserHeading": "In Your Type in Depth",
@@ -214,13 +214,13 @@
       "compatButton": "Compatibility"
     },
     "compatPage": {
-      "emptySeoTitle": "Compatibility | Jung Functions",
+      "emptySeoTitle": "Compatibility | Jung Functions Quiz",
       "emptySeoDescription": "How the other fifteen types meet the functions already living in you.",
       "emptyTitle": "No reading yet",
       "emptyStat": "finish the quiz first",
       "emptyBody": "Compatibility is written from the type you chose, so take the quiz, then come back.",
       "beginQuiz": "Begin the quiz",
-      "seoLockedTitle": "Unlock compatibility | Jung Functions",
+      "seoLockedTitle": "Unlock compatibility | Jung Functions Quiz",
       "seoDescription": "How the other fifteen types meet the functions already living in you.",
       "eyebrow": "compatibility add-on",
       "heading": "How this stack meets others",

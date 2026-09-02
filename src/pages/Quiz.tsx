@@ -89,8 +89,8 @@ export function Quiz() {
   return (
     <>
       <Seo
-        title="Cognitive Functions Quiz | Jung Functions"
-        description="Forty-eight statements. Rate how true each one is, then see a type reading."
+        title="Jung Functions Quiz | Jungology"
+        description="Forty-eight statements. Rate how true each one is, then see a type reading. A free Jung Functions Quiz from Jungology."
         path="/quiz"
       />
 

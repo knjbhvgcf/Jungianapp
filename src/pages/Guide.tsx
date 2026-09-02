@@ -30,7 +30,7 @@ export function GuidePage() {
   return (
     <>
       <Seo
-        title={guide.seoTitle}
+        title={`${guide.seoTitle} | Jung Functions Quiz`}
         description={guide.seoDescription}
         path={`/${guide.slug}`}
         jsonLd={{
@@ -38,7 +38,7 @@ export function GuidePage() {
           '@type': 'Article',
           headline: guide.title,
           description: guide.seoDescription,
-          author: { '@type': 'Organization', name: 'Jung Functions' },
+          author: { '@type': 'Organization', name: 'Jungology' },
         }}
       />
       <article className="section">
@@ -158,7 +158,7 @@ export function GuidesIndex() {
   return (
     <>
       <Seo
-        title="Jungian function guides | Jung Functions"
+        title="Jungian function guides | Jung Functions Quiz"
         description="Read Jung’s eight function-attitudes, how this quiz differs from MBTI, and the close pairs the items are built to separate."
         path="/guides"
       />

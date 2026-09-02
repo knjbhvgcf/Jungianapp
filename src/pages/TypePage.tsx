@@ -24,7 +24,7 @@ export function TypesIndex() {
   return (
     <>
       <Seo
-        title="Sixteen sprouts | Jung Functions"
+        title="Sixteen sprouts | Jung Functions Quiz"
         description="Each sprout represents a leading function and the function that supports it — a little character you can meet before you take the quiz, or return to afterwards."
         path="/types"
       />
@@ -77,7 +77,7 @@ function TypePageBody({ code }: { code: string }) {
   return (
     <>
       <Seo
-        title={`${selected.code} ${selected.title} | Jung Functions`}
+        title={`${selected.code} ${selected.title} | Jung Functions Quiz`}
         description={selected.summary}
         path={typePath(selected.code)}
         jsonLd={{
@@ -85,7 +85,7 @@ function TypePageBody({ code }: { code: string }) {
           '@type': 'Article',
           headline: `${selected.code} — ${selected.title}`,
           description: selected.summary,
-          author: { '@type': 'Organization', name: 'Jung Functions' },
+          author: { '@type': 'Organization', name: 'Jungology' },
         }}
       />
       <article className="section type-page">

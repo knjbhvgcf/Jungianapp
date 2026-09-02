@@ -7,6 +7,7 @@ import { Compatibility } from './pages/Compatibility'
 import { Dossier } from './pages/Dossier'
 import { GuidePage, GuidesIndex } from './pages/Guide'
 import { Home } from './pages/Home'
+import { Legal } from './pages/Legal'
 import { NotFound } from './pages/NotFound'
 import { Quiz } from './pages/Quiz'
 import { Results } from './pages/Results'
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="/dossier/" element={<RedirectDossier />} />
         <Route path="/compatibility" element={<Compatibility />} />
         <Route path="/about" element={<About />} />
+        <Route path="/legal" element={<Legal />} />
         <Route path="/guides" element={<GuidesIndex />} />
         <Route path="/types" element={<TypesIndex />} />
         <Route path="/types/:code" element={<TypePage />} />

@@ -8,6 +8,7 @@ const CORE = [
   { loc: '/type-in-depth', priority: '0.5' },
   { loc: '/compatibility', priority: '0.5' },
   { loc: '/about', priority: '0.6' },
+  { loc: '/legal', priority: '0.4' },
   { loc: '/guides', priority: '0.7' },
 ]
 

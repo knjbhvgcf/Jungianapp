@@ -88,7 +88,7 @@ export function Compatibility() {
     <>
       <Seo
         title={
-          showUnlocked ? `${selected.title} compatibility | Jung Functions` : compatPage.seoLockedTitle
+          showUnlocked ? `${selected.title} compatibility | Jung Functions Quiz` : compatPage.seoLockedTitle
         }
         description={compatPage.seoDescription}
         path="/compatibility"

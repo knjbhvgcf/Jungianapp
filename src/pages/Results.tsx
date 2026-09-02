@@ -137,7 +137,7 @@ export function Results() {
 
   async function copySummary() {
     const lines = [
-      `Jung Functions · Psychological Types + Beebe`,
+      `Jungology · Jung Functions Quiz · Psychological Types + Beebe`,
       `${selectedCode} ${selectedTitle} (${selectedConfidence}% fit)`,
       `Hero: ${heroFn} · Parent: ${parentFn}`,
       `Differentiation: ${differentiation ?? ''}`,

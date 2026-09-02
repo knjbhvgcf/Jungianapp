@@ -78,7 +78,7 @@ export function Admin() {
     return (
       <article className="section">
         <Seo
-          title="Edit | Jung Functions"
+          title="Edit | Jung Functions Quiz"
           description="Unlock in-place editing of the live pages."
           path="/admin"
         />
@@ -126,7 +126,7 @@ export function Admin() {
   return (
     <article className="section">
       <Seo
-        title="Quiz items | Jung Functions"
+        title="Quiz items | Jung Functions Quiz"
         description="Edit quiz statements and follow-up questions."
         path="/admin"
       />
