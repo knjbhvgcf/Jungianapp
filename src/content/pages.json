@@ -40,7 +40,7 @@
       },
       {
         "q": "Do you store my answers?",
-        "a": "There is no account and no server. Your answers stay in this browser session until you close the tab or start over, and nothing is sent anywhere else."
+        "a": "There is no account. Your answers stay in this browser session until you close the tab or start over, and they are not sent to a server. Cloudflare and Google Analytics may count page views, not answers."
       },
       {
         "q": "What if two attitudes are equally strong, as Fi and Ti both at 88%?",

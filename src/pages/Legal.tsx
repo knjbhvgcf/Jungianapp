@@ -43,8 +43,9 @@ export function Legal() {
           <h2>Privacy</h2>
           <p>
             There is no account. Quiz answers stay in this browser session until you close the tab
-            or start over. They are not sent to a server. Cloudflare may count visits. Unlock state
-            is stored in this browser so you do not have to paste the key every time.
+            or start over. They are not sent to a server. Cloudflare and Google Analytics may count
+            page views — which pages you open, not your answers, scores, or type. Unlock state is
+            stored in this browser so you do not have to paste the key every time.
           </p>
 
           <p>
