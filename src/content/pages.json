@@ -2,7 +2,7 @@
   "home": {
     "seoTitle": "Free Jungian Cognitive Functions Test | Jung Functions",
     "seoDescription": "An educational reading of Jung’s eight function-attitudes — thinking, feeling, sensation, and intuition, each extraverted or introverted. No account.",
-    "title": "Junology",
+    "title": "Jungology",
     "stat": "8 functions · 48 questions · John Beebe model",
     "lede": "The statements follow Psychological Types, taking each function as it turns toward the outer world or toward the inner impression a thing leaves, and what you get is a sketch of how the psyche orients rather than a verdict on who you are, which is a reading, and therefore incomplete, as all such readings are.",
     "image": "/home/hero.jpg?v=1787110066816",
@@ -11,7 +11,7 @@
     "steps": [
       {
         "title": "Find the leading function",
-        "body": "The first stretch asks where each function points and what you treat as a reason, and if two leads land together you get a short follow-up before the quiz goes on, so the type is built from the function that actually leads."
+        "body": "The first part determines the direction of each function and what you recognise as its reason. If two leads emerge together, a short follow-up distinguishes them before the quiz continues, so the type is built from the function that actually leads."
       },
       {
         "title": "Fill in the rest of the type",
@@ -19,7 +19,7 @@
       },
       {
         "title": "Read it as a map",
-        "body": "The closest type is then shown as eight archetypal roles, from the leading function to its most unconscious counterpart, which is a map of the psyche and not a sentence passed upon you."
+        "body": "The closest type is then shown as eight archetypal roles, from the leading function to its most unconscious counterpart, which is a map of the psyche, not a fixed definition of the person."
       }
     ],
     "functionsHeading": "The eight function-attitudes",
@@ -47,15 +47,15 @@
         "a": "When two functions land that close, the first forty-eight items are not enough to decide, so you get a short follow-up that asks which sentence sounds more like you, and those answers are folded into the percentages to name the lead. If they still split, you choose."
       },
       {
-        "q": "What is the full map?",
-        "a": "The quiz, the eight scores, and the choice of leading and supporting functions stay free, while the map is a longer reading of why two functions were close, the weaker end of the type, Beebe’s eight roles, and notes on growth, which you can print."
+        "q": "What is Your Type in Depth?",
+        "a": "The quiz, the eight scores, and the choice of leading and supporting functions stay free, while Your Type in Depth is a longer reading of why two functions were close, the weaker end of the type, Beebe’s eight roles, and notes on growth, which you can print."
       },
       {
         "q": "What is the compatibility reading?",
-        "a": "A separate purchase from the map, it reads the other fifteen types against your own functions, not as a ranking of who you should date, but as a picture of where someone else’s leading function already sits in you."
+        "a": "A separate purchase from Your Type in Depth, it reads the other fifteen types against your own functions, not as a ranking of who you should date, but as a picture of where someone else’s leading function already sits in you."
       }
     ],
-    "ctaHeading": "Ready to see your pattern?"
+    "ctaHeading": "Ready to see your Personality type?"
   },
   "about": {
     "seoTitle": "About this Jungian functions quiz | Jung Functions",
@@ -87,20 +87,20 @@
       {
         "heading": "How a type is suggested",
         "paragraphs": [
-          "Each of the sixteen types is scored with the leading function first, so a type whose dominant function is not your strongest score is set aside, while the supporting function is rewarded next, the third moderately, and the inferior only slightly. The model also wants the lead to outrank its opposite-attitude twin. If two functions score close, free results let you pick the lead and the support, and the map opens Child, Anima, and the full eight-role stack.",
+          "Each of the sixteen types is scored with the leading function first, so a type whose dominant function is not your strongest score is set aside, while the supporting function is rewarded next, the third moderately, and the inferior only slightly. The model also wants the lead to outrank its opposite-attitude twin. If two functions score close, free results let you pick the lead and the support, and Your Type in Depth opens Child, Anima, and the full eight-role stack.",
           "When two functions land together — Fi and Ti both high, or Ni and Ne — the totals are not enough, so before results the quiz asks a short follow-up: five forced choices between those two, not another set of ratings. Those answers are folded into the percentages, the winner’s bar rises and the other falls, and that is what names the lead. If they still split, you choose."
         ]
       },
       {
-        "heading": "The full map",
+        "heading": "Your Type in Depth",
         "paragraphs": [
-          "The quiz, the eight scores, and a Hero / Parent pick stay free, while the close-score reading, Child and Anima, the full eight-role stack, and the longer chapters sit behind a one-time unlock. Set a Lemon Squeezy or Stripe Payment Link as VITE_DOSSIER_CHECKOUT_URL and put the fulfillment keys in VITE_DOSSIER_UNLOCK_KEYS. After payment, send people to /dossier?key=their-key."
+          "The quiz, the eight scores, and a Hero / Parent pick stay free, while the close-score reading, Child and Anima, the full eight-role stack, and the longer chapters sit behind a one-time unlock. Set a Lemon Squeezy or Stripe Payment Link as VITE_DOSSIER_CHECKOUT_URL and put the fulfillment keys in VITE_DOSSIER_UNLOCK_KEYS. After payment, send people to /type-in-depth?key=their-key."
         ]
       },
       {
         "heading": "Compatibility add-on",
         "paragraphs": [
-          "Compatibility is a second, separate unlock. It places the other fifteen types on your Beebe stack (same stack, spine reversed, anima pull, and so on). Use VITE_COMPAT_CHECKOUT_URL and VITE_COMPAT_UNLOCK_KEYS, and send people to /compatibility?key=their-key. A map key will not open compatibility, and a compatibility key will not open the map."
+          "Compatibility is a second, separate unlock. It places the other fifteen types on your Beebe stack (same stack, spine reversed, anima pull, and so on). Use VITE_COMPAT_CHECKOUT_URL and VITE_COMPAT_UNLOCK_KEYS, and send people to /compatibility?key=their-key. A Type in Depth key will not open compatibility, and a compatibility key will not open Your Type in Depth."
         ]
       },
       {
@@ -124,27 +124,27 @@
     "seoDescription": "The superior function appears as {heroName}. A reading of the eight function-attitudes, not a diagnosis.",
     "emptyTitle": "No save",
     "emptyStat": "quiz not finished",
-    "emptyBody": "Take the forty-eight-question quiz to see your function pattern, and your answers will stay in this browser tab until you close it or start over.",
+    "emptyBody": "Take the forty-eight-question quiz to see your personality type, and your answers will stay in this browser tab until you close it or start over.",
     "beginQuiz": "Begin the quiz",
     "scoresHeading": "Function-attitude scores",
     "scoresIntro": "Each bar is six statements drawn from Jung’s account of that function-attitude, including one reverse item, and when two leads were close the follow-up answers are folded into the total.",
     "arrangeStack": "Arrange the stack",
-    "openMap": "Open the map",
-    "unlockMap": "The rest of the map",
+    "openMap": "Open Your Type in Depth",
+    "unlockMap": "Your Type in Depth",
     "openCompat": "Open compatibility",
     "compatShort": "Compatibility",
-    "closeNote": "The longer reading of that split is in the map.",
+    "closeNote": "The longer reading of that split is in Your Type in Depth.",
     "alsoClosePrefix": "Also close:",
     "mapEyebrow": "a longer reading",
-    "mapTitle": "The map",
-    "mapTitleLocked": "The rest of the map",
+    "mapTitle": "Your Type in Depth",
+    "mapTitleLocked": "Your Type in Depth",
     "mapBodyUnlocked": "Why two functions were close, the weaker end of the type, the eight roles, and notes on growth and shadow, written from the type you selected above.",
     "mapBodyLocked": "The close-score reading, Child and Anima, the full eight-role stack, chapters, shadow work, and prompts. One-time unlock · {price}. The eight scores stay free.",
-    "mapCtaUnlocked": "Open the map",
-    "mapCtaLocked": "Unlock the rest of the map · {price}",
+    "mapCtaUnlocked": "Open Your Type in Depth",
+    "mapCtaLocked": "Unlock Your Type in Depth · {price}",
     "compatEyebrow": "add-on",
     "compatTitle": "Compatibility",
-    "compatBodyUnlocked": "How this type meets the other fifteen, read through the roles already living in you, which is a separate purchase from the map.",
+    "compatBodyUnlocked": "How this type meets the other fifteen, read through the roles already living in you, which is a separate purchase from Your Type in Depth.",
     "compatBodyLocked": "A separate reading of how the other types sit in your stack — same lead, reversed spine, anima pull, and the rest — not a ranking of who you should date. One-time unlock · {price}.",
     "compatCtaUnlocked": "Open compatibility",
     "compatCtaLocked": "Unlock compatibility · {price}",
@@ -157,14 +157,14 @@
   "paywall": {
     "map": {
       "eyebrow": "one-time unlock",
-      "title": "The rest of the map",
-      "body": "The free page keeps the eight scores and a Hero / Parent pick, and the map is the rest of the reading: why two functions were close, Child and Anima, the eight-role stack, and the longer chapters. Compatibility is a separate add-on.",
+      "title": "Your Type in Depth",
+      "body": "The free page keeps the eight scores and a Hero / Parent pick, and Your Type in Depth is the rest of the reading: why two functions were close, Child and Anima, the eight-role stack, and the longer chapters. Compatibility is a separate add-on.",
       "bullets": [
         "The close-score reading after a follow-up",
         "Child, Anima, and the full eight-role stack",
-        "Chapters, shadow work, and a printable map"
+        "Chapters, shadow work, and a printable reading"
       ],
-      "cta": "Unlock the map",
+      "cta": "Unlock Your Type in Depth",
       "keyLabel": "I have a key",
       "keyPlaceholder": "paste key",
       "unlockButton": "Unlock",
@@ -174,7 +174,7 @@
     "compat": {
       "eyebrow": "add-on",
       "title": "Compatibility",
-      "body": "A separate reading of how your type meets all sixteen types, not as a ranking of who you should date, but as a picture of where their leading function already sits in you — same hero, spine reversed, anima pull, and the rest — which the map unlock does not include.",
+      "body": "A separate reading of how your type meets all sixteen types, not as a ranking of who you should date, but as a picture of where their leading function already sits in you — same hero, spine reversed, anima pull, and the rest — which Your Type in Depth does not include.",
       "bullets": [
         "Every type placed on your Beebe roles",
         "Likely gift and friction, not a ranking",
@@ -188,17 +188,17 @@
       "checkoutMissing": "Checkout is not configured yet. If you already have a key, enter it below."
     },
     "mapPage": {
-      "emptySeoTitle": "Full map | Jung Functions",
+      "emptySeoTitle": "Your Type in Depth | Jung Functions",
       "emptySeoDescription": "A longer reading of the eight function-attitudes and the type they suggest.",
-      "emptyTitle": "No map yet",
+      "emptyTitle": "No reading yet",
       "emptyStat": "finish the quiz first",
-      "emptyBody": "The map is written from your scores, so take the quiz, then come back.",
+      "emptyBody": "Your Type in Depth is written from your scores, so take the quiz, then come back.",
       "beginQuiz": "Begin the quiz",
-      "seoLockedTitle": "The rest of the map | Jung Functions",
+      "seoLockedTitle": "Your Type in Depth | Jung Functions",
       "seoDescription": "A Beebe eight-role reading of your Jungian function stack, with development notes and prompts.",
-      "eyebrow": "full map",
-      "teaserHeading": "In the map",
-      "teaserBody": "Free results stop at the eight scores and a Hero / Parent pick, and the map opens the rest of the reading for this type.",
+      "eyebrow": "your type in depth",
+      "teaserHeading": "In Your Type in Depth",
+      "teaserBody": "Free results stop at the eight scores and a Hero / Parent pick, and Your Type in Depth opens the rest of the reading for this type.",
       "teaserRoles": "All four ego roles",
       "teaserBeebe": "The eight Beebe roles, in order or by strength",
       "teaserCloseFallback": "The close-score reading when two functions land together",
@@ -206,7 +206,7 @@
       "backToResults": "Back to free results",
       "compatEyebrow": "add-on",
       "compatTitle": "Compatibility",
-      "compatBody": "A separate unlock. How this stack meets all sixteen types — anima pull, spine reversed, demon, and the rest — which is not included in the map.",
+      "compatBody": "A separate unlock. How this stack meets all sixteen types — anima pull, spine reversed, demon, and the rest — which is not included in Your Type in Depth.",
       "compatCta": "Open compatibility",
       "disclaimer": "Educational reading of Jung and Beebe, not psychotherapy and not the MBTI® instrument.",
       "print": "Print / save PDF",
@@ -227,7 +227,7 @@
       "disclaimer": "Educational reading of Jung and Beebe, not a matchmaking service, not psychotherapy, and not the MBTI® instrument.",
       "print": "Print / save PDF",
       "backToResultsButton": "Back to results",
-      "mapButton": "The map",
+      "mapButton": "Your Type in Depth",
       "backLink": "Back to results"
     }
   }

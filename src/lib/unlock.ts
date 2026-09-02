@@ -1,5 +1,7 @@
 export type UnlockProduct = 'map' | 'compat'
 
+export const TYPE_IN_DEPTH_PATH = '/type-in-depth'
+
 const STORAGE: Record<UnlockProduct, string> = {
   map: 'jung-functions.dossier.unlock.v1',
   compat: 'jung-functions.compat.unlock.v1',
@@ -17,8 +19,8 @@ function envKeys(raw: string) {
 }
 
 export function productPrice(product: UnlockProduct) {
-  if (product === 'compat') return import.meta.env.VITE_COMPAT_PRICE || '$4'
-  return import.meta.env.VITE_DOSSIER_PRICE || '$7'
+  if (product === 'compat') return import.meta.env.VITE_COMPAT_PRICE || '$1'
+  return import.meta.env.VITE_DOSSIER_PRICE || '$3'
 }
 
 export function productCheckoutUrl(product: UnlockProduct) {

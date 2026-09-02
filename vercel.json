@@ -1,3 +1,4 @@
 {
+  "redirects": [{ "source": "/dossier", "destination": "/type-in-depth", "permanent": true }],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

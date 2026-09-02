@@ -25,6 +25,47 @@
       "When did extraverted sensation — the actual scene — last correct me, and did I thank it or only endure it?",
       "Which introverted-feeling value is being treated as a rounding error in a plan I still call my own?",
       "If I could not explain the future, even to myself, what would I consent to do in the next hour?"
+    ],
+    "tagline": "The visionary builder who transforms ideas into systems.",
+    "mythic": "The Architect",
+    "dominantName": "The Mystic",
+    "auxiliaryName": "The Architect",
+    "bridge": "So INTJ often uses insight (Ni) to build structures others can inhabit (Te).",
+    "pattern": "I see where reality is heading, and I build the structure needed to reach it.",
+    "patternNote": "That creates the Architect image.",
+    "roles": [
+      {
+        "name": "The Mystic / Visionary",
+        "description": "Sees patterns, possibilities, and future realities. The core identity searches for the deeper structure behind events."
+      },
+      {
+        "name": "The Architect",
+        "description": "Builds systems and organizes reality toward a goal, so that the inner picture can be carried in time."
+      },
+      {
+        "name": "The Idealist",
+        "description": "Holds personal principles and inner convictions, often quietly, and may treat them as inefficient until they are threatened."
+      },
+      {
+        "name": "The Adventurer",
+        "description": "The neglected relationship with the present moment. Embodiment, action, and sensory experience bring balance when they are not postponed."
+      },
+      {
+        "name": "The Possibility Storm",
+        "description": "Challenges the singular vision by presenting alternative possibilities. Under stress can appear scattered or argumentative."
+      },
+      {
+        "name": "The Analyst",
+        "description": "Critiques logic and internal consistency, and can become a harsh inner commentary on the plan."
+      },
+      {
+        "name": "The Social Strategist",
+        "description": "Creates confusion around social expectation and emotional obligation, the climate the hero would rather postpone."
+      },
+      {
+        "name": "The Ancient Memory",
+        "description": "Under extreme stress can fixate on past details and failures, and can also become a source of grounding if it is given a small, chosen place."
+      }
     ]
   },
   {
@@ -53,6 +94,47 @@
       "What would good enough to share look like today, if sharing were part of the method and not a betrayal of it?",
       "What fact of introverted sensation — sleep, food, a promise — is the model ignoring as if matter were an error term?",
       "If I spoke one true extraverted-feeling sentence, not a theory of feeling but a sentence, what would it be?"
+    ],
+    "tagline": "The one who takes the idea apart until it holds, and then looks for the next case it cannot yet answer.",
+    "mythic": "The Sage",
+    "dominantName": "The Sage",
+    "auxiliaryName": "The Explorer",
+    "bridge": "So INTP often uses inner logic (Ti) to open new cases and possibilities (Ne).",
+    "pattern": "I want the model to be true, and I keep the field open until the contradiction yields.",
+    "patternNote": "That creates the Sage image.",
+    "roles": [
+      {
+        "name": "The Sage",
+        "description": "The core identity. Refines models, spots hollow formulas, and will delay a close until the inner framework holds."
+      },
+      {
+        "name": "The Explorer",
+        "description": "Feeds the model new specimens, links what is not yet related, and keeps options alive until one ripens."
+      },
+      {
+        "name": "The Archivist",
+        "description": "The familiar lab, the known tools, the joke that still works. Continuity soothes; it does not govern."
+      },
+      {
+        "name": "The Advocate",
+        "description": "The neglected relationship with human weather. People, shared feeling, and the room that cannot be modelled in advance."
+      },
+      {
+        "name": "The Executive",
+        "description": "Challenges the open laboratory with metrics and a demand to finish. Under stress can force a crude close."
+      },
+      {
+        "name": "The Inner Judge",
+        "description": "Issues a private moral grade the public argument cannot reach, and can become harsh about authenticity."
+      },
+      {
+        "name": "The Disruptor",
+        "description": "Dumps the psyche into impulse, appetite, or numbness when the idea has been kept too long from the object."
+      },
+      {
+        "name": "The Dark Visionary",
+        "description": "Arrives as fate, doom, or a revelation that cannot be argued with. The deepest unconscious, and a possible later wisdom."
+      }
     ]
   },
   {
@@ -81,6 +163,47 @@
       "What would I do if efficiency were not the virtue, and which other virtue have I been starving in its name?",
       "When did the sensing child turn a win into a substitute for meaning, and did the room applaud the substitution?",
       "What would I admit if I were not in charge of the room, and would the admission still be true if I were?"
+    ],
+    "tagline": "The one who moves people and systems toward a result that should exist.",
+    "mythic": "The Architect-King",
+    "dominantName": "The Architect-King",
+    "auxiliaryName": "The Visionary",
+    "bridge": "So ENTJ often uses outer order (Te) in the service of a long inner arc (Ni).",
+    "pattern": "I see the path that should exist, and I organize the world until it does.",
+    "patternNote": "That creates the Architect-King image.",
+    "roles": [
+      {
+        "name": "The Architect-King",
+        "description": "The core identity. Wants a conclusion others can check, a plan that works, and results that can be shown."
+      },
+      {
+        "name": "The Visionary",
+        "description": "Supplies the long trajectory, so that the campaign is not only fast but aimed."
+      },
+      {
+        "name": "The Adventurer",
+        "description": "Loves the win in the moment — the close, the room, the proof that one is still sharp."
+      },
+      {
+        "name": "The Idealist",
+        "description": "The private cost, noticed late, often in someone else’s face. Value that will not show up on the spreadsheet until it is asked for."
+      },
+      {
+        "name": "The Analyst",
+        "description": "Deconstructs the plan from inside the idea, and can stall a campaign with a “yes, but” that sounds like rigor."
+      },
+      {
+        "name": "The Archivist",
+        "description": "Says you should have known, have always known. The critic of method and precedent."
+      },
+      {
+        "name": "The Possibility Storm",
+        "description": "Opens twelve exits when one no was needed, glittering alternatives at the moment of decision."
+      },
+      {
+        "name": "The Social Strategist",
+        "description": "Can erupt as a public feeling-storm or a ruthless use of the group. The most unconscious climate."
+      }
     ]
   },
   {
@@ -109,6 +232,47 @@
       "What small routine of introverted sensation would actually serve the idea I love, rather than insult it?",
       "Whom did I charm instead of tell, and what would the telling have required of me?",
       "If this possibility had to survive three months of Tuesdays, would I still want it, and would I still be there?"
+    ],
+    "tagline": "The one who keeps the world from hardening too soon, and pressure-tests whatever would close it.",
+    "mythic": "The Trickster Inventor",
+    "dominantName": "The Inventor",
+    "auxiliaryName": "The Analyst",
+    "bridge": "So ENTP often uses possibility (Ne) and then tests it for inner consistency (Ti).",
+    "pattern": "I open the field, and I will not let a charming plan stand if it does not follow.",
+    "patternNote": "That creates the Trickster Inventor image.",
+    "roles": [
+      {
+        "name": "The Inventor",
+        "description": "The core identity. Scents what could become of an object or situation, and keeps unused doors from being painted shut."
+      },
+      {
+        "name": "The Analyst",
+        "description": "Pressure-tests the spark. Debate is often love of the idea, not of winning."
+      },
+      {
+        "name": "The Advocate",
+        "description": "Wants the room to sparkle. Harmony is a game; the child would like to be liked in the riff."
+      },
+      {
+        "name": "The Archivist",
+        "description": "The boring continuity that makes a possibility real — sleep, Tuesday, the kept appointment."
+      },
+      {
+        "name": "The Dark Visionary",
+        "description": "Insists on one fate against the many doors, and can call the open field small."
+      },
+      {
+        "name": "The Inner Judge",
+        "description": "Issues a private moral grade that cannot be argued in public terms."
+      },
+      {
+        "name": "The Disruptor",
+        "description": "Dumps the psyche into impulse, appetite, or a scene that will not be remembered clearly."
+      },
+      {
+        "name": "The Tyrant of Plans",
+        "description": "May tyrannize in a sudden brutal plan, or collapse into impotence about ever getting anything done."
+      }
     ]
   },
   {
@@ -137,6 +301,47 @@
       "What would a single concrete step of extraverted sensation look like, small enough to be done before the myth resumes?",
       "What distinction of introverted thinking would actually help, rather than hide me from the feeling of the room?",
       "Whose mood am I still carrying from yesterday, and what would it cost me to set it down?"
+    ],
+    "tagline": "The one who sees what is happening beneath the surface, and wants to use that insight to help others.",
+    "mythic": "The Mystic",
+    "dominantName": "The Mystic",
+    "auxiliaryName": "The Advocate",
+    "bridge": "So INFJ often uses their insight (Ni) on behalf of people (Fe).",
+    "pattern": "I see what is happening beneath the surface, and I want to use that insight to help others.",
+    "patternNote": "That creates the Advocate image.",
+    "roles": [
+      {
+        "name": "The Mystic / Seer",
+        "description": "The core identity. Sees hidden patterns, symbols, meanings, and future possibilities. Searches for the deeper truth behind reality."
+      },
+      {
+        "name": "The Advocate / Guide",
+        "description": "Protects and nurtures others. Uses insight to understand people, create harmony, and support growth."
+      },
+      {
+        "name": "The Philosopher",
+        "description": "The playful inner analyst. Enjoys exploring ideas, categorizing concepts, and discovering elegant explanations. Can become detached or overly theoretical when immature."
+      },
+      {
+        "name": "The Adventurer",
+        "description": "The neglected relationship with the present moment. Represents embodiment, action, spontaneity, and sensory experience. Can feel overwhelming but brings balance and growth."
+      },
+      {
+        "name": "The Possibility Challenger",
+        "description": "Challenges the singular vision by presenting alternative possibilities. Under stress can appear scattered or argumentative."
+      },
+      {
+        "name": "The Inner Judge",
+        "description": "Can become harsh about authenticity, morality, and personal values. May criticize others for lacking integrity."
+      },
+      {
+        "name": "The Strategist Trickster",
+        "description": "Creates confusion around efficiency, rules, and objective success. Can make the INFJ feel trapped between what works and what feels right."
+      },
+      {
+        "name": "The Forgotten Ancestor",
+        "description": "The deepest unconscious function. Under extreme stress can fixate on past failures, details, or memories, but can also become a source of wisdom and grounding."
+      }
     ]
   },
   {
@@ -165,6 +370,47 @@
       "What familiar comfort of introverted sensation is protecting me from a needed risk, and is the protection still love?",
       "What would I finish if I were allowed to do it imperfectly, and who taught me that imperfect was untrue?",
       "Whom am I punishing with silence instead of a sentence, and what sentence would be both true and bearable?"
+    ],
+    "tagline": "The one loyal to an inner image of worth, who looks for lives in which that compass could still be true.",
+    "mythic": "The Dreamer",
+    "dominantName": "The Dreamer",
+    "auxiliaryName": "The Wanderer",
+    "bridge": "So INFP often uses a private compass (Fi) to search among possible lives (Ne).",
+    "pattern": "I know what matters, and I will look for the life in which that can still be true.",
+    "patternNote": "That creates the Dreamer image.",
+    "roles": [
+      {
+        "name": "The Dreamer / Idealist",
+        "description": "The core identity. Orients by a private standard of worth that may never be fully displayed, and will not trade it for manners."
+      },
+      {
+        "name": "The Wanderer",
+        "description": "Opens the field of lives, paths, and maybe’s in which the compass might be kept."
+      },
+      {
+        "name": "The Archivist",
+        "description": "Wants a known nest. Familiar comfort, the story told the same way, the house that still feels like home."
+      },
+      {
+        "name": "The Executive",
+        "description": "The outer demand to prove, finish, and be measured. A modest spine, or a last-minute tyrant."
+      },
+      {
+        "name": "The Social Strategist",
+        "description": "Argues in the language of the group against the private yes, and can make the we feel like a counterfeit."
+      },
+      {
+        "name": "The Dark Visionary",
+        "description": "Pronounces a fate upon the spark, a dark story of where this is all tending."
+      },
+      {
+        "name": "The Disruptor",
+        "description": "Dumps the psyche into impulse or a scene that is not the value, a now that is not a life."
+      },
+      {
+        "name": "The Analyst",
+        "description": "Takes the loved thing apart until nothing is allowed to be true. Understanding used as a wound."
+      }
     ]
   },
   {
@@ -193,6 +439,47 @@
       "What would I say if I were allowed to be slightly less liked, and would the saying still be love?",
       "What question of introverted thinking am I treating as disloyalty, and might it be the loyalty of a sharper kind?",
       "When did the sensing child turn hospitality into a performance review, and who was being graded?"
+    ],
+    "tagline": "The one who gathers people around a shared dignity and a future that has a face.",
+    "mythic": "The Mentor",
+    "dominantName": "The Mentor",
+    "auxiliaryName": "The Mystic",
+    "bridge": "So ENFJ often uses the feeling of the group (Fe) in the service of a picture of who we could become (Ni).",
+    "pattern": "I feel the we, and I can almost see who we are for.",
+    "patternNote": "That creates the Mentor image.",
+    "roles": [
+      {
+        "name": "The Mentor / Advocate",
+        "description": "The core identity. Reads the feeling-tone of the people involved and adjusts so that relation remains possible."
+      },
+      {
+        "name": "The Mystic",
+        "description": "Supplies a picture of who the group could become together, a trajectory with a human face."
+      },
+      {
+        "name": "The Adventurer",
+        "description": "Wants the night to go well — the right table, the right tone, the beautiful now."
+      },
+      {
+        "name": "The Philosopher",
+        "description": "The cold question whether this even makes sense. One clarifying distinction, or a demolition of warmth."
+      },
+      {
+        "name": "The Inner Judge",
+        "description": "Withdraws into a private ethic and calls the group fake. Authenticity as a withheld no."
+      },
+      {
+        "name": "The Archivist",
+        "description": "Says we should have known, have always done it this way. Custom as critic."
+      },
+      {
+        "name": "The Possibility Storm",
+        "description": "Offers glittering exits from the we, novelty as an escape hatch."
+      },
+      {
+        "name": "The Tyrant of Plans",
+        "description": "Organizes people like inventory, or panics that nothing is under control. The unconscious metric."
+      }
     ]
   },
   {
@@ -221,6 +508,47 @@
       "What fact of introverted sensation — sleep, money, a promise — is asking to be included before it becomes a crisis?",
       "Whom am I loving as a potential rather than a person, and what would it cost me to love the person who is here?",
       "What would I still want if no one was watching me be free, and is that wanting smaller or more true?"
+    ],
+    "tagline": "The one for whom spark is the method and sincerity the law.",
+    "mythic": "The Wanderer",
+    "dominantName": "The Wanderer",
+    "auxiliaryName": "The Idealist",
+    "bridge": "So ENFP often uses possibility (Ne) and then checks whether the path is still honest (Fi).",
+    "pattern": "I open doors in people and ideas, and I ask which door is still mine to walk through.",
+    "patternNote": "That creates the Wanderer image.",
+    "roles": [
+      {
+        "name": "The Wanderer",
+        "description": "The core identity. Scents the possible life, the unused door, the person who could become."
+      },
+      {
+        "name": "The Idealist",
+        "description": "Checks whether the spark is still true. Sincerity as the law the field must obey."
+      },
+      {
+        "name": "The Executive",
+        "description": "Loves a burst of getting things done — a list that looks like adulthood, then the feeling moves."
+      },
+      {
+        "name": "The Archivist",
+        "description": "Yesterday’s body and tomorrow’s repeat: sleep, money, the promise from last month."
+      },
+      {
+        "name": "The Social Strategist",
+        "description": "Argues from the group against the private yes, and can make freedom feel like a performance."
+      },
+      {
+        "name": "The Dark Visionary",
+        "description": "Pronounces a dark fate on the spark, meaning arriving as doom."
+      },
+      {
+        "name": "The Disruptor",
+        "description": "Offers a now that is not a life, appetite and scene without a compass."
+      },
+      {
+        "name": "The Analyst",
+        "description": "Takes the loved path apart until nothing is allowed to be chosen."
+      }
     ]
   },
   {
@@ -249,6 +577,47 @@
       "What small new possibility would not wreck the house, and why have I been treating all possibility as wreckage?",
       "Whom does this duty actually protect, and am I still among the protected, or only among the protecting?",
       "What would I try if I trusted the archive to survive a revision, as living archives do, and dead ones do not?"
+    ],
+    "tagline": "The keeper of traditions, knowledge, and proven wisdom.",
+    "mythic": "The Archivist",
+    "dominantName": "The Archivist",
+    "auxiliaryName": "The Executive",
+    "bridge": "So ISTJ uses their memory and experience (Si) to create reliable structures (Te).",
+    "pattern": "I understand what has stood the test of time, and I create systems to preserve and improve it.",
+    "patternNote": "That creates the Keeper of the Scrolls image.",
+    "roles": [
+      {
+        "name": "The Archivist",
+        "description": "The keeper of memory and tradition. Preserves knowledge, learns from experience, and maintains what is valuable."
+      },
+      {
+        "name": "The Executive",
+        "description": "Organizes the outer world through structure, planning, and efficiency."
+      },
+      {
+        "name": "The Guardian of Values",
+        "description": "The personal conscience. Holds quiet convictions about what is right and meaningful."
+      },
+      {
+        "name": "The Explorer",
+        "description": "Represents openness to uncertainty, possibilities, and change — the untested future that feels like a threat to what works."
+      },
+      {
+        "name": "The Disruptor",
+        "description": "Challenges the careful approach with demands for immediate action."
+      },
+      {
+        "name": "The Internal Critic",
+        "description": "Questions logic and can become overly critical of inconsistencies."
+      },
+      {
+        "name": "The Social Mask",
+        "description": "Creates confusion around social expectations and emotional demands."
+      },
+      {
+        "name": "The Dark Visionary",
+        "description": "Can become trapped in negative predictions and rigid future assumptions."
+      }
     ]
   },
   {
@@ -277,6 +646,47 @@
       "What new option am I treating as danger rather than information, and what would information require of me that danger does not?",
       "What would I need in order to rest without calling it selfish, and who taught me that rest was a kind of leaving?",
       "Which promise am I keeping that no one still wants, and would releasing it be a betrayal or a truer keeping?"
+    ],
+    "tagline": "The one who remembers what was promised, and keeps the human climate bearable.",
+    "mythic": "The Heart Guardian",
+    "dominantName": "The Archivist",
+    "auxiliaryName": "The Caretaker",
+    "bridge": "So ISFJ uses lived impression (Si) to keep the climate of care (Fe).",
+    "pattern": "I remember what the house needs to remain a house, and I work so that people can live in it.",
+    "patternNote": "That creates the Heart Guardian image.",
+    "roles": [
+      {
+        "name": "The Archivist / Guardian",
+        "description": "Stores the impression an object leaves in body and memory, and asks whether this is as it should be."
+      },
+      {
+        "name": "The Caretaker",
+        "description": "Keeps the human climate bearable: who is left out, what was promised, what would restore dignity."
+      },
+      {
+        "name": "The Philosopher",
+        "description": "Wants a private why. A clarifying coldness that, used well, tests whether the care is still true."
+      },
+      {
+        "name": "The Explorer",
+        "description": "Change that might unmake the care. One new possibility, or a threat to the nest."
+      },
+      {
+        "name": "The Disruptor",
+        "description": "Demands the scene as it is, not as it was, and can feel like a draught in the kept house."
+      },
+      {
+        "name": "The Inner Judge",
+        "description": "Issues a private moral grade, authenticity as a withheld commentary on the we."
+      },
+      {
+        "name": "The Tyrant of Plans",
+        "description": "Binds the caretaker in other people’s systems, metrics that cannot see the care."
+      },
+      {
+        "name": "The Dark Visionary",
+        "description": "Pronounces a fate: that none of the care meant anything. The deepest unconscious, and a possible later truth."
+      }
     ]
   },
   {
@@ -305,6 +715,47 @@
       "Whom would I ask if I wanted a true answer of introverted feeling, and am I prepared not to argue the answer into a metric?",
       "What rule would I retire if I were not afraid of looking inconsistent, and what truth is the inconsistency trying to admit?",
       "Where did the intuitive child start a project to avoid a conversation, and what conversation is still waiting?"
+    ],
+    "tagline": "The one who sets the working standard so the group can deliver.",
+    "mythic": "The Steward",
+    "dominantName": "The Steward",
+    "auxiliaryName": "The Archivist",
+    "bridge": "So ESTJ uses outer order (Te) backed by what has already proven itself (Si).",
+    "pattern": "I trust what can be shown and repeated, and I keep the score so the group can actually finish.",
+    "patternNote": "That creates the Steward image.",
+    "roles": [
+      {
+        "name": "The Steward / Executive",
+        "description": "The core identity. Organizes the shared world by objective standards and wants results that can be handed on."
+      },
+      {
+        "name": "The Archivist",
+        "description": "Supplies the proven method, the recipe that has already been paid for in experience."
+      },
+      {
+        "name": "The Explorer",
+        "description": "A sudden appetite for a new scheme, novelty as a toy the factory did not schedule."
+      },
+      {
+        "name": "The Idealist",
+        "description": "The heart that does not show up on the spreadsheet, arriving late as a feeling postponed until after the deadline."
+      },
+      {
+        "name": "The Analyst",
+        "description": "Picks the standard apart from inside, and can stall enforcement with a demand for inner consistency."
+      },
+      {
+        "name": "The Disruptor",
+        "description": "Scorns anything that is not immediate force, the crude now against the kept method."
+      },
+      {
+        "name": "The Dark Visionary",
+        "description": "Binds the steward in a private fate-story, omen where a metric was wanted."
+      },
+      {
+        "name": "The Social Strategist",
+        "description": "Uses the group as a weapon, or collapses into a public feeling that cannot be controlled."
+      }
     ]
   },
   {
@@ -333,6 +784,47 @@
       "What would I understand if I let introverted thinking ask one rude question, and can the climate survive the answer?",
       "Whom am I including so they will not leave me, and is that inclusion still hospitality or already a bargain?",
       "What would hospitality look like if I were a guest in my own life, and have I ever set a place for that guest?"
+    ],
+    "tagline": "The one who tends the customs that make belonging possible.",
+    "mythic": "The Caretaker",
+    "dominantName": "The Caretaker",
+    "auxiliaryName": "The Archivist",
+    "bridge": "So ESFJ uses the relational climate (Fe) kept by custom and memory (Si).",
+    "pattern": "I know how a day should feel, and I work to make the we hold.",
+    "patternNote": "That creates the Caretaker image.",
+    "roles": [
+      {
+        "name": "The Caretaker / Host",
+        "description": "The core identity. Hospitality as a craft: meals, manners, the extra message, the remembered need."
+      },
+      {
+        "name": "The Archivist",
+        "description": "Keeps the forms of care, the seating chart, the tradition that still feeds people."
+      },
+      {
+        "name": "The Explorer",
+        "description": "Wants a new party, novelty inside the house, air that also threatens the known arrangement."
+      },
+      {
+        "name": "The Philosopher",
+        "description": "The fear that the whole thing is logically empty. One rude question the we can survive if it is asked without contempt."
+      },
+      {
+        "name": "The Inner Judge",
+        "description": "Withdraws into a private ethic and calls the we fake."
+      },
+      {
+        "name": "The Disruptor",
+        "description": "Demands the crude now against the custom."
+      },
+      {
+        "name": "The Dark Visionary",
+        "description": "Binds the caretaker in meaning and omen, a fate-story about the house."
+      },
+      {
+        "name": "The Tyrant of Plans",
+        "description": "Organizes the family like a factory, or panics at any unmeasured care."
+      }
     ]
   },
   {
@@ -361,6 +853,47 @@
       "What would a minimally decent move of extraverted feeling look like in the next conversation, small enough to be done without a theory?",
       "Where did I use silence as a tool, and where was it a hide, and can I tell the difference while I am still silent?",
       "If this pattern continues, what does the child of introverted intuition actually fear, and is the fear a fate or a neglected signal?"
+    ],
+    "tagline": "The one who understands by taking it apart, and by using the hands.",
+    "mythic": "The Craftsman",
+    "dominantName": "The Craftsman",
+    "auxiliaryName": "The Adventurer",
+    "bridge": "So ISTP uses inner mechanics (Ti) tested on the actual object (Se).",
+    "pattern": "I want to know how it works, and I will know when the object either torques or it does not.",
+    "patternNote": "That creates the Craftsman image.",
+    "roles": [
+      {
+        "name": "The Craftsman / Analyst",
+        "description": "The core identity. Refines the inner model until it is consistent, then asks the object to confirm it."
+      },
+      {
+        "name": "The Adventurer",
+        "description": "Meets the scene as it is: timing, texture, impact. The test is the given, not the briefing."
+      },
+      {
+        "name": "The Mystic",
+        "description": "A sudden sense of where this is going, a hunch dropped in the middle of a repair."
+      },
+      {
+        "name": "The Advocate",
+        "description": "The human mess that will not torque to spec. One clear signal, or a freeze."
+      },
+      {
+        "name": "The Executive",
+        "description": "Tries to win by outer standards, a metric where a tool was wanted."
+      },
+      {
+        "name": "The Archivist",
+        "description": "Says you should have known from the archive, precedent as critic."
+      },
+      {
+        "name": "The Possibility Storm",
+        "description": "Opens too many maybe’s when the object had already answered."
+      },
+      {
+        "name": "The Inner Judge",
+        "description": "Arrives as a moral wound or a silent, absolute cut. The deepest unconscious value."
+      }
     ]
   },
   {
@@ -389,6 +922,47 @@
       "Which story of introverted intuition is a compass, and which is an exit, and how would I know before I have walked it?",
       "What boundary would protect the thing I will not name in a meeting, and can I set it without a speech?",
       "Whom am I cutting off with quiet rather than with a sentence, and what would a true sentence cost the quiet?"
+    ],
+    "tagline": "The one who knows what is right by how it sits in the body, and puts it into the present.",
+    "mythic": "The Artisan",
+    "dominantName": "The Artisan",
+    "auxiliaryName": "The Adventurer",
+    "bridge": "So ISFP uses a private aesthetic-ethic (Fi) enacted in the living present (Se).",
+    "pattern": "I know what is right by how it sits, and I make it visible in the room.",
+    "patternNote": "That creates the Artisan image.",
+    "roles": [
+      {
+        "name": "The Artisan / Idealist",
+        "description": "The core identity. Style can be a moral fact. The verdict arrives before the brief."
+      },
+      {
+        "name": "The Adventurer",
+        "description": "Puts the value into a gesture, a craft, a way of being in the room. Presence as proof."
+      },
+      {
+        "name": "The Mystic",
+        "description": "A private myth of where life is going, a poem that can become a prison if it is not tested."
+      },
+      {
+        "name": "The Executive",
+        "description": "The world’s demand to justify and scale. A teaspoon of structure, or a last-minute monster of a deadline."
+      },
+      {
+        "name": "The Social Strategist",
+        "description": "Argues from the we against the private yes."
+      },
+      {
+        "name": "The Archivist",
+        "description": "Recites how it has always felt, the inner impression as critic of this moment."
+      },
+      {
+        "name": "The Possibility Storm",
+        "description": "Scatters the path with unused doors when one action was needed."
+      },
+      {
+        "name": "The Analyst",
+        "description": "Takes the love apart until nothing is allowed to be true."
+      }
     ]
   },
   {
@@ -417,6 +991,47 @@
       "If this pattern continues for five years, what does introverted intuition see, and am I willing to hear it in daylight?",
       "Where did the feeling child trade a true no for a good night, and what did the night cost that the no would have spared?",
       "What would I stay for if the scene went quiet, and is there a person, not only a pulse, in that staying?"
+    ],
+    "tagline": "The one who reads what is happening and moves, life being a set of actual conditions rather than a briefing.",
+    "mythic": "The Warrior",
+    "dominantName": "The Warrior",
+    "auxiliaryName": "The Analyst",
+    "bridge": "So ESTP uses the present scene (Se) and finds the clever angle (Ti).",
+    "pattern": "I read what is here, and I move — timing is the gift, and later I must metabolize what I already handled.",
+    "patternNote": "That creates the Warrior image.",
+    "roles": [
+      {
+        "name": "The Warrior / Adventurer",
+        "description": "The core identity. Meets the object as it is and acts on what is here. Timing, texture, impact."
+      },
+      {
+        "name": "The Analyst",
+        "description": "Finds the clever angle in motion. Thinking as a tool, not a briefing."
+      },
+      {
+        "name": "The Advocate",
+        "description": "Wants to be liked in the moment. Charm as a child, regard as the work."
+      },
+      {
+        "name": "The Mystic",
+        "description": "The future one would rather not be haunted by. A three-in-the-morning sense that the pattern is bad."
+      },
+      {
+        "name": "The Archivist",
+        "description": "Insists on the inner impression against the scene, precedent as a block to now."
+      },
+      {
+        "name": "The Inner Judge",
+        "description": "Grades from a private ethic the warrior did not appoint an hour for."
+      },
+      {
+        "name": "The Possibility Storm",
+        "description": "Multiplies exits when a kept promise was needed."
+      },
+      {
+        "name": "The Tyrant of Plans",
+        "description": "Tyrannizes the plan, or panics at chaos the hero usually enjoys."
+      }
     ]
   },
   {
@@ -445,6 +1060,47 @@
       "Who sees me when the room is quiet, and have I let them, or only the room when it is loud?",
       "What would I refuse if attention were not the currency, and is that refusal a loss of life or the beginning of one?",
       "What is this week for, in one sentence of introverted feeling, spoken before the night begins to invent a meaning of its own?"
+    ],
+    "tagline": "The one who brings a room to life, and then, if honest, asks whether the night was true.",
+    "mythic": "The Bard",
+    "dominantName": "The Bard",
+    "auxiliaryName": "The Idealist",
+    "bridge": "So ESFP uses the living present (Se) kept from empty display by a private standard (Fi).",
+    "pattern": "I bring the room to life, and I ask whether the night was true as well as vivid.",
+    "patternNote": "That creates the Bard image.",
+    "roles": [
+      {
+        "name": "The Bard / Adventurer",
+        "description": "The core identity. Presence, style, the here and now. Energy that can make a dead room live."
+      },
+      {
+        "name": "The Idealist",
+        "description": "Keeps the night from becoming empty display. Feeling as the law the scene must still obey."
+      },
+      {
+        "name": "The Executive",
+        "description": "A burst of organizing the fun — money, time, a boundary, or a tyrant of the vibe."
+      },
+      {
+        "name": "The Mystic",
+        "description": "Meaning, fate, and the fear that now is all there is. The unpaid bill of the night."
+      },
+      {
+        "name": "The Archivist",
+        "description": "Argues from the inner archive against this moment, memory as a wet blanket or a needed witness."
+      },
+      {
+        "name": "The Analyst",
+        "description": "Picks the joy apart until it cannot be inhabited."
+      },
+      {
+        "name": "The Possibility Storm",
+        "description": "Offers too many next scenes, so that this one is never quite chosen."
+      },
+      {
+        "name": "The Social Strategist",
+        "description": "Uses the room: charm as a door closing, or a collapse into needing the crowd."
+      }
     ]
   }
 ]

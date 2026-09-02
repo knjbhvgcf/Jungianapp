@@ -5,7 +5,7 @@ const CORE = [
   { loc: '/', priority: '1.0' },
   { loc: '/quiz', priority: '0.8' },
   { loc: '/types', priority: '0.8' },
-  { loc: '/dossier', priority: '0.5' },
+  { loc: '/type-in-depth', priority: '0.5' },
   { loc: '/compatibility', priority: '0.5' },
   { loc: '/about', priority: '0.6' },
   { loc: '/guides', priority: '0.7' },

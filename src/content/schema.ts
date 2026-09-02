@@ -159,6 +159,11 @@ export type PagesContent = {
   paywall: PaywallContent
 }
 
+export type TypeRoleCopy = {
+  name: string
+  description: string
+}
+
 export type TypeContent = {
   code: string
   title: string
@@ -166,6 +171,14 @@ export type TypeContent = {
   stack: [FunctionId, FunctionId, FunctionId, FunctionId]
   summary: string
   image: string
+  tagline: string
+  mythic: string
+  dominantName: string
+  auxiliaryName: string
+  bridge: string
+  pattern: string
+  patternNote: string
+  roles: TypeRoleCopy[]
   myth: string
   tension: string
   inTheDay: string

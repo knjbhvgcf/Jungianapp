@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { CompatReading } from '../components/CompatReading'
 import { UnlockPanel } from '../components/UnlockPanel'
 import { Button } from '../components/Button'
+import { Editable, EditableButton, EditHint, EditSeo } from '../components/Editable'
 import { Seo } from '../components/Seo'
 import { TypePortrait } from '../components/TypePortrait'
 import { Sparkle } from '../components/Icons'
@@ -15,13 +16,14 @@ import {
 } from '../lib/scoring'
 import { applyFollowUpToProfile } from '../lib/clarify'
 import { loadAnswers, loadClarifyAnswers, loadStackChoice } from '../lib/storage'
-import { siteCopy } from '../lib/copy'
-import { isProductUnlocked, tryUnlockKey } from '../lib/unlock'
-
-const compatPage = siteCopy.paywall.compatPage
+import { asPersonality, useEditMode, useSiteCopy, useTypeDraft } from '../lib/editMode'
+import { isProductUnlocked, tryUnlockKey, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
 
 export function Compatibility() {
   const [params] = useSearchParams()
+  const { editing, previewType, patchPages } = useEditMode()
+  const compatPage = useSiteCopy().paywall.compatPage
+  const draft = useTypeDraft(previewType)
   const [unlocked, setUnlocked] = useState(() => isProductUnlocked('compat'))
   const answers = useMemo(() => loadAnswers(), [])
   const complete = isQuizComplete(answers)
@@ -37,7 +39,14 @@ export function Compatibility() {
     if (fromUrl && tryUnlockKey(fromUrl, 'compat')) setUnlocked(true)
   }, [params])
 
-  if (!complete || !profile) {
+  function patchCompat(partial: Partial<typeof compatPage>) {
+    patchPages((pages) => ({
+      ...pages,
+      paywall: { ...pages.paywall, compatPage: { ...pages.paywall.compatPage, ...partial } },
+    }))
+  }
+
+  if ((!complete || !profile) && !editing) {
     return (
       <>
         <Seo
@@ -57,17 +66,19 @@ export function Compatibility() {
     )
   }
 
-  const defaultHero = profile.matches[0]?.stack[0]
-  const hero = stored?.hero ?? defaultHero
-  const parents = hero ? validParentsForHero(hero) : []
+  const defaultHero = profile?.matches[0]?.stack[0]
+  const hero = stored?.hero ?? defaultHero ?? draft?.stack[0]
+  const parents = hero && profile ? validParentsForHero(hero) : []
   const parent =
     stored && hero === stored.hero && parents.includes(stored.parent)
       ? stored.parent
-      : hero
+      : hero && profile
         ? preferredParent(hero, profile.scores)
-        : undefined
-  const selected =
-    hero && parent ? matchForSpine(profile.matches, hero, parent) : profile.matches[0]
+        : draft?.stack[1]
+  const quizSelected =
+    hero && parent && profile ? matchForSpine(profile.matches, hero, parent) : profile?.matches[0]
+  const selected = editing && draft ? asPersonality(draft) : quizSelected
+  const showUnlocked = unlocked || editing
 
   if (!selected || !hero || !parent) return null
 
@@ -77,7 +88,7 @@ export function Compatibility() {
     <>
       <Seo
         title={
-          unlocked ? `${selected.title} compatibility | Jung Functions` : compatPage.seoLockedTitle
+          showUnlocked ? `${selected.title} compatibility | Jung Functions` : compatPage.seoLockedTitle
         }
         description={compatPage.seoDescription}
         path="/compatibility"
@@ -85,12 +96,57 @@ export function Compatibility() {
 
       <article className="section dossier">
         <header className="wrap screen dossier-hero">
+          {editing && !complete ? (
+            <div className="edit-empty-preview">
+              <EditHint>Shown when someone has not finished the quiz</EditHint>
+              <EditSeo
+                title={compatPage.emptySeoTitle}
+                description={compatPage.emptySeoDescription}
+                onTitle={(emptySeoTitle) => patchCompat({ emptySeoTitle })}
+                onDescription={(emptySeoDescription) => patchCompat({ emptySeoDescription })}
+              />
+              <Editable
+                as="h1"
+                className="serif-title"
+                label="Empty title"
+                value={compatPage.emptyTitle}
+                onChange={(emptyTitle) => patchCompat({ emptyTitle })}
+              />
+              <Editable
+                as="p"
+                className="mono-stat"
+                label="Empty stat"
+                multiline={false}
+                value={compatPage.emptyStat}
+                onChange={(emptyStat) => patchCompat({ emptyStat })}
+              />
+              <Editable
+                as="p"
+                label="Empty body"
+                value={compatPage.emptyBody}
+                onChange={(emptyBody) => patchCompat({ emptyBody })}
+              />
+              <EditableButton
+                to="/quiz"
+                label="Begin quiz"
+                value={compatPage.beginQuiz}
+                onChange={(beginQuiz) => patchCompat({ beginQuiz })}
+              />
+            </div>
+          ) : null}
           <div className="sketch-stage">
             <Sparkle className="sparkle sparkle--1" />
             <Sparkle className="sparkle sparkle--2" />
             <TypePortrait hero={hero} image={typeImage} alt={`${selected.code} ${selected.title}`} />
           </div>
-          <p className="eyebrow">{compatPage.eyebrow}</p>
+          <Editable
+            as="p"
+            className="eyebrow"
+            label="Eyebrow"
+            multiline={false}
+            value={compatPage.eyebrow}
+            onChange={(eyebrow) => patchCompat({ eyebrow })}
+          />
           <h1 className="serif-title">
             {selected.code} — {selected.title}
           </h1>
@@ -101,33 +157,74 @@ export function Compatibility() {
         </header>
 
         <div className="wrap prose dossier-body">
-          {unlocked ? (
+          {showUnlocked && quizSelected ? (
             <>
               <section>
-                <h2>{compatPage.heading}</h2>
-                <CompatReading type={selected} />
+                <Editable
+                  as="h2"
+                  label="Heading"
+                  value={compatPage.heading}
+                  onChange={(heading) => patchCompat({ heading })}
+                />
+                <CompatReading type={quizSelected} />
               </section>
-              <p className="note">{compatPage.disclaimer}</p>
+              <Editable
+                as="p"
+                className="note"
+                label="Disclaimer"
+                value={compatPage.disclaimer}
+                onChange={(disclaimer) => patchCompat({ disclaimer })}
+              />
               <div className="dossier-toolbar">
-                <Button onClick={() => window.print()}>{compatPage.print}</Button>
-                <Button to="/results" variant="ghost">
-                  {compatPage.backToResultsButton}
-                </Button>
-                <Button to="/dossier" variant="ghost">
-                  {compatPage.mapButton}
-                </Button>
+                <EditableButton
+                  label="Print"
+                  value={compatPage.print}
+                  onClick={() => window.print()}
+                  onChange={(print) => patchCompat({ print })}
+                />
+                <EditableButton
+                  to="/results"
+                  variant="ghost"
+                  label="Back to results"
+                  value={compatPage.backToResultsButton}
+                  onChange={(backToResultsButton) => patchCompat({ backToResultsButton })}
+                />
+                <EditableButton
+                  to={TYPE_IN_DEPTH_PATH}
+                  variant="ghost"
+                  label="Map button"
+                  value={compatPage.mapButton}
+                  onChange={(mapButton) => patchCompat({ mapButton })}
+                />
               </div>
             </>
           ) : (
             <>
               <UnlockPanel product="compat" onUnlocked={() => setUnlocked(true)} />
-              <p>
-                <Link to="/results" className="text-link">
-                  {compatPage.backLink}
-                </Link>
-              </p>
+              {editing ? (
+                <Editable
+                  as="p"
+                  className="text-link"
+                  label="Back link"
+                  multiline={false}
+                  value={compatPage.backLink}
+                  onChange={(backLink) => patchCompat({ backLink })}
+                />
+              ) : (
+                <p>
+                  <Link to="/results" className="text-link">
+                    {compatPage.backLink}
+                  </Link>
+                </p>
+              )}
             </>
           )}
+          {editing && quizSelected ? (
+            <>
+              <EditHint>Unlock card visitors see before they pay</EditHint>
+              <UnlockPanel product="compat" onUnlocked={() => setUnlocked(true)} />
+            </>
+          ) : null}
         </div>
       </article>
     </>

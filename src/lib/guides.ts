@@ -5,6 +5,7 @@ export const RESERVED_SLUGS = new Set([
   'clarify',
   'results',
   'dossier',
+  'type-in-depth',
   'compatibility',
   'about',
   'admin',

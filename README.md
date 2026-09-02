@@ -52,23 +52,25 @@ If Metrics has no Enable button, add the JS snippet yourself:
 
 Leave the variable empty locally so your own clicks are not counted.
 
-## Full map (optional paid unlock)
+## Your Type in Depth (optional paid unlock)
 
-The quiz stays free. The map is a one-time unlock of a longer Beebe reading.
+The quiz stays free. Your Type in Depth is a one-time unlock of a longer Beebe reading at `/type-in-depth`.
 
 1. Create a Lemon Squeezy or Stripe Payment Link.
-2. Set the success URL to `https://YOUR_DOMAIN/dossier?key=YOUR-KEY`.
+2. Set the success URL to `https://YOUR_DOMAIN/type-in-depth?key=YOUR-KEY`.
 3. Copy `.env.example` to `.env` and fill in:
 
 ```
 VITE_DOSSIER_CHECKOUT_URL=https://your-payment-link
 VITE_DOSSIER_UNLOCK_KEYS=YOUR-KEY
-VITE_DOSSIER_PRICE=$7
+VITE_DOSSIER_PRICE=$3
 ```
+
+Old `/dossier` links redirect to `/type-in-depth`.
 
 ## Compatibility add-on (separate paid unlock)
 
-Compatibility is not included in the map. It is a second product with its own checkout and keys.
+Compatibility is not included in Your Type in Depth. It is a second product with its own checkout and keys.
 
 1. Create a second Payment Link.
 2. Set the success URL to `https://YOUR_DOMAIN/compatibility?key=YOUR-COMPAT-KEY`.
@@ -77,10 +79,10 @@ Compatibility is not included in the map. It is a second product with its own ch
 ```
 VITE_COMPAT_CHECKOUT_URL=https://your-compat-payment-link
 VITE_COMPAT_UNLOCK_KEYS=YOUR-COMPAT-KEY
-VITE_COMPAT_PRICE=$4
+VITE_COMPAT_PRICE=$1
 ```
 
-Keys are checked in the browser, so treat them like a shared coupon, not a secret API token. A map key will not open compatibility, and a compatibility key will not open the map. In local development, each page has a **Preview unlock** button.
+Keys are checked in the browser, so treat them like a shared coupon, not a secret API token. A Type in Depth key will not open compatibility, and a compatibility key will not open Your Type in Depth. In local development, each page has a **Preview unlock** button.
 
 ## Project layout
 

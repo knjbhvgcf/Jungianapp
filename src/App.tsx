@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { About } from './pages/About'
 import { Admin } from './pages/Admin'
@@ -11,6 +11,17 @@ import { NotFound } from './pages/NotFound'
 import { Quiz } from './pages/Quiz'
 import { Results } from './pages/Results'
 import { TypePage, TypesIndex } from './pages/TypePage'
+import { TYPE_IN_DEPTH_PATH } from './lib/unlock'
+
+function RedirectDossier() {
+  const location = useLocation()
+  return (
+    <Navigate
+      to={{ pathname: TYPE_IN_DEPTH_PATH, search: location.search, hash: location.hash }}
+      replace
+    />
+  )
+}
 
 export default function App() {
   return (
@@ -20,7 +31,10 @@ export default function App() {
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/clarify" element={<Clarify />} />
         <Route path="/results" element={<Results />} />
-        <Route path="/dossier" element={<Dossier />} />
+        <Route path={TYPE_IN_DEPTH_PATH} element={<Dossier />} />
+        <Route path={`${TYPE_IN_DEPTH_PATH}/`} element={<Dossier />} />
+        <Route path="/dossier" element={<RedirectDossier />} />
+        <Route path="/dossier/" element={<RedirectDossier />} />
         <Route path="/compatibility" element={<Compatibility />} />
         <Route path="/about" element={<About />} />
         <Route path="/guides" element={<GuidesIndex />} />

@@ -54,7 +54,7 @@ function typeCard(type: TypePage) {
 }
 
 function typesIndexHtml(types: TypePage[]) {
-  return `<article class="section"><div class="wrap prose"><p class="eyebrow">sprouts</p><h1 class="serif-title">Sixteen sprouts</h1><p class="lede">Each sprout is a leading function and the function that supports it, a little character you can meet before you take the quiz, or after, if you want a page you can keep.</p><ul class="type-index">${types.map(typeCard).join('')}</ul><p><a href="/quiz">Begin the quiz</a></p></div></article>`
+  return `<article class="section"><div class="wrap prose"><p class="eyebrow">sprouts</p><h1 class="serif-title">Sixteen sprouts</h1><p class="lede">Each sprout represents a leading function and the function that supports it—a little character you can meet before you take the quiz, or return to afterwards. Each character is built around the particular way those functions orient the psyche.</p><ul class="type-index">${types.map(typeCard).join('')}</ul><p><a href="/quiz">Begin the quiz</a></p></div></article>`
 }
 
 function typePageHtml(type: TypePage, types: TypePage[]) {
@@ -136,7 +136,7 @@ export function prerenderGuidesPlugin(): Plugin {
       writePage(
         'types',
         'Sixteen sprouts | Jung Functions',
-        'Meet the sixteen sprouts this quiz names — each a Jungian type pattern with a portrait, stack, and a short reading.',
+        'Each sprout represents a leading function and the function that supports it — a little character you can meet before you take the quiz, or return to afterwards.',
         typesIndexHtml(types),
       )
 

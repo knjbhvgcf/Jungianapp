@@ -4,7 +4,8 @@ import { StackPicker } from './StackPicker'
 import { TieBreakPanel } from './TieBreakPanel'
 import { FUNCTIONS, type FunctionId } from '../data/functions'
 import type { BeebePlacement, FunctionScore, TypeMatch } from '../lib/scoring'
-import { siteCopy } from '../lib/copy'
+import { useEditMode, useSiteCopy } from '../lib/editMode'
+import { Editable } from './Editable'
 import type { TieBreakReading } from '../lib/tieBreak'
 
 type MapExtrasProps = {
@@ -93,25 +94,66 @@ export function MapExtrasTeaser({
   readings: TieBreakReading[]
 }) {
   const [hero, parent, child, anima] = selected.stack
-  const copy = siteCopy.paywall.mapPage
+  const { patchPages } = useEditMode()
+  const copy = useSiteCopy().paywall.mapPage
+
+  function patch(partial: Partial<typeof copy>) {
+    patchPages((pages) => ({
+      ...pages,
+      paywall: { ...pages.paywall, mapPage: { ...pages.paywall.mapPage, ...partial } },
+    }))
+  }
+
   return (
     <section>
-      <h2>{copy.teaserHeading}</h2>
-      <p>{copy.teaserBody}</p>
+      <Editable
+        as="h2"
+        label="Teaser heading"
+        value={copy.teaserHeading}
+        onChange={(teaserHeading) => patch({ teaserHeading })}
+      />
+      <Editable
+        as="p"
+        label="Teaser body"
+        value={copy.teaserBody}
+        onChange={(teaserBody) => patch({ teaserBody })}
+      />
       <ul>
         <li>
-          {copy.teaserRoles}: {hero} · {parent} · {child} · {anima}
+          <Editable
+            as="span"
+            label="Teaser roles"
+            multiline={false}
+            value={copy.teaserRoles}
+            onChange={(teaserRoles) => patch({ teaserRoles })}
+          />
+          : {hero} · {parent} · {child} · {anima}
         </li>
-        <li>{copy.teaserBeebe}</li>
+        <Editable
+          as="li"
+          label="Teaser Beebe"
+          value={copy.teaserBeebe}
+          onChange={(teaserBeebe) => patch({ teaserBeebe })}
+        />
         {readings.length ? (
           <li>
             Why {readings.map((reading) => `${reading.pair.a} / ${reading.pair.b}`).join(', ')}{' '}
             scored close, and how the follow-up split them
           </li>
         ) : (
-          <li>{copy.teaserCloseFallback}</li>
+          <Editable
+            as="li"
+            label="Close fallback"
+            value={copy.teaserCloseFallback}
+            onChange={(teaserCloseFallback) => patch({ teaserCloseFallback })}
+          />
         )}
-        <li>{copy.teaserChapters}</li>
+        <Editable
+          as="li"
+          label="Teaser chapters"
+          value={copy.teaserChapters}
+          onChange={(teaserChapters) => patch({ teaserChapters })}
+        />
       </ul>
     </section>
   )

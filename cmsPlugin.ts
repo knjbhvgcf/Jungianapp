@@ -59,6 +59,22 @@ export function cmsPlugin(adminPassword: string): Plugin {
           return
         }
 
+        if (req.method === 'POST' && req.url === '/__cms/login') {
+          let payload: { password?: string }
+          try {
+            payload = JSON.parse(await readBody(req)) as typeof payload
+          } catch {
+            sendJson(res, 400, { error: 'Invalid JSON' })
+            return
+          }
+          if (payload.password !== password) {
+            sendJson(res, 401, { error: 'Wrong password' })
+            return
+          }
+          sendJson(res, 200, { ok: true })
+          return
+        }
+
         if (req.method === 'POST' && req.url === '/__cms/save') {
           let payload: { password?: string; file?: string; data?: unknown }
           try {

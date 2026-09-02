@@ -1,25 +1,48 @@
-import { archetypePage } from '../data/archetypePages'
 import { BEEBE_ROLES, OPPOSITE_FUNCTION } from '../data/beebe'
 import { FUNCTION_PORTRAITS } from '../data/functionPortraits'
 import { FUNCTIONS } from '../data/functions'
 import type { PersonalityType } from '../data/personalityTypes'
+import { archetypeFrom, useEditMode, useTypeDraft } from '../lib/editMode'
+import { archetypePage } from '../data/archetypePages'
+import { Editable } from './Editable'
 
 const STACK_LABELS = ['Dominant', 'Auxiliary', 'Tertiary', 'Inferior'] as const
 
 export function ArchetypeSheet({ type }: { type: PersonalityType }) {
-  const page = archetypePage(type.code)
+  const draft = useTypeDraft(type.code)
+  const { patchType } = useEditMode()
+  const page = draft ? archetypeFrom(draft) : archetypePage(type.code)
   if (!page) return null
 
   const [hero, parent, child, anima] = type.stack
   const heroPortrait = FUNCTION_PORTRAITS[hero]
   const parentPortrait = FUNCTION_PORTRAITS[parent]
 
+  function patch(partial: Partial<typeof page> & { patternNote?: string }) {
+    patchType(type.code, (current) => ({
+      ...current,
+      ...partial,
+      patternNote: partial.patternNote ?? current.patternNote,
+    }))
+  }
+
   return (
     <div className="archetype-sheet">
       <section>
         <h2>Mythic Archetype</h2>
-        <p className="archetype-sheet__mythic">{page.mythic}</p>
-        <p>{page.tagline}</p>
+        <Editable
+          as="p"
+          className="archetype-sheet__mythic"
+          label="Mythic name"
+          value={page.mythic}
+          onChange={(mythic) => patch({ mythic })}
+        />
+        <Editable
+          as="p"
+          label="Tagline"
+          value={page.tagline}
+          onChange={(tagline) => patch({ tagline })}
+        />
       </section>
 
       <section>
@@ -37,7 +60,15 @@ export function ArchetypeSheet({ type }: { type: PersonalityType }) {
       </section>
 
       <p className="archetype-callout">
-        The dominant function is {hero} — {page.dominantName}.
+        The dominant function is {hero} —{' '}
+        <Editable
+          as="span"
+          label="Dominant name"
+          multiline={false}
+          value={page.dominantName}
+          onChange={(dominantName) => patch({ dominantName })}
+        />
+        .
       </p>
       <p>
         <strong>{hero} is concerned with:</strong>
@@ -53,7 +84,15 @@ export function ArchetypeSheet({ type }: { type: PersonalityType }) {
       </blockquote>
 
       <p className="archetype-callout">
-        The auxiliary function is {parent} — {page.auxiliaryName}.
+        The auxiliary function is {parent} —{' '}
+        <Editable
+          as="span"
+          label="Auxiliary name"
+          multiline={false}
+          value={page.auxiliaryName}
+          onChange={(auxiliaryName) => patch({ auxiliaryName })}
+        />
+        .
       </p>
       <p>
         <strong>{parent} is concerned with:</strong>
@@ -63,12 +102,32 @@ export function ArchetypeSheet({ type }: { type: PersonalityType }) {
           <li key={item}>{item}</li>
         ))}
       </ul>
-      <p>{page.bridge}</p>
+      <Editable as="p" label="Bridge" value={page.bridge} onChange={(bridge) => patch({ bridge })} />
       <p>The pattern becomes:</p>
-      <blockquote className="archetype-quote">“{page.pattern}”</blockquote>
-      <p>{page.image}</p>
+      <blockquote className="archetype-quote">
+        “
+        <Editable
+          as="span"
+          label="Pattern"
+          value={page.pattern}
+          onChange={(pattern) => patch({ pattern })}
+        />
+        ”
+      </blockquote>
+      <Editable
+        as="p"
+        label="Pattern note"
+        value={page.image}
+        onChange={(patternNote) => patch({ patternNote })}
+      />
 
-      <RoleTable title="Main functions" rows={page.roles.slice(0, 4)} offset={0} ids={[hero, parent, child, anima]} />
+      <RoleTable
+        title="Main functions"
+        rows={page.roles.slice(0, 4)}
+        offset={0}
+        ids={[hero, parent, child, anima]}
+        code={type.code}
+      />
       <RoleTable
         title="The shadow functions"
         rows={page.roles.slice(4)}
@@ -79,6 +138,7 @@ export function ArchetypeSheet({ type }: { type: PersonalityType }) {
           OPPOSITE_FUNCTION[child],
           OPPOSITE_FUNCTION[anima],
         ]}
+        code={type.code}
       />
     </div>
   )
@@ -89,12 +149,16 @@ function RoleTable({
   rows,
   offset,
   ids,
+  code,
 }: {
   title: string
   rows: { name: string; description: string }[]
   offset: number
   ids: (keyof typeof FUNCTIONS)[]
+  code: string
 }) {
+  const { patchType } = useEditMode()
+
   return (
     <section>
       <h2>{title}</h2>
@@ -114,15 +178,44 @@ function RoleTable({
               const role = BEEBE_ROLES[offset + index]
               const id = ids[index]
               if (!role || !id) return null
+              const roleIndex = offset + index
               return (
                 <tr key={role.key}>
-                  <td data-label="Position">{offset + index + 1}</td>
+                  <td data-label="Position">{roleIndex + 1}</td>
                   <td data-label="Archetype">{role.full}</td>
                   <td data-label="Function">
                     {id} — {FUNCTIONS[id].name}
                   </td>
-                  <td data-label="Name">{row.name}</td>
-                  <td data-label="Description">{row.description}</td>
+                  <td data-label="Name">
+                    <Editable
+                      as="span"
+                      label={`${role.full} name`}
+                      value={row.name}
+                      onChange={(name) =>
+                        patchType(code, (type) => ({
+                          ...type,
+                          roles: type.roles.map((entry, entryIndex) =>
+                            entryIndex === roleIndex ? { ...entry, name } : entry,
+                          ),
+                        }))
+                      }
+                    />
+                  </td>
+                  <td data-label="Description">
+                    <Editable
+                      as="span"
+                      label={`${role.full} description`}
+                      value={row.description}
+                      onChange={(description) =>
+                        patchType(code, (type) => ({
+                          ...type,
+                          roles: type.roles.map((entry, entryIndex) =>
+                            entryIndex === roleIndex ? { ...entry, description } : entry,
+                          ),
+                        }))
+                      }
+                    />
+                  </td>
                 </tr>
               )
             })}

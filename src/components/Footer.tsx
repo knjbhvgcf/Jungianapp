@@ -23,6 +23,12 @@ export function Footer() {
         <Link to="/guides">Guides</Link>
         {' · '}
         <Link to="/jung-vs-mbti">Jung and MBTI®</Link>
+        {import.meta.env.DEV ? (
+          <>
+            {' · '}
+            <Link to="/admin">Edit</Link>
+          </>
+        ) : null}
       </p>
     </footer>
   )

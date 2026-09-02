@@ -32,6 +32,22 @@ export async function fetchCmsStatus(): Promise<CmsStatus> {
   }
 }
 
+export async function checkCmsPassword(password: string) {
+  const status = await fetchCmsStatus()
+  if (!status.writable) {
+    throw new Error('Edit mode only works while the site is running locally with npm run dev.')
+  }
+  const response = await fetch('/__cms/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password }),
+  })
+  const body = (await response.json().catch(() => ({}))) as { error?: string }
+  if (!response.ok) {
+    throw new Error(body.error ?? 'Wrong password')
+  }
+}
+
 export async function saveCmsFile(file: CmsFile, data: unknown, password: string) {
   const response = await fetch('/__cms/save', {
     method: 'POST',

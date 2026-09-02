@@ -1,21 +1,31 @@
+import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Button } from '../components/Button'
+import { Editable } from '../components/Editable'
 import { Sparkle } from '../components/Icons'
 import { Seo } from '../components/Seo'
 import { TypePortrait } from '../components/TypePortrait'
-import { archetypePage } from '../data/archetypePages'
 import { FUNCTIONS } from '../data/functions'
-import { PERSONALITY_TYPES, typeByCode, typePath } from '../data/personalityTypes'
+import { typeByCode, typePath } from '../data/personalityTypes'
+import {
+  archetypeFrom,
+  asPersonality,
+  useEditMode,
+  usePersonalityTypes,
+  useTypeDraft,
+} from '../lib/editMode'
+import { TYPE_IN_DEPTH_PATH } from '../lib/unlock'
 import { NotFound } from './NotFound'
 
 const STACK_LABELS = ['Hero', 'Parent', 'Child', 'Inferior'] as const
 
 export function TypesIndex() {
+  const types = usePersonalityTypes()
   return (
     <>
       <Seo
         title="Sixteen sprouts | Jung Functions"
-        description="Meet the sixteen sprouts this quiz names — each a Jungian type pattern with a portrait, stack, and a short reading."
+        description="Each sprout represents a leading function and the function that supports it — a little character you can meet before you take the quiz, or return to afterwards."
         path="/types"
       />
       <article className="section">
@@ -23,38 +33,11 @@ export function TypesIndex() {
           <p className="eyebrow">sprouts</p>
           <h1 className="serif-title">Sixteen sprouts</h1>
           <p className="lede">
-            Each sprout is a leading function and the function that supports it, a little character
-            you can meet before you take the quiz, or after, if you want a page you can keep. The
-            kit is a key: hood if the dominant turns inward, lantern for intuition, quill and book
-            for thinking, sword or flower for feeling, and the work of the hands for sensation.
+            Each sprout represents a leading function and the function that supports it—a little
+            character you can meet before you take the quiz, or return to afterwards. Each character
+            is built around the particular way those functions orient the psyche.
           </p>
-          <ul className="type-key">
-            <li>
-              <strong>Hood / cape</strong>
-              introverted dominant
-            </li>
-            <li>
-              <strong>Hair shown</strong>
-              extraverted dominant
-            </li>
-            <li>
-              <strong>Lantern</strong>
-              intuition
-            </li>
-            <li>
-              <strong>Tools, keys, basket</strong>
-              sensation
-            </li>
-            <li>
-              <strong>Quill &amp; book</strong>
-              thinking
-            </li>
-            <li>
-              <strong>Sword or flower</strong>
-              feeling
-            </li>
-          </ul>
-          <TypeGrid />
+          <TypeGrid types={types} />
           <p>
             <Button to="/quiz">Begin the quiz</Button>
           </p>
@@ -66,15 +49,30 @@ export function TypesIndex() {
 
 export function TypePage() {
   const { code = '' } = useParams()
-  const selected = typeByCode(code)
-  if (!selected) return <NotFound />
+  const listed = typeByCode(code)
+  if (!listed) return <NotFound />
 
-  const page = archetypePage(selected.code)
+  return <TypePageBody code={listed.code} />
+}
+
+function TypePageBody({ code }: { code: string }) {
+  const draft = useTypeDraft(code)
+  const { editing, patchType, setPreviewType } = useEditMode()
+  const all = usePersonalityTypes()
+  const selected = draft ? asPersonality(draft) : typeByCode(code)
+  const page = draft ? archetypeFrom(draft) : null
+
+  useEffect(() => {
+    if (editing) setPreviewType(code)
+  }, [code, editing, setPreviewType])
+
+  if (!selected || !draft) return <NotFound />
+
   const hero = selected.stack[0]
-  const others = PERSONALITY_TYPES.filter((type) => type.code !== selected.code)
-  const index = PERSONALITY_TYPES.findIndex((type) => type.code === selected.code)
-  const previous = PERSONALITY_TYPES[(index - 1 + PERSONALITY_TYPES.length) % PERSONALITY_TYPES.length]
-  const next = PERSONALITY_TYPES[(index + 1) % PERSONALITY_TYPES.length]
+  const others = all.filter((type) => type.code !== selected.code)
+  const index = all.findIndex((type) => type.code === selected.code)
+  const previous = all[(index - 1 + all.length) % all.length]
+  const next = all[(index + 1) % all.length]
 
   return (
     <>
@@ -107,13 +105,40 @@ export function TypePage() {
           </div>
           <p className="eyebrow">sprout</p>
           <h1 className="serif-title">
-            {selected.code} — {selected.title}
+            {selected.code} —{' '}
+            <Editable
+              as="span"
+              label="Title"
+              value={selected.title}
+              onChange={(title) => patchType(code, (type) => ({ ...type, title }))}
+            />
           </h1>
           <p className="mono-stat">
-            {selected.code.toLowerCase()} · {selected.name.toLowerCase()} · {hero} → {selected.stack[1]}
+            {selected.code.toLowerCase()} ·{' '}
+            <Editable
+              as="span"
+              label="Name"
+              multiline={false}
+              value={selected.name}
+              onChange={(name) => patchType(code, (type) => ({ ...type, name }))}
+            />{' '}
+            · {hero} → {selected.stack[1]}
           </p>
-          <p className="lede">{selected.summary}</p>
-          {page ? <p>{page.tagline}</p> : null}
+          <Editable
+            as="p"
+            className="lede"
+            label="Summary"
+            value={selected.summary}
+            onChange={(summary) => patchType(code, (type) => ({ ...type, summary }))}
+          />
+          {page ? (
+            <Editable
+              as="p"
+              label="Tagline"
+              value={page.tagline}
+              onChange={(tagline) => patchType(code, (type) => ({ ...type, tagline }))}
+            />
+          ) : null}
           <div className="hero__actions">
             <Button to="/quiz">Begin the quiz</Button>
             <Button to="/types" variant="ghost">
@@ -135,11 +160,11 @@ export function TypePage() {
             ))}
           </ul>
           <p>
-            The longer map — Beebe’s eight, the day, work, relating, and the shadow — opens after
-            the quiz, on the paid map. This page is the public face of the sprout.
+            The longer reading — Beebe’s eight, the day, work, relating, and the shadow — opens
+            after the quiz, in Your Type in Depth. This page is the public face of the sprout.
           </p>
           <p>
-            <Button to="/dossier">Open the map</Button>
+            <Button to={TYPE_IN_DEPTH_PATH}>Your Type in Depth</Button>
           </p>
         </div>
 
@@ -163,7 +188,11 @@ export function TypePage() {
   )
 }
 
-function TypeGrid({ types = PERSONALITY_TYPES }: { types?: typeof PERSONALITY_TYPES }) {
+function TypeGrid({
+  types,
+}: {
+  types: ReturnType<typeof usePersonalityTypes>
+}) {
   return (
     <ul className="type-index">
       {types.map((type, index) => (

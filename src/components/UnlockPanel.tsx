@@ -1,5 +1,7 @@
 import { useState, type FormEvent } from 'react'
-import { siteCopy } from '../lib/copy'
+import { Editable, EditableButton } from './Editable'
+import { Button } from './Button'
+import { useEditMode, useSiteCopy } from '../lib/editMode'
 import {
   productCheckoutUrl,
   productPrice,
@@ -7,7 +9,6 @@ import {
   tryUnlockKey,
   type UnlockProduct,
 } from '../lib/unlock'
-import { Button } from './Button'
 
 type UnlockPanelProps = {
   product: UnlockProduct
@@ -19,8 +20,19 @@ export function UnlockPanel({ product, onUnlocked }: UnlockPanelProps) {
   const [error, setError] = useState('')
   const checkout = productCheckoutUrl(product)
   const price = productPrice(product)
-  const copy = siteCopy.paywall[product]
+  const { editing, patchPages } = useEditMode()
+  const copy = useSiteCopy().paywall[product]
   const inputId = product === 'map' ? 'map-key' : 'compat-key'
+
+  function patch(partial: Partial<typeof copy>) {
+    patchPages((pages) => ({
+      ...pages,
+      paywall: {
+        ...pages.paywall,
+        [product]: { ...pages.paywall[product], ...partial },
+      },
+    }))
+  }
 
   function submit(event: FormEvent) {
     event.preventDefault()
@@ -34,16 +46,52 @@ export function UnlockPanel({ product, onUnlocked }: UnlockPanelProps) {
 
   return (
     <aside className="unlock-panel">
-      <p className="eyebrow">{copy.eyebrow}</p>
-      <h2>{copy.title}</h2>
-      <p>{copy.body}</p>
+      <Editable
+        as="p"
+        className="eyebrow"
+        label="Eyebrow"
+        multiline={false}
+        value={copy.eyebrow}
+        onChange={(eyebrow) => patch({ eyebrow })}
+      />
+      <Editable as="h2" label="Title" value={copy.title} onChange={(title) => patch({ title })} />
+      <Editable as="p" label="Body" value={copy.body} onChange={(body) => patch({ body })} />
       <ul className="unlock-panel__list">
-        {copy.bullets.map((item) => (
-          <li key={item}>{item}</li>
+        {copy.bullets.map((item, index) => (
+          <Editable
+            key={index}
+            as="li"
+            label={`Bullet ${index + 1}`}
+            value={item}
+            onChange={(next) =>
+              patch({
+                bullets: copy.bullets.map((entry, entryIndex) =>
+                  entryIndex === index ? next : entry,
+                ),
+              })
+            }
+          />
         ))}
       </ul>
       <div className="unlock-panel__actions">
-        {checkout ? (
+        {editing ? (
+          checkout ? (
+            <EditableButton
+              to={checkout}
+              label="Checkout"
+              value={copy.cta}
+              onChange={(cta) => patch({ cta })}
+            />
+          ) : (
+            <Editable
+              as="p"
+              className="note"
+              label="Missing checkout"
+              value={copy.checkoutMissing}
+              onChange={(checkoutMissing) => patch({ checkoutMissing })}
+            />
+          )
+        ) : checkout ? (
           <Button to={checkout}>
             {copy.cta} · {price}
           </Button>
@@ -52,7 +100,26 @@ export function UnlockPanel({ product, onUnlocked }: UnlockPanelProps) {
         )}
       </div>
       <form className="unlock-form" onSubmit={submit}>
-        <label htmlFor={inputId}>{copy.keyLabel}</label>
+        {editing ? (
+          <>
+            <Editable
+              as="p"
+              label="Key label"
+              multiline={false}
+              value={copy.keyLabel}
+              onChange={(keyLabel) => patch({ keyLabel })}
+            />
+            <Editable
+              as="p"
+              label="Key placeholder"
+              multiline={false}
+              value={copy.keyPlaceholder}
+              onChange={(keyPlaceholder) => patch({ keyPlaceholder })}
+            />
+          </>
+        ) : (
+          <label htmlFor={inputId}>{copy.keyLabel}</label>
+        )}
         <div className="unlock-form__row">
           <input
             id={inputId}
@@ -62,11 +129,30 @@ export function UnlockPanel({ product, onUnlocked }: UnlockPanelProps) {
             autoComplete="off"
             placeholder={copy.keyPlaceholder}
           />
-          <Button type="submit" variant="ghost">
-            {copy.unlockButton}
-          </Button>
+          {editing ? (
+            <EditableButton
+              variant="ghost"
+              label="Unlock"
+              value={copy.unlockButton}
+              onChange={(unlockButton) => patch({ unlockButton })}
+            />
+          ) : (
+            <Button type="submit" variant="ghost">
+              {copy.unlockButton}
+            </Button>
+          )}
         </div>
-        {error ? <p className="unlock-form__error">{error}</p> : null}
+        {editing ? (
+          <Editable
+            as="p"
+            label="Wrong-key error"
+            multiline={false}
+            value={copy.error}
+            onChange={(errorText) => patch({ error: errorText })}
+          />
+        ) : error ? (
+          <p className="unlock-form__error">{error}</p>
+        ) : null}
       </form>
       {import.meta.env.DEV ? (
         <p className="note">

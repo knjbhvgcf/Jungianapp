@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { TYPE_IN_DEPTH_PATH } from '../lib/unlock'
 import { Face, MenuDots } from './Icons'
 
 const links = [
   { to: '/', label: 'Home' },
   { to: '/quiz', label: 'Take the quiz' },
-  { to: '/dossier', label: 'Map' },
+  { to: TYPE_IN_DEPTH_PATH, label: 'Your Type in Depth' },
   { to: '/compatibility', label: 'Compatibility' },
   { to: '/types', label: 'Sprouts' },
   { to: '/guides', label: 'Guides' },
   { to: '/about', label: 'About' },
-  ...(import.meta.env.DEV ? [{ to: '/admin', label: 'CMS' }] : []),
+  ...(import.meta.env.DEV ? [{ to: '/admin', label: 'Edit' }] : []),
 ]
 
 export function Header() {
@@ -35,7 +36,7 @@ export function Header() {
           <small>free quiz ↑</small>
         </Link>
 
-        <Link to="/about" className="icon-btn icon-btn--circle" aria-label="About the quiz">
+        <Link to="/types" className="icon-btn icon-btn--circle" aria-label="Sixteen sprouts">
           <Face />
         </Link>
       </div>
