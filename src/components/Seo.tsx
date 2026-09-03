@@ -34,10 +34,22 @@ export function Seo({ title, description, path = '/', jsonLd }: SeoProps) {
     setMeta('property', 'og:description', description)
     setMeta('property', 'og:url', url)
     setMeta('property', 'og:image', image)
+    setMeta('property', 'og:image:width', '1024')
+    setMeta('property', 'og:image:height', '682')
+    setMeta(
+      'property',
+      'og:image:alt',
+      'Two hooded sprouts sitting on a mossy log in a forest.',
+    )
     setMeta('name', 'twitter:card', 'summary_large_image')
     setMeta('name', 'twitter:title', title)
     setMeta('name', 'twitter:description', description)
     setMeta('name', 'twitter:image', image)
+    setMeta(
+      'name',
+      'twitter:image:alt',
+      'Two hooded sprouts sitting on a mossy log in a forest.',
+    )
 
     let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     if (!canonical) {

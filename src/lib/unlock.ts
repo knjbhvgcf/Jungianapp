@@ -1,6 +1,7 @@
 export type UnlockProduct = 'map' | 'compat'
 
 export const TYPE_IN_DEPTH_PATH = '/type-in-depth'
+export const COMPAT_PATH = '/compatibility'
 
 const STORAGE: Record<UnlockProduct, string> = {
   map: 'jung-functions.dossier.unlock.v1',
@@ -24,8 +25,24 @@ export function productPrice(product: UnlockProduct) {
 }
 
 export function productCheckoutUrl(product: UnlockProduct) {
-  if (product === 'compat') return import.meta.env.VITE_COMPAT_CHECKOUT_URL || ''
-  return import.meta.env.VITE_DOSSIER_CHECKOUT_URL || ''
+  const raw =
+    product === 'compat'
+      ? import.meta.env.VITE_COMPAT_CHECKOUT_URL
+      : import.meta.env.VITE_DOSSIER_CHECKOUT_URL
+  return typeof raw === 'string' ? raw.trim() : ''
+}
+
+export function productPagePath(product: UnlockProduct) {
+  return product === 'compat' ? COMPAT_PATH : TYPE_IN_DEPTH_PATH
+}
+
+/** Stripe Payment Link when set; otherwise the product page so the button still works. */
+export function productUnlockHref(product: UnlockProduct) {
+  return productCheckoutUrl(product) || productPagePath(product)
+}
+
+export function productHref(product: UnlockProduct, unlocked: boolean) {
+  return unlocked ? productPagePath(product) : productUnlockHref(product)
 }
 
 function configuredKeys(product: UnlockProduct) {

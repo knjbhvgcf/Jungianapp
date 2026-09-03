@@ -26,7 +26,7 @@ import {
 } from '../lib/storage'
 import { fillCopy } from '../lib/copy'
 import { asPersonality, useEditMode, useSiteCopy, useTypeDraft } from '../lib/editMode'
-import { isProductUnlocked, productPrice, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
+import { isProductUnlocked, productHref, productPrice } from '../lib/unlock'
 import { typePath } from '../data/personalityTypes'
 
 export function Results() {
@@ -274,7 +274,7 @@ export function Results() {
               {selectedTitle} page
             </Button>
             <EditableButton
-              to={TYPE_IN_DEPTH_PATH}
+              to={productHref('map', mapUnlocked)}
               label={mapUnlocked ? 'Open map' : 'Unlock map'}
               value={mapUnlocked ? results.openMap : results.unlockMap}
               onChange={(value) =>
@@ -282,7 +282,7 @@ export function Results() {
               }
             />
             <EditableButton
-              to="/compatibility"
+              to={productHref('compat', compatUnlocked)}
               variant="ghost"
               label={compatUnlocked ? 'Open compat' : 'Compat short'}
               value={compatUnlocked ? results.openCompat : results.compatShort}
@@ -357,7 +357,7 @@ export function Results() {
               </p>
             )}
             <EditableButton
-              to={TYPE_IN_DEPTH_PATH}
+              to={productHref('map', mapUnlocked)}
               label="Map CTA"
               value={
                 mapUnlocked
@@ -405,7 +405,7 @@ export function Results() {
               </p>
             )}
             <EditableButton
-              to="/compatibility"
+              to={productHref('compat', compatUnlocked)}
               label="Compat CTA"
               value={
                 compatUnlocked

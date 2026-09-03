@@ -33,7 +33,7 @@ export function Header() {
 
         <Link to="/" className="brand" onClick={() => setOpen(false)}>
           Jungology
-          <small>Jung Functions Quiz</small>
+          <small>Jung Functions Quiz ↑</small>
         </Link>
 
         <Link to="/types" className="icon-btn icon-btn--circle" aria-label="Sixteen sprouts">

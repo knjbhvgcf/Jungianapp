@@ -28,7 +28,7 @@ import {
   useSiteCopy,
   useTypeDraft,
 } from '../lib/editMode'
-import { isProductUnlocked, tryUnlockKey, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
+import { isProductUnlocked, productHref, tryUnlockKey, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
 import type { PersonalityType } from '../data/personalityTypes'
 import type { TypeMapCopy } from '../data/typeMaps'
 import type { BeebePlacement, FunctionScore, TypeMatch } from '../lib/scoring'
@@ -279,6 +279,7 @@ function UnlockedReading({
   onParentChange: (parent: FunctionId) => void
 }) {
   const { editing, previewType, patchType } = useEditMode()
+  const compatUnlocked = isProductUnlocked('compat')
 
   return (
     <>
@@ -391,7 +392,7 @@ function UnlockedReading({
           onChange={(compatBody) => patchMap({ compatBody })}
         />
         <EditableButton
-          to="/compatibility"
+          to={productHref('compat', compatUnlocked)}
           label="Compat CTA"
           value={mapPage.compatCta}
           onChange={(compatCta) => patchMap({ compatCta })}
