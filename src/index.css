@@ -627,10 +627,25 @@ a {
   font-size: 1.15rem;
   padding: 0.7rem 0;
   list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
 }
 
 .stack-fold summary::-webkit-details-marker {
   display: none;
+}
+
+.stack-fold summary::after {
+  content: '+';
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.stack-fold[open] summary::after {
+  content: '−';
 }
 
 .stack-fold[open] {

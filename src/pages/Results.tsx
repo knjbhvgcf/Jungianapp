@@ -437,6 +437,7 @@ export function Results() {
                 scores={allScores}
                 hero={hero}
                 parent={parent}
+                hideHeading
                 preview={{
                   code: selectedCode,
                   title: selectedTitle,

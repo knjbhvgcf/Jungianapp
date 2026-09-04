@@ -26,6 +26,7 @@ type StackPickerProps = {
     summary: string
     image?: string
   }
+  hideHeading?: boolean
   onHeroChange: (hero: FunctionId) => void
   onParentChange: (parent: FunctionId) => void
 }
@@ -38,6 +39,7 @@ export function StackPicker({
   anima,
   full = false,
   preview,
+  hideHeading = false,
   onHeroChange,
   onParentChange,
 }: StackPickerProps) {
@@ -55,7 +57,7 @@ export function StackPicker({
 
   return (
     <article className="panel stack-picker">
-      <h2>Try a different lead</h2>
+      {hideHeading ? null : <h2>Try a different lead</h2>}
       <p className="panel__intro">
         {full
           ? tied

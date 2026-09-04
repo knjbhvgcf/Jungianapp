@@ -28,28 +28,33 @@ export function MapExtras({
   onParentChange,
 }: MapExtrasProps) {
   const [order, setOrder] = useState<'roles' | 'strength'>('roles')
+  const { editing } = useEditMode()
 
   return (
     <>
-      <StackPicker
-        scores={scores}
-        hero={hero}
-        parent={parent}
-        child={selected.stack[2]}
-        anima={selected.stack[3]}
-        full
-        preview={{
-          code: selected.code,
-          title: selected.title,
-          summary: selected.summary,
-          image: image ?? selected.image,
-        }}
-        onHeroChange={onHeroChange}
-        onParentChange={onParentChange}
-      />
+      <details className="stack-fold" open={editing || undefined}>
+        <summary>Try a different lead</summary>
+        <StackPicker
+          scores={scores}
+          hero={hero}
+          parent={parent}
+          child={selected.stack[2]}
+          anima={selected.stack[3]}
+          full
+          hideHeading
+          preview={{
+            code: selected.code,
+            title: selected.title,
+            summary: selected.summary,
+            image: image ?? selected.image,
+          }}
+          onHeroChange={onHeroChange}
+          onParentChange={onParentChange}
+        />
+      </details>
 
-      <article className="panel">
-        <h2>The eight roles</h2>
+      <details className="stack-fold" open={editing || undefined}>
+        <summary>The eight roles</summary>
         <p className="panel__intro">
           The chart follows the type you selected, and you can switch to strength order to see
           the same eight roles sorted by your scores.
@@ -75,7 +80,7 @@ export function MapExtras({
           Hero <strong>{FUNCTIONS[hero].id}</strong> with Parent <strong>{FUNCTIONS[parent].id}</strong>{' '}
           is the working pair of this type, and the other six roles follow from that pair.
         </p>
-      </article>
+      </details>
     </>
   )
 }
