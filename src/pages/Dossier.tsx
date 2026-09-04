@@ -334,6 +334,48 @@ function UnlockedReading({
             value={copy.withOthers}
             onChange={(withOthers) => patchType(previewType, (type) => ({ ...type, withOthers }))}
           />
+          <Editable
+            as="h2"
+            label="Auxiliary heading"
+            multiline={false}
+            value={mapPage.auxiliaryHeading}
+            onChange={(auxiliaryHeading) => patchMap({ auxiliaryHeading })}
+          />
+          <Editable
+            as="p"
+            label="Auxiliary lead"
+            value={mapPage.auxiliaryLead}
+            onChange={(auxiliaryLead) => patchMap({ auxiliaryLead })}
+          />
+          <Editable
+            as="p"
+            label="Auxiliary healing"
+            value={copy.auxiliaryHealing}
+            onChange={(auxiliaryHealing) =>
+              patchType(previewType, (type) => ({ ...type, auxiliaryHealing }))
+            }
+          />
+          <Editable
+            as="h2"
+            label="Anti-type heading"
+            multiline={false}
+            value={mapPage.antiTypeHeading}
+            onChange={(antiTypeHeading) => patchMap({ antiTypeHeading })}
+          />
+          <Editable
+            as="p"
+            label="Anti-type lead"
+            value={mapPage.antiTypeLead}
+            onChange={(antiTypeLead) => patchMap({ antiTypeLead })}
+          />
+          <Editable
+            as="p"
+            label="Anti-type during stress"
+            value={copy.antiTypeStress}
+            onChange={(antiTypeStress) =>
+              patchType(previewType, (type) => ({ ...type, antiTypeStress }))
+            }
+          />
           <h2>Growth</h2>
           <Editable
             as="p"
@@ -404,7 +446,7 @@ function UnlockedReading({
           <p>
             The scoring model also liked <strong>{runnerUp.title}</strong> ({runnerUp.code}
             ), hero {runnerUp.stack[0]} with parent {runnerUp.stack[1]}, and if two
-            functions scored close you can try that spine above and the chapters will
+            functions scored close you can try that type above and the chapters will
             follow.
           </p>
         </section>

@@ -59,6 +59,8 @@ export function chaptersFrom(type: TypeContent): TypeMapCopy {
     inTheDay: type.inTheDay,
     atWork: type.atWork,
     withOthers: type.withOthers,
+    auxiliaryHealing: type.auxiliaryHealing,
+    antiTypeStress: type.antiTypeStress,
     growth: type.growth,
     shadowWork: type.shadowWork,
     prompts: type.prompts,

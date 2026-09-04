@@ -79,7 +79,7 @@ export function MapExtras({
         <BeebeStack placements={beebe} order={order} />
         <p>
           Hero <strong>{FUNCTIONS[hero].id}</strong> with Parent <strong>{FUNCTIONS[parent].id}</strong>{' '}
-          is the working spine of this type, and the other six roles follow from that pair.
+          is the working pair of this type, and the other six roles follow from that pair.
         </p>
       </article>
     </>

@@ -100,7 +100,7 @@
       {
         "heading": "Compatibility add-on",
         "paragraphs": [
-          "Compatibility is a second, separate unlock. It places the other fifteen types on your Beebe stack (same stack, spine reversed, anima pull, and so on). Use VITE_COMPAT_CHECKOUT_URL and VITE_COMPAT_UNLOCK_KEYS, and send people to /compatibility?key=their-key. A Type in Depth key will not open compatibility, and a compatibility key will not open Your Type in Depth."
+          "Compatibility is a second, separate unlock. It places the other fifteen types on your Beebe stack (same stack, hero and parent swapped, anima pull, and so on). Use VITE_COMPAT_CHECKOUT_URL and VITE_COMPAT_UNLOCK_KEYS, and send people to /compatibility?key=their-key. A Type in Depth key will not open compatibility, and a compatibility key will not open Your Type in Depth."
         ]
       },
       {
@@ -145,7 +145,7 @@
     "compatEyebrow": "add-on",
     "compatTitle": "Compatibility",
     "compatBodyUnlocked": "How this type meets the other fifteen, read through the roles already living in you, which is a separate purchase from Your Type in Depth.",
-    "compatBodyLocked": "A separate reading of how the other types sit in your stack — same lead, reversed spine, anima pull, and the rest — not a ranking of who you should date. One-time unlock · {price}.",
+    "compatBodyLocked": "A separate reading of how the other types sit in your stack — same lead, hero and parent swapped, anima pull, and the rest — not a ranking of who you should date. One-time unlock · {price}.",
     "compatCtaUnlocked": "Open compatibility",
     "compatCtaLocked": "Unlock compatibility · {price}",
     "retake": "Retake quiz",
@@ -174,7 +174,7 @@
     "compat": {
       "eyebrow": "add-on",
       "title": "Compatibility",
-      "body": "A separate reading of how your type meets all sixteen types, not as a ranking of who you should date, but as a picture of where their leading function already sits in you — same hero, spine reversed, anima pull, and the rest — which Your Type in Depth does not include.",
+      "body": "A separate reading of how your type meets all sixteen types, not as a ranking of who you should date, but as a picture of where their leading function already sits in you — same hero, hero and parent swapped, anima pull, and the rest — which Your Type in Depth does not include.",
       "bullets": [
         "Every type placed on your Beebe roles",
         "Likely gift and friction, not a ranking",
@@ -204,9 +204,13 @@
       "teaserCloseFallback": "The close-score reading when two functions land together",
       "teaserChapters": "Chapters, shadow work, and prompts for this type",
       "backToResults": "Back to free results",
+      "auxiliaryHeading": "Auxiliary healing",
+      "auxiliaryLead": "Do not try to develop the inferior function. That would be like telling a fish to learn how to live on land. The work, for every type, is the auxiliary — Beebe’s good parent, the sublimation function — whose basic purpose is to heal the schism between the dominant and the inferior.",
+      "antiTypeHeading": "Expressing your anti-type during stress",
+      "antiTypeLead": "Under stress you can start expressing your anti-type — the type whose dominant and auxiliary are the inverted attitudes of yours. Introversion or extraversion stays, and so does sensing or intuition; thinking/feeling and judging/perceiving flip. What shows is a crude, temporary version of that other type. It is stress. It is not a new type.",
       "compatEyebrow": "add-on",
       "compatTitle": "Compatibility",
-      "compatBody": "A separate unlock. How this stack meets all sixteen types — anima pull, spine reversed, demon, and the rest — which is not included in Your Type in Depth.",
+      "compatBody": "A separate unlock. How this stack meets all sixteen types — anima pull, hero and parent swapped, demon, and the rest — which is not included in Your Type in Depth.",
       "compatCta": "Open compatibility",
       "disclaimer": "Educational reading of Jung and Beebe, not psychotherapy and not the MBTI® instrument.",
       "print": "Print / save PDF",

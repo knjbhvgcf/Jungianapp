@@ -117,6 +117,10 @@ export type MapPageCopy = {
   teaserCloseFallback: string
   teaserChapters: string
   backToResults: string
+  auxiliaryHeading: string
+  auxiliaryLead: string
+  antiTypeHeading: string
+  antiTypeLead: string
   compatEyebrow: string
   compatTitle: string
   compatBody: string
@@ -184,6 +188,8 @@ export type TypeContent = {
   inTheDay: string
   atWork: string
   withOthers: string
+  auxiliaryHealing: string
+  antiTypeStress: string
   growth: string
   shadowWork: string
   prompts: string[]

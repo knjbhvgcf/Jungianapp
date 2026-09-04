@@ -31,7 +31,7 @@ const KIND_META: Record<
 > = {
   same: { label: 'Same stack', charge: 'steady', order: 0 },
   sister: { label: 'Same hero', charge: 'mixed', order: 1 },
-  mirror: { label: 'Spine reversed', charge: 'mixed', order: 2 },
+  mirror: { label: 'Hero and parent swapped', charge: 'mixed', order: 2 },
   parent: { label: 'Speaks your Parent', charge: 'steady', order: 3 },
   child: { label: 'Speaks your Child', charge: 'mixed', order: 4 },
   anima: { label: 'Anima pull', charge: 'charged', order: 5 },
@@ -90,7 +90,7 @@ function copyFor(me: PersonalityType, them: PersonalityType, kind: CompatKind): 
       }
     case 'mirror':
       return {
-        note: `The ${title} runs your spine backwards, leading with ${theirHero}, which is your Parent, and supporting with ${theirParent}, which is your Hero, so that each of you lives as identity what the other uses to foster.`,
+        note: `The ${title} leads with ${theirHero}, which is your Parent, and supports with ${theirParent}, which is your Hero, so that each of you lives as identity what the other uses to foster.`,
         detail: `This is often high respect and a quiet struggle over who decides, for they inhabit as the self what you inhabit as care, and you inhabit as the self what they inhabit as help; collaboration is excellent when the work needs both, and intimacy needs an explicit agreement about who is leading a given domain, or you will parent each other and then compete, each feeling, not without reason, that the other has taken the chair that was already theirs.`,
       }
     case 'parent':

@@ -29,6 +29,7 @@ export function Seo({ title, description, path = '/', jsonLd }: SeoProps) {
     const image = `${origin}${SITE_OG_IMAGE}`
 
     document.title = title
+    setMeta('name', 'google-site-verification', '8GtoD7vbjVzp9aXAlDe4FTkUFwcMiE1w8OF-U9VrrQ8')
     setMeta('name', 'description', description)
     setMeta('property', 'og:title', title)
     setMeta('property', 'og:description', description)
