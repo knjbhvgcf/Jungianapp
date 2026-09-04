@@ -69,7 +69,7 @@ export function StackPicker({
       </p>
 
       <RoleRow
-        label={full ? 'Hero / Heroine (1st)' : 'Leads'}
+        label={full ? 'Hero / Heroine (1st position)' : 'Leads'}
         group="Hero / Heroine"
         options={scores.map((score) => score.id)}
         selected={hero}
@@ -80,7 +80,7 @@ export function StackPicker({
       />
 
       <RoleRow
-        label={full ? 'Parent (2nd)' : 'Supports'}
+        label={full ? 'Parent (2nd position)' : 'Supports'}
         group="Parent"
         options={parents}
         selected={parent}
@@ -93,7 +93,7 @@ export function StackPicker({
       {full && child && anima ? (
         <>
           <RoleRow
-            label="Eternal Child (3rd)"
+            label="Eternal Child (3rd position)"
             group="Eternal Child"
             options={children}
             selected={child}
@@ -107,7 +107,7 @@ export function StackPicker({
           />
 
           <RoleRow
-            label="Inferior (Anima / Animus) (4th)"
+            label="Inferior (Anima / Animus) (4th position)"
             group="Inferior"
             options={animas}
             selected={anima}

@@ -354,20 +354,20 @@ function UnlockedReading({
           />
           <Editable
             as="h2"
-            label="Auxiliary heading"
+            label="Parent healing heading"
             multiline={false}
             value={mapPage.auxiliaryHeading}
             onChange={(auxiliaryHeading) => patchMap({ auxiliaryHeading })}
           />
           <Editable
             as="p"
-            label="Auxiliary lead"
+            label="Parent healing lead"
             value={mapPage.auxiliaryLead}
             onChange={(auxiliaryLead) => patchMap({ auxiliaryLead })}
           />
           <Editable
             as="p"
-            label="Auxiliary healing"
+            label="Parent healing"
             value={copy.auxiliaryHealing}
             onChange={(auxiliaryHealing) =>
               patchType(previewType, (type) => ({ ...type, auxiliaryHealing }))
