@@ -61,6 +61,7 @@ export function chaptersFrom(type: TypeContent): TypeMapCopy {
     withOthers: type.withOthers,
     auxiliaryHealing: type.auxiliaryHealing,
     antiTypeStress: type.antiTypeStress,
+    famous: type.famous,
     growth: type.growth,
     shadowWork: type.shadowWork,
     prompts: type.prompts,

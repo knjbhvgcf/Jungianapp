@@ -121,6 +121,8 @@ export type MapPageCopy = {
   auxiliaryLead: string
   antiTypeHeading: string
   antiTypeLead: string
+  famousHeading: string
+  famousLead: string
   compatEyebrow: string
   compatTitle: string
   compatBody: string
@@ -190,6 +192,7 @@ export type TypeContent = {
   withOthers: string
   auxiliaryHealing: string
   antiTypeStress: string
+  famous: string
   growth: string
   shadowWork: string
   prompts: string[]

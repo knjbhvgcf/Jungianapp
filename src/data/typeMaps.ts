@@ -9,6 +9,7 @@ export type TypeMapCopy = {
   withOthers: string
   auxiliaryHealing: string
   antiTypeStress: string
+  famous: string
   growth: string
   shadowWork: string
   prompts: string[]
@@ -25,6 +26,7 @@ export const TYPE_MAPS: Record<string, TypeMapCopy> = Object.fromEntries(
       withOthers: type.withOthers,
       auxiliaryHealing: type.auxiliaryHealing,
       antiTypeStress: type.antiTypeStress,
+      famous: type.famous,
       growth: type.growth,
       shadowWork: type.shadowWork,
       prompts: type.prompts,

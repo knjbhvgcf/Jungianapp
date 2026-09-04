@@ -11,7 +11,7 @@
     ],
     "summary": "Holds a long-range inner picture of how things should unfold, and then builds, in the shared world, the systems by which that picture might be made real without being sold too soon to mere usefulness.",
     "image": "/types/INTJ.png?v=match1",
-    "myth": "It is the inner picture that leads, and extraverted thinking that undertakes to build a world capable of carrying it, so that you often know the destination long before the road has been furnished, and the psyche’s wager is that a true trajectory, once seen, may be engineered into time — into calendars, systems, and the lives of other people — without selling the image wholesale to the committee that would have it made useful before it has been made true.",
+    "myth": "INTJ are the thinkers of thinkers, bringing other worlds (Ni) into the physical world (Te). If any one type were to be the genius archetype, INTJ would be it. They move silently through the world, adding their genius in little bits, here and there. \n\nNi leading, Te supporting — INTJ’s working pair.\n\nThe inner picture leads.\n\nIntroverted intuition sees a destination first: a shape of how things should go, not a to-do list. You often “know” the end before you have steps, money, or a team.\n\nExtraverted thinking builds a world that can carry it.\n\nTe’s job is not to invent the picture. It is to put the picture into time: calendars, systems, other people’s work. The road gets furnished after the destination is already seen.\n\n",
     "tension": "Introverted feeling, seated in the child, wants loyalty to a private ethic which the extraverted-thinking parent may treat as inefficient, while extraverted sensation in the inferior is the body and the moment you would rather postpone; the stack works when thinking remains a servant of the picture rather than a substitute for it, and when feeling is allowed to veto a clever plan that is not, in the end, yours to want.",
     "inTheDay": "Mornings often belong to the inner object, a problem rearranging itself while the kettle boils, and the day goes well when extraverted thinking is allowed to sequence that picture into actual hours, and poorly when you live only in the destination, skip the sensory middle, and then call the world incompetent for not having arrived with you, as if matter itself were a delay in the vision.",
     "atWork": "You are most useful where a horizon is required — architecture, strategy, a design that must still be true in three years — for atmosphere-only meetings drain you and meetings that decide a structure restore you, and you can become icy if the aim keeps changing without being named, titles mattering less to you than whether the work is permitted to be internally consistent.",
@@ -29,7 +29,7 @@
       "If I could not explain the future, even to myself, what would I consent to do in the next hour?"
     ],
     "tagline": "The visionary builder who transforms ideas into systems.",
-    "mythic": "The Architect",
+    "mythic": "The Mastermind",
     "dominantName": "The Mystic",
     "auxiliaryName": "The Architect",
     "bridge": "So INTJ often uses insight (Ni) to build structures others can inhabit (Te).",
@@ -68,7 +68,8 @@
         "name": "The Ancient Memory",
         "description": "Under extreme stress can fixate on past details and failures, and can also become a source of grounding if it is given a small, chosen place."
       }
-    ]
+    ],
+    "famous": "Friedrich Nietzsche and Emily Dickinson are often read this way: an inner picture held so strictly that the outer world is either built around it, or refused."
   },
   {
     "code": "INTP",
@@ -139,7 +140,8 @@
         "name": "The Dark Visionary",
         "description": "Arrives as fate, doom, or a revelation that cannot be argued with. The deepest unconscious, and a possible later wisdom."
       }
-    ]
+    ],
+    "famous": "Albert Einstein and Marie Curie are often read this way: a private model taken out into specimens until the world has to rearrange around what the definition already knew."
   },
   {
     "code": "ENTJ",
@@ -210,7 +212,8 @@
         "name": "The Social Strategist",
         "description": "Can erupt as a public feeling-storm or a ruthless use of the group. The most unconscious climate."
       }
-    ]
+    ],
+    "famous": "Napoleon Bonaparte and Margaret Thatcher are often read this way: a campaign that can be shown, with an inner picture of where it is still tending, and little patience for a we that will not decide."
   },
   {
     "code": "ENTP",
@@ -281,7 +284,8 @@
         "name": "The Tyrant of Plans",
         "description": "May tyrannize in a sudden brutal plan, or collapse into impotence about ever getting anything done."
       }
-    ]
+    ],
+    "famous": "Socrates and Benjamin Franklin are often read this way: unused doors held open long enough for an idea to be tested, then dropped the moment it stops being interesting."
   },
   {
     "code": "INFJ",
@@ -352,7 +356,8 @@
         "name": "The Forgotten Ancestor",
         "description": "The deepest unconscious function. Under extreme stress can fixate on past failures, details, or memories, but can also become a source of wisdom and grounding."
       }
-    ]
+    ],
+    "famous": "Fyodor Dostoevsky and Carl Jung are often read this way: one inner picture of where a life or a people is tending, then a climate built so others can inhabit it."
   },
   {
     "code": "INFP",
@@ -423,7 +428,8 @@
         "name": "The Analyst",
         "description": "Takes the loved thing apart until nothing is allowed to be true. Understanding used as a wound."
       }
-    ]
+    ],
+    "famous": "J.R.R. Tolkien and Virginia Woolf are often read this way: a private standard of worth looking for an unused door that can still be lived, rather than a metric that would prove it."
   },
   {
     "code": "ENFJ",
@@ -494,7 +500,8 @@
         "name": "The Tyrant of Plans",
         "description": "Organizes people like inventory, or panics that nothing is under control. The unconscious metric."
       }
-    ]
+    ],
+    "famous": "Martin Luther King Jr. and Maya Angelou are often read this way: the climate of a we given an inner picture of where that we is still tending."
   },
   {
     "code": "ENFP",
@@ -565,7 +572,8 @@
         "name": "The Analyst",
         "description": "Takes the loved path apart until nothing is allowed to be chosen."
       }
-    ]
+    ],
+    "famous": "Oscar Wilde and Robin Williams are often read this way: a field of unused doors, parented by a private yes that chooses which possibility is still true."
   },
   {
     "code": "ISTJ",
@@ -636,7 +644,8 @@
         "name": "The Dark Visionary",
         "description": "Can become trapped in negative predictions and rigid future assumptions."
       }
-    ]
+    ],
+    "famous": "Queen Elizabeth II and George Washington are often read this way: what has already been lived, given a standard others can check, so continuity can be kept and, when needed, revised."
   },
   {
     "code": "ISFJ",
@@ -707,7 +716,8 @@
         "name": "The Dark Visionary",
         "description": "Pronounces a fate: that none of the care meant anything. The deepest unconscious, and a possible later truth."
       }
-    ]
+    ],
+    "famous": "Beatrix Potter and Clara Barton are often read this way: a known world of care, given a we it can serve, so the archive stays human when it has to grow."
   },
   {
     "code": "ESTJ",
@@ -778,7 +788,8 @@
         "name": "The Social Strategist",
         "description": "Uses the group as a weapon, or collapses into a public feeling that cannot be controlled."
       }
-    ]
+    ],
+    "famous": "Julius Caesar and Henry Ford are often read this way: the shared world run as a finished plan, with yesterday’s body as the proof that the plan can be repeated."
   },
   {
     "code": "ESFJ",
@@ -849,7 +860,8 @@
         "name": "The Tyrant of Plans",
         "description": "Organizes the family like a factory, or panics at any unmeasured care."
       }
-    ]
+    ],
+    "famous": "Dolly Parton and Hugh Jackman are often read this way: a we kept warm and workable, with a memory of how we have done this before that the room can still stand in."
   },
   {
     "code": "ISTP",
@@ -920,7 +932,8 @@
         "name": "The Inner Judge",
         "description": "Arrives as a moral wound or a silent, absolute cut. The deepest unconscious value."
       }
-    ]
+    ],
+    "famous": "Amelia Earhart and Clint Eastwood are often read this way: the object taken apart until it makes sense, then handled in the room as if the room were a workshop."
   },
   {
     "code": "ISFP",
@@ -991,7 +1004,8 @@
         "name": "The Analyst",
         "description": "Takes the love apart until nothing is allowed to be true."
       }
-    ]
+    ],
+    "famous": "Frida Kahlo and Wolfgang Amadeus Mozart are often read this way: a private standard of worth given a body in the present — color, sound, the scene that is actually here."
   },
   {
     "code": "ESTP",
@@ -1062,7 +1076,8 @@
         "name": "The Tyrant of Plans",
         "description": "Tyrannizes the plan, or panics at chaos the hero usually enjoys."
       }
-    ]
+    ],
+    "famous": "Ernest Hemingway and Madonna are often read this way: the scene as it is, then a model of what will work, with little interest in a yesterday that cannot be used."
   },
   {
     "code": "ESFP",
@@ -1133,6 +1148,7 @@
         "name": "The Social Strategist",
         "description": "Uses the room: charm as a door closing, or a collapse into needing the crowd."
       }
-    ]
+    ],
+    "famous": "Marilyn Monroe and Elvis Presley are often read this way: the present as a stage that must be lived, with a private yes underneath that still chooses what is worth performing."
   }
 ]

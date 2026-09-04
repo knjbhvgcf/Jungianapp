@@ -999,6 +999,10 @@ a {
   max-width: 54rem;
 }
 
+.dossier-breaks {
+  white-space: pre-wrap;
+}
+
 .prose .serif-title,
 .prose .mono-stat,
 .prose .lede {

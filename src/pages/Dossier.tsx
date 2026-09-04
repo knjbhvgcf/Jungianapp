@@ -320,6 +320,7 @@ function UnlockedReading({
           <Editable
             as="p"
             label="The type"
+            className="dossier-breaks"
             value={copy.myth}
             onChange={(myth) => patchType(previewType, (type) => ({ ...type, myth }))}
           />
@@ -392,6 +393,26 @@ function UnlockedReading({
             onChange={(antiTypeStress) =>
               patchType(previewType, (type) => ({ ...type, antiTypeStress }))
             }
+          />
+          <Editable
+            as="h2"
+            label="Famous heading"
+            multiline={false}
+            value={mapPage.famousHeading}
+            onChange={(famousHeading) => patchMap({ famousHeading })}
+          />
+          <Editable
+            as="p"
+            label="Famous lead"
+            value={mapPage.famousLead}
+            onChange={(famousLead) => patchMap({ famousLead })}
+          />
+          <Editable
+            as="p"
+            className="dossier-breaks"
+            label="Famous"
+            value={copy.famous}
+            onChange={(famous) => patchType(previewType, (type) => ({ ...type, famous }))}
           />
           <h2>Growth</h2>
           <Editable
