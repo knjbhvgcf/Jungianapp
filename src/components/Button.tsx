@@ -36,8 +36,13 @@ export function Button({
   if (to) {
     const external = /^https?:\/\//.test(to)
     if (external) {
+      const checkout = /buy\.stripe\.com|checkout\.stripe\.com/.test(to)
       return (
-        <a href={to} className={classes} target="_blank" rel="noreferrer">
+        <a
+          href={to}
+          className={classes}
+          {...(checkout ? {} : { target: '_blank', rel: 'noreferrer' })}
+        >
           {content}
         </a>
       )

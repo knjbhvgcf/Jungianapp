@@ -39,7 +39,11 @@ export function Dossier() {
   const { editing, previewType, patchPages } = useEditMode()
   const mapPage = useSiteCopy().paywall.mapPage
   const draft = useTypeDraft(previewType)
-  const [unlocked, setUnlocked] = useState(() => isProductUnlocked('map'))
+  const [unlocked, setUnlocked] = useState(() => {
+    if (isProductUnlocked('map')) return true
+    const key = new URLSearchParams(window.location.search).get('key')
+    return Boolean(key && tryUnlockKey(key, 'map'))
+  })
   const answers = useMemo(() => loadAnswers(), [])
   const complete = isQuizComplete(answers)
   const clarify = useMemo(() => loadClarifyAnswers(), [])
@@ -83,10 +87,28 @@ export function Dossier() {
         />
         <section className="section">
           <div className="wrap screen empty-state">
-            <h1 className="serif-title">{mapPage.emptyTitle}</h1>
-            <p className="mono-stat">{mapPage.emptyStat}</p>
-            <p>{mapPage.emptyBody}</p>
-            <Button to="/quiz">{mapPage.beginQuiz}</Button>
+            {unlocked ? (
+              <>
+                <h1 className="serif-title">Unlocked — quiz missing in this tab</h1>
+                <p className="mono-stat">the scores live with the quiz in this browser</p>
+                <p>
+                  Payment worked. Type in Depth needs the quiz from this browser. If the results
+                  tab is still open, refresh it, then open Type in Depth again. Otherwise take the
+                  quiz once more here.
+                </p>
+                <Button to="/results">Open results</Button>
+                <Button to="/quiz" variant="ghost">
+                  {mapPage.beginQuiz}
+                </Button>
+              </>
+            ) : (
+              <>
+                <h1 className="serif-title">{mapPage.emptyTitle}</h1>
+                <p className="mono-stat">{mapPage.emptyStat}</p>
+                <p>{mapPage.emptyBody}</p>
+                <Button to="/quiz">{mapPage.beginQuiz}</Button>
+              </>
+            )}
           </div>
         </section>
       </>

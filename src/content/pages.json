@@ -40,7 +40,7 @@
       },
       {
         "q": "Do you store my answers?",
-        "a": "There is no account. Your answers stay in this browser session until you close the tab or start over, and they are not sent to a server. Cloudflare and Google Analytics may count page views, not answers."
+        "a": "There is no account. Your answers stay in this browser until you start over, and they are not sent to a server. Cloudflare and Google Analytics may count page views, not answers."
       },
       {
         "q": "What if two attitudes are equally strong, as Fi and Ti both at 88%?",
@@ -112,7 +112,7 @@
       {
         "heading": "Privacy",
         "paragraphs": [
-          "There is no account and no database of answers. Optional Cloudflare Web Analytics may count page visits such as /quiz and /results; the answers themselves stay in sessionStorage on your device and are never sent to a server."
+          "There is no account and no database of answers. Optional Cloudflare Web Analytics may count page visits such as /quiz and /results; the answers themselves stay in this browser and are never sent to a server."
         ]
       }
     ]

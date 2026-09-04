@@ -13,13 +13,52 @@ export type StackChoice = {
 }
 
 function canUseStorage() {
-  return typeof window !== 'undefined' && typeof window.sessionStorage !== 'undefined'
+  return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined'
+}
+
+function readItem(key: string): string | null {
+  if (!canUseStorage()) return null
+  try {
+    const local = window.localStorage.getItem(key)
+    if (local != null) return local
+    const session = window.sessionStorage.getItem(key)
+    if (session != null) {
+      window.localStorage.setItem(key, session)
+      return session
+    }
+    return null
+  } catch {
+    return null
+  }
+}
+
+function writeItem(key: string, value: string) {
+  if (!canUseStorage()) return
+  try {
+    window.localStorage.setItem(key, value)
+    window.sessionStorage.setItem(key, value)
+  } catch {
+    try {
+      window.localStorage.setItem(key, value)
+    } catch {
+      /* private mode */
+    }
+  }
+}
+
+function removeItem(key: string) {
+  if (!canUseStorage()) return
+  try {
+    window.localStorage.removeItem(key)
+    window.sessionStorage.removeItem(key)
+  } catch {
+    /* ignore */
+  }
 }
 
 export function loadAnswers(): Answers {
-  if (!canUseStorage()) return {}
   try {
-    const raw = sessionStorage.getItem(ANSWERS_KEY)
+    const raw = readItem(ANSWERS_KEY)
     if (!raw) return {}
     const parsed: unknown = JSON.parse(raw)
     if (!parsed || typeof parsed !== 'object') return {}
@@ -30,14 +69,12 @@ export function loadAnswers(): Answers {
 }
 
 export function saveAnswers(answers: Answers) {
-  if (!canUseStorage()) return
-  sessionStorage.setItem(ANSWERS_KEY, JSON.stringify(answers))
+  writeItem(ANSWERS_KEY, JSON.stringify(answers))
 }
 
 export function loadStackChoice(): StackChoice | null {
-  if (!canUseStorage()) return null
   try {
-    const raw = sessionStorage.getItem(STACK_KEY)
+    const raw = readItem(STACK_KEY)
     if (!raw) return null
     const parsed: unknown = JSON.parse(raw)
     if (!parsed || typeof parsed !== 'object') return null
@@ -52,14 +89,12 @@ export function loadStackChoice(): StackChoice | null {
 }
 
 export function saveStackChoice(choice: StackChoice) {
-  if (!canUseStorage()) return
-  sessionStorage.setItem(STACK_KEY, JSON.stringify(choice))
+  writeItem(STACK_KEY, JSON.stringify(choice))
 }
 
 export function loadClarifyAnswers(): ClarifyAnswers {
-  if (!canUseStorage()) return {}
   try {
-    const raw = sessionStorage.getItem(CLARIFY_KEY)
+    const raw = readItem(CLARIFY_KEY)
     if (!raw) return {}
     const parsed: unknown = JSON.parse(raw)
     if (!parsed || typeof parsed !== 'object') return {}
@@ -74,29 +109,32 @@ export function loadClarifyAnswers(): ClarifyAnswers {
 }
 
 export function saveClarifyAnswers(answers: ClarifyAnswers) {
-  if (!canUseStorage()) return
-  sessionStorage.setItem(CLARIFY_KEY, JSON.stringify(answers))
+  writeItem(CLARIFY_KEY, JSON.stringify(answers))
 }
 
 export function clearClarifyAnswers() {
-  if (!canUseStorage()) return
-  sessionStorage.removeItem(CLARIFY_KEY)
+  removeItem(CLARIFY_KEY)
 }
 
 export function clearAnswers() {
-  if (!canUseStorage()) return
-  sessionStorage.removeItem(ANSWERS_KEY)
-  sessionStorage.removeItem(COMPLETED_KEY)
-  sessionStorage.removeItem(STACK_KEY)
-  sessionStorage.removeItem(CLARIFY_KEY)
+  removeItem(ANSWERS_KEY)
+  removeItem(COMPLETED_KEY)
+  removeItem(STACK_KEY)
+  removeItem(CLARIFY_KEY)
 }
 
 export function markCompleted() {
-  if (!canUseStorage()) return
-  sessionStorage.setItem(COMPLETED_KEY, new Date().toISOString())
+  writeItem(COMPLETED_KEY, new Date().toISOString())
 }
 
 export function hasCompletedQuiz() {
-  if (!canUseStorage()) return false
-  return Boolean(sessionStorage.getItem(COMPLETED_KEY))
+  return Boolean(readItem(COMPLETED_KEY))
+}
+
+/** Copy any leftover session-only quiz into localStorage so checkout return tabs can see it. */
+export function migrateQuizStorage() {
+  readItem(ANSWERS_KEY)
+  readItem(STACK_KEY)
+  readItem(CLARIFY_KEY)
+  readItem(COMPLETED_KEY)
 }

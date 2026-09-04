@@ -24,7 +24,11 @@ export function Compatibility() {
   const { editing, previewType, patchPages } = useEditMode()
   const compatPage = useSiteCopy().paywall.compatPage
   const draft = useTypeDraft(previewType)
-  const [unlocked, setUnlocked] = useState(() => isProductUnlocked('compat'))
+  const [unlocked, setUnlocked] = useState(() => {
+    if (isProductUnlocked('compat')) return true
+    const key = new URLSearchParams(window.location.search).get('key')
+    return Boolean(key && tryUnlockKey(key, 'compat'))
+  })
   const answers = useMemo(() => loadAnswers(), [])
   const complete = isQuizComplete(answers)
   const clarify = useMemo(() => loadClarifyAnswers(), [])
@@ -56,10 +60,27 @@ export function Compatibility() {
         />
         <section className="section">
           <div className="wrap screen empty-state">
-            <h1 className="serif-title">{compatPage.emptyTitle}</h1>
-            <p className="mono-stat">{compatPage.emptyStat}</p>
-            <p>{compatPage.emptyBody}</p>
-            <Button to="/quiz">{compatPage.beginQuiz}</Button>
+            {unlocked ? (
+              <>
+                <h1 className="serif-title">Unlocked — quiz missing in this tab</h1>
+                <p className="mono-stat">compatibility follows the type you scored</p>
+                <p>
+                  Payment worked. If the results tab is still open, refresh it, then open
+                  compatibility again. Otherwise take the quiz once more here.
+                </p>
+                <Button to="/results">Open results</Button>
+                <Button to="/quiz" variant="ghost">
+                  {compatPage.beginQuiz}
+                </Button>
+              </>
+            ) : (
+              <>
+                <h1 className="serif-title">{compatPage.emptyTitle}</h1>
+                <p className="mono-stat">{compatPage.emptyStat}</p>
+                <p>{compatPage.emptyBody}</p>
+                <Button to="/quiz">{compatPage.beginQuiz}</Button>
+              </>
+            )}
           </div>
         </section>
       </>
