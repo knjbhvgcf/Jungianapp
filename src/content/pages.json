@@ -48,7 +48,7 @@
       },
       {
         "q": "What is Your Type in Depth?",
-        "a": "The quiz, the eight scores, and the choice of leading and supporting functions stay free, while Your Type in Depth is a longer reading of why two functions were close, the weaker end of the type, Beebe’s eight roles, and notes on growth, which you can print."
+        "a": "The quiz, the eight scores, and the choice of leading and supporting functions stay free, while Your Type in Depth is a longer reading of the weaker end of the type, Beebe’s eight roles, and notes on growth, which you can print."
       },
       {
         "q": "What is the compatibility reading?",
@@ -94,7 +94,7 @@
       {
         "heading": "Your Type in Depth",
         "paragraphs": [
-          "The quiz, the eight scores, and a Hero / Parent pick stay free, while the close-score reading, Child and Anima, the full eight-role stack, and the longer chapters sit behind a one-time unlock. Set a Lemon Squeezy or Stripe Payment Link as VITE_DOSSIER_CHECKOUT_URL and put the fulfillment keys in VITE_DOSSIER_UNLOCK_KEYS. After payment, send people to /type-in-depth?key=their-key."
+          "The quiz, the eight scores, and a Hero / Parent pick stay free, while Child and Anima, the full eight-role stack, and the longer chapters sit behind a one-time unlock. Set a Lemon Squeezy or Stripe Payment Link as VITE_DOSSIER_CHECKOUT_URL and put the fulfillment keys in VITE_DOSSIER_UNLOCK_KEYS. After payment, send people to /type-in-depth?key=their-key."
         ]
       },
       {
@@ -133,13 +133,13 @@
     "unlockMap": "Your Type in Depth",
     "openCompat": "Open compatibility",
     "compatShort": "Compatibility",
-    "closeNote": "The longer reading of that split is in Your Type in Depth.",
+    "closeNote": "That split is already folded into the scores above.",
     "alsoClosePrefix": "Also close:",
     "mapEyebrow": "a longer reading",
     "mapTitle": "Your Type in Depth",
     "mapTitleLocked": "Your Type in Depth",
-    "mapBodyUnlocked": "Why two functions were close, the weaker end of the type, the eight roles, and notes on growth and shadow, written from the type you selected above.",
-    "mapBodyLocked": "The close-score reading, Child and Anima, the full eight-role stack, chapters, shadow work, and prompts. One-time unlock · {price}. The eight scores stay free.",
+    "mapBodyUnlocked": "The weaker end of the type, the eight roles, and notes on growth and shadow, written from the type you selected above.",
+    "mapBodyLocked": "Child and Anima, the full eight-role stack, chapters, shadow work, and prompts. One-time unlock · {price}. The eight scores stay free.",
     "mapCtaUnlocked": "Open Your Type in Depth",
     "mapCtaLocked": "Unlock Your Type in Depth · {price}",
     "compatEyebrow": "add-on",
@@ -158,9 +158,8 @@
     "map": {
       "eyebrow": "one-time unlock",
       "title": "Your Type in Depth",
-      "body": "The free page keeps the eight scores and a Hero / Parent pick, and Your Type in Depth is the rest of the reading: why two functions were close, Child and Anima, the eight-role stack, and the longer chapters. Compatibility is a separate add-on.",
+      "body": "The free page keeps the eight scores and a Hero / Parent pick, and Your Type in Depth is the rest of the reading: Child and Anima, the eight-role stack, and the longer chapters. Compatibility is a separate add-on.",
       "bullets": [
-        "The close-score reading after a follow-up",
         "Child, Anima, and the full eight-role stack",
         "Chapters, shadow work, and a printable reading"
       ],

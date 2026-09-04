@@ -1,18 +1,15 @@
 import { useState } from 'react'
 import { BeebeStack } from './BeebeStack'
 import { StackPicker } from './StackPicker'
-import { TieBreakPanel } from './TieBreakPanel'
 import { FUNCTIONS, type FunctionId } from '../data/functions'
 import type { BeebePlacement, FunctionScore, TypeMatch } from '../lib/scoring'
 import { useEditMode, useSiteCopy } from '../lib/editMode'
 import { Editable } from './Editable'
-import type { TieBreakReading } from '../lib/tieBreak'
 
 type MapExtrasProps = {
   selected: TypeMatch
   scores: FunctionScore[]
   beebe: BeebePlacement[]
-  readings: TieBreakReading[]
   hero: FunctionId
   parent: FunctionId
   image?: string
@@ -24,7 +21,6 @@ export function MapExtras({
   selected,
   scores,
   beebe,
-  readings,
   hero,
   parent,
   image,
@@ -51,8 +47,6 @@ export function MapExtras({
         onHeroChange={onHeroChange}
         onParentChange={onParentChange}
       />
-
-      <TieBreakPanel readings={readings} hero={hero} onUseHero={onHeroChange} />
 
       <article className="panel">
         <h2>The eight roles</h2>
@@ -88,10 +82,8 @@ export function MapExtras({
 
 export function MapExtrasTeaser({
   selected,
-  readings,
 }: {
   selected: TypeMatch
-  readings: TieBreakReading[]
 }) {
   const [hero, parent, child, anima] = selected.stack
   const { patchPages } = useEditMode()
@@ -135,19 +127,6 @@ export function MapExtrasTeaser({
           value={copy.teaserBeebe}
           onChange={(teaserBeebe) => patch({ teaserBeebe })}
         />
-        {readings.length ? (
-          <li>
-            Why {readings.map((reading) => `${reading.pair.a} / ${reading.pair.b}`).join(', ')}{' '}
-            scored close, and how the follow-up split them
-          </li>
-        ) : (
-          <Editable
-            as="li"
-            label="Close fallback"
-            value={copy.teaserCloseFallback}
-            onChange={(teaserCloseFallback) => patch({ teaserCloseFallback })}
-          />
-        )}
         <Editable
           as="li"
           label="Teaser chapters"

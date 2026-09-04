@@ -32,7 +32,6 @@ import { isProductUnlocked, productHref, tryUnlockKey, TYPE_IN_DEPTH_PATH } from
 import type { PersonalityType } from '../data/personalityTypes'
 import type { TypeMapCopy } from '../data/typeMaps'
 import type { BeebePlacement, FunctionScore, TypeMatch } from '../lib/scoring'
-import type { TieBreakReading } from '../lib/tieBreak'
 
 export function Dossier() {
   const [params] = useSearchParams()
@@ -235,7 +234,6 @@ export function Dossier() {
               quizSelected={quizSelected}
               scores={scores}
               beebe={beebe}
-              readings={readings}
               hero={hero}
               parent={parent}
               typeImage={typeImage}
@@ -247,7 +245,7 @@ export function Dossier() {
           ) : (
             <>
               {quizSelected ? (
-                <MapExtrasTeaser selected={quizSelected} readings={readings} />
+                <MapExtrasTeaser selected={quizSelected} />
               ) : null}
               <UnlockPanel product="map" onUnlocked={() => setUnlocked(true)} />
               <p>
@@ -276,7 +274,6 @@ function UnlockedReading({
   quizSelected,
   scores,
   beebe,
-  readings,
   hero,
   parent,
   typeImage,
@@ -291,7 +288,6 @@ function UnlockedReading({
   quizSelected?: TypeMatch
   scores: FunctionScore[]
   beebe: BeebePlacement[]
-  readings: TieBreakReading[]
   hero: FunctionId
   parent: FunctionId
   typeImage?: string
@@ -310,7 +306,6 @@ function UnlockedReading({
           selected={quizSelected}
           scores={scores}
           beebe={beebe}
-          readings={readings}
           hero={hero}
           parent={parent}
           image={typeImage}
