@@ -122,7 +122,6 @@ export type MapPageCopy = {
   antiTypeHeading: string
   antiTypeLead: string
   famousHeading: string
-  famousLead: string
   compatEyebrow: string
   compatTitle: string
   compatBody: string

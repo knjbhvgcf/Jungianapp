@@ -403,12 +403,6 @@ function UnlockedReading({
           />
           <Editable
             as="p"
-            label="Famous lead"
-            value={mapPage.famousLead}
-            onChange={(famousLead) => patchMap({ famousLead })}
-          />
-          <Editable
-            as="p"
             className="dossier-breaks"
             label="Famous"
             value={copy.famous}

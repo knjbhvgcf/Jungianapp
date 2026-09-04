@@ -69,7 +69,7 @@
         "description": "Under extreme stress can fixate on past details and failures, and can also become a source of grounding if it is given a small, chosen place."
       }
     ],
-    "famous": "Friedrich Nietzsche and Emily Dickinson are often read this way: an inner picture held so strictly that the outer world is either built around it, or refused."
+    "famous": "Friedrich Nietzsche and Emily Dickinson."
   },
   {
     "code": "INTP",
@@ -141,7 +141,7 @@
         "description": "Arrives as fate, doom, or a revelation that cannot be argued with. The deepest unconscious, and a possible later wisdom."
       }
     ],
-    "famous": "Albert Einstein and Marie Curie are often read this way: a private model taken out into specimens until the world has to rearrange around what the definition already knew."
+    "famous": "Albert Einstein and Marie Curie."
   },
   {
     "code": "ENTJ",
@@ -213,7 +213,7 @@
         "description": "Can erupt as a public feeling-storm or a ruthless use of the group. The most unconscious climate."
       }
     ],
-    "famous": "Napoleon Bonaparte and Margaret Thatcher are often read this way: a campaign that can be shown, with an inner picture of where it is still tending, and little patience for a we that will not decide."
+    "famous": "Napoleon Bonaparte and Margaret Thatcher."
   },
   {
     "code": "ENTP",
@@ -285,7 +285,7 @@
         "description": "May tyrannize in a sudden brutal plan, or collapse into impotence about ever getting anything done."
       }
     ],
-    "famous": "Socrates and Benjamin Franklin are often read this way: unused doors held open long enough for an idea to be tested, then dropped the moment it stops being interesting."
+    "famous": "Socrates and Benjamin Franklin."
   },
   {
     "code": "INFJ",
@@ -357,7 +357,7 @@
         "description": "The deepest unconscious function. Under extreme stress can fixate on past failures, details, or memories, but can also become a source of wisdom and grounding."
       }
     ],
-    "famous": "Fyodor Dostoevsky and Carl Jung are often read this way: one inner picture of where a life or a people is tending, then a climate built so others can inhabit it."
+    "famous": "Fyodor Dostoevsky and Carl Jung."
   },
   {
     "code": "INFP",
@@ -429,7 +429,7 @@
         "description": "Takes the loved thing apart until nothing is allowed to be true. Understanding used as a wound."
       }
     ],
-    "famous": "J.R.R. Tolkien and Virginia Woolf are often read this way: a private standard of worth looking for an unused door that can still be lived, rather than a metric that would prove it."
+    "famous": "J.R.R. Tolkien and Virginia Woolf."
   },
   {
     "code": "ENFJ",
@@ -501,7 +501,7 @@
         "description": "Organizes people like inventory, or panics that nothing is under control. The unconscious metric."
       }
     ],
-    "famous": "Martin Luther King Jr. and Maya Angelou are often read this way: the climate of a we given an inner picture of where that we is still tending."
+    "famous": "Martin Luther King Jr. and Maya Angelou."
   },
   {
     "code": "ENFP",
@@ -573,7 +573,7 @@
         "description": "Takes the loved path apart until nothing is allowed to be chosen."
       }
     ],
-    "famous": "Oscar Wilde and Robin Williams are often read this way: a field of unused doors, parented by a private yes that chooses which possibility is still true."
+    "famous": "Oscar Wilde and Robin Williams."
   },
   {
     "code": "ISTJ",
@@ -645,7 +645,7 @@
         "description": "Can become trapped in negative predictions and rigid future assumptions."
       }
     ],
-    "famous": "Queen Elizabeth II and George Washington are often read this way: what has already been lived, given a standard others can check, so continuity can be kept and, when needed, revised."
+    "famous": "Queen Elizabeth II and George Washington."
   },
   {
     "code": "ISFJ",
@@ -717,7 +717,7 @@
         "description": "Pronounces a fate: that none of the care meant anything. The deepest unconscious, and a possible later truth."
       }
     ],
-    "famous": "Beatrix Potter and Clara Barton are often read this way: a known world of care, given a we it can serve, so the archive stays human when it has to grow."
+    "famous": "Beatrix Potter and Clara Barton."
   },
   {
     "code": "ESTJ",
@@ -789,7 +789,7 @@
         "description": "Uses the group as a weapon, or collapses into a public feeling that cannot be controlled."
       }
     ],
-    "famous": "Julius Caesar and Henry Ford are often read this way: the shared world run as a finished plan, with yesterday’s body as the proof that the plan can be repeated."
+    "famous": "Julius Caesar and Henry Ford."
   },
   {
     "code": "ESFJ",
@@ -861,7 +861,7 @@
         "description": "Organizes the family like a factory, or panics at any unmeasured care."
       }
     ],
-    "famous": "Dolly Parton and Hugh Jackman are often read this way: a we kept warm and workable, with a memory of how we have done this before that the room can still stand in."
+    "famous": "Dolly Parton and Hugh Jackman."
   },
   {
     "code": "ISTP",
@@ -933,7 +933,7 @@
         "description": "Arrives as a moral wound or a silent, absolute cut. The deepest unconscious value."
       }
     ],
-    "famous": "Amelia Earhart and Clint Eastwood are often read this way: the object taken apart until it makes sense, then handled in the room as if the room were a workshop."
+    "famous": "Amelia Earhart and Clint Eastwood."
   },
   {
     "code": "ISFP",
@@ -1005,7 +1005,7 @@
         "description": "Takes the love apart until nothing is allowed to be true."
       }
     ],
-    "famous": "Frida Kahlo and Wolfgang Amadeus Mozart are often read this way: a private standard of worth given a body in the present — color, sound, the scene that is actually here."
+    "famous": "Frida Kahlo and Wolfgang Amadeus Mozart."
   },
   {
     "code": "ESTP",
@@ -1077,7 +1077,7 @@
         "description": "Tyrannizes the plan, or panics at chaos the hero usually enjoys."
       }
     ],
-    "famous": "Ernest Hemingway and Madonna are often read this way: the scene as it is, then a model of what will work, with little interest in a yesterday that cannot be used."
+    "famous": "Ernest Hemingway and Madonna."
   },
   {
     "code": "ESFP",
@@ -1149,6 +1149,6 @@
         "description": "Uses the room: charm as a door closing, or a collapse into needing the crowd."
       }
     ],
-    "famous": "Marilyn Monroe and Elvis Presley are often read this way: the present as a stage that must be lived, with a private yes underneath that still chooses what is worth performing."
+    "famous": "Marilyn Monroe and Elvis Presley."
   }
 ]
