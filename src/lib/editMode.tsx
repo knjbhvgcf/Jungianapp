@@ -177,7 +177,7 @@ export function EditModeProvider({ children }: { children: ReactNode }) {
       await saveCmsFile('types', types, password)
       await saveCmsFile('guides', guides, password)
       setDirty(false)
-      setMessage('Saved. Refresh if a page still shows the old wording.')
+      setMessage('Saved on this computer. jungology.com updates after a git push.')
     } catch (error) {
       setMessage(error instanceof Error ? error.message : 'Save failed')
     } finally {

@@ -23,7 +23,8 @@ export function clearCmsPassword() {
 export async function fetchCmsStatus(): Promise<CmsStatus> {
   try {
     const response = await fetch('/__cms/status')
-    if (!response.ok) {
+    const type = response.headers.get('content-type') ?? ''
+    if (!response.ok || !type.includes('application/json')) {
       return { writable: false, configured: false, usingDefault: false }
     }
     return (await response.json()) as CmsStatus

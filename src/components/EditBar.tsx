@@ -41,7 +41,11 @@ export function EditBar() {
   return (
     <div className="edit-bar" role="region" aria-label="Edit mode">
       <p className="edit-bar__status">
-        {edit.dirty ? 'Unsaved changes' : 'Editing the live pages'}
+        {edit.status && !edit.status.writable
+          ? 'This is the hosted site — Save cannot write files here. Use npm run dev.'
+          : edit.dirty
+            ? 'Unsaved changes on this computer'
+            : 'Editing local files'}
       </p>
       {showTypePicker(pathname) ? (
         <label className="edit-bar__type">
@@ -56,7 +60,12 @@ export function EditBar() {
         </label>
       ) : null}
       <div className="edit-bar__actions">
-        <button type="button" className="edit-bar__btn" disabled={edit.busy} onClick={() => void onSave()}>
+        <button
+          type="button"
+          className="edit-bar__btn"
+          disabled={edit.busy || edit.status?.writable === false}
+          onClick={() => void onSave()}
+        >
           {edit.busy ? 'Saving…' : 'Save'}
         </button>
         <Link to="/admin" className="edit-bar__btn edit-bar__btn--ghost">

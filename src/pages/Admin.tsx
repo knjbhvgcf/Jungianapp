@@ -115,7 +115,7 @@ export function Admin() {
       } else {
         await saveCmsFile('followup', followup, password)
       }
-      setMessage('Saved. The site will pick this up on the next refresh.')
+      setMessage('Saved on this computer. jungology.com updates after a git push.')
     } catch (error) {
       setMessage(error instanceof Error ? error.message : 'Save failed')
     } finally {

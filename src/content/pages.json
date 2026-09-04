@@ -4,26 +4,26 @@
     "seoDescription": "Jungology is a free Jung Functions Quiz: an educational reading of Jung’s eight function-attitudes — thinking, feeling, sensation, and intuition, each extraverted or introverted. No account.",
     "title": "Jungology",
     "stat": "8 functions · 48 questions · John Beebe model",
-    "lede": "The statements follow Psychological Types, taking each function as it turns toward the outer world or toward the inner impression a thing leaves, and what you get is a sketch of how the psyche orients rather than a verdict on who you are, which is a reading, and therefore incomplete, as all such readings are.",
+    "lede": "The statements follow Psychological Types by Carl Jung, taking each function as it turns toward the outer world or toward the inner impression a thing leaves, and what you get is a sketch of how the psyche orients rather than a verdict on who you are, which is a reading, and therefore incomplete, as all such readings are.",
     "image": "/home/hero.jpg?v=1787110066816",
     "beginQuiz": "Begin the quiz",
     "howHeading": "How it works",
     "steps": [
       {
         "title": "Answer forty-eight statements",
-        "body": "Each one is a single claim about how you notice, decide, or take in a situation. Tap how true it is. The whole set takes most people about eight minutes."
+        "body": "Each one is a single claim about how you notice, decide, or take action in a situation. Tap how true it is. The whole set takes most people about eight minutes."
       },
       {
         "title": "A short follow-up, only if needed",
-        "body": "If two answers finish too close for a type, you get a few forced choices at the end — not another full quiz — and then the reading."
+        "body": "If two answers finish too close for a type, you get a few forced choices at the end, and then the reading."
       },
       {
         "title": "Read it as a map",
-        "body": "The closest type is then shown as eight archetypal roles, from the leading function to its most unconscious counterpart, which is a map of the psyche, not a fixed definition of the person."
+        "body": "The closest type is then shown as eight archetypal roles, from the leading function to its most unconscious counterpart, which is a map of the psyche."
       }
     ],
     "functionsHeading": "The eight function-attitudes",
-    "functionsIntro": "Jung argued that we all use every function, though we prefer some and struggle with others, and extraversion and introversion here mean where the function points — toward the outer world, or toward the inner impression a thing leaves — not whether you are sociable.",
+    "functionsIntro": "Jung argued that we all use every function, though we prefer some and struggle with others, and extraversion and introversion here mean where the function points — toward the outer world, or toward the inner impression a thing leaves — not whether you are sociable or \"anti-social\".",
     "faqHeading": "Frequently asked questions",
     "faq": [
       {
