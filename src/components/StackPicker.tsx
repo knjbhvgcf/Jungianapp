@@ -69,8 +69,8 @@ export function StackPicker({
       </p>
 
       <RoleRow
-        label={full ? 'Leading function (Hero)' : 'Leads'}
-        group="Leading function"
+        label={full ? 'Hero / Heroine (1st)' : 'Leads'}
+        group="Hero / Heroine"
         options={scores.map((score) => score.id)}
         selected={hero}
         percentById={percentById}
@@ -80,8 +80,8 @@ export function StackPicker({
       />
 
       <RoleRow
-        label={full ? 'Supporting function (Parent)' : 'Supports'}
-        group="Supporting function"
+        label={full ? 'Parent (2nd)' : 'Supports'}
+        group="Parent"
         options={parents}
         selected={parent}
         percentById={percentById}
@@ -93,8 +93,8 @@ export function StackPicker({
       {full && child && anima ? (
         <>
           <RoleRow
-            label="Relief function (Child)"
-            group="Child function"
+            label="Eternal Child (3rd)"
+            group="Eternal Child"
             options={children}
             selected={child}
             percentById={percentById}
@@ -107,8 +107,8 @@ export function StackPicker({
           />
 
           <RoleRow
-            label="Inferior function (Anima)"
-            group="Anima function"
+            label="Inferior (Anima / Animus) (4th)"
+            group="Inferior"
             options={animas}
             selected={anima}
             percentById={percentById}
@@ -133,8 +133,8 @@ export function StackPicker({
             </Link>
           </h3>
           <p className="mono-stat">
-            {preview.code.toLowerCase()} · hero {hero} ({percentById[hero] ?? 0}%) · parent {parent}{' '}
-            ({percentById[parent] ?? 0}%)
+            {preview.code.toLowerCase()} · Hero / Heroine {hero} ({percentById[hero] ?? 0}%) · Parent{' '}
+            {parent} ({percentById[parent] ?? 0}%)
           </p>
           <p className="result-preview__lede">{preview.summary}</p>
         </div>

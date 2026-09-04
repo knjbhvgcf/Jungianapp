@@ -19,7 +19,7 @@
       },
       {
         "title": "Read it as a map",
-        "body": "The closest type is then shown as eight archetypal roles, from the leading function to its most unconscious counterpart, which is a map of the psyche, not a fixed definition of the person."
+        "body": "The closest type is then shown as eight archetypal roles: the Ego Functions (Conscious) — Hero / Heroine, Parent, Eternal Child, Inferior (Anima / Animus) — and the Shadow Functions (Unconscious) — Opposing Nemesis, Critic, Trickster, Demon — which is a map of the psyche, not a fixed definition of the person."
       }
     ],
     "functionsHeading": "The eight function-attitudes",
@@ -48,7 +48,7 @@
       },
       {
         "q": "What is Your Type in Depth?",
-        "a": "The quiz, the eight scores, and the choice of leading and supporting functions stay free, while Your Type in Depth is a longer reading of the weaker end of the type, Beebe’s eight roles, and notes on growth, which you can print."
+        "a": "The quiz, the eight scores, and the choice of Hero / Heroine and Parent stay free, while Your Type in Depth is a longer reading of the weaker end of the type, Beebe’s eight roles, and notes on growth, which you can print."
       },
       {
         "q": "What is the compatibility reading?",
@@ -81,26 +81,26 @@
       {
         "heading": "Beebe’s eight roles",
         "paragraphs": [
-          "Beebe argued that a type is not four functions but eight, each carrying an archetypal charge: Hero, Good Parent, Puer/Puella (Child), Anima/Animus, Opposing Personality, Senex/Witch, Trickster, and Demon/Daimon. The shadow four are the same functions as the ego four, with the opposite attitude. The quiz first scores all eight attitudes, then finds the classical stack whose Beebe pattern best fits that profile, with the leading function weighted first."
+          "Beebe argued that a type is not four functions but eight, each carrying an archetypal charge. The Ego Functions (Conscious) are Hero / Heroine (1st), Parent (2nd), Eternal Child (3rd), and Inferior (Anima / Animus) (4th). The Shadow Functions (Unconscious) are Opposing Nemesis (5th), Critic (6th), Trickster (7th), and Demon (8th). The shadow four are the same functions as the ego four, with the opposite attitude. The quiz first scores all eight attitudes, then finds the classical stack whose Beebe pattern best fits that profile, with the Hero / Heroine weighted first."
         ]
       },
       {
         "heading": "How a type is suggested",
         "paragraphs": [
-          "Each of the sixteen types is scored with the leading function first, so a type whose dominant function is not your strongest score is set aside, while the supporting function is rewarded next, the third moderately, and the inferior only slightly. The model also wants the lead to outrank its opposite-attitude twin. If two functions score close, free results let you pick the lead and the support, and Your Type in Depth opens Child, Anima, and the full eight-role stack.",
+          "Each of the sixteen types is scored with the Hero / Heroine first, so a type whose leading function is not your strongest score is set aside, while the Parent is rewarded next, the Eternal Child moderately, and the Inferior (Anima / Animus) only slightly. The model also wants the lead to outrank its opposite-attitude twin. If two functions score close, free results let you pick the Hero / Heroine and the Parent, and Your Type in Depth opens the Eternal Child, Inferior (Anima / Animus), and the full eight-role stack.",
           "When two functions land together — Fi and Ti both high, or Ni and Ne — the totals are not enough, so after the forty-eight the quiz asks a short follow-up: five forced choices between those two, not another set of ratings. Those answers are folded into the percentages, the winner’s bar rises and the other falls, and that is what names the lead. If they still split, you can try a different lead on the results page."
         ]
       },
       {
         "heading": "Your Type in Depth",
         "paragraphs": [
-          "The quiz, the eight scores, and a Hero / Parent pick stay free, while Child and Anima, the full eight-role stack, and the longer chapters sit behind a one-time unlock. Set a Lemon Squeezy or Stripe Payment Link as VITE_DOSSIER_CHECKOUT_URL and put the fulfillment keys in VITE_DOSSIER_UNLOCK_KEYS. After payment, send people to /type-in-depth?key=their-key."
+          "The quiz, the eight scores, and a Hero / Heroine and Parent pick stay free, while Eternal Child and Inferior (Anima / Animus), the full eight-role stack, and the longer chapters sit behind a one-time unlock. Set a Lemon Squeezy or Stripe Payment Link as VITE_DOSSIER_CHECKOUT_URL and put the fulfillment keys in VITE_DOSSIER_UNLOCK_KEYS. After payment, send people to /type-in-depth?key=their-key."
         ]
       },
       {
         "heading": "Compatibility add-on",
         "paragraphs": [
-          "Compatibility is a second, separate unlock. It places the other fifteen types on your Beebe stack (same stack, hero and parent swapped, anima pull, and so on). Use VITE_COMPAT_CHECKOUT_URL and VITE_COMPAT_UNLOCK_KEYS, and send people to /compatibility?key=their-key. A Type in Depth key will not open compatibility, and a compatibility key will not open Your Type in Depth."
+          "Compatibility is a second, separate unlock. It places the other fifteen types on your Beebe stack (same stack, Hero / Heroine and Parent swapped, Inferior (Anima / Animus) pull, and so on). Use VITE_COMPAT_CHECKOUT_URL and VITE_COMPAT_UNLOCK_KEYS, and send people to /compatibility?key=their-key. A Type in Depth key will not open compatibility, and a compatibility key will not open Your Type in Depth."
         ]
       },
       {
@@ -139,13 +139,13 @@
     "mapTitle": "Your Type in Depth",
     "mapTitleLocked": "Your Type in Depth",
     "mapBodyUnlocked": "The weaker end of the type, the eight roles, and notes on growth and shadow, written from the type you selected above.",
-    "mapBodyLocked": "Child and Anima, the full eight-role stack, chapters, shadow work, and prompts. One-time unlock · {price}. The eight scores stay free.",
+    "mapBodyLocked": "Eternal Child and Inferior (Anima / Animus), the full eight-role stack, chapters, shadow work, and prompts. One-time unlock · {price}. The eight scores stay free.",
     "mapCtaUnlocked": "Open Your Type in Depth",
     "mapCtaLocked": "Unlock Your Type in Depth · {price}",
     "compatEyebrow": "add-on",
     "compatTitle": "Compatibility",
     "compatBodyUnlocked": "How this type meets the other fifteen, read through the roles already living in you, which is a separate purchase from Your Type in Depth.",
-    "compatBodyLocked": "A separate reading of how the other types sit in your stack — same lead, hero and parent swapped, anima pull, and the rest — not a ranking of who you should date. One-time unlock · {price}.",
+    "compatBodyLocked": "A separate reading of how the other types sit in your stack — same lead, Hero / Heroine and Parent swapped, Inferior (Anima / Animus) pull, and the rest — not a ranking of who you should date. One-time unlock · {price}.",
     "compatCtaUnlocked": "Open compatibility",
     "compatCtaLocked": "Unlock compatibility · {price}",
     "retake": "Retake quiz",
@@ -158,9 +158,9 @@
     "map": {
       "eyebrow": "one-time unlock",
       "title": "Your Type in Depth",
-      "body": "The free page keeps the eight scores and a Hero / Parent pick, and Your Type in Depth is the rest of the reading: Child and Anima, the eight-role stack, and the longer chapters. Compatibility is a separate add-on.",
+      "body": "The free page keeps the eight scores and a Hero / Heroine and Parent pick, and Your Type in Depth is the rest of the reading: Eternal Child and Inferior (Anima / Animus), the eight-role stack, and the longer chapters. Compatibility is a separate add-on.",
       "bullets": [
-        "Child, Anima, and the full eight-role stack",
+        "Eternal Child, Inferior (Anima / Animus), and the full eight-role stack",
         "Chapters, shadow work, and a printable reading"
       ],
       "cta": "Unlock Your Type in Depth",
@@ -173,7 +173,7 @@
     "compat": {
       "eyebrow": "add-on",
       "title": "Compatibility",
-      "body": "A separate reading of how your type meets all sixteen types, not as a ranking of who you should date, but as a picture of where their leading function already sits in you — same hero, hero and parent swapped, anima pull, and the rest — which Your Type in Depth does not include.",
+      "body": "A separate reading of how your type meets all sixteen types, not as a ranking of who you should date, but as a picture of where their leading function already sits in you — same Hero / Heroine, Hero / Heroine and Parent swapped, Inferior (Anima / Animus) pull, and the rest — which Your Type in Depth does not include.",
       "bullets": [
         "Every type placed on your Beebe roles",
         "Likely gift and friction, not a ranking",
@@ -197,21 +197,21 @@
       "seoDescription": "A Beebe eight-role reading of your Jungian function stack, with development notes and prompts.",
       "eyebrow": "your type in depth",
       "teaserHeading": "In Your Type in Depth",
-      "teaserBody": "Free results stop at the eight scores and a Hero / Parent pick, and Your Type in Depth opens the rest of the reading for this type.",
-      "teaserRoles": "All four ego roles",
-      "teaserBeebe": "The eight Beebe roles, in order or by strength",
+      "teaserBody": "Free results stop at the eight scores and a Hero / Heroine and Parent pick, and Your Type in Depth opens the rest of the reading for this type.",
+      "teaserRoles": "The Ego Functions (Conscious)",
+      "teaserBeebe": "The eight Beebe roles — ego (conscious) and shadow (unconscious) — in order or by strength",
       "teaserCloseFallback": "The close-score reading when two functions land together",
       "teaserChapters": "Chapters, shadow work, and prompts for this type",
       "backToResults": "Back to free results",
       "auxiliaryHeading": "Auxiliary healing",
-      "auxiliaryLead": "Do not try to develop the inferior function. That would be like telling a fish to learn how to live on land. The work, for every type, is the auxiliary — Beebe’s good parent, the sublimation function — whose basic purpose is to heal the schism between the dominant and the inferior.",
+      "auxiliaryLead": "Do not try to develop the Inferior (Anima / Animus). That would be like telling a fish to learn how to live on land. The work, for every type, is the Parent — Beebe’s 2nd position, the sublimation function — whose basic purpose is to heal the schism between the Hero / Heroine and the Inferior.",
       "antiTypeHeading": "Expressing your anti-type during stress",
       "antiTypeLead": "Under stress you can start expressing your anti-type — the type whose dominant and auxiliary are the inverted attitudes of yours. Introversion or extraversion stays, and so does sensing or intuition; thinking/feeling and judging/perceiving flip. What shows is a crude, temporary version of that other type. It is stress. It is not a new type.",
       "famousHeading": "Famous",
       "famousLead": "These lives are often typed this way. It is a sketch, not a census and not a diagnosis.",
       "compatEyebrow": "add-on",
       "compatTitle": "Compatibility",
-      "compatBody": "A separate unlock. How this stack meets all sixteen types — anima pull, hero and parent swapped, demon, and the rest — which is not included in Your Type in Depth.",
+      "compatBody": "A separate unlock. How this stack meets all sixteen types — Inferior (Anima / Animus) pull, Hero / Heroine and Parent swapped, Demon, and the rest — which is not included in Your Type in Depth.",
       "compatCta": "Open compatibility",
       "disclaimer": "Educational reading of Jung and Beebe, not psychotherapy and not the MBTI® instrument.",
       "print": "Print / save PDF",

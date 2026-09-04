@@ -6,7 +6,12 @@ import { archetypeFrom, useEditMode, useTypeDraft } from '../lib/editMode'
 import { archetypePage } from '../data/archetypePages'
 import { Editable } from './Editable'
 
-const STACK_LABELS = ['Dominant', 'Auxiliary', 'Tertiary', 'Inferior'] as const
+const STACK_LABELS = [
+  'Hero / Heroine',
+  'Parent',
+  'Eternal Child',
+  'Inferior (Anima / Animus)',
+] as const
 
 export function ArchetypeSheet({ type }: { type: PersonalityType }) {
   const draft = useTypeDraft(type.code)
@@ -60,7 +65,7 @@ export function ArchetypeSheet({ type }: { type: PersonalityType }) {
       </section>
 
       <p className="archetype-callout">
-        The dominant function is {hero} —{' '}
+        The Hero / Heroine is {hero} —{' '}
         <Editable
           as="span"
           label="Dominant name"
@@ -79,12 +84,12 @@ export function ArchetypeSheet({ type }: { type: PersonalityType }) {
         ))}
       </ul>
       <blockquote className="archetype-quote">
-        A {hero}-dominant person often asks:{' '}
+        A {hero} Hero / Heroine often asks:{' '}
         {heroPortrait.asks.map((ask) => `“${ask}”`).join(' ')}
       </blockquote>
 
       <p className="archetype-callout">
-        The auxiliary function is {parent} —{' '}
+        The Parent is {parent} —{' '}
         <Editable
           as="span"
           label="Auxiliary name"
@@ -122,14 +127,14 @@ export function ArchetypeSheet({ type }: { type: PersonalityType }) {
       />
 
       <RoleTable
-        title="Main functions"
+        title="The Ego Functions (Conscious)"
         rows={page.roles.slice(0, 4)}
         offset={0}
         ids={[hero, parent, child, anima]}
         code={type.code}
       />
       <RoleTable
-        title="The shadow functions"
+        title="The Shadow Functions (Unconscious)"
         rows={page.roles.slice(4)}
         offset={4}
         ids={[

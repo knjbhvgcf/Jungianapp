@@ -6,11 +6,7 @@ type BeebeStackProps = {
   order?: 'roles' | 'strength'
 }
 
-export function BeebeStack({ placements, order = 'roles' }: BeebeStackProps) {
-  const items =
-    order === 'strength'
-      ? [...placements].sort((a, b) => b.percent - a.percent || a.position - b.position)
-      : placements
+function RoleList({ items }: { items: BeebePlacement[] }) {
   return (
     <ol className="beebe-list">
       {items.map((placement) => {
@@ -26,7 +22,9 @@ export function BeebeStack({ placements, order = 'roles' }: BeebeStackProps) {
             <div>
               <p className="beebe-list__role">
                 {placement.role.full}
-                <span className="beebe-list__ring">{placement.role.ring}</span>
+                <span className="beebe-list__ring">
+                  {placement.role.ring === 'ego' ? 'conscious' : 'unconscious'}
+                </span>
               </p>
               <p className="beebe-list__fn">
                 <strong>{fn.id}</strong> {fn.name}
@@ -38,5 +36,24 @@ export function BeebeStack({ placements, order = 'roles' }: BeebeStackProps) {
         )
       })}
     </ol>
+  )
+}
+
+export function BeebeStack({ placements, order = 'roles' }: BeebeStackProps) {
+  if (order === 'strength') {
+    const items = [...placements].sort((a, b) => b.percent - a.percent || a.position - b.position)
+    return <RoleList items={items} />
+  }
+
+  const ego = placements.filter((item) => item.role.ring === 'ego')
+  const shadow = placements.filter((item) => item.role.ring === 'shadow')
+
+  return (
+    <>
+      <p className="beebe-ring-heading">The Ego Functions (Conscious)</p>
+      <RoleList items={ego} />
+      <p className="beebe-ring-heading">The Shadow Functions (Unconscious)</p>
+      <RoleList items={shadow} />
+    </>
   )
 }

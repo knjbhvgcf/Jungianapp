@@ -905,6 +905,17 @@ a {
   font-size: 0.8rem;
 }
 
+.beebe-ring-heading {
+  margin: 1.4rem 0 0.55rem;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+
+.beebe-ring-heading:first-child {
+  margin-top: 0;
+}
+
 .beebe-list {
   margin: 0 0 1rem;
   padding: 0;

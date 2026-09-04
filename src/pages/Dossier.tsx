@@ -483,7 +483,7 @@ function UnlockedReading({
           <h2>Close second</h2>
           <p>
             The scoring model also liked <strong>{runnerUp.title}</strong> ({runnerUp.code}
-            ), hero {runnerUp.stack[0]} with parent {runnerUp.stack[1]}, and if two
+            ), Hero / Heroine {runnerUp.stack[0]} with Parent {runnerUp.stack[1]}, and if two
             functions scored close you can try that type above and the chapters will
             follow.
           </p>

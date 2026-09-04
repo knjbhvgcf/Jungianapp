@@ -139,7 +139,7 @@ export function Results() {
     const lines = [
       `Jungology · Jung Functions Quiz · Psychological Types + Beebe`,
       `${selectedCode} ${selectedTitle} (${selectedConfidence}% fit)`,
-      `Hero: ${heroFn} · Parent: ${parentFn}`,
+      `Hero / Heroine: ${heroFn} · Parent: ${parentFn}`,
       `Differentiation: ${differentiation ?? ''}`,
       '',
       ...scoreLines,

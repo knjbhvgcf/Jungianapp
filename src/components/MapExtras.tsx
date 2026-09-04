@@ -56,8 +56,8 @@ export function MapExtras({
       <details className="stack-fold" open={editing || undefined}>
         <summary>The eight roles</summary>
         <p className="panel__intro">
-          The chart follows the type you selected, and you can switch to strength order to see
-          the same eight roles sorted by your scores.
+          The Ego Functions (Conscious) and The Shadow Functions (Unconscious). Switch to
+          strength order to see the same eight roles sorted by your scores.
         </p>
         <div className="order-toggle" role="group" aria-label="Stack order">
           <button
@@ -77,7 +77,8 @@ export function MapExtras({
         </div>
         <BeebeStack placements={beebe} order={order} />
         <p>
-          Hero <strong>{FUNCTIONS[hero].id}</strong> with Parent <strong>{FUNCTIONS[parent].id}</strong>{' '}
+          Hero / Heroine <strong>{FUNCTIONS[hero].id}</strong> with Parent{' '}
+          <strong>{FUNCTIONS[parent].id}</strong>{' '}
           is the working pair of this type, and the other six roles follow from that pair.
         </p>
       </details>

@@ -17,7 +17,12 @@ import {
 import { TYPE_IN_DEPTH_PATH } from '../lib/unlock'
 import { NotFound } from './NotFound'
 
-const STACK_LABELS = ['Hero', 'Parent', 'Child', 'Inferior'] as const
+const STACK_LABELS = [
+  'Hero / Heroine',
+  'Parent',
+  'Eternal Child',
+  'Inferior (Anima / Animus)',
+] as const
 
 export function TypesIndex() {
   const types = usePersonalityTypes()
