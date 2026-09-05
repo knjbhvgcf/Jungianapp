@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import type { Plugin } from 'vite'
+import { parseGuideInline } from './src/lib/guideMarkup.ts'
 import { writeSitemap } from './sitemap.ts'
 
 type Guide = {
@@ -22,14 +23,28 @@ function escapeHtml(value: string) {
     .replaceAll('"', '&quot;')
 }
 
+function inlineHtml(text: string) {
+  return parseGuideInline(text)
+    .map((part) => {
+      const value = escapeHtml(part.value)
+      if (part.type === 'strong') return `<strong>${value}</strong>`
+      if (part.type === 'em') return `<em>${value}</em>`
+      return value
+    })
+    .join('')
+}
+
 function articleHtml(guide: Guide) {
   const sections = guide.sections
-    .map(
-      (section) =>
-        `<h2>${escapeHtml(section.heading)}</h2>${section.paragraphs
-          .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
-          .join('')}`,
-    )
+    .map((section) => {
+      const heading = section.heading
+        ? `<h2>${escapeHtml(section.heading)}</h2>`
+        : ''
+      const paragraphs = section.paragraphs
+        .map((paragraph) => `<p>${inlineHtml(paragraph)}</p>`)
+        .join('')
+      return `${heading}${paragraphs}`
+    })
     .join('')
 
   return `<article class="section"><div class="wrap prose"><p class="eyebrow">${escapeHtml(guide.eyebrow)}</p><h1 class="serif-title">${escapeHtml(guide.title)}</h1><p class="mono-stat">${escapeHtml(guide.stat)}</p><p class="lede">${escapeHtml(guide.lede)}</p>${sections}<p><a href="/quiz">Begin the quiz</a></p></div></article>`

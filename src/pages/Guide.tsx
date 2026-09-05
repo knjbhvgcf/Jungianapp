@@ -1,9 +1,20 @@
+import type { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { Editable, EditSeo } from '../components/Editable'
 import { Seo } from '../components/Seo'
 import { useEditMode, useGuidesDraft } from '../lib/editMode'
+import { parseGuideInline } from '../lib/guideMarkup'
 import { NotFound } from './NotFound'
+
+function GuideInline({ text }: { text: string }) {
+  const nodes: ReactNode[] = parseGuideInline(text).map((part, index) => {
+    if (part.type === 'strong') return <strong key={index}>{part.value}</strong>
+    if (part.type === 'em') return <em key={index}>{part.value}</em>
+    return <span key={index}>{part.value}</span>
+  })
+  return <>{nodes}</>
+}
 
 function useGuide(slug: string) {
   return useGuidesDraft().find((guide) => guide.slug === slug)
@@ -81,40 +92,48 @@ export function GuidePage() {
           />
           {guide.sections.map((section, sectionIndex) => (
             <div key={sectionIndex}>
-              <Editable
-                as="h2"
-                label={`Section ${sectionIndex + 1} heading`}
-                value={section.heading}
-                onChange={(heading) =>
-                  patch({
-                    sections: guide.sections.map((item, index) =>
-                      index === sectionIndex ? { ...item, heading } : item,
-                    ),
-                  })
-                }
-              />
-              {section.paragraphs.map((paragraph, paragraphIndex) => (
+              {editing || section.heading ? (
                 <Editable
-                  key={paragraphIndex}
-                  as="p"
-                  label={`Section ${sectionIndex + 1} paragraph ${paragraphIndex + 1}`}
-                  value={paragraph}
-                  onChange={(next) =>
+                  as="h2"
+                  label={`Section ${sectionIndex + 1} heading`}
+                  value={section.heading}
+                  onChange={(heading) =>
                     patch({
                       sections: guide.sections.map((item, index) =>
-                        index === sectionIndex
-                          ? {
-                              ...item,
-                              paragraphs: item.paragraphs.map((entry, entryIndex) =>
-                                entryIndex === paragraphIndex ? next : entry,
-                              ),
-                            }
-                          : item,
+                        index === sectionIndex ? { ...item, heading } : item,
                       ),
                     })
                   }
                 />
-              ))}
+              ) : null}
+              {section.paragraphs.map((paragraph, paragraphIndex) =>
+                editing ? (
+                  <Editable
+                    key={paragraphIndex}
+                    as="p"
+                    label={`Section ${sectionIndex + 1} paragraph ${paragraphIndex + 1}`}
+                    value={paragraph}
+                    onChange={(next) =>
+                      patch({
+                        sections: guide.sections.map((item, index) =>
+                          index === sectionIndex
+                            ? {
+                                ...item,
+                                paragraphs: item.paragraphs.map((entry, entryIndex) =>
+                                  entryIndex === paragraphIndex ? next : entry,
+                                ),
+                              }
+                            : item,
+                        ),
+                      })
+                    }
+                  />
+                ) : (
+                  <p key={paragraphIndex}>
+                    <GuideInline text={paragraph} />
+                  </p>
+                ),
+              )}
             </div>
           ))}
           <p>
@@ -159,7 +178,7 @@ export function GuidesIndex() {
     <>
       <Seo
         title="Jungian function guides | Jung Functions Quiz"
-        description="Read Jung’s eight function-attitudes, how this quiz differs from MBTI, and the close pairs the items are built to separate."
+        description="Read Jung’s eight function-attitudes, how this quiz differs from MBTI, the close pairs the items are built to separate, and type comparisons such as INFP vs INFJ."
         path="/guides"
       />
       <article className="section">

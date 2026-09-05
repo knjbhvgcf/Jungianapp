@@ -81,12 +81,12 @@
   {
     "slug": "ni-vs-ne",
     "seoTitle": "Ni vs Ne: Introverted and Extraverted Intuition",
-    "seoDescription": "The difference between introverted intuition (Ni) and extraverted intuition (Ne): one inner trajectory versus a field of outer possibilities, and how a quiz can tell them apart.",
+    "seoDescription": "The difference between introverted intuition (Ni) and extraverted intuition (Ne): one inner trajectory vs a field of outer possibilities, and how a quiz can tell them apart.",
     "eyebrow": "Ni · Ne",
-    "title": "Ni versus Ne",
+    "title": "Ni vs Ne",
     "stat": "same function, opposite attitude",
     "lede": "Both attitudes of intuition look ahead of the given facts, which is why they are so often confused, and the difference is not how imaginative you are but where the possibility is seen — as one inner picture, or as a field of outer forks that are not yet real.",
-    "related": ["jungian-cognitive-functions", "si-vs-se", "fi-vs-ti"],
+    "related": ["jungian-cognitive-functions", "infj-vs-infp", "fi-vs-ti"],
     "sections": [
       {
         "heading": "Where each one looks",
@@ -120,12 +120,12 @@
   {
     "slug": "fi-vs-ti",
     "seoTitle": "Fi vs Ti: Introverted Feeling and Introverted Thinking",
-    "seoDescription": "The difference between introverted feeling (Fi) and introverted thinking (Ti): a private standard of worth versus an inner model that has to be consistent, and how to tell them apart.",
+    "seoDescription": "The difference between introverted feeling (Fi) and introverted thinking (Ti): a private standard of worth vs an inner model that has to be consistent, and how to tell them apart.",
     "eyebrow": "Fi · Ti",
-    "title": "Fi versus Ti",
+    "title": "Fi vs Ti",
     "stat": "two inner courts",
     "lede": "Both introverted judging functions can look like stubbornness from the outside, because neither will trade its inner standard for a popular formula, and the difference is what the court is deciding — whether this is right for me, or whether the idea holds.",
-    "related": ["jungian-cognitive-functions", "fe-vs-te", "ni-vs-ne"],
+    "related": ["jungian-cognitive-functions", "infj-vs-infp", "ni-vs-ne"],
     "sections": [
       {
         "heading": "What each court is for",
@@ -157,11 +157,128 @@
     ]
   },
   {
+    "slug": "infj-vs-infp",
+    "seoTitle": "INFP vs INFJ: Same Letters, Different Stacks",
+    "seoDescription": "INFP and INFJ share three letters and no cognitive functions. Why the J/P code misleads, how Fi-Ne differs from Ni-Fe, and how a functions quiz tells them apart.",
+    "eyebrow": "INFP · INFJ",
+    "title": "INFP vs INFJ",
+    "stat": "no functions in common",
+    "lede": "Their four letter code looks alike, which is perhaps why so many people bounce between them…but they are not close types.",
+    "related": ["ni-vs-ne", "fi-vs-ti", "jung-vs-mbti"],
+    "sections": [
+      {
+        "heading": "",
+        "paragraphs": [
+          "INFJ and INFP share no function-attitudes. The last letter makes a big difference. It is the difference between a psyche led by introverted intuition and a psyche led by introverted feeling.",
+          "**INFJ : Introverted Intuition (Ni), Extraverted Feeling (Fe), Introverted Thinking (Ti), and Extraverted Sensing (Se).**",
+          "**INFP : Introverted Feeling (Fi), Extroverted Intuition (Ne), Introverted Sensing (Si) , and Extroverted Thinking (Te).**"
+        ]
+      },
+      {
+        "heading": "The last letter is a lie",
+        "paragraphs": [
+          "For an introvert, the J/P letter describes the attitude of the **extraverted** function, not the dominant one. That is why an INFJ is technically a **J type**, while its dominant function, introverted intuition (Ni), is actually a perceiving function.",
+          "**INFJ is therefore a dominant perceiving type.** Ni tends to form an inner picture of where things are heading before arriving at a definite conclusion. An INFJ may sense the pattern, direction, or meaning of something before they can fully explain what they think about it.",
+          "**INFP, by contrast, is a dominant judging type.** Its dominant function, introverted feeling (Fi), evaluates experience according to an internal sense of value and authenticity. The INFP may know internally that something feels right or wrong before they have fully worked out the surrounding situation.",
+          "**INFJ:** Ni–Fe–Ti–Se → **dominant Ni (perceiving)**",
+          "**INFP:** Fi–Ne–Si–Te → **dominant Fi (judging)**"
+        ]
+      },
+      {
+        "heading": "Two stacks, eight roles",
+        "paragraphs": [
+          "In Beebe’s model, the eight cognitive functions are understood as eight different roles within the personality. The most important distinction between INFJ and INFP is where the **Hero / Heroine** sits.",
+          "For **INFJ**, the Hero / Heroine is **introverted intuition (Ni)**. Ni is concerned with the inner pattern: where things are going, what they mean, and what they may eventually become. It tends to form a picture of the underlying trajectory before everything can be explained or acted upon.",
+          "The **Parent** is **extraverted feeling (Fe)**. Fe brings that inner perception into the shared world. It notices the emotional atmosphere, considers the needs of others, and tries to create a human context in which the vision can be understood or lived.",
+          "The **Eternal Child** is **introverted thinking (Ti)**: the private search for precision, consistency, and the underlying reason something is true.",
+          "The **Inferior** is **extraverted sensation (Se)**: direct contact with the immediate, physical world. This is the present moment, the concrete fact, the body, and the thing that is actually happening now. For an Ni-dominant person, this immediate reality can feel intrusive when the inner picture has not yet been completed.",
+          "For **INFP**, the arrangement is different.",
+          "The Hero / Heroine is **introverted feeling (Fi)**. Fi is the private compass of value: what feels true, meaningful, authentic, or morally right to the individual.",
+          "The **Parent** is **extraverted intuition (Ne)**. Ne opens possibilities around that inner compass. It asks what else could be possible, what another interpretation might be, or which unexplored path might allow the person's values to be expressed.",
+          "The **Eternal Child** is **introverted sensation (Si)**: familiarity, memory, continuity, and the known world that provides a sense of inner stability.",
+          "The **Inferior** is **extraverted thinking (Te)**: external structure, measurable results, efficiency, decisions, and the demand to make something objectively work.",
+          "This produces an important difference.",
+          "**INFJ leads with a perception of where things are going. INFP leads with a judgment about what is true to the self.**",
+          "That is why an INFJ can appear quite decisive from the outside while internally still be living inside an unfinished picture. And it is why an INFP can appear open-ended or indecisive while internally holding a remarkably firm sense of what they can and cannot accept.",
+          "The difference is not simply *planned versus spontaneous*. It is **perception first versus evaluation first**."
+        ]
+      },
+      {
+        "heading": "Intensity, and the quieter court",
+        "paragraphs": [
+          "Both types can care intensely about meaning. Both can be private. Both can be sensitive to people and experiences. The important question is what happens **first**.",
+          "INFJ tends toward a search for the underlying trajectory: *Where is this going? What does this mean? What is really happening beneath the surface?* Once that perception forms, Fe often turns toward the human world and asks how it can be communicated, shared, or made meaningful among people.",
+          "This can make the INFJ appear socially certain even when the inner perception is still developing. Fe can read a room quickly and respond to it naturally, but that social responsiveness should not be mistaken for the source of the personality's deepest orientation. The Hero remains Ni: the inner picture comes first.",
+          "INFP tends toward a quieter kind of fidelity. Fi continually evaluates experience against an internal sense of value: *Is this true for me? Does this violate something I believe? Does this feel authentic?*",
+          "New people and new experiences may therefore be approached cautiously. Reserve does not necessarily mean rejection. The person may simply be waiting to discover how the experience sits with their inner values.",
+          "This is why kindness itself is not a reliable way to distinguish the two. An INFJ may be highly attuned to the emotional climate through Fe, while an INFP may be deeply compassionate through Fi. They can look similar from the outside.",
+          "The better question is:",
+          "**Is the first movement toward a perception of what is happening and where it is going, or toward an inner judgment about what is true and valuable?**"
+        ]
+      },
+      {
+        "heading": "What can be thought, and what cannot",
+        "paragraphs": [
+          "INFJ's **Ti** occupies the Eternal Child position. This gives the INFJ an ability to become absorbed in analysis for its own sake. An idea can be followed simply because it is interesting, even when the conclusion is uncomfortable.",
+          "This can produce a willingness to question moral, psychological, or philosophical assumptions that initially seemed obvious. A carefully constructed system of beliefs can suddenly be taken apart because one distinction has exposed a contradiction.",
+          "That is both a strength and a potential source of disruption. The INFJ's Fe can make them appear warm, understanding, and morally oriented, while the Ti underneath may be quietly asking whether the entire framework actually makes sense.",
+          "INFP's **Ne**, by contrast, serves Fi. Possibilities are explored in relation to the inner value system. Ne can generate an enormous number of interpretations and alternatives, but those possibilities are ultimately being brought back to the question of meaning and personal truth.",
+          "This is why an INFP may enjoy exploring possibilities without wanting to dismantle its deepest values simply for the pleasure of analysis. Possibility is useful when it reveals another way for something meaningful to exist.",
+          "Neither approach is more intelligent.",
+          "The difference is in **what the exploration is serving**.",
+          "INFJ's Ti can ask: *Is this actually true? Does the whole structure hold together?*",
+          "INFP's Fi can ask: *Is this actually meaningful? Is this faithful to what matters?*",
+          "Each can therefore misunderstand the other. The INFJ may see the INFP as unwilling to question its deepest assumptions. The INFP may see the INFJ as willing to sacrifice meaning for the sake of intellectual consistency."
+        ]
+      },
+      {
+        "heading": "The act, and the visitation",
+        "paragraphs": [
+          "The INFJ often carries an inner picture of something that should eventually exist in the shared world: a work, a truth, a relationship, a way of living, or some larger realization that needs to become tangible.",
+          "But **Se**, as the inferior function, can make direct engagement with the immediate world strangely difficult. The vision may be vivid while the practical execution feels clumsy, distracting, or disappointingly ordinary.",
+          "Fe often helps bridge that gap. It brings the inner vision into relationship with other people and gives it a social form. But the INFJ can still feel that the concrete world has not quite caught up with what they perceive internally.",
+          "The INFP's movement is different.",
+          "Fi first establishes what matters. Ne then looks outward for possibilities through which that inner value might be expressed. Rather than imposing a single trajectory, it can wait for an unexpected opening: *What else could this become? Where is the possibility I have not considered yet?*",
+          "This can give the INFP an almost **visitation-like** relationship with possibility. Inspiration may arrive through a person, an idea, an artwork, a place, or an unexpected connection.",
+          "The inferior **Te** creates the opposite problem. When external demands become unavoidable, the INFP may suddenly feel pressured to organize, quantify, decide, produce, or prove. Te can appear as a last-minute tyrant: *Just make a decision. Finish it. Make it measurable.*",
+          "But once a workable external structure is discovered, the INFP can become surprisingly steady. The outer structure is valuable because it protects something internal.",
+          "For the INFP, the question is often:",
+          "**How can the outer world be arranged so that the inner life can remain intact?**",
+          "For the INFJ, the question is more often:",
+          "**How can the inner picture become real in the outer world?**",
+          "That difference is subtle, but fundamental."
+        ]
+      },
+      {
+        "heading": "Take the items next",
+        "paragraphs": [
+          "Under stress, either type can temporarily resemble another type.",
+          "An INFJ can retreat into **Ti**, becoming unusually analytical, detached, or preoccupied with solving a problem intellectually. An INFP can fall into **Te**, becoming unusually rigid, controlling, efficiency-focused, or concerned with measurable results.",
+          "These states do not mean the person's type has changed. They are expressions of less-developed functions under pressure.",
+          "This is also why a four-letter test taken during a difficult period can produce confusing results. Someone who normally leads with Ni may answer questions in a way that makes them look like an analytical type. Someone who normally leads with Fi may answer in a way that makes them look highly structured or decisive.",
+          "So if you have repeatedly come out as both **INFJ and INFP**, don't begin with questions like:",
+          "*Am I organised or messy?*",
+          "*Do I like plans or spontaneity?*",
+          "*Am I decisive or flexible?*",
+          "Those behaviours can be produced by many different things.",
+          "Instead, look at the **first mental movement**.",
+          "Does your mind naturally begin by forming an inner picture of **where something is going and what it means**?",
+          "That points toward **introverted intuition (Ni)** and INFJ.",
+          "Or does it naturally begin by determining **what is true, valuable, authentic, or right for you**?",
+          "That points toward **introverted feeling (Fi)** and INFP.",
+          "The difference is not between a person who plans and a person who does not.",
+          "It is between **a mind that first perceives a pattern** and **a mind that first evaluates according to an inner value**.",
+          "Take the items next. Rather than asking you to choose a four-letter label, they will ask you to recognise which of these underlying movements is more consistently your own."
+        ]
+      }
+    ]
+  },
+  {
     "slug": "si-vs-se",
     "seoTitle": "Si vs Se: Introverted and Extraverted Sensation",
-    "seoDescription": "The difference between introverted sensation (Si) and extraverted sensation (Se): stored impression and precedent versus the concrete scene as it is now.",
+    "seoDescription": "The difference between introverted sensation (Si) and extraverted sensation (Se): stored impression and precedent vs the concrete scene as it is now.",
     "eyebrow": "Si · Se",
-    "title": "Si versus Se",
+    "title": "Si vs Se",
     "stat": "same function, opposite attitude",
     "lede": "Both attitudes of sensation stay with the actual, which is why they can both look “practical,” and the difference is whether the present is complete in itself or incomplete until it has been compared with the impression already lived in the body.",
     "related": ["jungian-cognitive-functions", "ni-vs-ne", "fe-vs-te"],
@@ -198,9 +315,9 @@
   {
     "slug": "fe-vs-te",
     "seoTitle": "Fe vs Te: Extraverted Feeling and Extraverted Thinking",
-    "seoDescription": "The difference between extraverted feeling (Fe) and extraverted thinking (Te): keeping the feeling-tone of the group versus arranging a result others can check.",
+    "seoDescription": "The difference between extraverted feeling (Fe) and extraverted thinking (Te): keeping the feeling-tone of the group vs arranging a result others can check.",
     "eyebrow": "Fe · Te",
-    "title": "Fe versus Te",
+    "title": "Fe vs Te",
     "stat": "two ways of running the shared world",
     "lede": "Both extraverted judging functions organize what is between people, which is why they can both look like leadership, and the difference is what counts as a finished plan — that the we can still stand together, or that the work produced what it said it would.",
     "related": ["jungian-cognitive-functions", "fi-vs-ti", "si-vs-se"],
