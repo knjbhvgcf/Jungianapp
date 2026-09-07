@@ -147,6 +147,10 @@ a {
   text-align: center;
 }
 
+.lede + .lede {
+  margin-top: 0.85em;
+}
+
 .section {
   padding: 3.2rem 0;
 }
@@ -2016,3 +2020,4 @@ span.is-editable[data-edit]::after {
     break-inside: avoid;
   }
 }
+

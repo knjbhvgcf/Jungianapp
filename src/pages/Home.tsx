@@ -72,7 +72,11 @@ export function Home() {
               onChange={(lede) => patchHome({ lede })}
             />
           ) : (
-            <p className="lede">{italicizeBookTitle(home.lede)}</p>
+            home.lede.split(/\n\n+/).map((paragraph) => (
+              <p key={paragraph} className="lede">
+                {italicizeBookTitle(paragraph)}
+              </p>
+            ))
           )}
           <div className="hero__actions">
             <EditableButton

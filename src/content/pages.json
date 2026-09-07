@@ -1,25 +1,25 @@
 {
   "home": {
     "seoTitle": "Jung Functions Quiz | Jungology",
-    "seoDescription": "Jungology is a free Jung Functions Quiz: an educational reading of Jung’s eight function-attitudes — thinking, feeling, sensation, and intuition, each extraverted or introverted. No account.",
+    "seoDescription": "A free Jung Functions Quiz: forty-eight statements, eight cognitive function scores, and a likely type. About eight minutes, no account, scored in your browser.",
     "title": "Jungology",
     "stat": "8 functions · 48 questions · John Beebe model",
-    "lede": "The statements follow Psychological Types, taking each function as it turns toward the outer world or toward the inner impression a thing leaves, and what you get is a sketch of how the psyche orients rather than a verdict on who you are, which is a reading, and therefore incomplete, as all such readings are.",
+    "lede": "The first Delphic maxim states “Know thyself”, it is at the core of everything we encounter in life, the lens through which we look, the vantage point from which we jump forward.\n\nMost four-letter quizzes dont score the functions. This one does: forty-eight statements about how you notice, decide, and take in a situation.\n\nLet’s discover your personality type!",
     "image": "/home/hero.jpg?v=1787110066816",
     "beginQuiz": "Begin the quiz",
     "howHeading": "How it works",
     "steps": [
       {
-        "title": "Answer forty-eight statements",
-        "body": "Each one is a single claim about how you notice, decide, or take in a situation. Tap how true it is. The whole set takes most people about eight minutes."
+        "title": "Answer forty-eight Questions",
+        "body": "Each Question offers a small reflection on the way you tend to perceive, decide, or experience the world. Consider each one carefully, and choose how true it feels for you. The complete set takes most people around eight minutes."
       },
       {
         "title": "A short follow-up, only if needed",
-        "body": "If two answers finish too close for a type, you get a few forced choices at the end — not another full quiz — and then the reading."
+        "body": "The test is designed to determine your leading function first, it might ask a few follow up questions at the end to further validate your dominant function. "
       },
       {
         "title": "Read it as a map",
-        "body": "The closest type is then shown as eight archetypal roles: the Ego Functions (Conscious) — Hero / Heroine, Parent, Eternal Child, Inferior (Anima / Animus) — and the Shadow Functions (Unconscious) — Opposing Nemesis, Critic, Trickster, Demon — which is a map of the psyche, not a fixed definition of the person."
+        "body": "The closest type is then shown as eight archetypal roles: the Ego Functions (Conscious) — Hero / Heroine, Parent, Eternal Child, Inferior (Anima / Animus) — and the Shadow Functions (Unconscious) — Opposing Nemesis, Critic, Trickster, Demon."
       }
     ],
     "functionsHeading": "The eight function-attitudes",
@@ -55,7 +55,7 @@
         "a": "A separate purchase from Your Type in Depth, it reads the other fifteen types against your own functions, not as a ranking of who you should date, but as a picture of where someone else’s leading function already sits in you."
       }
     ],
-    "ctaHeading": "Ready to see your Personality type?"
+    "ctaHeading": "Ready to see your eight scores?"
   },
   "about": {
     "seoTitle": "About Jungology | Jung Functions Quiz",
