@@ -134,7 +134,7 @@ export function Admin() {
         <p className="eyebrow">local editor</p>
         <h1 className="serif-title">Quiz items</h1>
         <p className="lede">
-          Page copy is edited on the live pages. This screen is only for the forty-eight statements
+          Page copy is edited on the live pages. This screen is only for the quiz statements
           and the follow-up pairs.{' '}
           <Link to="/">Go click the wording on the site</Link>.
         </p>

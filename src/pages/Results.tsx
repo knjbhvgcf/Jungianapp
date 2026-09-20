@@ -18,7 +18,9 @@ import {
 import { applyFollowUp, applyFollowUpToProfile, needsFollowUp } from '../lib/clarify'
 import { closeAttitudeReadings, suggestedHeroFromTieBreak } from '../lib/tieBreak'
 import {
+  chooseFreeTier,
   clearAnswers,
+  isFreeTierChosen,
   loadAnswers,
   loadClarifyAnswers,
   loadStackChoice,
@@ -26,7 +28,15 @@ import {
 } from '../lib/storage'
 import { fillCopy } from '../lib/copy'
 import { asPersonality, useEditMode, useSiteCopy, useTypeDraft } from '../lib/editMode'
-import { isProductUnlocked, productHref, productPrice } from '../lib/unlock'
+import {
+  isProductUnlocked,
+  isTypeRevealUnlocked,
+  productHref,
+  productPrice,
+  tryUnlockTypeReveal,
+  typeRevealHref,
+  typeRevealPrice,
+} from '../lib/unlock'
 import { typePath } from '../data/personalityTypes'
 
 export function Results() {
@@ -46,6 +56,16 @@ export function Results() {
   const [copied, setCopied] = useState(false)
   const [heroId, setHeroId] = useState<FunctionId | null>(null)
   const [parentId, setParentId] = useState<FunctionId | null>(null)
+  const [offerDismissed, setOfferDismissed] = useState(() => {
+    if (typeof window === 'undefined') return isFreeTierChosen()
+    if (isFreeTierChosen() || isTypeRevealUnlocked()) return true
+    const key = new URLSearchParams(window.location.search).get('key')
+    if (key && tryUnlockTypeReveal(key)) {
+      chooseFreeTier()
+      return true
+    }
+    return false
+  })
   const readings = useMemo(
     () =>
       baseProfile && profile
@@ -59,6 +79,8 @@ export function Results() {
   const compatUnlocked = isProductUnlocked('compat')
   const mapPrice = productPrice('map')
   const compatPrice = productPrice('compat')
+  const revealPrice = typeRevealPrice()
+  const showGate = complete && !offerDismissed
 
   function patchResults(partial: Partial<typeof results>) {
     patchPages((pages) => ({ ...pages, results: { ...pages.results, ...partial } }))
@@ -153,6 +175,64 @@ export function Results() {
     }
   }
 
+  function stayOnFree() {
+    chooseFreeTier()
+    setOfferDismissed(true)
+  }
+
+  const gatePopup = (
+    <div className="results-popup" role="dialog" aria-modal="true" aria-labelledby="results-popup-title">
+      <div className="results-popup__card">
+        {editing ? (
+          <Editable
+            as="h1"
+            className="serif-title"
+            label="Offer title"
+            value={results.offerTitle}
+            onChange={(offerTitle) => patchResults({ offerTitle })}
+          />
+        ) : (
+          <h1 id="results-popup-title" className="serif-title">
+            {results.offerTitle}
+          </h1>
+        )}
+        <EditableButton
+          to={typeRevealHref() || undefined}
+          label="See type CTA"
+          value={editing ? results.offerCta : fillCopy(results.offerCta, { price: revealPrice })}
+          onChange={(offerCta) => patchResults({ offerCta })}
+        />
+        {editing ? (
+          <Editable
+            as="span"
+            className="stay-free"
+            label="See it free"
+            multiline={false}
+            value={results.stayFree}
+            onChange={(stayFree) => patchResults({ stayFree })}
+          />
+        ) : (
+          <button type="button" className="stay-free" onClick={stayOnFree}>
+            {results.stayFree}
+          </button>
+        )}
+      </div>
+    </div>
+  )
+
+  if (showGate && !editing) {
+    return (
+      <>
+        <Seo
+          title={results.seoTitleEmpty}
+          description={results.seoDescriptionEmpty}
+          path="/results"
+        />
+        <section className="section results results-gate">{gatePopup}</section>
+      </>
+    )
+  }
+
   return (
     <>
       <Seo
@@ -169,7 +249,7 @@ export function Results() {
         path="/results"
       />
 
-      <section className="section results">
+      <section className={`section results${editing ? ' results-gate-edit' : ''}`}>
         {editing && !complete ? (
           <div className="wrap screen empty-state edit-empty-preview">
             <EditHint>Shown when someone has not finished the quiz</EditHint>
@@ -492,6 +572,7 @@ export function Results() {
             </Link>
           )}
         </div>
+        {editing ? gatePopup : null}
       </section>
     </>
   )

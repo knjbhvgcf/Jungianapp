@@ -1,5 +1,201 @@
 [
   {
+    "slug": "type-theory",
+    "seoTitle": "Jungian Type theory",
+    "seoDescription": "Jungian type theory from the functions up: sensing, intuition, thinking, feeling, each introverted or extraverted, then a sixteen-type stack. How this quiz scores all eight.",
+    "eyebrow": "how the system is built",
+    "title": "Jungian Type theory",
+    "stat": "four functions · two attitudes · sixteen types",
+    "lede": "Jung’s Type theory starts with four functions that everyone uses - sensation (S), Intuition (N), Thinking (T), and Feeling (F). Each one is either extroverted or Introverted, meaning that each either “turns inward” or “turns outward” (it does not mean whether someone is social or not…).\n\nExample: Ni means Introverted Intuition. Ne means extroverted Intuition and so forth.",
+    "related": [
+      "four-letter-code",
+      "function-stack",
+      "jungian-cognitive-functions"
+    ],
+    "sections": [
+      {
+        "heading": "",
+        "paragraphs": [
+          ":::four\nS · sensation\nN · Intuition\nT · Thinking\nF · Feeling",
+          ":::names\nNi · Introverted Intuition\nNe · extraverted Intuition"
+        ]
+      },
+      {
+        "heading": "Four functions",
+        "paragraphs": [
+          "Everyone has sensing and intuition, which take information in, and thinking and feeling, which finish a decision. Sensing and intuition are *perceiving* functions: they notice. Thinking and feeling are *judging* functions: they sort and conclude. You use all four. Preference is which ones lead, and in which way, introverted or extroverted.",
+          ":::split Perceiving Functions | Judging Functions\nS · Sensing — takes what is given: the fact, the texture, the already-there.\nN · Intuition — takes what the given implies or could become.\n---\nT · Thinking — judges by a concept that can be stated.\nF · Feeling — judges by value: whether this is fitting, worth keeping, or injurious.",
+          "The four-letter code is a later shorthand for each arrangement of the four functions. It was created at a later date by Myers Briggs and is not associated with Jung, but we do still use it for ease of communication.",
+          "For example, the four function stack for INFP is: Fi, Ne, Si & Te.",
+          ":::stack INFP\nFi\nNe\nSi\nTe"
+        ]
+      },
+      {
+        "heading": "Introverted or extraverted",
+        "paragraphs": [
+          "Each function can turn extraverted or introverted. Extraversion here is not sociability. Extraverted means the function is oriented towards the object in the shared world. Introverted means it is oriented by the subjective factor - the impression, image, or standard the object leaves in the person.",
+          "We mark that with a small *e* or *i* after the function: Si, Ne, Ti, Fe. Introverted intuition is not “quiet intuition.” Extraverted feeling is not “being socially active.”",
+          "For any type, one perceiving function is introverted and the other extraverted. The same is true of the judging pair. You do not get Ni and Si together as the two perceiving attitudes, or Te and Fe as the two judging ones.",
+          "If one perceiving function is Introverted then the other is extroverted. And if one judging function is extroverted then the other is introverted.",
+          ":::pairs Perceiving | Judging\nNi · Se\nNe · Si\n---\nTi · Fe\nTe · Fi"
+        ]
+      },
+      {
+        "heading": "The function stack",
+        "paragraphs": [
+          "A type is those eight function-attitudes arranged in preference. The first four are the classical ego stack; Beebe later named eight roles, including four shadow positions that carry the opposite attitude of each ego function which we discuss in another article.",
+          ":::stacks\nINTP · Ti Ne Si Fe\nISFP · Fi Se Ni Te\nENTJ · Te Ni Se Fi\nENFP · Ne Fi Te Si",
+          ":::roles\nHero / Heroine · what you trust first\nParent · how you foster and take responsibility\nEternal Child · play, relief, inflation\nInferior · aspiration, embarrassment, and what you tend to project"
+        ]
+      },
+      {
+        "heading": "Two rules, sixteen types",
+        "paragraphs": [
+          "Two constraints produce the sixteen types rather than a heap of combinations.",
+          "The perceiving and judging functions alternate in a fixed rhythm: **JPPJ** or **PJJP**. The attitudes also alternate: **ieie** or **eiei**. Those two rules, plus which perceiving function and which judging function sit higher, give sixteen lawful stacks.",
+          ":::rules\nJPPJ\nPJJP\nieie\neiei"
+        ]
+      },
+      {
+        "heading": "What this quiz does",
+        "paragraphs": [
+          "This quiz does not ask you to choose E or I, N or S. It asks fifty-two statements about the eight function-attitudes, then names the classical type whose stack best fits those scores, with the leading function weighted first. The letters, if they appear, are a name for the stack.",
+          "If you want the eight in more detail, read Jung’s eight function-attitudes next. If the letters still look like a separate language, the four-letter code page is the decoder. If you want what each position is for, including Beebe’s shadow roles, read the function stack."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "four-letter-code",
+    "seoTitle": "Four-Letter Type Codes and Cognitive Functions",
+    "seoDescription": "How ENFP, INTJ, and the other four-letter codes map onto a cognitive function stack — and why J/P does not mean organised vs spontaneous.",
+    "eyebrow": "letters as a nickname",
+    "title": "The four-letter code",
+    "stat": "E/I · N/S · T/F · J/P",
+    "lede": "ENFP and Ne–Fi look like two languages for one psyche, and they are, once you know what each letter is actually marking. The four-letter code is a nickname for a function stack, not a second test.",
+    "related": [
+      "type-theory",
+      "function-stack",
+      "jung-vs-mbti",
+      "infj-vs-infp"
+    ],
+    "sections": [
+      {
+        "heading": "Two nicknames for the same stack",
+        "paragraphs": [
+          "Function-first circles often name a type by its top two: Ne–Fi, Ti–Ne, Ni–Te. Myers-Briggs and most internet quizzes use four letters: ENFP, INTP, INTJ. This site scores the functions, then reports a four-letter type as a reading aid. It is not the official MBTI® instrument.",
+          "If you already wear a four-letter code and want to know which functions it implies — or you have a stack and want the letters other people will recognise — this is the conversion."
+        ]
+      },
+      {
+        "heading": "What each letter is saying",
+        "paragraphs": [
+          "**E or I** tells you whether the first function is extraverted or introverted.",
+          "**N or S** tells you which perceiving function sits higher in the stack.",
+          "**T or F** tells you which judging function sits higher in the stack.",
+          "**J or P** tells you whether the first extraverted function is a judging function or a perceiving function. It does not mean “organised” or “spontaneous.” For an introvert, that last letter describes the auxiliary, not the Hero / Heroine — which is why an INFJ can be a dominant perceiver, and an INFP a dominant judger, while the letters suggest the opposite."
+        ]
+      },
+      {
+        "heading": "Four-letter code to stack",
+        "paragraphs": [
+          "Take **ENFP**.",
+          "Everyone has S, N, T, and F. **E** means the first function is extraverted, so the attitudes run **eiei**. **N** and **F** are the two higher functions; S and T will sit lower. **P** means the first extraverted function is perceiving, so that extraverted lead must be **Ne**, and the introverted partner in the top two is **Fi**.",
+          "The remaining pair follows the JPPJ / PJJP rule: after Ne and Fi come **Te** and **Si**.",
+          "**ENFP = Ne–Fi–Te–Si.** Hero / Heroine Ne, Parent Fi, Eternal Child Te, Inferior Si.",
+          "Another: **INTJ**. **I** means the lead is introverted (**ieie**). **N** and **T** are the top two. **J** means the first extraverted function is judging, so that extraverted function is **Te**, and the introverted lead is **Ni**. Then **Fi** and **Se**.",
+          "**INTJ = Ni–Te–Fi–Se.**"
+        ]
+      },
+      {
+        "heading": "Stack to four-letter code",
+        "paragraphs": [
+          "Take **Ni–Fe–Ti–Se**.",
+          "The middle letters are N and F, because those are the higher perceiving and judging functions: **xNFx**. The first function is introverted, so the code begins with **I**: **INFx**. The first extraverted function is Fe, which is judging, so the last letter is **J**.",
+          "**Ni–Fe–Ti–Se = INFJ.**",
+          "That is the same type as INFP in three letters and in none of its functions. The last letter is doing almost all of the work, which is why letter-only quizzes so often bounce people between those two."
+        ]
+      },
+      {
+        "heading": "Take the items next",
+        "paragraphs": [
+          "You do not have to perform this conversion before you take the quiz. The statements ask about Ni, Te, Fi, Se as living processes. The four-letter result is a name for the stack those scores resemble. If you have been choosing J or P as a lifestyle, start from the functions instead."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "function-stack",
+    "seoTitle": "Cognitive Function Stack: Beebe’s Eight Roles",
+    "seoDescription": "What a cognitive function stack is: Hero / Heroine, Parent, Eternal Child, Inferior, then four shadow roles. Order is a type map, not a talent ranking.",
+    "eyebrow": "eight roles, not a ranking",
+    "title": "The function stack",
+    "stat": "Beebe · eight positions",
+    "lede": "A function stack is the eight function-attitudes of a type, ordered as roles rather than as a talent ranking. The first four are the classical ego; Beebe’s model then names four shadow roles that carry the opposite attitude of each.",
+    "related": [
+      "type-theory",
+      "four-letter-code",
+      "jungian-cognitive-functions"
+    ],
+    "sections": [
+      {
+        "heading": "About the order",
+        "paragraphs": [
+          "From first to last, these are the functions that come most readily to that type — as a right hand comes more readily than a left, even when both can write. A lower function can be practised until it looks skilled. It still serves the ones above it. An ENTJ (Te–Ni–Se–Fi) does have Se; that Se more often executes a Te aim than it leads the day.",
+          "The order is the type’s pattern, not your percentage bars. This quiz scores all eight, and a third or fifth function can print loud on the items — especially if life has asked you to live there. The stack still says which role that function is playing when the type is read as a whole."
+        ]
+      },
+      {
+        "heading": "Hero / Heroine (1st)",
+        "paragraphs": [
+          "This is the main world. It is what you trust first, the competence you return to under ordinary load, the function that feels like “just me.” For an ISFP that world is Fi: whether this is right, worth keeping, or a violation. For an INTJ it is Ni: the inner picture of where a situation is tending.",
+          "The other seven functions do not disappear. They arrange themselves around this one."
+        ]
+      },
+      {
+        "heading": "Parent (2nd)",
+        "paragraphs": [
+          "The Parent is how you foster, teach, and take responsibility. It teams with the Hero / Heroine and, together, those two are most of what other people will call your personality. An INFJ’s Fe parents the Ni vision into a shared climate. An INFP’s Ne parents the Fi standard by opening outer paths it might live through.",
+          "If you only gave a character two functions, you would give them these. The rest make the figure human."
+        ]
+      },
+      {
+        "heading": "Eternal Child (3rd)",
+        "paragraphs": [
+          "The third is younger: play, relief, inflation, and a kind of brake. Because stacks run JPPJ or PJJP, the middle two are either both judging or both perceiving, and they often work as a pair.",
+          "An INTP’s Si can quietly remind Ne of every beach that went badly. An ESTJ’s Ne can lift Si out of a groove that has become too faithful. The Eternal Child does not lead. It offers a way out, or a way back, to the functions above it.",
+          "It is also where a type can look suddenly like another type, without having become one."
+        ]
+      },
+      {
+        "heading": "Inferior (Anima / Animus) (4th)",
+        "paragraphs": [
+          "The fourth is the least preferred of the ego, and often the most charged. It is aspiration and embarrassment, the function you admire in others and mishandle in yourself, the one that can arrive as a critic when you are tired.",
+          "If the Hero / Heroine is the elder of the stack, the Inferior is still intelligent — and still the youngest of the four. An Fi lead’s Te can be a tool pulled out to finish a public task, and a harshness that turns on a comment thread when the person is depleted. A Te lead’s Fi can tug the sleeve: people have feelings. An Ne lead’s Si can be the ground that was missing.",
+          "This is also what you tend to project: the person who seems to have your fourth in the Hero seat can look like salvation or like a threat."
+        ]
+      },
+      {
+        "heading": "The four shadow roles",
+        "paragraphs": [
+          "Beebe’s later model does not stop at four. Each ego function has an opposite-attitude twin, and those four sit as shadow roles.",
+          "**Opposing Nemesis (5th)** — the other attitude of the Hero / Heroine. Contrariness, “yes, but,” the lead used against itself.",
+          "**Critic (6th)** — the shadow of the Parent. Limit-setting that has gone bitter; the standard you apply to others when support has failed.",
+          "**Trickster (7th)** — the shadow of the Eternal Child. Double binds, mischief, the escape hatch that also traps.",
+          "**Demon (8th)** — the most unconscious. Undermining — and, in later work, a source of transformation.",
+          "For ENFP (Ne–Fi–Te–Si) that shadow is Ni–Fe–Ti–Se. For INFJ (Ni–Fe–Ti–Se) it is Ne–Fi–Te–Si. Those two types do not share a single ego function; they wear each other’s shadow. That is a better picture of their tension than three shared letters."
+        ]
+      },
+      {
+        "heading": "Do not treat the bars as the stack",
+        "paragraphs": [
+          "It is hard to compare an extraverted function with an introverted one as if they were the same kind of strength. A person who spent a lonely childhood may know their introverted functions more clearly than the extraverted Parent everyone else can see. You can get lost trying to decide whether the second or third is “really” higher, and the type map is often still the more useful reading.",
+          "This quiz still shows eight scores, because the scores are what was measured. The suggested type is a Beebe stack fitted to those scores, with the Hero / Heroine weighted first. If a different lead fits better, you can choose it on the results page. Your Type in Depth is the longer reading of all eight roles."
+        ]
+      }
+    ]
+  },
+  {
     "slug": "jungian-cognitive-functions",
     "seoTitle": "Jungian Cognitive Functions Test: the Eight Function-Attitudes",
     "seoDescription": "What Jung’s eight function-attitudes are — thinking, feeling, sensation, and intuition, each introverted or extraverted — and how a free quiz can score them.",
@@ -7,7 +203,11 @@
     "title": "Jung’s eight function-attitudes",
     "stat": "Psychological Types · 1921",
     "lede": "Jung did not measure a four-letter code. He described four functions, each able to turn toward the outer object or toward the inner impression a thing leaves, and that gives eight function-attitudes, which is what this quiz is built to score.",
-    "related": ["jung-vs-mbti", "ni-vs-ne", "fi-vs-ti"],
+    "related": [
+      "type-theory",
+      "function-stack",
+      "jung-vs-mbti"
+    ],
     "sections": [
       {
         "heading": "What a function-attitude is",
@@ -27,7 +227,7 @@
         "heading": "Why close pairs are hard",
         "paragraphs": [
           "The pairs that confuse people are usually the same function in two attitudes, or two judging functions that both feel like “being right.” Ni and Ne can both look visionary. Fi and Ti can both look stubborn. Si and Se can both look practical. Fe and Te can both look like they are running the room. A single adjective will not separate them. You have to ask where the function points, and what it treats as a finished reason.",
-          "This quiz uses forty-eight statements, six for each function-attitude, including a reverse-keyed item, and if two leads land together it asks a short follow-up of forced choices rather than another set of ratings. The free result is the eight scores and a likely type. The longer Beebe reading sits in Your Type in Depth."
+          "This quiz uses fifty-two statements, including a reverse-keyed item for each function-attitude, and if two leads land together it asks a short follow-up of forced choices rather than another set of ratings. The free result is the eight scores and a likely type. The longer Beebe reading sits in Your Type in Depth."
         ]
       },
       {
@@ -47,7 +247,11 @@
     "title": "Jungian functions and MBTI®",
     "stat": "not the official instrument",
     "lede": "People search for an MBTI test and land on function language, or the other way around, and the words get used as if they were the same instrument. They are not, and this page is here so you can see what you are taking before you begin.",
-    "related": ["jungian-cognitive-functions", "ni-vs-ne", "fi-vs-ti"],
+    "related": [
+      "four-letter-code",
+      "jungian-cognitive-functions",
+      "type-theory"
+    ],
     "sections": [
       {
         "heading": "What Jung wrote",
@@ -66,7 +270,7 @@
       {
         "heading": "What this quiz does",
         "paragraphs": [
-          "You rate forty-eight original statements about how each function-attitude works in you. The first stretch looks for the leading function. If two functions are still close, a follow-up asks which sentence is more you. The result is eight 0–100% bars and a suggested type whose Beebe stack fits those bars, with the lead weighted first.",
+          "You rate fifty-two original statements about how each function-attitude works in you. The first stretch looks for the leading function. If two functions are still close, a follow-up asks which sentence is more you. The result is eight 0–100% bars and a suggested type whose Beebe stack fits those bars, with the lead weighted first.",
           "The quiz, the scores, and the choice of Hero / Heroine and Parent stay free. Your Type in Depth is a longer reading of the eight roles, growth, and shadow. Compatibility is a second, separate unlock. Neither is an MBTI report."
         ]
       },
@@ -86,7 +290,11 @@
     "title": "Ni vs Ne",
     "stat": "same function, opposite attitude",
     "lede": "Both attitudes of intuition look ahead of the given facts, which is why they are so often confused, and the difference is not how imaginative you are but where the possibility is seen — as one inner picture, or as a field of outer forks that are not yet real.",
-    "related": ["jungian-cognitive-functions", "infj-vs-infp", "fi-vs-ti"],
+    "related": [
+      "type-theory",
+      "jungian-cognitive-functions",
+      "infj-vs-infp"
+    ],
     "sections": [
       {
         "heading": "Where each one looks",
@@ -112,7 +320,7 @@
       {
         "heading": "Take the items next",
         "paragraphs": [
-          "If you have been typed as an intuitive and still cannot tell whether the future arrives as one trajectory or as a field of forks, the forty-eight statements are built to ask that, and the result will show both scores even if only one of them leads."
+          "If you have been typed as an intuitive and still cannot tell whether the future arrives as one trajectory or as a field of forks, the fifty-two statements are built to ask that, and the result will show both scores even if only one of them leads."
         ]
       }
     ]
@@ -125,7 +333,11 @@
     "title": "Fi vs Ti",
     "stat": "two inner courts",
     "lede": "Both introverted judging functions can look like stubbornness from the outside, because neither will trade its inner standard for a popular formula, and the difference is what the court is deciding — whether this is right for me, or whether the idea holds.",
-    "related": ["jungian-cognitive-functions", "infj-vs-infp", "ni-vs-ne"],
+    "related": [
+      "jungian-cognitive-functions",
+      "infj-vs-infp",
+      "ni-vs-ne"
+    ],
     "sections": [
       {
         "heading": "What each court is for",
@@ -138,7 +350,7 @@
         "heading": "Why they score close",
         "paragraphs": [
           "A person who hates being pushed can endorse both a value item and a logic item, because both are ways of refusing the group. The quiz therefore includes reverse-keyed statements: Fi’s reverse is taking on the values the people around you hold, and Ti’s reverse is being satisfied if a plan works even when you cannot explain it. Those items exist so that “I am independent” does not raise every introverted bar at once.",
-          "When Fi and Ti both land high, the first forty-eight ratings are often not enough, which is common and not a failure of the test. The follow-up asks which finished the decision — a private yes or no you may not be able to display, or a definition that has to hold together — and which you keep if you cannot satisfy both: what you consider right, or what you consider true."
+          "When Fi and Ti both land high, the first fifty-two ratings are often not enough, which is common and not a failure of the test. The follow-up asks which finished the decision — a private yes or no you may not be able to display, or a definition that has to hold together — and which you keep if you cannot satisfy both: what you consider right, or what you consider true."
         ]
       },
       {
@@ -164,7 +376,12 @@
     "title": "INFP vs INFJ",
     "stat": "no functions in common",
     "lede": "Their four letter code looks alike, which is perhaps why so many people bounce between them…but they are not close types.",
-    "related": ["ni-vs-ne", "fi-vs-ti", "jung-vs-mbti"],
+    "related": [
+      "four-letter-code",
+      "function-stack",
+      "ni-vs-ne",
+      "fi-vs-ti"
+    ],
     "sections": [
       {
         "heading": "",
@@ -281,7 +498,11 @@
     "title": "Si vs Se",
     "stat": "same function, opposite attitude",
     "lede": "Both attitudes of sensation stay with the actual, which is why they can both look “practical,” and the difference is whether the present is complete in itself or incomplete until it has been compared with the impression already lived in the body.",
-    "related": ["jungian-cognitive-functions", "ni-vs-ne", "fe-vs-te"],
+    "related": [
+      "jungian-cognitive-functions",
+      "ni-vs-ne",
+      "fe-vs-te"
+    ],
     "sections": [
       {
         "heading": "What each one takes as real",
@@ -320,7 +541,11 @@
     "title": "Fe vs Te",
     "stat": "two ways of running the shared world",
     "lede": "Both extraverted judging functions organize what is between people, which is why they can both look like leadership, and the difference is what counts as a finished plan — that the we can still stand together, or that the work produced what it said it would.",
-    "related": ["jungian-cognitive-functions", "fi-vs-ti", "si-vs-se"],
+    "related": [
+      "jungian-cognitive-functions",
+      "fi-vs-ti",
+      "si-vs-se"
+    ],
     "sections": [
       {
         "heading": "What each one organizes",

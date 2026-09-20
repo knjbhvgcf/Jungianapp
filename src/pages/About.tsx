@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { Editable, EditableButton, EditSeo } from '../components/Editable'
 import { Seo } from '../components/Seo'
@@ -93,6 +94,13 @@ export function About() {
             </div>
           ))}
 
+          <p>
+            <Link to="/type-in-depth">Your Type in Depth</Link>
+            {' · '}
+            <Link to="/compatibility">Compatibility</Link>
+            {' · '}
+            <Link to="/legal">Notes on buying</Link>
+          </p>
           <p>
             {editing ? (
               <EditableButton

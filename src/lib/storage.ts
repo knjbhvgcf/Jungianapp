@@ -6,6 +6,8 @@ const ANSWERS_KEY = 'jung-functions.answers.v2'
 const COMPLETED_KEY = 'jung-functions.completed.v2'
 const STACK_KEY = 'jung-functions.stack-choice.v2'
 const CLARIFY_KEY = 'jung-functions.clarify.v1'
+const FREE_TIER_KEY = 'jung-functions.free-tier.chosen.v1'
+const TYPE_REVEAL_KEY = 'jung-functions.type-reveal.unlock.v1'
 
 export type StackChoice = {
   hero: FunctionId
@@ -121,10 +123,22 @@ export function clearAnswers() {
   removeItem(COMPLETED_KEY)
   removeItem(STACK_KEY)
   removeItem(CLARIFY_KEY)
+  removeItem(FREE_TIER_KEY)
+  removeItem(TYPE_REVEAL_KEY)
 }
 
 export function markCompleted() {
   writeItem(COMPLETED_KEY, new Date().toISOString())
+  removeItem(FREE_TIER_KEY)
+  removeItem(TYPE_REVEAL_KEY)
+}
+
+export function isFreeTierChosen() {
+  return readItem(FREE_TIER_KEY) === '1'
+}
+
+export function chooseFreeTier() {
+  writeItem(FREE_TIER_KEY, '1')
 }
 
 export function hasCompletedQuiz() {

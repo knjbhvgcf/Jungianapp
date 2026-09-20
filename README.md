@@ -84,6 +84,20 @@ VITE_COMPAT_PRICE=$1
 
 Keys are checked in the browser, so treat them like a shared coupon, not a secret API token. A Type in Depth key will not open compatibility, and a compatibility key will not open Your Type in Depth. In local development, each page has a **Preview unlock** button.
 
+## See your type ($1, optional)
+
+After the quiz, a popup offers **Your type for $1** or **No thanks, I'll see it for free**. This is a third product. It does not open Type in Depth or Compatibility.
+
+1. Create a Stripe Payment Link, one-time **$1 USD**.
+2. After payment, redirect to `https://jungology.com/results?key=YOUR-REVEAL-KEY`.
+3. Add to `.env` and to the **jungianapp** Cloudflare Production variables, then redeploy:
+
+```
+VITE_REVEAL_CHECKOUT_URL=https://your-type-payment-link
+VITE_REVEAL_UNLOCK_KEYS=YOUR-REVEAL-KEY
+VITE_REVEAL_PRICE=$1
+```
+
 ## Project layout
 
 ```

@@ -1,16 +1,16 @@
 {
   "home": {
     "seoTitle": "Jung Functions Quiz | Jungology",
-    "seoDescription": "A free Jung Functions Quiz: forty-eight statements, eight cognitive function scores, and a likely type. About eight minutes, no account, scored in your browser.",
+    "seoDescription": "A free Jung Functions Quiz: fifty-two statements, eight cognitive function scores, and a likely type. About eight minutes, no account, scored in your browser.",
     "title": "Jungology",
-    "stat": "8 functions · 48 questions · John Beebe model",
-    "lede": "The first Delphic maxim states “Know thyself”, it is at the core of everything we encounter in life, the lens through which we look, the vantage point from which we jump forward.\n\nMost four-letter quizzes dont score the functions. This one does: forty-eight statements about how you notice, decide, and take in a situation.\n\nLet’s discover your personality type!",
+    "stat": "8 functions · 52 questions · John Beebe model",
+    "lede": "The first Delphic maxim states “Know thyself”, it is at the core of everything we encounter in life, the lens through which we look, the vantage point from which we jump forward.\n\nMost four-letter quizzes dont score the functions. This one does: fifty-two statements about how you notice, decide, and take in a situation.\n\nLet’s discover your personality type!",
     "image": "/home/hero.jpg?v=1787110066816",
     "beginQuiz": "Begin the quiz",
     "howHeading": "How it works",
     "steps": [
       {
-        "title": "Answer forty-eight Questions",
+        "title": "Answer fifty-two Questions",
         "body": "Each Question offers a small reflection on the way you tend to perceive, decide, or experience the world. Consider each one carefully, and choose how true it feels for you. The complete set takes most people around eight minutes."
       },
       {
@@ -35,8 +35,12 @@
         "a": "No. This is a free educational quiz inspired by Jung’s functions. The Myers-Briggs Type Indicator is a separate, trademarked instrument, and we report your eight function scores first, then a likely four-letter type as a reading aid."
       },
       {
+        "q": "What do the four letters mean?",
+        "a": "E or I is the attitude of the leading function. N or S is which perceiving function sits higher. T or F is which judging function sits higher. J or P says whether the first extraverted function is judging or perceiving — not whether you are tidy. The four-letter code page walks through the conversion."
+      },
+      {
         "q": "How long does the quiz take?",
-        "a": "There are forty-eight statements. Tap a number to move on. Most people finish in about eight minutes. If two answers are too close, a few extra choices come after the forty-eight, not in the middle."
+        "a": "There are fifty-two statements. Tap a number to move on. Most people finish in about eight minutes. If two answers are too close, a few extra choices come after the fifty-two, not in the middle."
       },
       {
         "q": "Do you store my answers?",
@@ -44,7 +48,7 @@
       },
       {
         "q": "What if two attitudes are equally strong, as Fi and Ti both at 88%?",
-        "a": "When two functions land that close, the forty-eight items are not enough, so after the quiz you get a short follow-up: which sentence sounds more like you. Those answers are folded into the percentages. If they still split, you can try a different lead on the results page."
+        "a": "When two functions land that close, the fifty-two items are not enough, so after the quiz you get a short follow-up: which sentence sounds more like you. Those answers are folded into the percentages. If they still split, you can try a different lead on the results page."
       },
       {
         "q": "What is Your Type in Depth?",
@@ -59,8 +63,8 @@
   },
   "about": {
     "seoTitle": "About Jungology | Jung Functions Quiz",
-    "seoDescription": "How this quiz uses Psychological Types and Beebe’s eight-role model to score the eight function-attitudes.",
-    "eyebrow": "method & privacy",
+    "seoDescription": "How this quiz scores Jung’s eight function-attitudes, and the optional Type in Depth ($3) and Compatibility ($1) readings unlocked with Stripe.",
+    "eyebrow": "method, privacy & buying",
     "title": "About",
     "stat": "Jung 1921 · Beebe eight-function model",
     "lede": "This quiz scores the eight function-attitudes as Jung set them down in Psychological Types (1921), and then reads that profile through Beebe’s later eight-role model, which is a map of the psyche rather than a verdict on who you are.",
@@ -75,7 +79,7 @@
       {
         "heading": "The item bank",
         "paragraphs": [
-          "There are forty-eight original statements, six for each function-attitude. You rate each from 1 to 5, and a tap moves you on. If two functions are still close after the forty-eight, a short follow-up at the end names the lead. The totals appear as 0–100% bars."
+          "There are fifty-two original statements. You rate each from 1 to 5, and a tap moves you on. If two functions are still close after the fifty-two, a short follow-up at the end names the lead. The totals appear as 0–100% bars."
         ]
       },
       {
@@ -88,19 +92,25 @@
         "heading": "How a type is suggested",
         "paragraphs": [
           "Each of the sixteen types is scored with the Hero / Heroine first, so a type whose leading function is not your strongest score is set aside, while the Parent is rewarded next, the Eternal Child moderately, and the Inferior (Anima / Animus) only slightly. The model also wants the lead to outrank its opposite-attitude twin. If two functions score close, free results let you pick the Hero / Heroine and the Parent, and Your Type in Depth opens the Eternal Child, Inferior (Anima / Animus), and the full eight-role stack.",
-          "When two functions land together — Fi and Ti both high, or Ni and Ne — the totals are not enough, so after the forty-eight the quiz asks a short follow-up: five forced choices between those two, not another set of ratings. Those answers are folded into the percentages, the winner’s bar rises and the other falls, and that is what names the lead. If they still split, you can try a different lead on the results page."
+          "When two functions land together — Fi and Ti both high, or Ni and Ne — the totals are not enough, so after the fifty-two the quiz asks a short follow-up: five forced choices between those two, not another set of ratings. Those answers are folded into the percentages, the winner’s bar rises and the other falls, and that is what names the lead. If they still split, you can try a different lead on the results page."
         ]
       },
       {
         "heading": "Your Type in Depth",
         "paragraphs": [
-          "The quiz, the eight scores, and a Hero / Heroine and Parent pick stay free, while Eternal Child and Inferior (Anima / Animus), the full eight-role stack, and the longer chapters sit behind a one-time unlock. Set a Lemon Squeezy or Stripe Payment Link as VITE_DOSSIER_CHECKOUT_URL and put the fulfillment keys in VITE_DOSSIER_UNLOCK_KEYS. After payment, send people to /type-in-depth?key=their-key."
+          "The quiz, the eight scores, and the choice of Hero / Heroine and Parent stay free. Your Type in Depth is a longer Beebe reading of this stack: Eternal Child and Inferior (Anima / Animus), the eight-role map, growth, shadow work, and prompts you can print. It is a one-time Stripe unlock for $3. After checkout you return to this site with a key in the link, which opens the reading in this browser."
         ]
       },
       {
-        "heading": "Compatibility add-on",
+        "heading": "Compatibility",
         "paragraphs": [
-          "Compatibility is a second, separate unlock. It places the other fifteen types on your Beebe stack (same stack, Hero / Heroine and Parent swapped, Inferior (Anima / Animus) pull, and so on). Use VITE_COMPAT_CHECKOUT_URL and VITE_COMPAT_UNLOCK_KEYS, and send people to /compatibility?key=their-key. A Type in Depth key will not open compatibility, and a compatibility key will not open Your Type in Depth."
+          "Compatibility is a second, separate $1 unlock. It reads how the other fifteen types sit on your stack — same lead, Hero / Heroine and Parent swapped, Inferior (Anima / Animus) pull, and the rest — not a ranking of who you should date. Your Type in Depth does not include it. A Type in Depth key will not open compatibility, and a compatibility key will not open Your Type in Depth. Checkout is Stripe, the same way."
+        ]
+      },
+      {
+        "heading": "Buying",
+        "paragraphs": [
+          "Both readings are one-time digital texts, not a subscription. Keep the Stripe receipt. If checkout failed or the key did not unlock, write from the email on that receipt and the charge can be refunded. Stripe handles the card; Jungology does not store card numbers. More detail sits on Notes on buying."
         ]
       },
       {
@@ -112,7 +122,7 @@
       {
         "heading": "Privacy",
         "paragraphs": [
-          "There is no account and no database of answers. Optional Cloudflare Web Analytics may count page visits such as /quiz and /results; the answers themselves stay in sessionStorage on your device and are never sent to a server."
+          "There is no account and no database of answers. Quiz answers stay in this browser until you start over; they are never sent to a server. Cloudflare and Google Analytics may count page views — which pages you open, not your answers, scores, or type. Unlock state is stored in this browser so you do not have to paste the key every time."
         ]
       }
     ]
@@ -124,7 +134,7 @@
     "seoDescription": "The superior function appears as {heroName}. A reading of the eight function-attitudes, not a diagnosis.",
     "emptyTitle": "No save",
     "emptyStat": "quiz not finished",
-    "emptyBody": "Take the forty-eight-question quiz to see your personality type, and your answers will stay in this browser tab until you close it or start over.",
+    "emptyBody": "Take the fifty-two-question quiz to see your personality type, and your answers will stay in this browser tab until you close it or start over.",
     "beginQuiz": "Begin the quiz",
     "scoresHeading": "Function-attitude scores",
     "scoresIntro": "Each bar is six statements drawn from Jung’s account of that function-attitude, including one reverse item, and when two leads were close the follow-up answers are folded into the total.",
@@ -142,6 +152,9 @@
     "mapBodyLocked": "Eternal Child and Inferior (Anima / Animus), the full eight-role stack, chapters, shadow work, and prompts. One-time unlock · {price}. The eight scores stay free.",
     "mapCtaUnlocked": "Open Your Type in Depth",
     "mapCtaLocked": "Unlock Your Type in Depth · {price}",
+    "offerTitle": "Your type is ready",
+    "offerCta": "Your type for {price}",
+    "stayFree": "No thanks, I'll see it for free",
     "compatEyebrow": "add-on",
     "compatTitle": "Compatibility",
     "compatBodyUnlocked": "How this type meets the other fifteen, read through the roles already living in you, which is a separate purchase from Your Type in Depth.",

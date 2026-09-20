@@ -40,6 +40,8 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/legal" element={<Legal />} />
         <Route path="/guides" element={<GuidesIndex />} />
+        <Route path="/4-letter-code" element={<Navigate to="/four-letter-code" replace />} />
+        <Route path="/the-stack" element={<Navigate to="/function-stack" replace />} />
         <Route path="/types" element={<TypesIndex />} />
         <Route path="/types/:code" element={<TypePage />} />
         <Route path="/admin" element={<Admin />} />

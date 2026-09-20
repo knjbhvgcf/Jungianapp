@@ -379,6 +379,57 @@ a {
   margin: 1.4rem 0 0.4rem;
 }
 
+.results-gate {
+  min-height: calc(100dvh - 8rem);
+  display: grid;
+  place-items: center;
+}
+
+.results-gate-edit {
+  padding-bottom: 2rem;
+}
+
+.results-popup {
+  width: min(22rem, calc(100% - 2rem));
+}
+
+.results-popup__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 1.4rem 1.6rem;
+  text-align: center;
+  border: 2px solid var(--ink);
+  border-radius: 1.8rem;
+}
+
+.results-popup__card .serif-title {
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+  margin: 0;
+}
+
+.stay-free,
+.stay-free .editable__field {
+  background: none;
+  border: 0;
+  padding: 0.2rem 0;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.stay-free .editable__field {
+  width: min(100%, 22rem);
+  text-align: center;
+}
+
+body:has(.results-gate) .site-footer {
+  display: none;
+}
+
 .sketch-stage {
   position: relative;
   display: grid;
@@ -1032,6 +1083,285 @@ a {
 
 .prose h2 {
   margin-top: 1.8rem;
+}
+
+.guide-figure {
+  margin: 1.5rem 0 1.8rem;
+  padding: 0;
+  border: 0;
+}
+
+.guide-figure figcaption,
+.guide-figure p.guide-figure__label {
+  margin: 0 0 0.55rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--faint);
+}
+
+.guide-figure ul,
+.guide-figure ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.guide-figure__code {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  display: block;
+}
+
+.guide-figure__note {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.guide-figure--four ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2.2rem;
+}
+
+.guide-figure--four li {
+  padding: 0.7rem 0 0.75rem;
+  border-top: 1px solid var(--ink);
+}
+
+.guide-figure--four .guide-figure__code {
+  font-size: 2.1rem;
+}
+
+.guide-figure--names ul {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.guide-figure--names li {
+  display: grid;
+  grid-template-columns: 2.6rem 1.6rem 1fr;
+  align-items: baseline;
+  gap: 0.55rem;
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--ink);
+}
+
+.guide-figure--names li:last-child {
+  border-bottom: 1px solid var(--ink);
+}
+
+.guide-figure--names strong {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 400;
+}
+
+.guide-figure--names .guide-figure__note {
+  margin: 0;
+}
+
+.guide-figure__turn {
+  font-family: var(--mono);
+  color: var(--faint);
+}
+
+.guide-figure--split {
+  padding: 0.2rem 0 0;
+}
+
+.guide-figure__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 2.2rem;
+}
+
+.guide-figure__split > div + div {
+  padding-left: 1.4rem;
+  border-left: 1px solid var(--ink);
+}
+
+.guide-figure__split li {
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--ink);
+}
+
+.guide-figure__split li:last-child {
+  padding-bottom: 0;
+}
+
+.guide-figure--stack {
+  text-align: center;
+}
+
+.guide-figure--stack ol {
+  position: relative;
+  width: min(11rem, 100%);
+  margin: 0.35rem auto 0;
+}
+
+.guide-figure--stack ol::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0.85rem;
+  bottom: 0.85rem;
+  width: 1px;
+  background: var(--ink);
+}
+
+.guide-figure--stack li {
+  position: relative;
+  z-index: 1;
+  padding: 0.28rem 0;
+}
+
+.guide-figure--stack .guide-figure__code {
+  display: inline-block;
+  padding: 0.1rem 0.7rem;
+  background: var(--bg);
+  font-size: 1.5rem;
+}
+
+.guide-figure--stacks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem 1rem;
+  text-align: center;
+}
+
+.guide-figure--stacks ol {
+  position: relative;
+  margin-top: 0.15rem;
+}
+
+.guide-figure--stacks ol::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 1px;
+  background: var(--ink);
+}
+
+.guide-figure--stacks li {
+  position: relative;
+  z-index: 1;
+  padding: 0.18rem 0;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  background: var(--bg);
+}
+
+.guide-figure--pairs {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.guide-figure--pairs li {
+  display: grid;
+  grid-template-columns: 2.8rem 1fr 2.8rem;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.45rem 0;
+}
+
+.guide-figure--pairs li + li {
+  border-top: 1px solid var(--ink);
+}
+
+.guide-figure--pairs strong {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+.guide-figure--pairs li strong:last-child {
+  text-align: right;
+}
+
+.guide-figure__rail {
+  display: block;
+  height: 1px;
+  background: var(--ink);
+}
+
+.guide-figure--roles ol {
+  margin: 0;
+}
+
+.guide-figure--roles li {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 32%) 1fr;
+  gap: 0.9rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--ink);
+}
+
+.guide-figure--roles li:last-child {
+  border-bottom: 1px solid var(--ink);
+}
+
+.guide-figure--roles .guide-figure__code {
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.guide-figure--roles .guide-figure__note {
+  margin: 0;
+  align-self: center;
+}
+
+.guide-figure--rules {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.guide-figure p.guide-figure__rhythm {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.55rem 0 0.65rem;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  color: var(--ink);
+}
+
+.guide-figure__rhythm span {
+  flex: 1;
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .guide-figure--four ul,
+  .guide-figure__split,
+  .guide-figure--stacks {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .guide-figure__split > div + div {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .guide-figure--roles li {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
 }
 
 .prose code {
@@ -2004,6 +2334,7 @@ span.is-editable[data-edit]::after {
   .dossier-toolbar,
   .upsell,
   .hero__actions,
+  .results-popup,
   .results-actions,
   .edit-seo,
   .edit-hint,

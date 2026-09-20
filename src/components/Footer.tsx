@@ -22,6 +22,8 @@ export function Footer() {
         {' · '}
         <Link to="/guides">Guides</Link>
         {' · '}
+        <Link to="/type-theory">Type theory</Link>
+        {' · '}
         <Link to="/jung-vs-mbti">Jung and MBTI®</Link>
         {' · '}
         <Link to="/legal">Buying</Link>

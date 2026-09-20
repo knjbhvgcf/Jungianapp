@@ -159,8 +159,9 @@ export function Home() {
         <div className="wrap">
           <h2 id="guides-heading">Further reading</h2>
           <p className="section__intro">
-            These pages explore the distinctions behind the forty-eight statements in greater depth,
-            for those who want to look more closely at the ideas behind the quiz.
+            These pages start with type theory, the four-letter code, and the function stack, then
+            the distinctions behind the fifty-two statements, for those who want to look more
+            closely at the ideas behind the quiz.
           </p>
           <ul className="guide-index guide-index--home">
             {guides.map((guide) =>

@@ -12,6 +12,8 @@ export const RESERVED_SLUGS = new Set([
   'guides',
   'assets',
   'types',
+  '4-letter-code',
+  'the-stack',
 ])
 
 export function slugify(value: string) {

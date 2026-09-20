@@ -165,6 +165,14 @@ function TypePageBody({ code }: { code: string }) {
             ))}
           </ul>
           <p>
+            How a four-letter code becomes this stack, and what each position is for:{' '}
+            <Link to="/four-letter-code">The four-letter code</Link>
+            {' · '}
+            <Link to="/function-stack">The function stack</Link>
+            {' · '}
+            <Link to="/type-theory">Type theory</Link>
+          </p>
+          <p>
             The longer reading — Beebe’s eight, the day, work, relating, and the shadow — opens
             after the quiz, in Your Type in Depth. This page is the public face of the sprout.
           </p>

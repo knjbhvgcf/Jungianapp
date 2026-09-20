@@ -30,6 +30,16 @@
       "facet": "reverse",
       "reverse": true,
       "text": "I rarely know where a situation is going until the outer facts have already lined up."
+    },
+    {
+      "functionId": "Ni",
+      "facet": "process",
+      "text": "I tend to keep my hopes and dreams close to me, and don't enjoy sharing prospective ideas with people close to me."
+    },
+    {
+      "functionId": "Ni",
+      "facet": "process",
+      "text": "I like to explore ideas alone but when it comes to doing the work I like to do it in a group."
     }
   ],
   "Ne": [
@@ -63,6 +73,16 @@
       "facet": "reverse",
       "reverse": true,
       "text": "Once I have one path that could work, I do not go looking for other ones."
+    },
+    {
+      "functionId": "Ne",
+      "facet": "process",
+      "text": "I enjoy telling people close to me about all the different possibilities and opportunities that excite me."
+    },
+    {
+      "functionId": "Ne",
+      "facet": "process",
+      "text": "I like to explore ideas with people but when it comes to doing the work I like to be alone and go inwards."
     }
   ],
   "Si": [

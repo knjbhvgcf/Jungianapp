@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import type { Plugin } from 'vite'
-import { parseGuideInline } from './src/lib/guideMarkup.ts'
+import { parseGuideBlock, parseGuideInline, type GuideDiagram } from './src/lib/guideMarkup.ts'
 import { writeSitemap } from './sitemap.ts'
 
 type Guide = {
@@ -34,20 +34,121 @@ function inlineHtml(text: string) {
     .join('')
 }
 
+function cellHtml(cell: { code: string; note: string }) {
+  const note = cell.note ? `<span class="guide-figure__note">${escapeHtml(cell.note)}</span>` : ''
+  return `<strong class="guide-figure__code">${escapeHtml(cell.code)}</strong>${note}`
+}
+
+function diagramHtml(diagram: GuideDiagram) {
+  const caption = diagram.caption
+    ? `<figcaption>${escapeHtml(diagram.caption)}</figcaption>`
+    : ''
+  const className = `guide-figure guide-figure--${diagram.kind}`
+  const cells = diagram.columns.flat()
+
+  if (diagram.kind === 'pairs') {
+    const labels = diagram.caption.split('|').map((item) => item.trim()).filter(Boolean)
+    const groups = diagram.columns.length > 1 ? diagram.columns : [cells]
+    const body = groups
+      .map((group, index) => {
+        const label = labels[index]
+          ? `<p class="guide-figure__label">${escapeHtml(labels[index])}</p>`
+          : ''
+        const items = group
+          .map(
+            (cell) =>
+              `<li><strong>${escapeHtml(cell.code)}</strong><span class="guide-figure__rail" aria-hidden="true"></span><strong>${escapeHtml(cell.note || cell.code)}</strong></li>`,
+          )
+          .join('')
+        return `<div>${label}<ul>${items}</ul></div>`
+      })
+      .join('')
+    return `<figure class="${className}">${body}</figure>`
+  }
+
+  if (diagram.kind === 'split') {
+    const labels = diagram.caption.split('|').map((item) => item.trim()).filter(Boolean)
+    const columns = diagram.columns
+      .map((column, index) => {
+        const heading = labels[index]
+          ? `<p class="guide-figure__label">${escapeHtml(labels[index])}</p>`
+          : ''
+        const items = column.map((cell) => `<li>${cellHtml(cell)}</li>`).join('')
+        return `<div>${heading}<ul>${items}</ul></div>`
+      })
+      .join('')
+    return `<figure class="${className}"><div class="guide-figure__split">${columns}</div></figure>`
+  }
+
+  if (diagram.kind === 'stack' || diagram.kind === 'roles') {
+    const items = cells.map((cell) => `<li>${cellHtml(cell)}</li>`).join('')
+    return `<figure class="${className}">${caption}<ol>${items}</ol></figure>`
+  }
+
+  if (diagram.kind === 'stacks') {
+    const columns = cells
+      .map((cell) => {
+        const rungs = cell.note
+          .split(/\s+/)
+          .filter(Boolean)
+          .map((rung) => `<li>${escapeHtml(rung)}</li>`)
+          .join('')
+        return `<div><p class="guide-figure__label">${escapeHtml(cell.code)}</p><ol>${rungs}</ol></div>`
+      })
+      .join('')
+    return `<figure class="${className}">${columns}</figure>`
+  }
+
+  if (diagram.kind === 'rules') {
+    const rhythms = cells
+      .map((cell) => {
+        const letters = cell.code
+          .split('')
+          .map((letter) => `<span>${escapeHtml(letter)}</span>`)
+          .join('')
+        return `<p class="guide-figure__rhythm" aria-label="${escapeHtml(cell.code)}">${letters}</p>`
+      })
+      .join('')
+    return `<figure class="${className}">${caption}${rhythms}</figure>`
+  }
+
+  if (diagram.kind === 'names') {
+    const items = cells
+      .map((cell) => {
+        const inward = /i$/i.test(cell.code)
+        const turn = inward ? '←' : '→'
+        return `<li><strong>${escapeHtml(cell.code)}</strong><span class="guide-figure__turn" aria-hidden="true">${turn}</span><span class="guide-figure__note">${escapeHtml(cell.note)}</span></li>`
+      })
+      .join('')
+    return `<figure class="${className}"><ul>${items}</ul></figure>`
+  }
+
+  const items = cells.map((cell) => `<li>${cellHtml(cell)}</li>`).join('')
+  return `<figure class="${className}">${caption}<ul>${items}</ul></figure>`
+}
+
+function blockHtml(text: string) {
+  const block = parseGuideBlock(text)
+  if (block.type === 'diagram') return diagramHtml(block)
+  return `<p>${inlineHtml(block.text)}</p>`
+}
+
 function articleHtml(guide: Guide) {
+  const lede = guide.lede
+    .split(/\n\n+/)
+    .map((paragraph) => `<p class="lede">${inlineHtml(paragraph)}</p>`)
+    .join('')
   const sections = guide.sections
     .map((section) => {
       const heading = section.heading
         ? `<h2>${escapeHtml(section.heading)}</h2>`
         : ''
-      const paragraphs = section.paragraphs
-        .map((paragraph) => `<p>${inlineHtml(paragraph)}</p>`)
-        .join('')
+      const paragraphs = section.paragraphs.map((paragraph) => blockHtml(paragraph)).join('')
       return `${heading}${paragraphs}`
     })
     .join('')
 
-  return `<article class="section"><div class="wrap prose"><p class="eyebrow">${escapeHtml(guide.eyebrow)}</p><h1 class="serif-title">${escapeHtml(guide.title)}</h1><p class="mono-stat">${escapeHtml(guide.stat)}</p><p class="lede">${escapeHtml(guide.lede)}</p>${sections}<p><a href="/quiz">Begin the quiz</a></p></div></article>`
+  return `<article class="section"><div class="wrap prose"><p class="eyebrow">${escapeHtml(guide.eyebrow)}</p><h1 class="serif-title">${escapeHtml(guide.title)}</h1><p class="mono-stat">${escapeHtml(guide.stat)}</p>${lede}${sections}<p><a href="/quiz">Begin the quiz</a></p></div></article>`
 }
 
 type TypePage = {
@@ -83,7 +184,7 @@ function typePageHtml(type: TypePage, types: TypePage[]) {
     ? `<img src="${escapeHtml(type.image)}" alt="${escapeHtml(`${type.code} ${type.title}`)}" class="sketch type-portrait">`
     : ''
   const others = types.filter((item) => item.code !== type.code).map(typeCard).join('')
-  return `<article class="section type-page"><header class="wrap screen dossier-hero">${img}<p class="eyebrow">sprout</p><h1 class="serif-title">${escapeHtml(type.code)} — ${escapeHtml(type.title)}</h1><p class="mono-stat">${escapeHtml(type.code.toLowerCase())} · ${escapeHtml(type.name.toLowerCase())}</p><p class="lede">${escapeHtml(type.summary)}</p><p><a href="/quiz">Begin the quiz</a> · <a href="/types">All sprouts</a></p></header><div class="wrap prose"><h2>Cognitive stack</h2><ul class="archetype-stack">${stack}</ul></div><div class="wrap prose"><h2>The other sprouts</h2><ul class="type-index">${others}</ul></div></article>`
+  return `<article class="section type-page"><header class="wrap screen dossier-hero">${img}<p class="eyebrow">sprout</p><h1 class="serif-title">${escapeHtml(type.code)} — ${escapeHtml(type.title)}</h1><p class="mono-stat">${escapeHtml(type.code.toLowerCase())} · ${escapeHtml(type.name.toLowerCase())}</p><p class="lede">${escapeHtml(type.summary)}</p><p><a href="/quiz">Begin the quiz</a> · <a href="/types">All sprouts</a></p></header><div class="wrap prose"><h2>Cognitive stack</h2><ul class="archetype-stack">${stack}</ul><p>How a four-letter code becomes this stack, and what each position is for: <a href="/four-letter-code">The four-letter code</a> · <a href="/function-stack">The function stack</a> · <a href="/type-theory">Type theory</a>.</p></div><div class="wrap prose"><h2>The other sprouts</h2><ul class="type-index">${others}</ul></div></article>`
 }
 
 function indexHtml(guides: Guide[]) {
@@ -93,7 +194,7 @@ function indexHtml(guides: Guide[]) {
         `<li><a href="/${guide.slug}"><strong>${escapeHtml(guide.title)}</strong></a><p>${escapeHtml(guide.seoDescription)}</p></li>`,
     )
     .join('')
-  return `<article class="section"><div class="wrap prose"><p class="eyebrow">guides</p><h1 class="serif-title">Guides</h1><p class="lede">Short readings of Jung’s function-attitudes, written so you can take the quiz with a clearer sense of what is being measured.</p><ul>${items}</ul><p><a href="/quiz">Begin the quiz</a></p></div></article>`
+  return `<article class="section"><div class="wrap prose"><p class="eyebrow">guides</p><h1 class="serif-title">Guides</h1><p class="lede">Type theory, the four-letter code, the function stack, and short readings of Jung’s function-attitudes, written so you can take the quiz with a clearer sense of what is being measured.</p><ul>${items}</ul><p><a href="/quiz">Begin the quiz</a></p></div></article>`
 }
 
 function applyShell(template: string, title: string, description: string, body: string) {
@@ -136,7 +237,7 @@ export function prerenderGuidesPlugin(): Plugin {
       writePage(
         'guides',
         'Jungian function guides | Jung Functions Quiz',
-        'Read Jung’s eight function-attitudes, how this quiz differs from MBTI, and the close pairs the items are built to separate.',
+        'Jungian type theory, the four-letter code, the function stack, Jung’s eight function-attitudes, and how this quiz differs from MBTI.',
         indexHtml(guides),
       )
 

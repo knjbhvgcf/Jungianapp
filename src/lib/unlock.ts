@@ -45,6 +45,36 @@ export function productHref(product: UnlockProduct, unlocked: boolean) {
   return unlocked ? productPagePath(product) : productUnlockHref(product)
 }
 
+const REVEAL_STORAGE = 'jung-functions.type-reveal.unlock.v1'
+
+function revealKeys() {
+  return envKeys(import.meta.env.VITE_REVEAL_UNLOCK_KEYS || '')
+}
+
+/** Stripe Payment Link to see your type after the quiz. Separate from Compatibility. */
+export function typeRevealHref() {
+  const raw = import.meta.env.VITE_REVEAL_CHECKOUT_URL
+  return typeof raw === 'string' ? raw.trim() : ''
+}
+
+export function typeRevealPrice() {
+  const raw = import.meta.env.VITE_REVEAL_PRICE
+  if (typeof raw === 'string' && raw.trim()) return raw.trim()
+  return '$1'
+}
+
+export function isTypeRevealUnlocked() {
+  if (!canUseStorage()) return false
+  return window.localStorage.getItem(REVEAL_STORAGE) === '1'
+}
+
+export function tryUnlockTypeReveal(input: string) {
+  const normalized = input.trim().toLowerCase()
+  if (!normalized || !revealKeys().includes(normalized)) return false
+  if (canUseStorage()) window.localStorage.setItem(REVEAL_STORAGE, '1')
+  return true
+}
+
 function configuredKeys(product: UnlockProduct) {
   const raw =
     product === 'compat'

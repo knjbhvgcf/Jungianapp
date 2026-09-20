@@ -335,7 +335,7 @@ function analyzePair(pair: ClosePair, answers: Answers, scores: FunctionScore[])
   const confidence = Math.round(Math.min(92, Math.max(18, (gap / total) * 100 + (stillTied ? 0 : 12))))
 
   const summary = stillTied
-    ? `${FUNCTIONS[intro].id} and ${FUNCTIONS[extra].id} both scored ${introPercent}% and ${extraPercent}%. The first 48 items cannot honestly name a single lead for ${copy.name}. The follow-up questions are what settle it.`
+    ? `${FUNCTIONS[intro].id} and ${FUNCTIONS[extra].id} both scored ${introPercent}% and ${extraPercent}%. The first 52 items cannot honestly name a single lead for ${copy.name}. The follow-up questions are what settle it.`
     : `${FUNCTIONS[intro].id} and ${FUNCTIONS[extra].id} landed within ${Math.abs(introPercent - extraPercent)} points (${introPercent}% and ${extraPercent}%). Looking past the totals, the closer reading names ${FUNCTIONS[winner].id}. ${FUNCTIONS[loser].id} remains strong, not a second hero.`
 
   return {

@@ -25,10 +25,14 @@ function typeCodes() {
 
 export function writeSitemap(guideSlugs: string[], dest = 'public/sitemap.xml') {
   const origin = 'https://jungology.com'
+  const pillar = new Set(['type-theory', 'four-letter-code', 'function-stack'])
   const urls = [
     ...CORE,
     ...typeCodes().map((code) => ({ loc: `/types/${code}`, priority: '0.7' })),
-    ...guideSlugs.map((slug) => ({ loc: `/${slug}`, priority: '0.7' })),
+    ...guideSlugs.map((slug) => ({
+      loc: `/${slug}`,
+      priority: pillar.has(slug) ? '0.8' : '0.7',
+    })),
   ]
   const body = urls
     .map(
