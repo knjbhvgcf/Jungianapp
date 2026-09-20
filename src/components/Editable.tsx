@@ -1,6 +1,15 @@
 import type { ReactNode } from 'react'
+import { parseGuideInline } from '../lib/guideMarkup'
 import { useEditMode } from '../lib/editMode'
 import { Button } from './Button'
+
+function InlineMarkup({ text }: { text: string }) {
+  return parseGuideInline(text).map((part, index) => {
+    if (part.type === 'strong') return <strong key={index}>{part.value}</strong>
+    if (part.type === 'em') return <em key={index}>{part.value}</em>
+    return <span key={index}>{part.value}</span>
+  })
+}
 
 type Tag = 'h1' | 'h2' | 'h3' | 'p' | 'span' | 'li' | 'cite' | 'blockquote' | 'strong' | 'small'
 
@@ -26,7 +35,11 @@ export function Editable({
   const isMulti = multiline ?? (as === 'p' || as === 'blockquote' || as === 'li')
 
   if (!editing) {
-    return <Tag className={className}>{value}</Tag>
+    return (
+      <Tag className={className}>
+        <InlineMarkup text={value} />
+      </Tag>
+    )
   }
 
   return (
