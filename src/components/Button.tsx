@@ -37,7 +37,7 @@ export function Button({
     const external = /^https?:\/\//.test(to)
     if (external) {
       return (
-        <a href={to} className={classes}>
+        <a href={to} className={classes} onClick={onClick}>
           {content}
         </a>
       )

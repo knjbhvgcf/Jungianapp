@@ -47,14 +47,19 @@ export function productHref(product: UnlockProduct, unlocked: boolean) {
 
 const REVEAL_STORAGE = 'jung-functions.type-reveal.unlock.v1'
 
+/** Public Payment Link / coupon. Env vars override these if Cloudflare has them. */
+const FALLBACK_REVEAL_CHECKOUT_URL = 'https://buy.stripe.com/bJe00l4ZdeA39fE270eIw02'
+const FALLBACK_REVEAL_UNLOCK_KEYS = 'reveal-JQ8ASF7IpcLU'
+
 function revealKeys() {
-  return envKeys(import.meta.env.VITE_REVEAL_UNLOCK_KEYS || '')
+  return envKeys(import.meta.env.VITE_REVEAL_UNLOCK_KEYS || FALLBACK_REVEAL_UNLOCK_KEYS)
 }
 
 /** Stripe Payment Link to see your type after the quiz. Separate from Compatibility. */
 export function typeRevealHref() {
   const raw = import.meta.env.VITE_REVEAL_CHECKOUT_URL
-  return typeof raw === 'string' ? raw.trim() : ''
+  const url = typeof raw === 'string' ? raw.trim() : ''
+  return url || FALLBACK_REVEAL_CHECKOUT_URL
 }
 
 export function typeRevealPrice() {

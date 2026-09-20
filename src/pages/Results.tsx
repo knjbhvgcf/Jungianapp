@@ -196,12 +196,16 @@ export function Results() {
             {results.offerTitle}
           </h1>
         )}
-        <EditableButton
-          to={typeRevealHref() || undefined}
-          label="See type CTA"
-          value={editing ? results.offerCta : fillCopy(results.offerCta, { price: revealPrice })}
-          onChange={(offerCta) => patchResults({ offerCta })}
-        />
+        {editing ? (
+          <EditableButton
+            to={typeRevealHref()}
+            label="See type CTA"
+            value={results.offerCta}
+            onChange={(offerCta) => patchResults({ offerCta })}
+          />
+        ) : (
+          <Button to={typeRevealHref()}>{fillCopy(results.offerCta, { price: revealPrice })}</Button>
+        )}
         {editing ? (
           <Editable
             as="span"
