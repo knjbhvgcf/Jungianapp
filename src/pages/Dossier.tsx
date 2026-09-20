@@ -411,6 +411,7 @@ function UnlockedReading({
           <h2>Growth</h2>
           <Editable
             as="p"
+            className="dossier-breaks"
             label="Growth"
             value={copy.growth}
             onChange={(growth) => patchType(previewType, (type) => ({ ...type, growth }))}
