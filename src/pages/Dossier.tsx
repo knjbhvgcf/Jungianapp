@@ -30,7 +30,13 @@ import {
   useTypeDraft,
 } from '../lib/editMode'
 import { trackPurchase } from '../lib/analytics'
-import { isProductUnlocked, productHref, tryUnlockKey, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
+import {
+  COMPATIBILITY_OFFERED,
+  isProductUnlocked,
+  productHref,
+  tryUnlockKey,
+  TYPE_IN_DEPTH_PATH,
+} from '../lib/unlock'
 import type { PersonalityType } from '../data/personalityTypes'
 import type { TypeMapCopy } from '../data/typeMaps'
 import type { BeebePlacement, FunctionScore, TypeMatch } from '../lib/scoring'
@@ -315,6 +321,7 @@ function UnlockedReading({
 }) {
   const { editing, previewType, patchType } = useEditMode()
   const compatUnlocked = isProductUnlocked('compat')
+  const showCompat = COMPATIBILITY_OFFERED || compatUnlocked || editing
 
   return (
     <>
@@ -462,34 +469,36 @@ function UnlockedReading({
         </section>
       ) : null}
 
-      <aside className="upsell">
-        <Editable
-          as="p"
-          className="eyebrow"
-          label="Compat eyebrow"
-          multiline={false}
-          value={mapPage.compatEyebrow}
-          onChange={(compatEyebrow) => patchMap({ compatEyebrow })}
-        />
-        <Editable
-          as="h2"
-          label="Compat title"
-          value={mapPage.compatTitle}
-          onChange={(compatTitle) => patchMap({ compatTitle })}
-        />
-        <Editable
-          as="p"
-          label="Compat body"
-          value={mapPage.compatBody}
-          onChange={(compatBody) => patchMap({ compatBody })}
-        />
-        <EditableButton
-          to={productHref('compat', compatUnlocked)}
-          label="Compat CTA"
-          value={mapPage.compatCta}
-          onChange={(compatCta) => patchMap({ compatCta })}
-        />
-      </aside>
+      {showCompat ? (
+        <aside className="upsell">
+          <Editable
+            as="p"
+            className="eyebrow"
+            label="Compat eyebrow"
+            multiline={false}
+            value={mapPage.compatEyebrow}
+            onChange={(compatEyebrow) => patchMap({ compatEyebrow })}
+          />
+          <Editable
+            as="h2"
+            label="Compat title"
+            value={mapPage.compatTitle}
+            onChange={(compatTitle) => patchMap({ compatTitle })}
+          />
+          <Editable
+            as="p"
+            label="Compat body"
+            value={mapPage.compatBody}
+            onChange={(compatBody) => patchMap({ compatBody })}
+          />
+          <EditableButton
+            to={productHref('compat', compatUnlocked)}
+            label="Compat CTA"
+            value={mapPage.compatCta}
+            onChange={(compatCta) => patchMap({ compatCta })}
+          />
+        </aside>
+      ) : null}
       {runnerUp ? (
         <section>
           <h2>Close second</h2>
@@ -522,13 +531,15 @@ function UnlockedReading({
           value={mapPage.backToResultsButton}
           onChange={(backToResultsButton) => patchMap({ backToResultsButton })}
         />
-        <EditableButton
-          to="/compatibility"
-          variant="ghost"
-          label="Compat button"
-          value={mapPage.compatButton}
-          onChange={(compatButton) => patchMap({ compatButton })}
-        />
+        {showCompat ? (
+          <EditableButton
+            to="/compatibility"
+            variant="ghost"
+            label="Compat button"
+            value={mapPage.compatButton}
+            onChange={(compatButton) => patchMap({ compatButton })}
+          />
+        ) : null}
       </div>
       {editing && !quizSelected ? (
         <EditHint>Stack tools appear here after a quiz is finished on this browser.</EditHint>

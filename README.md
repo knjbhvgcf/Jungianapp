@@ -68,25 +68,13 @@ VITE_DOSSIER_PRICE=$3
 
 Old `/dossier` links redirect to `/type-in-depth`.
 
-## Compatibility add-on (separate paid unlock)
+## Compatibility add-on (paused)
 
-Compatibility is not included in Your Type in Depth. It is a second product with its own checkout and keys.
-
-1. Create a second Payment Link.
-2. Set the success URL to `https://jungology.com/compatibility?key=YOUR-COMPAT-KEY`.
-3. Add to `.env`:
-
-```
-VITE_COMPAT_CHECKOUT_URL=https://your-compat-payment-link
-VITE_COMPAT_UNLOCK_KEYS=YOUR-COMPAT-KEY
-VITE_COMPAT_PRICE=$1
-```
-
-Keys are checked in the browser, so treat them like a shared coupon, not a secret API token. A Type in Depth key will not open compatibility, and a compatibility key will not open Your Type in Depth. In local development, each page has a **Preview unlock** button.
+Compatibility is not currently for sale. Set `COMPATIBILITY_OFFERED` to `true` in `src/lib/unlock.ts` to offer it again. Existing unlocks and keys still open `/compatibility`.
 
 ## See your type ($1, optional)
 
-After the quiz, a popup offers **Your type for $1** or **No thanks, I'll see it for free**. This is a third product. It does not open Type in Depth or Compatibility.
+After the quiz, a popup offers **Your type for $1** or **No thanks, I'll see it for free**. This is a separate product. It does not open Type in Depth.
 
 1. Create a Stripe Payment Link, one-time **$1 USD**.
 2. After payment, redirect to `https://jungology.com/results?key=YOUR-REVEAL-KEY`.

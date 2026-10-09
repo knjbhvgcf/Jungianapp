@@ -266,7 +266,6 @@ export function prerenderGuidesPlugin(): Plugin {
         about: { seoTitle: string; seoDescription: string; title: string; lede: string }
         paywall: {
           mapPage: { seoLockedTitle: string; seoDescription: string }
-          compatPage: { seoLockedTitle: string; seoDescription: string }
         }
       }
 
@@ -290,7 +289,7 @@ export function prerenderGuidesPlugin(): Plugin {
         'legal',
         'Notes on buying | Jung Functions Quiz',
         'What Jungology sells, how unlock keys work, refunds, and that quiz answers stay in your browser.',
-        `<article class="section"><div class="wrap prose"><p class="eyebrow">jungology</p><h1 class="serif-title">Notes on buying</h1><p class="lede">The Jung Functions Quiz, the eight scores, and the choice of lead and support stay free. Two optional readings can be unlocked after Stripe checkout.</p><h2>What you are buying</h2><p>Your Type in Depth is a longer Beebe reading of the stack you just scored. Compatibility is a separate reading of how the other fifteen types sit on that stack. They are educational texts, not psychotherapy, not a diagnosis, and not the MBTI® instrument.</p><h2>Keys</h2><p>After payment, Stripe should return you to this site with a key in the link. That key unlocks the product in this browser.</p><h2>Refunds</h2><p>These are one-time digital readings. If checkout failed or the key did not unlock, write from the email on the Stripe receipt.</p><h2>Privacy</h2><p>There is no account. Quiz answers stay in this browser session. They are not sent to a server. Cloudflare and Google Analytics may count page views, not answers.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+        `<article class="section"><div class="wrap prose"><p class="eyebrow">jungology</p><h1 class="serif-title">Notes on buying</h1><p class="lede">The Jung Functions Quiz, the eight scores, and the choice of lead and support stay free. Your Type in Depth can be unlocked after Stripe checkout.</p><h2>What you are buying</h2><p>Your Type in Depth is a longer Beebe reading of the stack you just scored. It is an educational text, not psychotherapy, not a diagnosis, and not the MBTI® instrument.</p><h2>Keys</h2><p>After payment, Stripe should return you to this site with a key in the link. That key unlocks the reading in this browser.</p><h2>Refunds</h2><p>These are one-time digital readings. If checkout failed or the key did not unlock, write from the email on the Stripe receipt.</p><h2>Privacy</h2><p>There is no account. Quiz answers stay in this browser session. They are not sent to a server. Cloudflare and Google Analytics may count page views, not answers.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
       )
 
       writePage(
@@ -312,13 +311,6 @@ export function prerenderGuidesPlugin(): Plugin {
         pages.paywall.mapPage.seoLockedTitle,
         pages.paywall.mapPage.seoDescription,
         `<article class="section"><div class="wrap prose"><h1 class="serif-title">Your Type in Depth</h1><p class="lede">${escapeHtml(pages.paywall.mapPage.seoDescription)}</p><p>Take the free quiz first, then unlock the longer reading.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
-      )
-
-      writePage(
-        'compatibility',
-        pages.paywall.compatPage.seoLockedTitle,
-        pages.paywall.compatPage.seoDescription,
-        `<article class="section"><div class="wrap prose"><h1 class="serif-title">Compatibility</h1><p class="lede">${escapeHtml(pages.paywall.compatPage.seoDescription)}</p><p>A separate unlock from Your Type in Depth.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
       )
 
       writeSitemap(

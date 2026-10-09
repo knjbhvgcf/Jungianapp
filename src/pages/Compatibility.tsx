@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { CompatReading } from '../components/CompatReading'
 import { UnlockPanel } from '../components/UnlockPanel'
@@ -19,7 +19,12 @@ import { applyFollowUpToProfile } from '../lib/clarify'
 import { loadAnswers, loadClarifyAnswers, loadStackChoice } from '../lib/storage'
 import { asPersonality, useEditMode, useSiteCopy, useTypeDraft } from '../lib/editMode'
 import { trackPurchase } from '../lib/analytics'
-import { isProductUnlocked, tryUnlockKey, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
+import {
+  COMPATIBILITY_OFFERED,
+  isProductUnlocked,
+  tryUnlockKey,
+  TYPE_IN_DEPTH_PATH,
+} from '../lib/unlock'
 
 export function Compatibility() {
   const [params] = useSearchParams()
@@ -68,6 +73,7 @@ export function Compatibility() {
           title={compatPage.emptySeoTitle}
           description={compatPage.emptySeoDescription}
           path="/compatibility"
+          robots={COMPATIBILITY_OFFERED ? undefined : 'noindex,follow'}
         />
         <section className="section">
           <div className="wrap screen empty-state">
@@ -84,12 +90,25 @@ export function Compatibility() {
                   {compatPage.beginQuiz}
                 </Button>
               </>
-            ) : (
+            ) : COMPATIBILITY_OFFERED ? (
               <>
                 <h1 className="serif-title">{compatPage.emptyTitle}</h1>
                 <p className="mono-stat">{compatPage.emptyStat}</p>
                 <p>{compatPage.emptyBody}</p>
                 <Button to="/quiz">{compatPage.beginQuiz}</Button>
+              </>
+            ) : (
+              <>
+                <h1 className="serif-title">Compatibility</h1>
+                <p className="mono-stat">not currently for sale</p>
+                <p>
+                  This reading is paused. If you already have a key from an earlier checkout, open
+                  this page with the key in the link, or paste it after you finish the quiz.
+                </p>
+                <Button to="/quiz">{compatPage.beginQuiz}</Button>
+                <Button to="/results" variant="ghost">
+                  Back to results
+                </Button>
               </>
             )}
           </div>
@@ -120,10 +139,15 @@ export function Compatibility() {
     <>
       <Seo
         title={
-          showUnlocked ? `${selected.title} compatibility | Jung Functions Quiz` : compatPage.seoLockedTitle
+          showUnlocked
+            ? `${selected.title} compatibility | Jung Functions Quiz`
+            : COMPATIBILITY_OFFERED
+              ? compatPage.seoLockedTitle
+              : 'Compatibility | Jung Functions Quiz'
         }
         description={compatPage.seoDescription}
         path="/compatibility"
+        robots={COMPATIBILITY_OFFERED ? undefined : 'noindex,follow'}
       />
 
       <article className="section dossier">
@@ -236,7 +260,7 @@ export function Compatibility() {
                 />
               </div>
             </>
-          ) : (
+          ) : COMPATIBILITY_OFFERED ? (
             <>
               <UnlockPanel product="compat" onUnlocked={() => setUnlocked(true)} />
               {editing ? (
@@ -256,6 +280,8 @@ export function Compatibility() {
                 </p>
               )}
             </>
+          ) : (
+            <CompatPausedPanel onUnlocked={() => setUnlocked(true)} backLabel={compatPage.backLink} />
           )}
           {editing && quizSelected ? (
             <>
@@ -266,5 +292,60 @@ export function Compatibility() {
         </div>
       </article>
     </>
+  )
+}
+
+function CompatPausedPanel({
+  onUnlocked,
+  backLabel,
+}: {
+  onUnlocked: () => void
+  backLabel: string
+}) {
+  const [key, setKey] = useState('')
+  const [error, setError] = useState('')
+  const copy = useSiteCopy().paywall.compat
+
+  function submit(event: FormEvent) {
+    event.preventDefault()
+    if (tryUnlockKey(key, 'compat')) {
+      setError('')
+      onUnlocked()
+      return
+    }
+    setError(copy.error)
+  }
+
+  return (
+    <aside className="unlock-panel">
+      <p className="eyebrow">not currently offered</p>
+      <h2>Compatibility</h2>
+      <p>
+        This reading is paused for now. If you already unlocked it, it still opens in this browser.
+        If you have a key from an earlier checkout, enter it below.
+      </p>
+      <form className="unlock-form" onSubmit={submit}>
+        <label htmlFor="compat-key">{copy.keyLabel}</label>
+        <div className="unlock-form__row">
+          <input
+            id="compat-key"
+            name="key"
+            value={key}
+            onChange={(event) => setKey(event.target.value)}
+            autoComplete="off"
+            placeholder={copy.keyPlaceholder}
+          />
+          <Button type="submit" variant="ghost">
+            {copy.unlockButton}
+          </Button>
+        </div>
+        {error ? <p className="unlock-form__error">{error}</p> : null}
+      </form>
+      <p>
+        <Link to="/results" className="text-link">
+          {backLabel}
+        </Link>
+      </p>
+    </aside>
   )
 }

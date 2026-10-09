@@ -2,6 +2,8 @@ export type UnlockProduct = 'map' | 'compat'
 
 export const TYPE_IN_DEPTH_PATH = '/type-in-depth'
 export const COMPAT_PATH = '/compatibility'
+/** Flip to true to sell Compatibility again. */
+export const COMPATIBILITY_OFFERED = false
 
 const STORAGE: Record<UnlockProduct, string> = {
   map: 'jung-functions.dossier.unlock.v1',
@@ -25,6 +27,7 @@ export function productPrice(product: UnlockProduct) {
 }
 
 export function productCheckoutUrl(product: UnlockProduct) {
+  if (product === 'compat' && !COMPATIBILITY_OFFERED) return ''
   const raw =
     product === 'compat'
       ? import.meta.env.VITE_COMPAT_CHECKOUT_URL
@@ -55,7 +58,7 @@ function revealKeys() {
   return envKeys(import.meta.env.VITE_REVEAL_UNLOCK_KEYS || FALLBACK_REVEAL_UNLOCK_KEYS)
 }
 
-/** Stripe Payment Link to see your type after the quiz. Separate from Compatibility. */
+/** Stripe Payment Link to see your type after the quiz. Separate from Type in Depth. */
 export function typeRevealHref() {
   const raw = import.meta.env.VITE_REVEAL_CHECKOUT_URL
   const url = typeof raw === 'string' ? raw.trim() : ''

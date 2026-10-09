@@ -57,17 +57,13 @@
       {
         "q": "What is Your Type in Depth?",
         "a": "The quiz, the eight scores, and the choice of Hero / Heroine and Parent stay free, while Your Type in Depth is a longer reading of the weaker end of the type, Beebe’s eight roles, and notes on growth, which you can print."
-      },
-      {
-        "q": "What is the compatibility reading?",
-        "a": "A separate purchase from Your Type in Depth, it reads the other fifteen types against your own functions, not as a ranking of who you should date, but as a picture of where someone else’s leading function already sits in you."
       }
     ],
     "ctaHeading": "Ready to see your eight scores?"
   },
   "about": {
     "seoTitle": "About Jungology | Jung Functions Quiz",
-    "seoDescription": "Jungology is a free online cognitive functions test. How this quiz scores Jung’s eight function-attitudes, with optional Type in Depth and Compatibility readings.",
+    "seoDescription": "Jungology is a free online cognitive functions test. How this quiz scores Jung’s eight function-attitudes, with an optional Type in Depth reading.",
     "eyebrow": "method, privacy & buying",
     "title": "About",
     "stat": "Jung 1921 · Beebe eight-function model",
@@ -106,15 +102,9 @@
         ]
       },
       {
-        "heading": "Compatibility",
-        "paragraphs": [
-          "Compatibility is a second, separate $1 unlock. It reads how the other fifteen types sit on your stack — same lead, Hero / Heroine and Parent swapped, Inferior (Anima / Animus) pull, and the rest — not a ranking of who you should date. Your Type in Depth does not include it. A Type in Depth key will not open compatibility, and a compatibility key will not open Your Type in Depth. Checkout is Stripe, the same way."
-        ]
-      },
-      {
         "heading": "Buying",
         "paragraphs": [
-          "Both readings are one-time digital texts, not a subscription. Keep the Stripe receipt. If checkout failed or the key did not unlock, write from the email on that receipt and the charge can be refunded. Stripe handles the card; Jungology does not store card numbers. More detail sits on Notes on buying."
+          "Your Type in Depth is a one-time digital text, not a subscription. Keep the Stripe receipt. If checkout failed or the key did not unlock, write from the email on that receipt and the charge can be refunded. Stripe handles the card; Jungology does not store card numbers. More detail sits on Notes on buying."
         ]
       },
       {
@@ -178,7 +168,7 @@
     "map": {
       "eyebrow": "one-time unlock",
       "title": "Your Type in Depth",
-      "body": "The free page keeps the eight scores and a Hero / Heroine and Parent pick, and Your Type in Depth is the rest of the reading: Eternal Child and Inferior (Anima / Animus), the eight-role stack, and the longer chapters. Compatibility is a separate add-on.",
+      "body": "The free page keeps the eight scores and a Hero / Heroine and Parent pick, and Your Type in Depth is the rest of the reading: Eternal Child and Inferior (Anima / Animus), the eight-role stack, and the longer chapters.",
       "bullets": [
         "Eternal Child, Inferior (Anima / Animus), and the full eight-role stack",
         "Chapters, shadow work, and a printable reading"

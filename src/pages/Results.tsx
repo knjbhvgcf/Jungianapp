@@ -30,6 +30,7 @@ import { trackBeginCheckout, trackPurchase } from '../lib/analytics'
 import { fillCopy } from '../lib/copy'
 import { asPersonality, useEditMode, useSiteCopy, useTypeDraft } from '../lib/editMode'
 import {
+  COMPATIBILITY_OFFERED,
   isProductUnlocked,
   isTypeRevealUnlocked,
   productHref,
@@ -80,6 +81,7 @@ export function Results() {
   )
   const mapUnlocked = isProductUnlocked('map')
   const compatUnlocked = isProductUnlocked('compat')
+  const showCompat = COMPATIBILITY_OFFERED || compatUnlocked || editing
   const mapPrice = productPrice('map')
   const compatPrice = productPrice('compat')
   const revealPrice = typeRevealPrice()
@@ -387,20 +389,22 @@ export function Results() {
                 patchResults(mapUnlocked ? { openMap: value } : { unlockMap: value })
               }
             />
-            <EditableButton
-              to={productHref('compat', compatUnlocked)}
-              variant="ghost"
-              label={compatUnlocked ? 'Open compat' : 'Compat short'}
-              value={compatUnlocked ? results.openCompat : results.compatShort}
-              onClick={
-                compatUnlocked
-                  ? undefined
-                  : () => trackBeginCheckout('compat', productHref('compat', false))
-              }
-              onChange={(value) =>
-                patchResults(compatUnlocked ? { openCompat: value } : { compatShort: value })
-              }
-            />
+            {showCompat ? (
+              <EditableButton
+                to={productHref('compat', compatUnlocked)}
+                variant="ghost"
+                label={compatUnlocked ? 'Open compat' : 'Compat short'}
+                value={compatUnlocked ? results.openCompat : results.compatShort}
+                onClick={
+                  compatUnlocked
+                    ? undefined
+                    : () => trackBeginCheckout('compat', productHref('compat', false))
+                }
+                onChange={(value) =>
+                  patchResults(compatUnlocked ? { openCompat: value } : { compatShort: value })
+                }
+              />
+            ) : null}
           </div>
         </div>
 
@@ -483,61 +487,63 @@ export function Results() {
               }
             />
           </aside>
-          <aside className="upsell">
-            <Editable
-              as="p"
-              className="eyebrow"
-              label="Compat eyebrow"
-              multiline={false}
-              value={results.compatEyebrow}
-              onChange={(compatEyebrow) => patchResults({ compatEyebrow })}
-            />
-            <Editable
-              as="h2"
-              label="Compat title"
-              value={results.compatTitle}
-              onChange={(compatTitle) => patchResults({ compatTitle })}
-            />
-            {editing ? (
+          {showCompat ? (
+            <aside className="upsell">
               <Editable
                 as="p"
-                label="Compat body"
-                value={compatUnlocked ? results.compatBodyUnlocked : results.compatBodyLocked}
+                className="eyebrow"
+                label="Compat eyebrow"
+                multiline={false}
+                value={results.compatEyebrow}
+                onChange={(compatEyebrow) => patchResults({ compatEyebrow })}
+              />
+              <Editable
+                as="h2"
+                label="Compat title"
+                value={results.compatTitle}
+                onChange={(compatTitle) => patchResults({ compatTitle })}
+              />
+              {editing ? (
+                <Editable
+                  as="p"
+                  label="Compat body"
+                  value={compatUnlocked ? results.compatBodyUnlocked : results.compatBodyLocked}
+                  onChange={(value) =>
+                    patchResults(
+                      compatUnlocked
+                        ? { compatBodyUnlocked: value }
+                        : { compatBodyLocked: value },
+                    )
+                  }
+                />
+              ) : (
+                <p>
+                  {compatUnlocked
+                    ? results.compatBodyUnlocked
+                    : fillCopy(results.compatBodyLocked, { price: compatPrice })}
+                </p>
+              )}
+              <EditableButton
+                to={productHref('compat', compatUnlocked)}
+                label="Compat CTA"
+                value={
+                  compatUnlocked
+                    ? results.compatCtaUnlocked
+                    : fillCopy(results.compatCtaLocked, { price: compatPrice })
+                }
+                onClick={
+                  compatUnlocked
+                    ? undefined
+                    : () => trackBeginCheckout('compat', productHref('compat', false))
+                }
                 onChange={(value) =>
                   patchResults(
-                    compatUnlocked
-                      ? { compatBodyUnlocked: value }
-                      : { compatBodyLocked: value },
+                    compatUnlocked ? { compatCtaUnlocked: value } : { compatCtaLocked: value },
                   )
                 }
               />
-            ) : (
-              <p>
-                {compatUnlocked
-                  ? results.compatBodyUnlocked
-                  : fillCopy(results.compatBodyLocked, { price: compatPrice })}
-              </p>
-            )}
-            <EditableButton
-              to={productHref('compat', compatUnlocked)}
-              label="Compat CTA"
-              value={
-                compatUnlocked
-                  ? results.compatCtaUnlocked
-                  : fillCopy(results.compatCtaLocked, { price: compatPrice })
-              }
-              onClick={
-                compatUnlocked
-                  ? undefined
-                  : () => trackBeginCheckout('compat', productHref('compat', false))
-              }
-              onChange={(value) =>
-                patchResults(
-                  compatUnlocked ? { compatCtaUnlocked: value } : { compatCtaLocked: value },
-                )
-              }
-            />
-          </aside>
+            </aside>
+          ) : null}
         </div>
 
         {profile && selected && hero && parent ? (

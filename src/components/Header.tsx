@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { TYPE_IN_DEPTH_PATH } from '../lib/unlock'
+import { COMPATIBILITY_OFFERED, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
 import { Face, MenuDots } from './Icons'
 
 const links = [
@@ -10,7 +10,7 @@ const links = [
   { to: '/guides', label: 'Guides' },
   { to: '/about', label: 'About' },
   { to: TYPE_IN_DEPTH_PATH, label: 'Your Type in Depth' },
-  { to: '/compatibility', label: 'Compatibility' },
+  ...(COMPATIBILITY_OFFERED ? [{ to: '/compatibility', label: 'Compatibility' }] : []),
   ...(import.meta.env.DEV ? [{ to: '/admin', label: 'Edit' }] : []),
 ]
 

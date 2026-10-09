@@ -5,6 +5,7 @@ type SeoProps = {
   title: string
   description: string
   path?: string
+  robots?: string
   jsonLd?: Record<string, unknown>
 }
 
@@ -18,7 +19,7 @@ function setMeta(attribute: 'name' | 'property', key: string, content: string) {
   element.setAttribute('content', content)
 }
 
-export function Seo({ title, description, path = '/', jsonLd }: SeoProps) {
+export function Seo({ title, description, path = '/', robots, jsonLd }: SeoProps) {
   const jsonLdKey = jsonLd ? JSON.stringify(jsonLd) : ''
 
   useEffect(() => {
@@ -31,6 +32,7 @@ export function Seo({ title, description, path = '/', jsonLd }: SeoProps) {
     document.title = title
     setMeta('name', 'google-site-verification', '8GtoD7vbjVzp9aXAlDe4FTkUFwcMiE1w8OF-U9VrrQ8')
     setMeta('name', 'description', description)
+    setMeta('name', 'robots', robots ?? 'index,follow')
     setMeta('property', 'og:title', title)
     setMeta('property', 'og:description', description)
     setMeta('property', 'og:url', url)
@@ -69,7 +71,7 @@ export function Seo({ title, description, path = '/', jsonLd }: SeoProps) {
       script.textContent = jsonLdKey
       document.head.appendChild(script)
     }
-  }, [title, description, path, jsonLdKey])
+  }, [title, description, path, robots, jsonLdKey])
 
   return null
 }
