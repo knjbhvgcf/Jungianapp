@@ -90,7 +90,7 @@ export function Quiz() {
     <>
       <Seo
         title="Jung Functions Quiz | Jungology"
-        description="Fifty-two statements. Rate how true each one is. The test is $1, then a type reading in this browser."
+        description="Forty-eight statements. Rate how true each one is, then see a type reading. A free Jung Functions Quiz from Jungology."
         path="/quiz"
       />
 

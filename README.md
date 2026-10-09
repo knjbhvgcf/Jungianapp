@@ -1,6 +1,6 @@
 # Jung Functions
 
-A React + Vite quiz that scores Carl Jung’s eight cognitive functions (Ni, Ne, Si, Se, Ti, Te, Fi, Fe) and suggests a likely type. The test is $1. Everything runs in the browser — no account, no backend, no paid APIs.
+A free React + Vite quiz that scores Carl Jung’s eight cognitive functions (Ni, Ne, Si, Se, Ti, Te, Fi, Fe) and suggests a likely type. Everything runs in the browser — no account, no backend, no paid APIs.
 
 ## Local development
 
@@ -54,7 +54,7 @@ Leave the variable empty locally so your own clicks are not counted.
 
 ## Your Type in Depth (optional paid unlock)
 
-The test is $1. Your Type in Depth is a separate one-time unlock of a longer Beebe reading at `/type-in-depth`.
+The quiz stays free. Your Type in Depth is a one-time unlock of a longer Beebe reading at `/type-in-depth`.
 
 1. Create a Lemon Squeezy or Stripe Payment Link.
 2. Set the success URL to `https://jungology.com/type-in-depth?key=YOUR-KEY`.
@@ -84,9 +84,9 @@ VITE_COMPAT_PRICE=$1
 
 Keys are checked in the browser, so treat them like a shared coupon, not a secret API token. A Type in Depth key will not open compatibility, and a compatibility key will not open Your Type in Depth. In local development, each page has a **Preview unlock** button.
 
-## The test ($1)
+## See your type ($1, optional)
 
-After the quiz, a popup charges **$1** to see the type. There is no free reveal. This does not open Type in Depth or Compatibility.
+After the quiz, a popup offers **Your type for $1** or **No thanks, I'll see it for free**. This is a third product. It does not open Type in Depth or Compatibility.
 
 1. Create a Stripe Payment Link, one-time **$1 USD**.
 2. After payment, redirect to `https://jungology.com/results?key=YOUR-REVEAL-KEY`.

@@ -76,7 +76,7 @@ export type ResultsContent = {
   mapCtaLocked: string
   offerTitle: string
   offerCta: string
-  offerBody: string
+  stayFree: string
   compatEyebrow: string
   compatTitle: string
   compatBodyUnlocked: string

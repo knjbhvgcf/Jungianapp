@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, Navigate, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { CompatReading } from '../components/CompatReading'
 import { UnlockPanel } from '../components/UnlockPanel'
 import { Button } from '../components/Button'
@@ -17,7 +17,7 @@ import {
 import { applyFollowUpToProfile } from '../lib/clarify'
 import { loadAnswers, loadClarifyAnswers, loadStackChoice } from '../lib/storage'
 import { asPersonality, useEditMode, useSiteCopy, useTypeDraft } from '../lib/editMode'
-import { isProductUnlocked, isTypeRevealUnlocked, tryUnlockKey, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
+import { isProductUnlocked, tryUnlockKey, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
 
 export function Compatibility() {
   const [params] = useSearchParams()
@@ -85,10 +85,6 @@ export function Compatibility() {
         </section>
       </>
     )
-  }
-
-  if (!editing && !unlocked && !isTypeRevealUnlocked()) {
-    return <Navigate to="/results" replace />
   }
 
   const defaultHero = profile?.matches[0]?.stack[0]
