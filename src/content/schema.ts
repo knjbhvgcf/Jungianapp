@@ -160,10 +160,15 @@ export type PaywallContent = {
   compatPage: CompatPageCopy
 }
 
+export type TypesPageContent = {
+  populationNote: string
+}
+
 export type PagesContent = {
   home: HomeContent
   about: AboutContent
   results: ResultsContent
+  typesPage: TypesPageContent
   paywall: PaywallContent
 }
 
@@ -176,6 +181,7 @@ export type TypeContent = {
   code: string
   title: string
   name: string
+  populationPercent: number
   stack: [FunctionId, FunctionId, FunctionId, FunctionId]
   summary: string
   image: string

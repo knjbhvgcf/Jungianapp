@@ -1485,6 +1485,13 @@ body:has(.results-gate) .site-footer {
   font-size: 0.98rem;
 }
 
+.type-index .type-index__pop {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--faint);
+}
+
 .portrait-pick {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -26,6 +26,7 @@ import {
   loadStackChoice,
   saveStackChoice,
 } from '../lib/storage'
+import { trackBeginCheckout, trackPurchase } from '../lib/analytics'
 import { fillCopy } from '../lib/copy'
 import { asPersonality, useEditMode, useSiteCopy, useTypeDraft } from '../lib/editMode'
 import {
@@ -38,6 +39,7 @@ import {
   typeRevealPrice,
 } from '../lib/unlock'
 import { typePath } from '../data/personalityTypes'
+import { PopulationShare } from '../components/PopulationShare'
 
 export function Results() {
   const navigate = useNavigate()
@@ -62,6 +64,7 @@ export function Results() {
     const key = new URLSearchParams(window.location.search).get('key')
     if (key && tryUnlockTypeReveal(key)) {
       chooseFreeTier()
+      if (!editing) trackPurchase('reveal')
       return true
     }
     return false
@@ -135,6 +138,9 @@ export function Results() {
   const selectedSummary = editing ? preview.summary : selected?.summary ?? preview.summary
   const heroFn = editing && draft ? draft.stack[0] : selected?.stack[0] ?? hero
   const parentFn = editing && draft ? draft.stack[1] : selected?.stack[1] ?? parent ?? hero
+  const populationPercent = editing
+    ? preview.populationPercent
+    : selected?.populationPercent ?? preview.populationPercent
   const leadScore = profile?.scores.find((score) => score.id === heroFn)
   const closeSecond =
     algorithmTop && runnerUp ? algorithmTop.confidence - runnerUp.confidence <= 8 : false
@@ -204,7 +210,9 @@ export function Results() {
             onChange={(offerCta) => patchResults({ offerCta })}
           />
         ) : (
-          <Button to={typeRevealHref()}>{fillCopy(results.offerCta, { price: revealPrice })}</Button>
+          <Button to={typeRevealHref()} onClick={() => trackBeginCheckout('reveal', typeRevealHref())}>
+            {fillCopy(results.offerCta, { price: revealPrice })}
+          </Button>
         )}
         {editing ? (
           <Editable
@@ -322,6 +330,17 @@ export function Results() {
           <p className="mono-stat">
             {selectedCode.toLowerCase()} · {heroFn}
             {leadScore ? ` ${leadScore.percent}%` : ''} with {parentFn}
+            {populationPercent != null ? (
+              <>
+                {' · '}
+                <PopulationShare
+                  percent={populationPercent}
+                  onChange={(next) =>
+                    patchType(previewType, (type) => ({ ...type, populationPercent: next }))
+                  }
+                />
+              </>
+            ) : null}
           </p>
           <Editable
             as="p"
@@ -361,6 +380,9 @@ export function Results() {
               to={productHref('map', mapUnlocked)}
               label={mapUnlocked ? 'Open map' : 'Unlock map'}
               value={mapUnlocked ? results.openMap : results.unlockMap}
+              onClick={
+                mapUnlocked ? undefined : () => trackBeginCheckout('map', productHref('map', false))
+              }
               onChange={(value) =>
                 patchResults(mapUnlocked ? { openMap: value } : { unlockMap: value })
               }
@@ -370,6 +392,11 @@ export function Results() {
               variant="ghost"
               label={compatUnlocked ? 'Open compat' : 'Compat short'}
               value={compatUnlocked ? results.openCompat : results.compatShort}
+              onClick={
+                compatUnlocked
+                  ? undefined
+                  : () => trackBeginCheckout('compat', productHref('compat', false))
+              }
               onChange={(value) =>
                 patchResults(compatUnlocked ? { openCompat: value } : { compatShort: value })
               }
@@ -448,6 +475,9 @@ export function Results() {
                   ? results.mapCtaUnlocked
                   : fillCopy(results.mapCtaLocked, { price: mapPrice })
               }
+              onClick={
+                mapUnlocked ? undefined : () => trackBeginCheckout('map', productHref('map', false))
+              }
               onChange={(value) =>
                 patchResults(mapUnlocked ? { mapCtaUnlocked: value } : { mapCtaLocked: value })
               }
@@ -495,6 +525,11 @@ export function Results() {
                 compatUnlocked
                   ? results.compatCtaUnlocked
                   : fillCopy(results.compatCtaLocked, { price: compatPrice })
+              }
+              onClick={
+                compatUnlocked
+                  ? undefined
+                  : () => trackBeginCheckout('compat', productHref('compat', false))
               }
               onChange={(value) =>
                 patchResults(

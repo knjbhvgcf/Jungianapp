@@ -49,6 +49,7 @@ export function asPersonality(type: TypeContent): PersonalityType {
     stack: type.stack,
     summary: type.summary,
     image: type.image,
+    populationPercent: type.populationPercent,
   }
 }
 

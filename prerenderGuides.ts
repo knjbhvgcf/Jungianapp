@@ -158,22 +158,30 @@ type TypePage = {
   stack: string[]
   summary: string
   image?: string
+  populationPercent?: number
 }
 
 const STACK_LABELS = ['Hero', 'Parent', 'Child', 'Inferior']
+
+function populationShare(percent: number | undefined) {
+  return percent != null && Number.isFinite(percent) ? `about ${percent}% of people` : ''
+}
 
 function typeCard(type: TypePage) {
   const img = type.image
     ? `<img src="${escapeHtml(type.image)}" alt="" class="sketch type-portrait sketch--mini">`
     : ''
-  return `<li><a href="/types/${type.code.toLowerCase()}">${img}<strong>${escapeHtml(type.code)}</strong><span>${escapeHtml(type.title)}</span></a></li>`
+  const share = populationShare(type.populationPercent)
+  const pop = share ? `<span class="type-index__pop">${escapeHtml(share)}</span>` : ''
+  return `<li><a href="/types/${type.code.toLowerCase()}">${img}<strong>${escapeHtml(type.code)}</strong><span>${escapeHtml(type.title)}</span>${pop}</a></li>`
 }
 
-function typesIndexHtml(types: TypePage[]) {
-  return `<article class="section"><div class="wrap prose"><p class="eyebrow">sprouts</p><h1 class="serif-title">Sixteen sprouts</h1><p class="lede">Each sprout represents a leading function and the function that supports it—a little character you can meet before you take the quiz, or return to afterwards. Each character is built around the particular way those functions orient the psyche.</p><ul class="type-index">${types.map(typeCard).join('')}</ul><p><a href="/quiz">Begin the quiz</a></p></div></article>`
+function typesIndexHtml(types: TypePage[], populationNote: string) {
+  const note = populationNote ? `<p class="note">${escapeHtml(populationNote)}</p>` : ''
+  return `<article class="section"><div class="wrap prose"><p class="eyebrow">sprouts</p><h1 class="serif-title">Sixteen sprouts</h1><p class="lede">Each sprout represents a leading function and the function that supports it—a little character you can meet before you take the quiz, or return to afterwards. Each character is built around the particular way those functions orient the psyche.</p><ul class="type-index">${types.map(typeCard).join('')}</ul>${note}<p><a href="/quiz">Begin the quiz</a></p></div></article>`
 }
 
-function typePageHtml(type: TypePage, types: TypePage[]) {
+function typePageHtml(type: TypePage, types: TypePage[], populationNote = '') {
   const stack = type.stack
     .map(
       (id, index) =>
@@ -184,7 +192,10 @@ function typePageHtml(type: TypePage, types: TypePage[]) {
     ? `<img src="${escapeHtml(type.image)}" alt="${escapeHtml(`${type.code} ${type.title}`)}" class="sketch type-portrait">`
     : ''
   const others = types.filter((item) => item.code !== type.code).map(typeCard).join('')
-  return `<article class="section type-page"><header class="wrap screen dossier-hero">${img}<p class="eyebrow">sprout</p><h1 class="serif-title">${escapeHtml(type.code)} — ${escapeHtml(type.title)}</h1><p class="mono-stat">${escapeHtml(type.code.toLowerCase())} · ${escapeHtml(type.name.toLowerCase())}</p><p class="lede">${escapeHtml(type.summary)}</p><p><a href="/quiz">Begin the quiz</a> · <a href="/types">All sprouts</a></p></header><div class="wrap prose"><h2>Cognitive stack</h2><ul class="archetype-stack">${stack}</ul><p>How a four-letter code becomes this stack, and what each position is for: <a href="/four-letter-code">The four-letter code</a> · <a href="/function-stack">The function stack</a> · <a href="/type-theory">Type theory</a>.</p></div><div class="wrap prose"><h2>The other sprouts</h2><ul class="type-index">${others}</ul></div></article>`
+  const share = populationShare(type.populationPercent)
+  const statShare = share ? ` · ${escapeHtml(share)}` : ''
+  const note = populationNote ? `<p class="note">${escapeHtml(populationNote)}</p>` : ''
+  return `<article class="section type-page"><header class="wrap screen dossier-hero">${img}<p class="eyebrow">sprout</p><h1 class="serif-title">${escapeHtml(type.code)} — ${escapeHtml(type.title)}</h1><p class="mono-stat">${escapeHtml(type.code.toLowerCase())} · ${escapeHtml(type.name.toLowerCase())}${statShare}</p><p class="lede">${escapeHtml(type.summary)}</p><p><a href="/quiz">Begin the quiz</a> · <a href="/types">All sprouts</a></p></header><div class="wrap prose"><h2>Cognitive stack</h2><ul class="archetype-stack">${stack}</ul><p>How a four-letter code becomes this stack, and what each position is for: <a href="/four-letter-code">The four-letter code</a> · <a href="/function-stack">The function stack</a> · <a href="/type-theory">Type theory</a>.</p>${note}</div><div class="wrap prose"><h2>The other sprouts</h2><ul class="type-index">${others}</ul></div></article>`
 }
 
 function indexHtml(guides: Guide[]) {
@@ -248,12 +259,22 @@ export function prerenderGuidesPlugin(): Plugin {
       const types = JSON.parse(
         fs.readFileSync(path.resolve(process.cwd(), 'src/content/types.json'), 'utf8'),
       ) as TypePage[]
+      const pages = JSON.parse(
+        fs.readFileSync(path.resolve(process.cwd(), 'src/content/pages.json'), 'utf8'),
+      ) as {
+        typesPage?: { populationNote?: string }
+        about: { seoTitle: string; seoDescription: string; title: string; lede: string }
+        paywall: {
+          mapPage: { seoLockedTitle: string; seoDescription: string }
+          compatPage: { seoLockedTitle: string; seoDescription: string }
+        }
+      }
 
       writePage(
         'types',
         'Sixteen sprouts | Jung Functions Quiz',
         'Each sprout represents a leading function and the function that supports it — a little character you can meet before you take the quiz, or return to afterwards.',
-        typesIndexHtml(types),
+        typesIndexHtml(types, pages.typesPage?.populationNote ?? ''),
       )
 
       for (const type of types) {
@@ -261,7 +282,7 @@ export function prerenderGuidesPlugin(): Plugin {
           `types/${type.code.toLowerCase()}`,
           `${type.code} ${type.title} | Jung Functions Quiz`,
           type.summary,
-          typePageHtml(type, types),
+          typePageHtml(type, types, pages.typesPage?.populationNote ?? ''),
         )
       }
 
@@ -278,16 +299,6 @@ export function prerenderGuidesPlugin(): Plugin {
         'Jungology is a free online cognitive functions test. Fifty-two statements, scored in your browser.',
         `<article class="section"><div class="wrap prose"><p class="eyebrow">quiz</p><h1 class="serif-title">Jung Functions Quiz</h1><p class="lede">Jungology is a free online cognitive functions test. Fifty-two statements. Tap how true each one is. Enable JavaScript to take it in this page.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
       )
-
-      const pages = JSON.parse(
-        fs.readFileSync(path.resolve(process.cwd(), 'src/content/pages.json'), 'utf8'),
-      ) as {
-        about: { seoTitle: string; seoDescription: string; title: string; lede: string }
-        paywall: {
-          mapPage: { seoLockedTitle: string; seoDescription: string }
-          compatPage: { seoLockedTitle: string; seoDescription: string }
-        }
-      }
 
       writePage(
         'about',

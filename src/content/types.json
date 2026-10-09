@@ -3,6 +3,7 @@
     "code": "INTJ",
     "title": "Mastermind",
     "name": "Inner strategist",
+    "populationPercent": 2.1,
     "stack": [
       "Ni",
       "Te",
@@ -75,6 +76,7 @@
     "code": "INTP",
     "title": "Sage",
     "name": "Precise analyst",
+    "populationPercent": 3.3,
     "stack": [
       "Ti",
       "Ne",
@@ -147,6 +149,7 @@
     "code": "ENTJ",
     "title": "Architect-King",
     "name": "Directive organizer",
+    "populationPercent": 1.8,
     "stack": [
       "Te",
       "Ni",
@@ -219,6 +222,7 @@
     "code": "ENTP",
     "title": "Trickster Inventor",
     "name": "Inventive debater",
+    "populationPercent": 3.2,
     "stack": [
       "Ne",
       "Ti",
@@ -291,6 +295,7 @@
     "code": "INFJ",
     "title": "Mystic",
     "name": "Insightful counselor",
+    "populationPercent": 1.5,
     "stack": [
       "Ni",
       "Fe",
@@ -363,6 +368,7 @@
     "code": "INFP",
     "title": "Dreamer",
     "name": "Quiet idealist",
+    "populationPercent": 4.4,
     "stack": [
       "Fi",
       "Ne",
@@ -435,6 +441,7 @@
     "code": "ENFJ",
     "title": "Mentor",
     "name": "Empathic lead",
+    "populationPercent": 2.5,
     "stack": [
       "Fe",
       "Ni",
@@ -507,6 +514,7 @@
     "code": "ENFP",
     "title": "Wanderer",
     "name": "Warm explorer",
+    "populationPercent": 8.1,
     "stack": [
       "Ne",
       "Fi",
@@ -579,6 +587,7 @@
     "code": "ISTJ",
     "title": "Keeper of the Scrolls",
     "name": "Reliable steward",
+    "populationPercent": 11.6,
     "stack": [
       "Si",
       "Te",
@@ -651,6 +660,7 @@
     "code": "ISFJ",
     "title": "Heart Guardian",
     "name": "Supportive guardian",
+    "populationPercent": 13.8,
     "stack": [
       "Si",
       "Fe",
@@ -723,6 +733,7 @@
     "code": "ESTJ",
     "title": "Steward",
     "name": "Practical coordinator",
+    "populationPercent": 8.7,
     "stack": [
       "Te",
       "Si",
@@ -795,6 +806,7 @@
     "code": "ESFJ",
     "title": "Caretaker",
     "name": "Gracious host",
+    "populationPercent": 12.3,
     "stack": [
       "Fe",
       "Si",
@@ -867,6 +879,7 @@
     "code": "ISTP",
     "title": "Craftsman",
     "name": "Tactical problem-solver",
+    "populationPercent": 5.4,
     "stack": [
       "Ti",
       "Se",
@@ -939,6 +952,7 @@
     "code": "ISFP",
     "title": "Artisan",
     "name": "Attuned artisan",
+    "populationPercent": 8.8,
     "stack": [
       "Fi",
       "Se",
@@ -1011,6 +1025,7 @@
     "code": "ESTP",
     "title": "Warrior",
     "name": "Adaptive operator",
+    "populationPercent": 4.3,
     "stack": [
       "Se",
       "Ti",
@@ -1083,6 +1098,7 @@
     "code": "ESFP",
     "title": "Bard",
     "name": "Present performer",
+    "populationPercent": 8.5,
     "stack": [
       "Se",
       "Fi",

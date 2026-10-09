@@ -7,6 +7,7 @@ import { Button } from '../components/Button'
 import { Editable, EditableButton, EditHint, EditSeo } from '../components/Editable'
 import { Seo } from '../components/Seo'
 import { TypePortrait } from '../components/TypePortrait'
+import { PopulationShare } from '../components/PopulationShare'
 import { Sparkle } from '../components/Icons'
 import { typeCopy } from '../data/dossier'
 import { type FunctionId } from '../data/functions'
@@ -28,6 +29,7 @@ import {
   useSiteCopy,
   useTypeDraft,
 } from '../lib/editMode'
+import { trackPurchase } from '../lib/analytics'
 import { isProductUnlocked, productHref, tryUnlockKey, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
 import type { PersonalityType } from '../data/personalityTypes'
 import type { TypeMapCopy } from '../data/typeMaps'
@@ -41,7 +43,11 @@ export function Dossier() {
   const [unlocked, setUnlocked] = useState(() => {
     if (isProductUnlocked('map')) return true
     const key = new URLSearchParams(window.location.search).get('key')
-    return Boolean(key && tryUnlockKey(key, 'map'))
+    if (key && tryUnlockKey(key, 'map')) {
+      if (!editing) trackPurchase('map')
+      return true
+    }
+    return false
   })
   const answers = useMemo(() => loadAnswers(), [])
   const complete = isQuizComplete(answers)
@@ -66,8 +72,13 @@ export function Dossier() {
 
   useEffect(() => {
     const fromUrl = params.get('key')
-    if (fromUrl && tryUnlockKey(fromUrl, 'map')) setUnlocked(true)
-  }, [params])
+    if (!fromUrl) return
+    const already = isProductUnlocked('map')
+    if (tryUnlockKey(fromUrl, 'map')) {
+      if (!already && !editing) trackPurchase('map')
+      setUnlocked(true)
+    }
+  }, [editing, params])
 
   function patchMap(partial: Partial<typeof mapPage>) {
     patchPages((pages) => ({
@@ -221,6 +232,12 @@ export function Dossier() {
           </h1>
           <p className="mono-stat">
             {selected.code.toLowerCase()} · {hero} → {parent}
+            {selected.populationPercent != null ? (
+              <>
+                {' · '}
+                <PopulationShare percent={selected.populationPercent} />
+              </>
+            ) : null}
           </p>
           <p className="lede">{selected.summary}</p>
         </header>

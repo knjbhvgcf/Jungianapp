@@ -7,5 +7,9 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   return {
     plugins: [react(), cmsPlugin(env.ADMIN_PASSWORD ?? ''), prerenderGuidesPlugin()],
+    server: {
+      host: '127.0.0.1',
+      port: 5173,
+    },
   }
 })

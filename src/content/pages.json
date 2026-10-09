@@ -171,6 +171,9 @@
     "copied": "Copied",
     "methodLink": "Read the method"
   },
+  "typesPage": {
+    "populationNote": "These shares are approximate, estimated from samples of the Myers-Briggs Type Indicator® in the United States. They are not counts from this quiz, and they are not Jung’s clinical frequencies."
+  },
   "paywall": {
     "map": {
       "eyebrow": "one-time unlock",

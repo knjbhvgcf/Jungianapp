@@ -83,7 +83,7 @@ export function EditableButton({
 }: EditableButtonProps) {
   const { editing } = useEditMode()
   if (!editing) {
-    if (to) return <Button to={to} variant={variant}>{value}</Button>
+    if (to) return <Button to={to} variant={variant} onClick={onClick}>{value}</Button>
     return (
       <Button variant={variant} onClick={onClick}>
         {value}

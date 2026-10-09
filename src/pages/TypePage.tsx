@@ -7,11 +7,13 @@ import { Seo } from '../components/Seo'
 import { TypePortrait } from '../components/TypePortrait'
 import { FUNCTIONS } from '../data/functions'
 import { typeByCode, typePath } from '../data/personalityTypes'
+import { PopulationShare } from '../components/PopulationShare'
 import {
   archetypeFrom,
   asPersonality,
   useEditMode,
   usePersonalityTypes,
+  useSiteCopy,
   useTypeDraft,
 } from '../lib/editMode'
 import { TYPE_IN_DEPTH_PATH } from '../lib/unlock'
@@ -26,6 +28,8 @@ const STACK_LABELS = [
 
 export function TypesIndex() {
   const types = usePersonalityTypes()
+  const { patchPages } = useEditMode()
+  const { typesPage } = useSiteCopy()
   return (
     <>
       <Seo
@@ -43,6 +47,18 @@ export function TypesIndex() {
             is built around the particular way those functions orient the psyche.
           </p>
           <TypeGrid types={types} />
+          <Editable
+            as="p"
+            className="note"
+            label="Population note"
+            value={typesPage.populationNote}
+            onChange={(populationNote) =>
+              patchPages((pages) => ({
+                ...pages,
+                typesPage: { ...pages.typesPage, populationNote },
+              }))
+            }
+          />
           <p>
             <Button to="/quiz">Begin the quiz</Button>
           </p>
@@ -62,7 +78,8 @@ export function TypePage() {
 
 function TypePageBody({ code }: { code: string }) {
   const draft = useTypeDraft(code)
-  const { editing, patchType, setPreviewType } = useEditMode()
+  const { editing, patchType, patchPages, setPreviewType } = useEditMode()
+  const { typesPage } = useSiteCopy()
   const all = usePersonalityTypes()
   const selected = draft ? asPersonality(draft) : typeByCode(code)
   const page = draft ? archetypeFrom(draft) : null
@@ -128,6 +145,13 @@ function TypePageBody({ code }: { code: string }) {
               onChange={(name) => patchType(code, (type) => ({ ...type, name }))}
             />{' '}
             · {hero} → {selected.stack[1]}
+            {' · '}
+            <PopulationShare
+              percent={selected.populationPercent}
+              onChange={(populationPercent) =>
+                patchType(code, (type) => ({ ...type, populationPercent }))
+              }
+            />
           </p>
           <Editable
             as="p"
@@ -176,6 +200,18 @@ function TypePageBody({ code }: { code: string }) {
             The longer reading — Beebe’s eight, the day, work, relating, and the shadow — opens
             after the quiz, in Your Type in Depth. This page is the public face of the sprout.
           </p>
+          <Editable
+            as="p"
+            className="note"
+            label="Population note"
+            value={typesPage.populationNote}
+            onChange={(populationNote) =>
+              patchPages((pages) => ({
+                ...pages,
+                typesPage: { ...pages.typesPage, populationNote },
+              }))
+            }
+          />
           <p>
             <Button to={TYPE_IN_DEPTH_PATH}>Your Type in Depth</Button>
           </p>
@@ -226,6 +262,7 @@ function TypeGrid({
             </span>
             <strong>{type.code}</strong>
             <span>{type.title}</span>
+            <PopulationShare percent={type.populationPercent} className="type-index__pop" />
           </Link>
         </li>
       ))}

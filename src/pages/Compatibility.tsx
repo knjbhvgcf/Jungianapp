@@ -6,6 +6,7 @@ import { Button } from '../components/Button'
 import { Editable, EditableButton, EditHint, EditSeo } from '../components/Editable'
 import { Seo } from '../components/Seo'
 import { TypePortrait } from '../components/TypePortrait'
+import { PopulationShare } from '../components/PopulationShare'
 import { Sparkle } from '../components/Icons'
 import {
   buildProfile,
@@ -17,6 +18,7 @@ import {
 import { applyFollowUpToProfile } from '../lib/clarify'
 import { loadAnswers, loadClarifyAnswers, loadStackChoice } from '../lib/storage'
 import { asPersonality, useEditMode, useSiteCopy, useTypeDraft } from '../lib/editMode'
+import { trackPurchase } from '../lib/analytics'
 import { isProductUnlocked, tryUnlockKey, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
 
 export function Compatibility() {
@@ -27,7 +29,11 @@ export function Compatibility() {
   const [unlocked, setUnlocked] = useState(() => {
     if (isProductUnlocked('compat')) return true
     const key = new URLSearchParams(window.location.search).get('key')
-    return Boolean(key && tryUnlockKey(key, 'compat'))
+    if (key && tryUnlockKey(key, 'compat')) {
+      if (!editing) trackPurchase('compat')
+      return true
+    }
+    return false
   })
   const answers = useMemo(() => loadAnswers(), [])
   const complete = isQuizComplete(answers)
@@ -40,8 +46,13 @@ export function Compatibility() {
 
   useEffect(() => {
     const fromUrl = params.get('key')
-    if (fromUrl && tryUnlockKey(fromUrl, 'compat')) setUnlocked(true)
-  }, [params])
+    if (!fromUrl) return
+    const already = isProductUnlocked('compat')
+    if (tryUnlockKey(fromUrl, 'compat')) {
+      if (!already && !editing) trackPurchase('compat')
+      setUnlocked(true)
+    }
+  }, [editing, params])
 
   function patchCompat(partial: Partial<typeof compatPage>) {
     patchPages((pages) => ({
@@ -173,6 +184,12 @@ export function Compatibility() {
           </h1>
           <p className="mono-stat">
             {selected.code.toLowerCase()} · {hero} → {parent}
+            {selected.populationPercent != null ? (
+              <>
+                {' · '}
+                <PopulationShare percent={selected.populationPercent} />
+              </>
+            ) : null}
           </p>
           <p className="lede">{selected.summary}</p>
         </header>

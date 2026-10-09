@@ -43,7 +43,7 @@ export function Button({
       )
     }
     return (
-      <Link to={to} className={classes}>
+      <Link to={to} className={classes} onClick={onClick}>
         {content}
       </Link>
     )

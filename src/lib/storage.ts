@@ -1,5 +1,6 @@
 import type { FunctionId } from '../data/functions'
 import type { ClarifyAnswers } from './clarify'
+import { resetPurchaseTracking } from './analytics'
 import { isFunctionId, type Answers } from './scoring'
 
 const ANSWERS_KEY = 'jung-functions.answers.v2'
@@ -125,12 +126,14 @@ export function clearAnswers() {
   removeItem(CLARIFY_KEY)
   removeItem(FREE_TIER_KEY)
   removeItem(TYPE_REVEAL_KEY)
+  resetPurchaseTracking()
 }
 
 export function markCompleted() {
   writeItem(COMPLETED_KEY, new Date().toISOString())
   removeItem(FREE_TIER_KEY)
   removeItem(TYPE_REVEAL_KEY)
+  resetPurchaseTracking('reveal')
 }
 
 export function isFreeTierChosen() {

@@ -69,12 +69,88 @@ export function initGa4() {
 }
 
 export function trackPageView(pathname: string, search = '') {
-  const id = getGaMeasurementId()
-  if (!id || typeof window === 'undefined' || typeof window.gtag !== 'function') return
+  if (typeof window === 'undefined') return
   const pagePath = analyticsPagePath(pathname, search)
-  window.gtag('event', 'page_view', {
+  sendGaEvent('page_view', {
     page_path: pagePath,
     page_location: `${window.location.origin}${pagePath}`,
     page_title: document.title,
   })
+}
+
+export type CommerceItem = 'reveal' | 'map' | 'compat'
+
+const PURCHASE_FLAG: Record<CommerceItem, string> = {
+  reveal: 'jung-ga.purchase.reveal.v1',
+  map: 'jung-ga.purchase.map.v1',
+  compat: 'jung-ga.purchase.compat.v1',
+}
+
+const CATALOG: Record<
+  CommerceItem,
+  { item_id: string; item_name: string; fallbackPrice: number }
+> = {
+  reveal: { item_id: 'type-reveal', item_name: 'Your type', fallbackPrice: 1 },
+  map: { item_id: 'type-in-depth', item_name: 'Your Type in Depth', fallbackPrice: 3 },
+  compat: { item_id: 'compatibility', item_name: 'Compatibility', fallbackPrice: 1 },
+}
+
+function dollars(raw: string | undefined, fallback: number) {
+  const n = Number(String(raw ?? '').replace(/[^0-9.]+/g, ''))
+  return Number.isFinite(n) && n > 0 ? n : fallback
+}
+
+function catalogPrice(item: CommerceItem) {
+  const row = CATALOG[item]
+  if (item === 'reveal') return dollars(import.meta.env.VITE_REVEAL_PRICE, row.fallbackPrice)
+  if (item === 'compat') return dollars(import.meta.env.VITE_COMPAT_PRICE, row.fallbackPrice)
+  return dollars(import.meta.env.VITE_DOSSIER_PRICE, row.fallbackPrice)
+}
+
+function sendGaEvent(name: string, params: Record<string, unknown>) {
+  if (typeof window === 'undefined') return
+  if (!getGaMeasurementId()) return
+  initGa4()
+  if (typeof window.gtag !== 'function') return
+  window.gtag('event', name, params)
+}
+
+function commerceItems(item: CommerceItem, price: number) {
+  const row = CATALOG[item]
+  return [{ item_id: row.item_id, item_name: row.item_name, price, quantity: 1 }]
+}
+
+/** Stripe Payment Link click. Does not send the unlock key. Skip in-site fallbacks. */
+export function trackBeginCheckout(item: CommerceItem, href?: string) {
+  if (href && !/^https?:\/\//.test(href)) return
+  const price = catalogPrice(item)
+  sendGaEvent('begin_checkout', {
+    currency: 'USD',
+    value: price,
+    items: commerceItems(item, price),
+  })
+}
+
+/**
+ * Successful return from Stripe (`?key=` unlock). Once per browser until they
+ * clear answers or retake (reveal only).
+ */
+export function trackPurchase(item: CommerceItem) {
+  if (typeof window === 'undefined' || !window.localStorage) return
+  const flag = PURCHASE_FLAG[item]
+  if (window.localStorage.getItem(flag) === '1') return
+  window.localStorage.setItem(flag, '1')
+  const price = catalogPrice(item)
+  sendGaEvent('purchase', {
+    transaction_id: `jung-${item}-${Date.now()}`,
+    currency: 'USD',
+    value: price,
+    items: commerceItems(item, price),
+  })
+}
+
+export function resetPurchaseTracking(item?: CommerceItem) {
+  if (typeof window === 'undefined' || !window.localStorage) return
+  const keys = item ? [PURCHASE_FLAG[item]] : Object.values(PURCHASE_FLAG)
+  for (const key of keys) window.localStorage.removeItem(key)
 }

@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { Editable, EditableButton } from './Editable'
 import { Button } from './Button'
 import { useEditMode, useSiteCopy } from '../lib/editMode'
+import { trackBeginCheckout, trackPurchase } from '../lib/analytics'
 import {
   productCheckoutUrl,
   productPrice,
@@ -38,6 +39,7 @@ export function UnlockPanel({ product, onUnlocked }: UnlockPanelProps) {
     event.preventDefault()
     if (tryUnlockKey(key, product)) {
       setError('')
+      if (!editing) trackPurchase(product)
       onUnlocked()
       return
     }
@@ -92,7 +94,7 @@ export function UnlockPanel({ product, onUnlocked }: UnlockPanelProps) {
             />
           )
         ) : checkout ? (
-          <Button to={checkout}>
+          <Button to={checkout} onClick={() => trackBeginCheckout(product, checkout)}>
             {copy.cta} · {price}
           </Button>
         ) : (
