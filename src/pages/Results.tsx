@@ -18,9 +18,7 @@ import {
 import { applyFollowUp, applyFollowUpToProfile, needsFollowUp } from '../lib/clarify'
 import { closeAttitudeReadings, suggestedHeroFromTieBreak } from '../lib/tieBreak'
 import {
-  chooseFreeTier,
   clearAnswers,
-  isFreeTierChosen,
   loadAnswers,
   loadClarifyAnswers,
   loadStackChoice,
@@ -56,15 +54,11 @@ export function Results() {
   const [copied, setCopied] = useState(false)
   const [heroId, setHeroId] = useState<FunctionId | null>(null)
   const [parentId, setParentId] = useState<FunctionId | null>(null)
-  const [offerDismissed, setOfferDismissed] = useState(() => {
-    if (typeof window === 'undefined') return isFreeTierChosen()
-    if (isFreeTierChosen() || isTypeRevealUnlocked()) return true
+  const [paid] = useState(() => {
+    if (typeof window === 'undefined') return false
+    if (isTypeRevealUnlocked()) return true
     const key = new URLSearchParams(window.location.search).get('key')
-    if (key && tryUnlockTypeReveal(key)) {
-      chooseFreeTier()
-      return true
-    }
-    return false
+    return Boolean(key && tryUnlockTypeReveal(key))
   })
   const readings = useMemo(
     () =>
@@ -80,7 +74,7 @@ export function Results() {
   const mapPrice = productPrice('map')
   const compatPrice = productPrice('compat')
   const revealPrice = typeRevealPrice()
-  const showGate = complete && !offerDismissed
+  const showGate = complete && !paid
 
   function patchResults(partial: Partial<typeof results>) {
     patchPages((pages) => ({ ...pages, results: { ...pages.results, ...partial } }))
@@ -175,11 +169,6 @@ export function Results() {
     }
   }
 
-  function stayOnFree() {
-    chooseFreeTier()
-    setOfferDismissed(true)
-  }
-
   const gatePopup = (
     <div className="results-popup" role="dialog" aria-modal="true" aria-labelledby="results-popup-title">
       <div className="results-popup__card">
@@ -193,7 +182,7 @@ export function Results() {
           />
         ) : (
           <h1 id="results-popup-title" className="serif-title">
-            {results.offerTitle}
+            {fillCopy(results.offerTitle, { price: revealPrice })}
           </h1>
         )}
         {editing ? (
@@ -208,17 +197,14 @@ export function Results() {
         )}
         {editing ? (
           <Editable
-            as="span"
-            className="stay-free"
-            label="See it free"
-            multiline={false}
-            value={results.stayFree}
-            onChange={(stayFree) => patchResults({ stayFree })}
+            as="p"
+            className="results-popup__note"
+            label="Offer body"
+            value={results.offerBody}
+            onChange={(offerBody) => patchResults({ offerBody })}
           />
         ) : (
-          <button type="button" className="stay-free" onClick={stayOnFree}>
-            {results.stayFree}
-          </button>
+          <p className="results-popup__note">{results.offerBody}</p>
         )}
       </div>
     </div>

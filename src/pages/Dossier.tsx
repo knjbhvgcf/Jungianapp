@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, Navigate, useSearchParams } from 'react-router-dom'
 import { ArchetypeSheet } from '../components/ArchetypeSheet'
 import { MapExtras, MapExtrasTeaser } from '../components/MapExtras'
 import { UnlockPanel } from '../components/UnlockPanel'
@@ -28,7 +28,13 @@ import {
   useSiteCopy,
   useTypeDraft,
 } from '../lib/editMode'
-import { isProductUnlocked, productHref, tryUnlockKey, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
+import {
+  isProductUnlocked,
+  isTypeRevealUnlocked,
+  productHref,
+  tryUnlockKey,
+  TYPE_IN_DEPTH_PATH,
+} from '../lib/unlock'
 import type { PersonalityType } from '../data/personalityTypes'
 import type { TypeMapCopy } from '../data/typeMaps'
 import type { BeebePlacement, FunctionScore, TypeMatch } from '../lib/scoring'
@@ -112,6 +118,10 @@ export function Dossier() {
         </section>
       </>
     )
+  }
+
+  if (!editing && !unlocked && !isTypeRevealUnlocked()) {
+    return <Navigate to="/results" replace />
   }
 
   const suggestedHero = profile ? suggestedHeroFromTieBreak(readings, profile.scores) : undefined

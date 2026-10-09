@@ -269,14 +269,14 @@ export function prerenderGuidesPlugin(): Plugin {
         'legal',
         'Notes on buying | Jung Functions Quiz',
         'What Jungology sells, how unlock keys work, refunds, and that quiz answers stay in your browser.',
-        `<article class="section"><div class="wrap prose"><p class="eyebrow">jungology</p><h1 class="serif-title">Notes on buying</h1><p class="lede">The Jung Functions Quiz, the eight scores, and the choice of lead and support stay free. Two optional readings can be unlocked after Stripe checkout.</p><h2>What you are buying</h2><p>Your Type in Depth is a longer Beebe reading of the stack you just scored. Compatibility is a separate reading of how the other fifteen types sit on that stack. They are educational texts, not psychotherapy, not a diagnosis, and not the MBTI® instrument.</p><h2>Keys</h2><p>After payment, Stripe should return you to this site with a key in the link. That key unlocks the product in this browser.</p><h2>Refunds</h2><p>These are one-time digital readings. If checkout failed or the key did not unlock, write from the email on the Stripe receipt.</p><h2>Privacy</h2><p>There is no account. Quiz answers stay in this browser session. They are not sent to a server. Cloudflare and Google Analytics may count page views, not answers.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+        `<article class="section"><div class="wrap prose"><p class="eyebrow">jungology</p><h1 class="serif-title">Notes on buying</h1><p class="lede">The Jung Functions Quiz is $1. After you finish the statements, Stripe opens the type and the eight scores in this browser. Two further readings can be unlocked after their own Stripe checkout.</p><h2>What you are buying</h2><p>The test is $1. Your Type in Depth is a longer Beebe reading of the stack you just scored, at $3. Compatibility is a separate $1 reading of how the other fifteen types sit on that stack. They are educational texts, not psychotherapy, not a diagnosis, and not the MBTI® instrument.</p><h2>Keys</h2><p>After payment, Stripe should return you to this site with a key in the link. That key unlocks the product in this browser.</p><h2>Refunds</h2><p>These are one-time digital readings. If checkout failed or the key did not unlock, write from the email on the Stripe receipt.</p><h2>Privacy</h2><p>There is no account. Quiz answers stay in this browser session. They are not sent to a server. Cloudflare and Google Analytics may count page views, not answers.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
       )
 
       writePage(
         'quiz',
         'Jung Functions Quiz | Jungology',
-        'Forty-eight statements. Rate how true each one is, then see a type reading. A free Jung Functions Quiz from Jungology.',
-        `<article class="section"><div class="wrap prose"><p class="eyebrow">quiz</p><h1 class="serif-title">Jung Functions Quiz</h1><p class="lede">Forty-eight statements. Tap how true each one is. Enable JavaScript to take the test in this page.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+        'Fifty-two statements. Rate how true each one is. The test is $1, then a type reading in this browser.',
+        `<article class="section"><div class="wrap prose"><p class="eyebrow">quiz</p><h1 class="serif-title">Jung Functions Quiz</h1><p class="lede">Fifty-two statements. Tap how true each one is. The test is $1. Enable JavaScript to take it in this page.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
       )
 
       const pages = JSON.parse(
@@ -300,7 +300,7 @@ export function prerenderGuidesPlugin(): Plugin {
         'type-in-depth',
         pages.paywall.mapPage.seoLockedTitle,
         pages.paywall.mapPage.seoDescription,
-        `<article class="section"><div class="wrap prose"><h1 class="serif-title">Your Type in Depth</h1><p class="lede">${escapeHtml(pages.paywall.mapPage.seoDescription)}</p><p>Take the free quiz first, then unlock the longer reading.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+        `<article class="section"><div class="wrap prose"><h1 class="serif-title">Your Type in Depth</h1><p class="lede">${escapeHtml(pages.paywall.mapPage.seoDescription)}</p><p>Take the $1 test first, then unlock the longer reading.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
       )
 
       writePage(

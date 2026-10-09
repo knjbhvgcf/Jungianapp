@@ -1,7 +1,7 @@
 {
   "home": {
     "seoTitle": "Jung Functions Quiz | Jungology",
-    "seoDescription": "A free Jung Functions Quiz: fifty-two statements, eight cognitive function scores, and a likely type. About eight minutes, no account, scored in your browser.",
+    "seoDescription": "A $1 Jung Functions Quiz: fifty-two statements, eight cognitive function scores, and a likely type. About eight minutes, no account, scored in your browser.",
     "title": "Jungology",
     "stat": "8 functions · 52 questions · John Beebe model",
     "lede": "The first Delphic maxim states “Know thyself”, it is at the core of everything we encounter in life, the lens through which we look, the vantage point from which we jump forward.\n\nMost four-letter quizzes dont score the functions. This one does: fifty-two statements about how you notice, decide, and take in a situation.\n\nLet’s discover your personality type!",
@@ -32,7 +32,7 @@
       },
       {
         "q": "Is this the official MBTI® test?",
-        "a": "No. This is a free educational quiz inspired by Jung’s functions. The Myers-Briggs Type Indicator is a separate, trademarked instrument, and we report your eight function scores first, then a likely four-letter type as a reading aid."
+        "a": "No. This is a $1 educational quiz inspired by Jung’s functions. The Myers-Briggs Type Indicator is a separate, trademarked instrument, and we report your eight function scores first, then a likely four-letter type as a reading aid."
       },
       {
         "q": "What do the four letters mean?",
@@ -51,8 +51,12 @@
         "a": "When two functions land that close, the fifty-two items are not enough, so after the quiz you get a short follow-up: which sentence sounds more like you. Those answers are folded into the percentages. If they still split, you can try a different lead on the results page."
       },
       {
+        "q": "How much is the test?",
+        "a": "The test is $1. You answer the fifty-two statements first. Stripe then opens the type and the eight scores in this browser. Your Type in Depth is a separate $3 reading. Compatibility is a separate $1 reading."
+      },
+      {
         "q": "What is Your Type in Depth?",
-        "a": "The quiz, the eight scores, and the choice of Hero / Heroine and Parent stay free, while Your Type in Depth is a longer reading of the weaker end of the type, Beebe’s eight roles, and notes on growth, which you can print."
+        "a": "A longer reading of the weaker end of the type, Beebe’s eight roles, and notes on growth, which you can print. It is $3, separate from the $1 test."
       },
       {
         "q": "What is the compatibility reading?",
@@ -63,7 +67,7 @@
   },
   "about": {
     "seoTitle": "About Jungology | Jung Functions Quiz",
-    "seoDescription": "How this quiz scores Jung’s eight function-attitudes, and the optional Type in Depth ($3) and Compatibility ($1) readings unlocked with Stripe.",
+    "seoDescription": "How this quiz scores Jung’s eight function-attitudes. The test is $1. Type in Depth ($3) and Compatibility ($1) are separate readings unlocked with Stripe.",
     "eyebrow": "method, privacy & buying",
     "title": "About",
     "stat": "Jung 1921 · Beebe eight-function model",
@@ -91,14 +95,14 @@
       {
         "heading": "How a type is suggested",
         "paragraphs": [
-          "Each of the sixteen types is scored with the Hero / Heroine first, so a type whose leading function is not your strongest score is set aside, while the Parent is rewarded next, the Eternal Child moderately, and the Inferior (Anima / Animus) only slightly. The model also wants the lead to outrank its opposite-attitude twin. If two functions score close, free results let you pick the Hero / Heroine and the Parent, and Your Type in Depth opens the Eternal Child, Inferior (Anima / Animus), and the full eight-role stack.",
+          "Each of the sixteen types is scored with the Hero / Heroine first, so a type whose leading function is not your strongest score is set aside, while the Parent is rewarded next, the Eternal Child moderately, and the Inferior (Anima / Animus) only slightly. The model also wants the lead to outrank its opposite-attitude twin. If two functions score close, the $1 results let you pick the Hero / Heroine and the Parent, and Your Type in Depth opens the Eternal Child, Inferior (Anima / Animus), and the full eight-role stack.",
           "When two functions land together — Fi and Ti both high, or Ni and Ne — the totals are not enough, so after the fifty-two the quiz asks a short follow-up: five forced choices between those two, not another set of ratings. Those answers are folded into the percentages, the winner’s bar rises and the other falls, and that is what names the lead. If they still split, you can try a different lead on the results page."
         ]
       },
       {
         "heading": "Your Type in Depth",
         "paragraphs": [
-          "The quiz, the eight scores, and the choice of Hero / Heroine and Parent stay free. Your Type in Depth is a longer Beebe reading of this stack: Eternal Child and Inferior (Anima / Animus), the eight-role map, growth, shadow work, and prompts you can print. It is a one-time Stripe unlock for $3. After checkout you return to this site with a key in the link, which opens the reading in this browser."
+          "The test is $1: fifty-two statements, then Stripe, then the type and the eight scores in this browser. Your Type in Depth is a longer Beebe reading of this stack: Eternal Child and Inferior (Anima / Animus), the eight-role map, growth, shadow work, and prompts you can print. It is a one-time Stripe unlock for $3, separate from the test. After checkout you return to this site with a key in the link, which opens the reading in this browser."
         ]
       },
       {
@@ -110,7 +114,7 @@
       {
         "heading": "Buying",
         "paragraphs": [
-          "Both readings are one-time digital texts, not a subscription. Keep the Stripe receipt. If checkout failed or the key did not unlock, write from the email on that receipt and the charge can be refunded. Stripe handles the card; Jungology does not store card numbers. More detail sits on Notes on buying."
+          "The test, Type in Depth, and Compatibility are one-time digital unlocks, not a subscription. Keep the Stripe receipt. If checkout failed or the key did not unlock, write from the email on that receipt and the charge can be refunded. Stripe handles the card; Jungology does not store card numbers. More detail sits on Notes on buying."
         ]
       },
       {
@@ -149,12 +153,12 @@
     "mapTitle": "Your Type in Depth",
     "mapTitleLocked": "Your Type in Depth",
     "mapBodyUnlocked": "The weaker end of the type, the eight roles, and notes on growth and shadow, written from the type you selected above.",
-    "mapBodyLocked": "Eternal Child and Inferior (Anima / Animus), the full eight-role stack, chapters, shadow work, and prompts. One-time unlock · {price}. The eight scores stay free.",
+    "mapBodyLocked": "Eternal Child and Inferior (Anima / Animus), the full eight-role stack, chapters, shadow work, and prompts. One-time unlock · {price}, separate from the $1 test.",
     "mapCtaUnlocked": "Open Your Type in Depth",
     "mapCtaLocked": "Unlock Your Type in Depth · {price}",
-    "offerTitle": "Your type is ready",
-    "offerCta": "Your type for {price}",
-    "stayFree": "No thanks, I'll see it for free",
+    "offerTitle": "The test is {price}",
+    "offerCta": "See your type · {price}",
+    "offerBody": "Thank you for supporting us, this small fee helps us keep the website running",
     "compatEyebrow": "add-on",
     "compatTitle": "Compatibility",
     "compatBodyUnlocked": "How this type meets the other fifteen, read through the roles already living in you, which is a separate purchase from Your Type in Depth.",
@@ -171,7 +175,7 @@
     "map": {
       "eyebrow": "one-time unlock",
       "title": "Your Type in Depth",
-      "body": "The free page keeps the eight scores and a Hero / Heroine and Parent pick, and Your Type in Depth is the rest of the reading: Eternal Child and Inferior (Anima / Animus), the eight-role stack, and the longer chapters. Compatibility is a separate add-on.",
+      "body": "The $1 test opens the eight scores and a Hero / Heroine and Parent pick. Your Type in Depth is the rest of the reading: Eternal Child and Inferior (Anima / Animus), the eight-role stack, and the longer chapters. Compatibility is a separate add-on.",
       "bullets": [
         "Eternal Child, Inferior (Anima / Animus), and the full eight-role stack",
         "Chapters, shadow work, and a printable reading"
@@ -210,12 +214,12 @@
       "seoDescription": "A Beebe eight-role reading of your Jungian function stack, with development notes and prompts.",
       "eyebrow": "your type in depth",
       "teaserHeading": "In Your Type in Depth",
-      "teaserBody": "Free results stop at the eight scores and a Hero / Heroine and Parent pick, and Your Type in Depth opens the rest of the reading for this type.",
+      "teaserBody": "The $1 test stops at the eight scores and a Hero / Heroine and Parent pick, and Your Type in Depth opens the rest of the reading for this type.",
       "teaserRoles": "The Ego Functions (Conscious)",
       "teaserBeebe": "The eight Beebe roles — ego (conscious) and shadow (unconscious) — in order or by strength",
       "teaserCloseFallback": "The close-score reading when two functions land together",
       "teaserChapters": "Chapters, shadow work, and prompts for this type",
-      "backToResults": "Back to free results",
+      "backToResults": "Back to results",
       "auxiliaryHeading": "Parent healing",
       "auxiliaryLead": "Do not try to develop the Inferior (Anima / Animus). That would be like telling a fish to learn how to live on land. The work, for every type, is the Parent (2nd position) — the sublimation function — whose basic purpose is to heal the schism between the Hero / Heroine and the Inferior.",
       "antiTypeHeading": "Expressing your anti-type during stress",

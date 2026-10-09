@@ -409,19 +409,16 @@ a {
   margin: 0;
 }
 
-.stay-free,
-.stay-free .editable__field {
-  background: none;
-  border: 0;
-  padding: 0.2rem 0;
+.results-popup__note,
+.results-popup__note .editable__field {
+  margin: 0;
   color: var(--faint);
   font-family: var(--mono);
   font-size: 0.82rem;
   line-height: 1.4;
-  cursor: pointer;
 }
 
-.stay-free .editable__field {
+.results-popup__note .editable__field {
   width: min(100%, 22rem);
   text-align: center;
 }
