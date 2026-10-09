@@ -274,9 +274,9 @@ export function prerenderGuidesPlugin(): Plugin {
 
       writePage(
         'quiz',
-        'Jung Functions Quiz | Jungology',
-        'Forty-eight statements. Rate how true each one is, then see a type reading. A free Jung Functions Quiz from Jungology.',
-        `<article class="section"><div class="wrap prose"><p class="eyebrow">quiz</p><h1 class="serif-title">Jung Functions Quiz</h1><p class="lede">Forty-eight statements. Tap how true each one is. Enable JavaScript to take the test in this page.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+        'Jungology | Free Cognitive Functions Test',
+        'Jungology is a free online cognitive functions test. Fifty-two statements, scored in your browser.',
+        `<article class="section"><div class="wrap prose"><p class="eyebrow">quiz</p><h1 class="serif-title">Jung Functions Quiz</h1><p class="lede">Jungology is a free online cognitive functions test. Fifty-two statements. Tap how true each one is. Enable JavaScript to take it in this page.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
       )
 
       const pages = JSON.parse(

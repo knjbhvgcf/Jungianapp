@@ -1,10 +1,10 @@
 {
   "home": {
-    "seoTitle": "Jung Functions Quiz | Jungology",
-    "seoDescription": "A free Jung Functions Quiz: fifty-two statements, eight cognitive function scores, and a likely type. About eight minutes, no account, scored in your browser.",
+    "seoTitle": "Jungology | Free Cognitive Functions Test",
+    "seoDescription": "Jungology is a free online cognitive functions test. Fifty-two statements, eight function scores, and a likely type. About eight minutes, no account, scored in your browser.",
     "title": "Jungology",
     "stat": "8 functions · 52 questions · John Beebe model",
-    "lede": "The first Delphic maxim states “Know thyself”, it is at the core of everything we encounter in life, the lens through which we look, the vantage point from which we jump forward.\n\nMost four-letter quizzes dont score the functions. This one does: fifty-two statements about how you notice, decide, and take in a situation.\n\nLet’s discover your personality type!",
+    "lede": "Jungology is a free online cognitive functions test.\n\nThe first Delphic maxim states “Know thyself”, it is at the core of everything we encounter in life, the lens through which we look, the vantage point from which we jump forward.\n\nMost four-letter quizzes dont score the functions. This one does: fifty-two statements about how you notice, decide, and take in a situation.\n\nLet’s discover your personality type!",
     "image": "/home/hero.jpg?v=1787110066816",
     "beginQuiz": "Begin the quiz",
     "howHeading": "How it works",
@@ -26,6 +26,10 @@
     "functionsIntro": "Jung argued that we all use every function, though we prefer some and struggle with others, and extraversion and introversion here mean where the function points — toward the outer world, or toward the inner impression a thing leaves — not whether you are sociable.",
     "faqHeading": "Frequently asked questions",
     "faq": [
+      {
+        "q": "What is Jungology?",
+        "a": "Jungology is a free online cognitive functions test. You rate fifty-two statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. There is no account."
+      },
       {
         "q": "What are Jung’s function-attitudes?",
         "a": "In Psychological Types (1921), Jung described four functions — thinking, feeling, sensation, and intuition — each of which can turn toward the outer world or toward the inner impression a thing leaves, and that gives eight function-attitudes. This quiz then reads your scores through Beebe’s later eight-role model."
@@ -63,11 +67,11 @@
   },
   "about": {
     "seoTitle": "About Jungology | Jung Functions Quiz",
-    "seoDescription": "How this quiz scores Jung’s eight function-attitudes, and the optional Type in Depth ($3) and Compatibility ($1) readings unlocked with Stripe.",
+    "seoDescription": "Jungology is a free online cognitive functions test. How this quiz scores Jung’s eight function-attitudes, with optional Type in Depth and Compatibility readings.",
     "eyebrow": "method, privacy & buying",
     "title": "About",
     "stat": "Jung 1921 · Beebe eight-function model",
-    "lede": "This quiz scores the eight function-attitudes as Jung set them down in Psychological Types (1921), and then reads that profile through Beebe’s later eight-role model, which is a map of the psyche rather than a verdict on who you are.",
+    "lede": "Jungology is a free online cognitive functions test. It scores the eight function-attitudes as Jung set them down in Psychological Types (1921), and then reads that profile through Beebe’s later eight-role model, which is a map of the psyche rather than a verdict on who you are.",
     "beginQuiz": "Begin the quiz",
     "sections": [
       {
