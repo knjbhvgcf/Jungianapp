@@ -15,9 +15,12 @@ import {
   saveCmsFile,
   type CmsStatus,
 } from '../lib/cms'
+import { fetchTypeCensus } from '../lib/typeCensus'
+import type { CensusSnapshot } from '../lib/typeCensusShared'
+import { PERSONALITY_TYPES } from '../data/personalityTypes'
 import { useEditMode } from '../lib/editMode'
 
-type Tab = 'quiz' | 'followup'
+type Tab = 'quiz' | 'followup' | 'census'
 
 const FACETS: QuestionFacet[] = ['orientation', 'criterion', 'process', 'reverse']
 
@@ -55,8 +58,16 @@ export function Admin() {
   const [pairKey, setPairKey] = useState('Ni-Ne')
   const [message, setMessage] = useState('')
   const [busy, setBusy] = useState(false)
+  const [census, setCensus] = useState<(CensusSnapshot & { configured: boolean }) | null>(null)
+  const [censusError, setCensusError] = useState('')
 
   useEffect(() => {
+    const password = getCmsPassword()
+    if (password) {
+      void fetchTypeCensus(password)
+        .then(setCensus)
+        .catch((error) => setCensusError(error instanceof Error ? error.message : 'Census unavailable'))
+    }
     void fetchCmsStatus().then(setStatus)
     let robots = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]')
     if (!robots) {
@@ -74,7 +85,7 @@ export function Admin() {
   const pairBank = followup.attitude[pairKey] ? 'attitude' : 'rival'
   const [left = 'A', right = 'B'] = pairKey.split('-')
 
-  if (!edit.editing) {
+  if (!edit.editing && !census) {
     return (
       <article className="section">
         <Seo
@@ -86,11 +97,38 @@ export function Admin() {
           <p className="eyebrow">local editor</p>
           <h1 className="serif-title">Edit the site</h1>
           <p className="lede">
-            Enter the password to edit wording where it sits on the pages. Walk the site, click the
-            dashed fields, then save from the bar at the top. Saving writes files on this computer
-            while <code>npm run dev</code> is running.
+            Enter the password to edit wording where it sits on the pages, or to open the type
+            census. Saving copy still needs <code>npm run dev</code> on this computer.
           </p>
-          <EditGate onUnlocked={() => navigate('/')} />
+          <EditGate
+            onUnlocked={() => navigate('/')}
+            onCensus={(snapshot) => {
+              setCensus(snapshot)
+              setCensusError('')
+            }}
+          />
+          {censusError ? <p className="cms-status">{censusError}</p> : null}
+        </div>
+      </article>
+    )
+  }
+
+  if (!edit.editing && census) {
+    return (
+      <article className="section">
+        <Seo
+          title="Type census | Jung Functions Quiz"
+          description="How often the quiz suggests each type."
+          path="/admin"
+        />
+        <div className="wrap cms">
+          <p className="eyebrow">type census</p>
+          <h1 className="serif-title">How the quiz is typing</h1>
+          <p className="lede">
+            Counts only. Answers stay in the browser. Page editing still needs a local
+            <code> npm run dev</code>.
+          </p>
+          <CensusPanel snapshot={census} error={censusError} />
         </div>
       </article>
     )
@@ -149,6 +187,7 @@ export function Admin() {
             [
               ['quiz', 'Quiz questions'],
               ['followup', 'Follow-up'],
+              ['census', 'Type census'],
             ] as const
           ).map(([id, label]) => (
             <button
@@ -171,7 +210,7 @@ export function Admin() {
             functionId={functionId}
             setFunctionId={setFunctionId}
           />
-        ) : (
+        ) : tab === 'followup' ? (
           <FollowupEditor
             followup={followup}
             setFollowup={setFollowup}
@@ -182,22 +221,26 @@ export function Admin() {
             left={left}
             right={right}
           />
+        ) : (
+          <CensusPanel snapshot={census} error={censusError} />
         )}
 
-        <div className="cms-toolbar">
-          <Button type="button" disabled={busy || !status?.writable} onClick={() => void saveCurrent()}>
-            {busy ? 'Saving…' : 'Save quiz items'}
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={() =>
-              downloadJson(tab === 'quiz' ? 'questions.json' : 'followup.json', tab === 'quiz' ? questions : followup)
-            }
-          >
-            Download JSON
-          </Button>
-        </div>
+        {tab !== 'census' ? (
+          <div className="cms-toolbar">
+            <Button type="button" disabled={busy || !status?.writable} onClick={() => void saveCurrent()}>
+              {busy ? 'Saving…' : 'Save quiz items'}
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={() =>
+                downloadJson(tab === 'quiz' ? 'questions.json' : 'followup.json', tab === 'quiz' ? questions : followup)
+              }
+            >
+              Download JSON
+            </Button>
+          </div>
+        ) : null}
         {message ? <p className="cms-status">{message}</p> : null}
       </div>
     </article>
@@ -372,6 +415,84 @@ function FollowupEditor({
           </Field>
         </fieldset>
       ))}
+    </div>
+  )
+}
+
+function CensusPanel({
+  snapshot,
+  error,
+}: {
+  snapshot: (CensusSnapshot & { configured?: boolean }) | null
+  error: string
+}) {
+  if (error && !snapshot) {
+    return <p className="cms-note">{error}</p>
+  }
+  if (!snapshot) {
+    return (
+      <p className="cms-note">
+        No census yet. Finish a quiz on this computer while <code>npm run dev</code> is running, or
+        bind a Cloudflare KV namespace named <code>TYPE_CENSUS</code> on the live site.
+      </p>
+    )
+  }
+
+  const thin = snapshot.total < 40
+  const rows = PERSONALITY_TYPES.map((type) => {
+    const suggested = snapshot.suggested[type.code] ?? 0
+    const selected = snapshot.selected[type.code] ?? 0
+    const observed = snapshot.total ? (suggested / snapshot.total) * 100 : 0
+    const expected = type.populationPercent
+    const ratio = expected > 0 ? observed / expected : 0
+    let flag = '—'
+    if (!thin && expected > 0) {
+      if (ratio >= 2.5) flag = 'over'
+      else if (ratio <= 0.4) flag = 'under'
+      else flag = 'ok'
+    }
+    return { type, suggested, selected, observed, expected, ratio, flag }
+  }).sort((a, b) => b.ratio - a.ratio || b.suggested - a.suggested)
+
+  return (
+    <div className="cms-panel">
+      <p className="cms-note">
+        {snapshot.total} completed quizzes. Suggested is what the model named first. Selected is
+        the stack on the results page, including a Hero / Heroine change. Sample share is the
+        published population figure, not this quiz’s own history.
+        {thin ? ' Need about forty results before over/under is worth reading.' : ''}
+      </p>
+      <div className="census-table-wrap">
+        <table className="census-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Suggested</th>
+              <th>Quiz %</th>
+              <th>Sample %</th>
+              <th>Ratio</th>
+              <th>Flag</th>
+              <th>Selected</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.type.code} data-flag={row.flag}>
+                <td>
+                  <strong>{row.type.code}</strong>
+                  <span className="census-table__title">{row.type.title}</span>
+                </td>
+                <td>{row.suggested}</td>
+                <td>{row.observed.toFixed(1)}</td>
+                <td>{row.expected.toFixed(1)}</td>
+                <td>{row.ratio ? row.ratio.toFixed(1) : '—'}</td>
+                <td>{row.flag}</td>
+                <td>{row.selected}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }

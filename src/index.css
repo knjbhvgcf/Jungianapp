@@ -2332,6 +2332,52 @@ span.is-editable[data-edit]::after {
   margin: 0 0 0.8rem;
 }
 
+.census-table-wrap {
+  overflow-x: auto;
+  border: 2px solid var(--ink);
+}
+
+.census-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mono);
+  font-size: 0.84rem;
+}
+
+.census-table th,
+.census-table td {
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid var(--ink);
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.census-table th {
+  font-family: var(--display);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.census-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.census-table__title {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: var(--serif);
+  font-size: 0.88rem;
+  font-weight: 400;
+  white-space: normal;
+}
+
+.census-table tr[data-flag='over'] td:nth-child(6),
+.census-table tr[data-flag='under'] td:nth-child(6) {
+  font-weight: 700;
+}
+
 @media print {
   .site-header,
   .site-footer,

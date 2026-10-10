@@ -24,7 +24,12 @@ function typeCodes() {
 
 export function writeSitemap(guideSlugs: string[], dest = 'public/sitemap.xml') {
   const origin = 'https://jungology.com'
-  const pillar = new Set(['type-theory', 'four-letter-code', 'function-stack'])
+  const pillar = new Set([
+    'type-theory',
+    'four-letter-code',
+    'function-stack',
+    'jungian-cognitive-functions-test',
+  ])
   const urls = [
     ...CORE,
     ...typeCodes().map((code) => ({ loc: `/types/${code}`, priority: '0.7' })),

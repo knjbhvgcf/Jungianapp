@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Editable, EditableButton, EditHint, EditSeo } from '../components/Editable'
 import { Button } from '../components/Button'
@@ -41,6 +41,7 @@ import {
 } from '../lib/unlock'
 import { typePath } from '../data/personalityTypes'
 import { PopulationShare } from '../components/PopulationShare'
+import { reportTypeCensus } from '../lib/typeCensus'
 
 export function Results() {
   const navigate = useNavigate()
@@ -79,6 +80,26 @@ export function Results() {
         : [],
     [answers, baseProfile, profile, clarify],
   )
+
+  useEffect(() => {
+    if (editing || !complete || !profile) return
+    const suggestedCode = profile.matches[0]?.code
+    if (!suggestedCode) return
+    const suggestedHero = suggestedHeroFromTieBreak(readings, profile.scores)
+    const nextHero = heroId ?? stored?.hero ?? suggestedHero ?? profile.matches[0]?.stack[0]
+    if (!nextHero) return
+    const parents = validParentsForHero(nextHero)
+    const nextParent =
+      parentId && parents.includes(parentId)
+        ? parentId
+        : stored && nextHero === stored.hero && parents.includes(stored.parent)
+          ? stored.parent
+          : preferredParent(nextHero, profile.scores)
+    const chosen = matchForSpine(profile.matches, nextHero, nextParent) ?? profile.matches[0]
+    const selectedCode = chosen?.code
+    if (!selectedCode) return
+    void reportTypeCensus({ suggested: suggestedCode, selected: selectedCode })
+  }, [clarify, complete, editing, heroId, parentId, profile, readings, stored])
   const mapUnlocked = isProductUnlocked('map')
   const compatUnlocked = isProductUnlocked('compat')
   const showCompat = COMPATIBILITY_OFFERED || compatUnlocked || editing

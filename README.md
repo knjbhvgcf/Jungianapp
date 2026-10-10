@@ -1,6 +1,6 @@
 # Jung Functions
 
-A free React + Vite quiz that scores Carl Jung’s eight cognitive functions (Ni, Ne, Si, Se, Ti, Te, Fi, Fe) and suggests a likely type. Everything runs in the browser — no account, no backend, no paid APIs.
+A free React + Vite quiz that scores Carl Jung’s eight cognitive functions (Ni, Ne, Si, Se, Ti, Te, Fi, Fe) and suggests a likely type. Quiz answers stay in the browser — no account, no database of scores. A small type-census endpoint counts which types the quiz suggests, so you can check that against published population shares.
 
 ## Local development
 
@@ -51,6 +51,21 @@ If Metrics has no Enable button, add the JS snippet yourself:
 5. Redeploy. Vite only picks up the token at build time.
 
 Leave the variable empty locally so your own clicks are not counted.
+
+## Type census (is the quiz overtyping?)
+
+After someone finishes the quiz, the results page posts only the suggested four-letter code and the stack they left on the page. Answers, scores, and the fingerprint that prevents double-counting stay in the browser.
+
+Locally, `npm run dev` writes counts to `.data/type-census.json` (gitignored). Open `/admin` with `ADMIN_PASSWORD` (or `jung` if that is unset) and use the **Type census** tab. Each type is compared with its published sample share: quiz % ÷ sample %. After about forty results, a type is flagged over at 2.5× or under at 0.4×.
+
+On the live Cloudflare Pages project **jungianapp**:
+
+1. **Workers & Pages** → **jungianapp** → **Settings** → **Functions**.
+2. Add a KV namespace binding named `TYPE_CENSUS` (create a namespace if you do not have one).
+3. Set `ADMIN_PASSWORD` on the same project if you have not already. The census login uses that password; it works even though Save cannot write files on the hosted site.
+4. Redeploy.
+
+`GET /api/type-stats` is password-gated. `POST /api/type-stats` is public on purpose (counts only) and is origin-checked on the live Function.
 
 ## Your Type in Depth (optional paid unlock)
 

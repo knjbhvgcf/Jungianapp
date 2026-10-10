@@ -2,7 +2,10 @@ import { type FormEvent, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { PERSONALITY_TYPES, typePath } from '../data/personalityTypes'
 import { useEditMode } from '../lib/editMode'
+import { setCmsPassword } from '../lib/cms'
 import { TYPE_IN_DEPTH_PATH } from '../lib/unlock'
+import { fetchTypeCensus } from '../lib/typeCensus'
+import type { CensusSnapshot } from '../lib/typeCensusShared'
 import { Button } from './Button'
 
 function showTypePicker(pathname: string) {
@@ -82,8 +85,10 @@ export function EditBar() {
 
 export function EditGate({
   onUnlocked,
+  onCensus,
 }: {
   onUnlocked?: () => void
+  onCensus?: (snapshot: CensusSnapshot & { configured: boolean }) => void
 }) {
   const edit = useEditMode()
   const [password, setPassword] = useState('')
@@ -95,8 +100,22 @@ export function EditGate({
     try {
       await edit.tryUnlock(password)
       onUnlocked?.()
+      return
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : 'Could not unlock')
+      try {
+        const snapshot = await fetchTypeCensus(password)
+        setCmsPassword(password)
+        onCensus?.(snapshot)
+        return
+      } catch (censusCaught) {
+        const cmsMessage = caught instanceof Error ? caught.message : ''
+        const censusMessage = censusCaught instanceof Error ? censusCaught.message : ''
+        const localOnly = cmsMessage.includes('locally')
+        setError(
+          (localOnly && censusMessage ? censusMessage : cmsMessage || censusMessage) ||
+            'Could not unlock',
+        )
+      }
     }
   }
 

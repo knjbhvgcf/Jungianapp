@@ -77,7 +77,8 @@
       "type-theory",
       "function-stack",
       "jung-vs-mbti",
-      "infj-vs-infp"
+      "infj-vs-infp",
+      "infj-overtyping"
     ],
     "sections": [
       {
@@ -204,6 +205,7 @@
     "stat": "Psychological Types · 1921",
     "lede": "Jung did not measure a four-letter code. He described four functions, each able to turn toward the outer object or toward the inner impression a thing leaves, and that gives eight function-attitudes, which is what this quiz is built to score.",
     "related": [
+      "jungian-cognitive-functions-test",
       "type-theory",
       "function-stack",
       "jung-vs-mbti"
@@ -240,6 +242,57 @@
     ]
   },
   {
+    "slug": "jungian-cognitive-functions-test",
+    "seoTitle": "Jungian Cognitive Functions Test",
+    "seoDescription": "A free Jungian cognitive functions test. Fifty-two statements score Jung’s eight function-attitudes in your browser, then a likely type. About eight minutes, no account, not the official MBTI® instrument.",
+    "eyebrow": "free quiz",
+    "title": "Jungian cognitive functions test",
+    "stat": "fifty-two statements · eight function-attitudes",
+    "lede": "This is a free Jungian cognitive functions test. You rate fifty-two statements; the site scores all eight function-attitudes in your browser, then suggests a likely type. There is no account, and the letters, if they appear, are a name for the stack — not the thing that was measured.",
+    "related": [
+      "jungian-cognitive-functions",
+      "jung-vs-mbti",
+      "type-theory",
+      "four-letter-code"
+    ],
+    "sections": [
+      {
+        "heading": "What this test scores",
+        "paragraphs": [
+          "Most four-letter quizzes ask you to collect E or I, N or S, T or F, J or P, and then guess a function stack afterwards. This one does the reverse. The items are written from Jung’s eight function-attitudes — thinking, feeling, sensation, and intuition, each turned toward the outer object or toward the inner impression a thing leaves — and the type is fitted to those scores after the fact.",
+          "Extraversion here is not sociability. It is whether the function is oriented by the shared world or by the subjective factor. That is why a test that only asks whether you like parties cannot tell Ni from Ne, or Fi from Fe."
+        ]
+      },
+      {
+        "heading": "How the fifty-two work",
+        "paragraphs": [
+          "Each function-attitude has six statements, including one reverse-keyed item so that agreeing with everything does not raise every bar. You tap how true a sentence is, from 1 to 5, and a tap moves you on. Most people finish in about eight minutes.",
+          "The first stretch looks for the leading function. If two attitudes still land together — Fi and Ti both high, or Ni and Ne — a short follow-up at the end asks which sentence is more you, not another set of ratings. Those answers are folded into the percentages, the winner’s bar rises, and that is what names the lead."
+        ]
+      },
+      {
+        "heading": "What you see at the end",
+        "paragraphs": [
+          "The free result is eight 0–100% bars and a suggested type whose Beebe stack fits those bars, with the Hero / Heroine weighted first. A type whose leading function is not your strongest score is set aside. If the suggestion feels like a coat you borrowed, you can try a different lead and support on the results page.",
+          "Your Type in Depth is a longer reading of the weaker end of the stack: Eternal Child, Inferior (Anima / Animus), the eight roles, growth, and shadow. It is optional. The quiz, the scores, and the choice of Hero / Heroine and Parent stay free."
+        ]
+      },
+      {
+        "heading": "Not the official MBTI® instrument",
+        "paragraphs": [
+          "The Myers-Briggs Type Indicator is a separate, trademarked test with its own items and publisher. This site is not affiliated with it. A Jungian cognitive functions test, if it is honest, starts with the eight attitudes Jung described in *Psychological Types* (1921), and only afterwards asks which classical stack those scores resemble.",
+          "The four-letter code is a later shorthand, useful for talking about a stack, and a poor way of measuring one. If you arrived here looking for “the MBTI test,” you can still take this; just know what it is scoring."
+        ]
+      },
+      {
+        "heading": "Answers stay in this browser",
+        "paragraphs": [
+          "There is no account and no database of answers. The ratings stay on this computer until you start over. After a finished quiz, the site may record which type was suggested and which stack you left on the results page, as counts only, so the test can be checked against published population shares."
+        ]
+      }
+    ]
+  },
+  {
     "slug": "jung-vs-mbti",
     "seoTitle": "Jungian Functions vs MBTI®: What This Quiz Measures",
     "seoDescription": "How a Jungian cognitive functions quiz differs from the Myers-Briggs Type Indicator: eight function-attitudes first, then a type as a reading aid, not an official MBTI result.",
@@ -248,9 +301,11 @@
     "stat": "not the official instrument",
     "lede": "People search for an MBTI test and land on function language, or the other way around, and the words get used as if they were the same instrument. They are not, and this page is here so you can see what you are taking before you begin.",
     "related": [
+      "jungian-cognitive-functions-test",
       "four-letter-code",
       "jungian-cognitive-functions",
-      "type-theory"
+      "type-theory",
+      "infj-overtyping"
     ],
     "sections": [
       {
@@ -293,7 +348,8 @@
     "related": [
       "type-theory",
       "jungian-cognitive-functions",
-      "infj-vs-infp"
+      "infj-vs-infp",
+      "infj-overtyping"
     ],
     "sections": [
       {
@@ -380,7 +436,8 @@
       "four-letter-code",
       "function-stack",
       "ni-vs-ne",
-      "fi-vs-ti"
+      "fi-vs-ti",
+      "infj-overtyping"
     ],
     "sections": [
       {
@@ -486,6 +543,78 @@
           "The difference is not between a person who plans and a person who does not.",
           "It is between **a mind that first perceives a pattern** and **a mind that first evaluates according to an inner value**.",
           "Take the items next. Rather than asking you to choose a four-letter label, they will ask you to recognise which of these underlying movements is more consistently your own."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "infj-overtyping",
+    "seoTitle": "Why INFJ Is Overtyped Online",
+    "seoDescription": "INFJ is rare in population samples and common on the internet. How this cognitive functions quiz scores Ni, Fe, Fi, and Ne instead of a four-letter identity.",
+    "eyebrow": "INFJ · the internet",
+    "title": "Why everyone is INFJ",
+    "stat": "rare in samples · common in feeds",
+    "lede": "INFJ is the type the internet cannot stop producing, and one of the types population samples almost never find. The gap is not a mystery of the psyche so much as a mystery of the test, and of what people have been taught the letters mean.",
+    "related": [
+      "infj-vs-infp",
+      "four-letter-code",
+      "ni-vs-ne",
+      "jung-vs-mbti"
+    ],
+    "sections": [
+      {
+        "heading": "A surplus that is not a people",
+        "paragraphs": [
+          "In samples of the Myers-Briggs Type Indicator in the United States, INFJ is among the least frequent codes — on this site, about 1.5%. Those shares are not counts from this quiz, and they are not Jung’s clinical frequencies. They are still enough to make the internet look impossible.",
+          "Open a type forum, a comment section, a list of fictional characters, and INFJ is everywhere: the rarest, the mystic, the counselor who sees beneath the surface. A code that barely appears in a sample has become a public identity.",
+          "That identity is usually not Ni–Fe–Ti–Se. It is a mood. Deep, empathic, misunderstood, in need of solitude, tired of small talk. Plenty of people are that, and most of them are not INFJ."
+        ]
+      },
+      {
+        "heading": "What the letters collect",
+        "paragraphs": [
+          "A dichotomy quiz asks you to gather I, N, F, and J. Introversion, imagination, care, a preference for closing a loop. Those four ticks can be INFP, ENFJ, ISFJ, INTJ, or a tired extravert who has been on the internet too long. They do not require introverted intuition to lead.",
+          "The last letter does almost all of the damage. For an introvert, J or P names the extraverted function, not the Hero / Heroine. INFJ is a dominant *perceiver*: Ni first, then Fe. INFP is a dominant *judger*: Fi first, then Ne. They share three letters and no function-attitudes.",
+          ":::stacks\nINFJ · Ni Fe Ti Se\nINFP · Fi Ne Si Te",
+          "Someone who feels organised on the inside, or messy in the outer world, will often pick the wrong last letter and land on INFJ when the lead is Fi. Kindness will not sort them. Fe reads a climate; Fi keeps a private court. Both can look like care from across a room."
+        ]
+      },
+      {
+        "heading": "What this quiz measures instead",
+        "paragraphs": [
+          "This quiz does not ask you to choose E or I, N or S, T or F, J or P. It asks fifty-two statements about Jung’s eight function-attitudes, then names the classical stack those scores most resemble, with the leading function weighted first. The four-letter code, if it appears, is a nickname for that stack.",
+          "The Ni items are not “I am deep.” They ask whether inner images show the direction of a situation before the outer facts are complete, and whether you would rather follow one unfolding inner vision than keep many outer options in play. The reverse item says you rarely know where a situation is going until the facts have already lined up.",
+          "The Fi items ask whether a choice is wrong if it violates a private value even when it is popular. The Fe items ask whether you know what is fitting by reading the feeling-tone of the people involved, and whether a logically neat decision still feels unfinished if it injures the group.",
+          "A person who is actually INFP can agree with Fi and disagree with Fe, and can prefer Ne’s open field to Ni’s single trajectory. They will not be handed INFJ for having an inner life."
+        ]
+      },
+      {
+        "heading": "The Hero / Heroine has to win",
+        "paragraphs": [
+          "Each of the sixteen types is scored as a whole Beebe stack, but the Hero / Heroine is weighted first, the Parent next, the Eternal Child only moderately, the Inferior (Anima / Animus) almost not at all. A type whose leading function is not your strongest score is set aside. The model also wants the lead to outrank its opposite-attitude twin: Ni over Ne, Fe over Fi’s rival only if Fe is actually the one doing the work.",
+          "That is the mechanical answer to the internet’s favourite fake. Warmth plus imagination plus introversion is not enough. INFJ requires Ni on top, then Fe as the supporting process that parents the vision into a shared climate. If Fi is the first movement — *is this true for me?* — the stack that fits is not Ni–Fe."
+        ]
+      },
+      {
+        "heading": "When two bars land together",
+        "paragraphs": [
+          "Fifty-two ratings still leave some people between Ni and Ne, or between Fi and Fe, which are the pairs the INFJ surplus lives on. When two functions land that close, the quiz does not offer another set of sliders. It asks a short follow-up of forced choices.",
+          "For intuition: do you wait until one inner picture of the outcome has settled, or keep several outer possibilities in play while the field is still open? For feeling: does a choice match a private standard of worth, or does the feeling-tone among the people involved have to hold?",
+          "Those answers are folded into the percentages. The winner’s bar rises, the other falls, and that is what names the lead. If they still split, the results page lets you try a different Hero / Heroine and Parent, because an honest map is better than a badge you were not willing to give up."
+        ]
+      },
+      {
+        "heading": "What the result is for",
+        "paragraphs": [
+          "You see eight scores, not a single word that has to be defended in a biography. A close second is named when two types fit. The letters come after the stack, and the stack can be rearranged if the suggestion feels like a coat you borrowed.",
+          "The public type pages also show how uncommon each code is in those older samples, with a note that the figure is not a count from this quiz. Rarity is not a merit. It is a frequency, and frequencies do not make a function more real.",
+          "None of this can stop someone who has already decided to be INFJ. It can stop the usual path: a flattering profile, four letters that anyone reflective can collect, and a comment section that congratulates the result. The items ask which movement comes first — the inner picture of where this is going, or the inner verdict of what is true for you — and that is a better question than whether you are rare."
+        ]
+      },
+      {
+        "heading": "Take the items next",
+        "paragraphs": [
+          "If you have come out INFJ on every letter quiz and still cannot tell whether you live in a trajectory or in a standard, read INFP vs INFJ, then take the fifty-two. The site will not ask you to pick a type. It will ask you to recognise a process, and the type, if it is yours, will be the name of that process and the three that follow it, not a mood the internet was already selling."
         ]
       }
     ]

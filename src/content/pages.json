@@ -48,7 +48,7 @@
       },
       {
         "q": "Do you store my answers?",
-        "a": "There is no account. Your answers stay in this browser session until you close the tab or start over, and they are not sent to a server. Cloudflare and Google Analytics may count page views, not answers."
+        "a": "There is no account. Your answers stay in this browser session until you close the tab or start over, and they are not sent to a server. After you finish, the site may record which type was suggested and which stack you left on the results page, as counts only, so the quiz can be checked against published population shares. Cloudflare and Google Analytics may count page views, not answers."
       },
       {
         "q": "What if two attitudes are equally strong, as Fi and Ti both at 88%?",
@@ -116,7 +116,7 @@
       {
         "heading": "Privacy",
         "paragraphs": [
-          "There is no account and no database of answers. Quiz answers stay in this browser until you start over; they are never sent to a server. Cloudflare and Google Analytics may count page views — which pages you open, not your answers, scores, or type. Unlock state is stored in this browser so you do not have to paste the key every time."
+          "There is no account and no database of answers. Quiz answers stay in this browser until you start over; they are never sent to a server. After a finished quiz, the site may record the suggested type and the stack left on the results page, as counts, not the answers that produced them. Cloudflare and Google Analytics may count page views — which pages you open, not your answers or scores. Unlock state is stored in this browser so you do not have to paste the key every time."
         ]
       }
     ]
