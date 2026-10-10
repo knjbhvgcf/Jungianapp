@@ -1,4 +1,8 @@
 {
-  "redirects": [{ "source": "/dossier", "destination": "/type-in-depth", "permanent": true }],
+  "redirects": [
+    { "source": "/dossier", "destination": "/type-in-depth", "permanent": true },
+    { "source": "/4-letter-code", "destination": "/four-letter-code", "permanent": true },
+    { "source": "/the-stack", "destination": "/function-stack", "permanent": true }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

@@ -4,6 +4,7 @@ import { Button } from '../components/Button'
 import { Editable, EditSeo } from '../components/Editable'
 import { Seo } from '../components/Seo'
 import { useEditMode, useGuidesDraft } from '../lib/editMode'
+import { QUIZ_PATH } from '../lib/quizPath'
 import { parseGuideBlock, parseGuideInline, type GuideDiagram } from '../lib/guideMarkup'
 import { NotFound } from './NotFound'
 
@@ -318,7 +319,7 @@ export function GuidePage() {
             </div>
           ))}
           <p>
-            <Button to="/quiz">Begin the quiz</Button>
+            <Button to={QUIZ_PATH}>Begin the quiz</Button>
           </p>
           {related.length ? (
             <nav className="guide-related" aria-label="Related guides">
@@ -401,7 +402,7 @@ export function GuidesIndex() {
             )}
           </ul>
           <p>
-            <Button to="/quiz">Begin the quiz</Button>
+            <Button to={QUIZ_PATH}>Begin the quiz</Button>
           </p>
         </div>
       </article>

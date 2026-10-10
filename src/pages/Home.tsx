@@ -6,6 +6,9 @@ import { Sparkle } from '../components/Icons'
 import { Seo } from '../components/Seo'
 import { HeroParty } from '../components/HeroParty'
 import { useEditMode, useGuidesDraft, useSiteCopy } from '../lib/editMode'
+import { parseGuideBlock, parseGuideInline } from '../lib/guideMarkup'
+import { QUIZ_PATH, TEST_LANDING_PATH, TEST_LANDING_SLUG } from '../lib/quizPath'
+import type { ReactNode } from 'react'
 
 function italicizeBookTitle(text: string) {
   const title = 'Psychological Types'
@@ -20,18 +23,61 @@ function italicizeBookTitle(text: string) {
   )
 }
 
+function GuideInline({ text }: { text: string }) {
+  const nodes: ReactNode[] = parseGuideInline(text).map((part, index) => {
+    if (part.type === 'strong') return <strong key={index}>{part.value}</strong>
+    if (part.type === 'em') return <em key={index}>{part.value}</em>
+    return <span key={index}>{part.value}</span>
+  })
+  return <>{nodes}</>
+}
+
+const LANDING_FAQ = {
+  q: 'What is a Jungian cognitive functions test?',
+  a: 'You rate fifty-two statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. There is no account, and the letters, if they appear, are a name for the stack — not the thing that was measured.',
+}
+
 export function Home() {
+  return <HomeView />
+}
+
+export function TestLanding() {
+  return <HomeView landing />
+}
+
+function HomeView({ landing = false }: { landing?: boolean }) {
   const { home } = useSiteCopy()
   const { editing, patchPages, patchGuide } = useEditMode()
   const guides = useGuidesDraft()
+  const guide = guides.find((item) => item.slug === TEST_LANDING_SLUG)
+  const listedGuides = landing ? guides.filter((item) => item.slug !== TEST_LANDING_SLUG) : guides
+  const lede = landing ? (guide?.lede ?? home.lede) : home.lede
+  const seoTitle = landing
+    ? `${guide?.seoTitle ?? 'Jungian Cognitive Functions Test'} | Jung Functions Quiz`
+    : home.seoTitle
+  const seoDescription = landing ? (guide?.seoDescription ?? home.seoDescription) : home.seoDescription
+  const path = landing ? TEST_LANDING_PATH : '/'
+  const faq = landing
+    ? [LANDING_FAQ, ...home.faq.filter((item) => item.q !== 'What is Jungology?')]
+    : home.faq
 
   function patchHome(partial: Partial<typeof home>) {
     patchPages((pages) => ({ ...pages, home: { ...pages.home, ...partial } }))
   }
 
+  function patchLanding(partial: {
+    seoTitle?: string
+    seoDescription?: string
+    title?: string
+    stat?: string
+    lede?: string
+  }) {
+    patchGuide(TEST_LANDING_SLUG, (current) => ({ ...current, ...partial }))
+  }
+
   return (
     <>
-      <Seo title={home.seoTitle} description={home.seoDescription} path="/" />
+      <Seo title={seoTitle} description={seoDescription} path={path} />
 
       <section className="hero">
         <div className="hero-stage">
@@ -42,45 +88,71 @@ export function Home() {
           <HeroParty />
         </div>
         <div className="wrap screen">
-          <EditSeo
-            title={home.seoTitle}
-            description={home.seoDescription}
-            onTitle={(seoTitle) => patchHome({ seoTitle })}
-            onDescription={(seoDescription) => patchHome({ seoDescription })}
-          />
-          <Editable
-            as="h1"
-            className="serif-title"
-            label="Title"
-            value={home.title}
-            onChange={(title) => patchHome({ title })}
-          />
-          <Editable
-            as="p"
-            className="mono-stat"
-            label="Stat"
-            multiline={false}
-            value={home.stat}
-            onChange={(stat) => patchHome({ stat })}
-          />
-          {editing ? (
-            <Editable
-              as="p"
-              className="lede"
-              label="Lede"
-              value={home.lede}
-              onChange={(lede) => patchHome({ lede })}
+          {landing && guide ? (
+            <EditSeo
+              title={guide.seoTitle}
+              description={guide.seoDescription}
+              onTitle={(seoTitleValue) => patchLanding({ seoTitle: seoTitleValue })}
+              onDescription={(seoDescriptionValue) => patchLanding({ seoDescription: seoDescriptionValue })}
             />
           ) : (
-            home.lede.split(/\n\n+/).map((paragraph) => (
+            <EditSeo
+              title={home.seoTitle}
+              description={home.seoDescription}
+              onTitle={(next) => patchHome({ seoTitle: next })}
+              onDescription={(next) => patchHome({ seoDescription: next })}
+            />
+          )}
+          {landing && guide ? (
+            <Editable
+              as="h1"
+              className="serif-title"
+              label="Title"
+              value={guide.title}
+              onChange={(next) => patchLanding({ title: next })}
+            />
+          ) : (
+            <Editable
+              as="h1"
+              className="serif-title"
+              label="Title"
+              value={home.title}
+              onChange={(next) => patchHome({ title: next })}
+            />
+          )}
+          {landing && guide ? (
+            <Editable
+              as="p"
+              className="mono-stat"
+              label="Stat"
+              multiline={false}
+              value={guide.stat}
+              onChange={(next) => patchLanding({ stat: next })}
+            />
+          ) : (
+            <Editable
+              as="p"
+              className="mono-stat"
+              label="Stat"
+              multiline={false}
+              value={home.stat}
+              onChange={(statValue) => patchHome({ stat: statValue })}
+            />
+          )}
+          {editing && landing && guide ? (
+            <Editable as="p" className="lede" label="Lede" value={guide.lede} onChange={(next) => patchLanding({ lede: next })} />
+          ) : editing ? (
+            <Editable as="p" className="lede" label="Lede" value={home.lede} onChange={(next) => patchHome({ lede: next })} />
+          ) : (
+            lede.split(/\n\n+/).map((paragraph) => (
               <p key={paragraph} className="lede">
-                {italicizeBookTitle(paragraph)}
+                {landing ? <GuideInline text={paragraph} /> : italicizeBookTitle(paragraph)}
               </p>
             ))
           )}
           <div className="hero__actions">
             <EditableButton
-              to="/quiz"
+              to={QUIZ_PATH}
               label="Begin quiz"
               value={home.beginQuiz}
               onChange={(beginQuiz) => patchHome({ beginQuiz })}
@@ -104,10 +176,10 @@ export function Home() {
                   as="h3"
                   label={`Step ${index + 1} title`}
                   value={step.title}
-                  onChange={(title) =>
+                  onChange={(stepTitle) =>
                     patchHome({
                       steps: home.steps.map((item, itemIndex) =>
-                        itemIndex === index ? { ...item, title } : item,
+                        itemIndex === index ? { ...item, title: stepTitle } : item,
                       ),
                     })
                   }
@@ -155,6 +227,25 @@ export function Home() {
         </div>
       </section>
 
+      {landing && guide ? (
+        <section className="section">
+          <div className="wrap prose">
+            {guide.sections.map((section, sectionIndex) => (
+              <div key={sectionIndex}>
+                {section.heading ? <h2>{section.heading}</h2> : null}
+                {section.paragraphs.map((paragraph, paragraphIndex) =>
+                  parseGuideBlock(paragraph).type === 'diagram' ? null : (
+                    <p key={paragraphIndex}>
+                      <GuideInline text={paragraph} />
+                    </p>
+                  ),
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       <section className="section" aria-labelledby="guides-heading">
         <div className="wrap">
           <h2 id="guides-heading">Further reading</h2>
@@ -164,30 +255,30 @@ export function Home() {
             closely at the ideas behind the quiz.
           </p>
           <ul className="guide-index guide-index--home">
-            {guides.map((guide) =>
+            {listedGuides.map((item) =>
               editing ? (
-                <li key={guide.slug}>
+                <li key={item.slug}>
                   <Editable
                     as="h3"
-                    label={`${guide.slug} title`}
-                    value={guide.title}
-                    onChange={(title) => patchGuide(guide.slug, (item) => ({ ...item, title }))}
+                    label={`${item.slug} title`}
+                    value={item.title}
+                    onChange={(next) => patchGuide(item.slug, (entry) => ({ ...entry, title: next }))}
                   />
                   <Editable
                     as="p"
-                    label={`${guide.slug} summary`}
-                    value={guide.seoDescription}
+                    label={`${item.slug} summary`}
+                    value={item.seoDescription}
                     onChange={(seoDescription) =>
-                      patchGuide(guide.slug, (item) => ({ ...item, seoDescription }))
+                      patchGuide(item.slug, (entry) => ({ ...entry, seoDescription }))
                     }
                   />
                 </li>
               ) : (
-                <li key={guide.slug}>
-                  <Link to={`/${guide.slug}`}>
-                    <strong>{guide.title}</strong>
+                <li key={item.slug}>
+                  <Link to={`/${item.slug}`}>
+                    <strong>{item.title}</strong>
                   </Link>
-                  <p>{guide.seoDescription}</p>
+                  <p>{item.seoDescription}</p>
                 </li>
               ),
             )}
@@ -204,41 +295,41 @@ export function Home() {
             onChange={(faqHeading) => patchHome({ faqHeading })}
           />
           <div className="faq">
-            {home.faq.map((item, index) =>
-              editing ? (
-                <div key={index} className="faq-edit">
-                  <Editable
-                    as="h3"
-                    label={`Question ${index + 1}`}
-                    value={item.q}
-                    onChange={(q) =>
-                      patchHome({
-                        faq: home.faq.map((entry, entryIndex) =>
-                          entryIndex === index ? { ...entry, q } : entry,
-                        ),
-                      })
-                    }
-                  />
-                  <Editable
-                    as="p"
-                    label={`Answer ${index + 1}`}
-                    value={item.a}
-                    onChange={(a) =>
-                      patchHome({
-                        faq: home.faq.map((entry, entryIndex) =>
-                          entryIndex === index ? { ...entry, a } : entry,
-                        ),
-                      })
-                    }
-                  />
-                </div>
-              ) : (
-                <details key={item.q}>
-                  <summary>{item.q}</summary>
-                  <p>{item.a}</p>
-                </details>
-              ),
-            )}
+            {editing && !landing
+              ? home.faq.map((item, index) => (
+                  <div key={index} className="faq-edit">
+                    <Editable
+                      as="h3"
+                      label={`Question ${index + 1}`}
+                      value={item.q}
+                      onChange={(q) =>
+                        patchHome({
+                          faq: home.faq.map((entry, entryIndex) =>
+                            entryIndex === index ? { ...entry, q } : entry,
+                          ),
+                        })
+                      }
+                    />
+                    <Editable
+                      as="p"
+                      label={`Answer ${index + 1}`}
+                      value={item.a}
+                      onChange={(a) =>
+                        patchHome({
+                          faq: home.faq.map((entry, entryIndex) =>
+                            entryIndex === index ? { ...entry, a } : entry,
+                          ),
+                        })
+                      }
+                    />
+                  </div>
+                ))
+              : faq.map((item) => (
+                  <details key={item.q}>
+                    <summary>{item.q}</summary>
+                    <p>{item.a}</p>
+                  </details>
+                ))}
           </div>
           <div className="cta-band">
             <Editable
@@ -248,7 +339,7 @@ export function Home() {
               onChange={(ctaHeading) => patchHome({ ctaHeading })}
             />
             <EditableButton
-              to="/quiz"
+              to={QUIZ_PATH}
               label="Begin quiz"
               value={home.beginQuiz}
               onChange={(beginQuiz) => patchHome({ beginQuiz })}

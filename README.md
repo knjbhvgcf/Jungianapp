@@ -18,6 +18,12 @@ npm run preview
 
 `dist/` is a static site you can host anywhere.
 
+## SEO (do not drop indexed URLs)
+
+`npm run build` prerenders every sitemap URL and then fails if a URL that was already public would 404, lose its canonical, or pick up `noindex`. The list lives in `seo/published-paths.json` and only grows.
+
+To retire a page, add a **301** in `public/_redirects` first (same pattern as `/dossier` → `/type-in-depth`). Do not remove a slug and push. New pages are fine; they are added to that list on build.
+
 ## Free hosting
 
 Pick one. All of these have a free tier and work with this project:

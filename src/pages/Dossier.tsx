@@ -30,6 +30,7 @@ import {
   useTypeDraft,
 } from '../lib/editMode'
 import { trackPurchase } from '../lib/analytics'
+import { QUIZ_PATH } from '../lib/quizPath'
 import {
   COMPATIBILITY_OFFERED,
   isProductUnlocked,
@@ -113,7 +114,7 @@ export function Dossier() {
                   quiz once more here.
                 </p>
                 <Button to="/results">Open results</Button>
-                <Button to="/quiz" variant="ghost">
+                <Button to={QUIZ_PATH} variant="ghost">
                   {mapPage.beginQuiz}
                 </Button>
               </>
@@ -122,7 +123,7 @@ export function Dossier() {
                 <h1 className="serif-title">{mapPage.emptyTitle}</h1>
                 <p className="mono-stat">{mapPage.emptyStat}</p>
                 <p>{mapPage.emptyBody}</p>
-                <Button to="/quiz">{mapPage.beginQuiz}</Button>
+                <Button to={QUIZ_PATH}>{mapPage.beginQuiz}</Button>
               </>
             )}
           </div>
@@ -213,7 +214,7 @@ export function Dossier() {
                 onChange={(emptyBody) => patchMap({ emptyBody })}
               />
               <EditableButton
-                to="/quiz"
+                to={QUIZ_PATH}
                 label="Begin quiz"
                 value={mapPage.beginQuiz}
                 onChange={(beginQuiz) => patchMap({ beginQuiz })}

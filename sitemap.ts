@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { rememberPublishedPaths } from './seoGuard.ts'
 
 const CORE = [
   { loc: '/', priority: '1.0' },
@@ -35,7 +36,8 @@ export function writeSitemap(guideSlugs: string[], dest = 'public/sitemap.xml') 
     ...typeCodes().map((code) => ({ loc: `/types/${code}`, priority: '0.7' })),
     ...guideSlugs.map((slug) => ({
       loc: `/${slug}`,
-      priority: pillar.has(slug) ? '0.8' : '0.7',
+      priority:
+        slug === 'jungian-cognitive-functions-test' ? '0.9' : pillar.has(slug) ? '0.8' : '0.7',
     })),
   ]
   const body = urls
@@ -51,4 +53,5 @@ export function writeSitemap(guideSlugs: string[], dest = 'public/sitemap.xml') 
     path.resolve(process.cwd(), dest),
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`,
   )
+  rememberPublishedPaths(urls.map((url) => url.loc))
 }

@@ -5,6 +5,7 @@ import { ProgressBar } from '../components/ProgressBar'
 import { Seo } from '../components/Seo'
 import { followUpQuestions, needsFollowUp, pairsNeedingFollowUp } from '../lib/clarify'
 import { isQuizComplete } from '../lib/scoring'
+import { QUIZ_PATH } from '../lib/quizPath'
 import { loadAnswers, loadClarifyAnswers, saveClarifyAnswers } from '../lib/storage'
 
 const ADVANCE_MS = 160
@@ -27,7 +28,7 @@ export function Clarify() {
   }, [])
 
   if (!isQuizComplete(quizAnswers)) {
-    return <Navigate to="/quiz" replace />
+    return <Navigate to={QUIZ_PATH} replace />
   }
 
   if (!questions.length) {

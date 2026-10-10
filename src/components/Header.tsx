@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { QUIZ_PATH } from '../lib/quizPath'
 import { COMPATIBILITY_OFFERED, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
 import { Face, MenuDots } from './Icons'
 
 const links = [
   { to: '/', label: 'Home' },
-  { to: '/quiz', label: 'Take the quiz' },
+  { to: QUIZ_PATH, label: 'Take the quiz' },
   { to: '/types', label: 'Sprouts' },
   { to: '/guides', label: 'Guides' },
   { to: '/about', label: 'About' },

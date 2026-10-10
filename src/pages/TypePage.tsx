@@ -16,6 +16,7 @@ import {
   useSiteCopy,
   useTypeDraft,
 } from '../lib/editMode'
+import { QUIZ_PATH } from '../lib/quizPath'
 import { TYPE_IN_DEPTH_PATH } from '../lib/unlock'
 import { NotFound } from './NotFound'
 
@@ -60,7 +61,7 @@ export function TypesIndex() {
             }
           />
           <p>
-            <Button to="/quiz">Begin the quiz</Button>
+            <Button to={QUIZ_PATH}>Begin the quiz</Button>
           </p>
         </div>
       </article>
@@ -169,7 +170,7 @@ function TypePageBody({ code }: { code: string }) {
             />
           ) : null}
           <div className="hero__actions">
-            <Button to="/quiz">Begin the quiz</Button>
+            <Button to={QUIZ_PATH}>Begin the quiz</Button>
             <Button to="/types" variant="ghost">
               All sprouts
             </Button>

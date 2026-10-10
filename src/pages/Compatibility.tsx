@@ -19,6 +19,7 @@ import { applyFollowUpToProfile } from '../lib/clarify'
 import { loadAnswers, loadClarifyAnswers, loadStackChoice } from '../lib/storage'
 import { asPersonality, useEditMode, useSiteCopy, useTypeDraft } from '../lib/editMode'
 import { trackPurchase } from '../lib/analytics'
+import { QUIZ_PATH } from '../lib/quizPath'
 import {
   COMPATIBILITY_OFFERED,
   isProductUnlocked,
@@ -86,7 +87,7 @@ export function Compatibility() {
                   compatibility again. Otherwise take the quiz once more here.
                 </p>
                 <Button to="/results">Open results</Button>
-                <Button to="/quiz" variant="ghost">
+                <Button to={QUIZ_PATH} variant="ghost">
                   {compatPage.beginQuiz}
                 </Button>
               </>
@@ -95,7 +96,7 @@ export function Compatibility() {
                 <h1 className="serif-title">{compatPage.emptyTitle}</h1>
                 <p className="mono-stat">{compatPage.emptyStat}</p>
                 <p>{compatPage.emptyBody}</p>
-                <Button to="/quiz">{compatPage.beginQuiz}</Button>
+                <Button to={QUIZ_PATH}>{compatPage.beginQuiz}</Button>
               </>
             ) : (
               <>
@@ -105,7 +106,7 @@ export function Compatibility() {
                   This reading is paused. If you already have a key from an earlier checkout, open
                   this page with the key in the link, or paste it after you finish the quiz.
                 </p>
-                <Button to="/quiz">{compatPage.beginQuiz}</Button>
+                <Button to={QUIZ_PATH}>{compatPage.beginQuiz}</Button>
                 <Button to="/results" variant="ghost">
                   Back to results
                 </Button>
@@ -183,7 +184,7 @@ export function Compatibility() {
                 onChange={(emptyBody) => patchCompat({ emptyBody })}
               />
               <EditableButton
-                to="/quiz"
+                to={QUIZ_PATH}
                 label="Begin quiz"
                 value={compatPage.beginQuiz}
                 onChange={(beginQuiz) => patchCompat({ beginQuiz })}

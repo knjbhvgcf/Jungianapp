@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { QUIZ_PATH } from '../lib/quizPath'
 import { Seo } from '../components/Seo'
 
 export const LEGAL_TITLE = 'Notes on buying | Jung Functions Quiz'
@@ -51,7 +52,7 @@ export function Legal() {
           <p>
             <Link to="/about">About the quiz</Link>
             {' · '}
-            <Link to="/quiz">Begin the quiz</Link>
+            <Link to={QUIZ_PATH}>Begin the quiz</Link>
           </p>
         </div>
       </article>

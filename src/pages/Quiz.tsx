@@ -6,6 +6,7 @@ import { ProgressBar } from '../components/ProgressBar'
 import { Seo } from '../components/Seo'
 import { QUESTIONS } from '../data/questions'
 import { needsFollowUp } from '../lib/clarify'
+import { QUIZ_PATH } from '../lib/quizPath'
 import { isQuizComplete, type Answers } from '../lib/scoring'
 import { clearAnswers, loadAnswers, loadClarifyAnswers, markCompleted, saveAnswers } from '../lib/storage'
 
@@ -91,7 +92,7 @@ export function Quiz() {
       <Seo
         title="Jung Functions Quiz | Jungology"
         description="Jungology is a free online cognitive functions test. Fifty-two statements, scored in your browser."
-        path="/quiz"
+        path={QUIZ_PATH}
       />
 
       <section className="section quiz">

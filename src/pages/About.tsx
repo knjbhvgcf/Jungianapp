@@ -3,6 +3,7 @@ import { Button } from '../components/Button'
 import { Editable, EditableButton, EditSeo } from '../components/Editable'
 import { Seo } from '../components/Seo'
 import { useEditMode, useSiteCopy } from '../lib/editMode'
+import { QUIZ_PATH } from '../lib/quizPath'
 
 export function About() {
   const { about } = useSiteCopy()
@@ -102,13 +103,13 @@ export function About() {
           <p>
             {editing ? (
               <EditableButton
-                to="/quiz"
+                to={QUIZ_PATH}
                 label="Begin quiz"
                 value={about.beginQuiz}
                 onChange={(beginQuiz) => patchAbout({ beginQuiz })}
               />
             ) : (
-              <Button to="/quiz">{about.beginQuiz}</Button>
+              <Button to={QUIZ_PATH}>{about.beginQuiz}</Button>
             )}
           </p>
         </div>

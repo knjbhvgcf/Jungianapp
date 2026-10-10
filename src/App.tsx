@@ -6,12 +6,13 @@ import { Clarify } from './pages/Clarify'
 import { Compatibility } from './pages/Compatibility'
 import { Dossier } from './pages/Dossier'
 import { GuidePage, GuidesIndex } from './pages/Guide'
-import { Home } from './pages/Home'
+import { Home, TestLanding } from './pages/Home'
 import { Legal } from './pages/Legal'
 import { NotFound } from './pages/NotFound'
 import { Quiz } from './pages/Quiz'
 import { Results } from './pages/Results'
 import { TypePage, TypesIndex } from './pages/TypePage'
+import { QUIZ_PATH, TEST_LANDING_PATH } from './lib/quizPath'
 import { TYPE_IN_DEPTH_PATH } from './lib/unlock'
 
 function RedirectDossier() {
@@ -29,7 +30,9 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/quiz" element={<Quiz />} />
+        <Route path={QUIZ_PATH} element={<Quiz />} />
+        <Route path={`${QUIZ_PATH}/`} element={<Quiz />} />
+        <Route path={TEST_LANDING_PATH} element={<TestLanding />} />
         <Route path="/clarify" element={<Clarify />} />
         <Route path="/results" element={<Results />} />
         <Route path={TYPE_IN_DEPTH_PATH} element={<Dossier />} />

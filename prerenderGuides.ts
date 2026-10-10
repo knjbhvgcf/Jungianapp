@@ -2,7 +2,9 @@ import fs from 'node:fs'
 import path from 'node:path'
 import type { Plugin } from 'vite'
 import { parseGuideBlock, parseGuideInline, type GuideDiagram } from './src/lib/guideMarkup.ts'
+import { FUNCTION_LIST } from './src/data/functions.ts'
 import { writeSitemap } from './sitemap.ts'
+import { checkSeo } from './seoGuard.ts'
 
 type Guide = {
   slug: string
@@ -148,7 +150,8 @@ function articleHtml(guide: Guide) {
     })
     .join('')
 
-  return `<article class="section"><div class="wrap prose"><p class="eyebrow">${escapeHtml(guide.eyebrow)}</p><h1 class="serif-title">${escapeHtml(guide.title)}</h1><p class="mono-stat">${escapeHtml(guide.stat)}</p>${lede}${sections}<p><a href="/quiz">Begin the quiz</a></p></div></article>`
+  const cta = '<p><a href="/quiz">Begin the quiz</a></p>'
+  return `<article class="section"><div class="wrap prose"><p class="eyebrow">${escapeHtml(guide.eyebrow)}</p><h1 class="serif-title">${escapeHtml(guide.title)}</h1><p class="mono-stat">${escapeHtml(guide.stat)}</p>${lede}${sections}${cta}</div></article>`
 }
 
 type TypePage = {
@@ -198,6 +201,74 @@ function typePageHtml(type: TypePage, types: TypePage[], populationNote = '') {
   return `<article class="section type-page"><header class="wrap screen dossier-hero">${img}<p class="eyebrow">sprout</p><h1 class="serif-title">${escapeHtml(type.code)} — ${escapeHtml(type.title)}</h1><p class="mono-stat">${escapeHtml(type.code.toLowerCase())} · ${escapeHtml(type.name.toLowerCase())}${statShare}</p><p class="lede">${escapeHtml(type.summary)}</p><p><a href="/quiz">Begin the quiz</a> · <a href="/types">All sprouts</a></p></header><div class="wrap prose"><h2>Cognitive stack</h2><ul class="archetype-stack">${stack}</ul><p>How a four-letter code becomes this stack, and what each position is for: <a href="/four-letter-code">The four-letter code</a> · <a href="/function-stack">The function stack</a> · <a href="/type-theory">Type theory</a>.</p>${note}</div><div class="wrap prose"><h2>The other sprouts</h2><ul class="type-index">${others}</ul></div></article>`
 }
 
+type HomeCopy = {
+  seoTitle: string
+  seoDescription: string
+  title: string
+  stat: string
+  lede: string
+  beginQuiz: string
+  howHeading: string
+  steps: { title: string; body: string }[]
+  functionsHeading: string
+  functionsIntro: string
+  faqHeading: string
+  faq: { q: string; a: string }[]
+  ctaHeading: string
+}
+
+function citeBook(text: string) {
+  return escapeHtml(text).replaceAll('Psychological Types', '<cite>Psychological Types</cite>')
+}
+
+function homeHtml(home: HomeCopy, guides: Guide[], landing?: Guide) {
+  const heroTitle = landing?.title ?? home.title
+  const heroStat = landing?.stat ?? home.stat
+  const lede = (landing?.lede ?? home.lede)
+    .split(/\n\n+/)
+    .map((paragraph) => `<p class="lede">${landing ? inlineHtml(paragraph) : citeBook(paragraph)}</p>`)
+    .join('')
+  const steps = home.steps
+    .map(
+      (step) =>
+        `<li><h3>${escapeHtml(step.title)}</h3><p>${escapeHtml(step.body)}</p></li>`,
+    )
+    .join('')
+  const functions = FUNCTION_LIST.map(
+    (fn) =>
+      `<article class="function-card"><div class="function-card__badge">${escapeHtml(fn.id)}</div><h3>${escapeHtml(fn.name)}</h3><p class="function-card__role">${escapeHtml(fn.role)}</p><p>${escapeHtml(fn.description)}</p></article>`,
+  ).join('')
+  const extra = landing
+    ? landing.sections
+        .map((section) => {
+          const heading = section.heading ? `<h2>${escapeHtml(section.heading)}</h2>` : ''
+          const paragraphs = section.paragraphs.map((paragraph) => blockHtml(paragraph)).join('')
+          return `${heading}${paragraphs}`
+        })
+        .join('')
+    : ''
+  const listed = landing ? guides.filter((guide) => guide.slug !== landing.slug) : guides
+  const reading = listed
+    .map(
+      (guide) =>
+        `<li><a href="/${guide.slug}"><strong>${escapeHtml(guide.title)}</strong></a><p>${escapeHtml(guide.seoDescription)}</p></li>`,
+    )
+    .join('')
+  const faqItems = landing
+    ? [
+        {
+          q: 'What is a Jungian cognitive functions test?',
+          a: 'You rate fifty-two statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. There is no account, and the letters, if they appear, are a name for the stack — not the thing that was measured.',
+        },
+        ...home.faq.filter((item) => item.q !== 'What is Jungology?'),
+      ]
+    : home.faq
+  const faq = faqItems
+    .map((item) => `<h3>${escapeHtml(item.q)}</h3><p>${escapeHtml(item.a)}</p>`)
+    .join('')
+  return `<section class="hero"><div class="wrap screen"><h1 class="serif-title">${escapeHtml(heroTitle)}</h1><p class="mono-stat">${escapeHtml(heroStat)}</p>${lede}<p><a href="/quiz">${escapeHtml(home.beginQuiz)}</a></p></div></section><section class="section"><div class="wrap"><h2>${escapeHtml(home.howHeading)}</h2><ol class="steps">${steps}</ol></div></section><section class="section section--alt"><div class="wrap"><h2>${escapeHtml(home.functionsHeading)}</h2><p class="section__intro">${citeBook(home.functionsIntro)}</p><div class="function-grid">${functions}</div></div></section>${extra ? `<section class="section"><div class="wrap prose">${extra}</div></section>` : ''}<section class="section"><div class="wrap"><h2>Further reading</h2><ul class="guide-index">${reading}</ul></div></section><section class="section"><div class="wrap narrow"><h2>${escapeHtml(home.faqHeading)}</h2>${faq}<p>${escapeHtml(home.ctaHeading)}</p><p><a href="/quiz">${escapeHtml(home.beginQuiz)}</a></p></div></section>`
+}
+
 function indexHtml(guides: Guide[]) {
   const items = guides
     .map(
@@ -208,22 +279,83 @@ function indexHtml(guides: Guide[]) {
   return `<article class="section"><div class="wrap prose"><p class="eyebrow">guides</p><h1 class="serif-title">Guides</h1><p class="lede">Type theory, the four-letter code, the function stack, and short readings of Jung’s function-attitudes, written so you can take the quiz with a clearer sense of what is being measured.</p><ul>${items}</ul><p><a href="/quiz">Begin the quiz</a></p></div></article>`
 }
 
-function applyShell(template: string, title: string, description: string, body: string) {
-  return template
+function setRoot(html: string, body: string) {
+  const open = '<div id="root">'
+  const start = html.indexOf(open)
+  if (start === -1) {
+    throw new Error('prerender: missing <div id="root">')
+  }
+  let index = start + open.length
+  let depth = 1
+  while (index < html.length && depth > 0) {
+    const nextOpen = html.indexOf('<div', index)
+    const nextClose = html.indexOf('</div>', index)
+    if (nextClose === -1) {
+      throw new Error('prerender: unclosed #root')
+    }
+    if (nextOpen !== -1 && nextOpen < nextClose) {
+      depth += 1
+      index = nextOpen + 4
+      continue
+    }
+    depth -= 1
+    if (depth === 0) {
+      return `${html.slice(0, start)}<div id="root">${body}</div>${html.slice(nextClose + 6)}`
+    }
+    index = nextClose + 6
+  }
+  throw new Error('prerender: unclosed #root')
+}
+
+function applyShell(
+  template: string,
+  title: string,
+  description: string,
+  body: string,
+  pagePath: string,
+  robots = 'index,follow',
+  keepJsonLd = false,
+) {
+  const url = `https://jungology.com${pagePath === '/' ? '/' : pagePath}`
+  const jsonLd = `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url,
+    isPartOf: { '@type': 'WebSite', name: 'Jungology', url: 'https://jungology.com/' },
+  })}</script>`
+  let html = setRoot(template, body)
     .replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`)
     .replace(
-      /<meta\s+name="description"\s+content="[^"]*"/,
+      /<meta\s+name="description"[\s\S]*?content="[^"]*"/,
       `<meta name="description" content="${escapeHtml(description)}"`,
     )
+    .replace(/<meta\s+name="robots"[\s\S]*?content="[^"]*"/, `<meta name="robots" content="${robots}"`)
     .replace(
-      /<meta\s+property="og:title"\s+content="[^"]*"/,
+      /<meta\s+property="og:title"[\s\S]*?content="[^"]*"/,
       `<meta property="og:title" content="${escapeHtml(title)}"`,
     )
     .replace(
-      /<meta\s+property="og:description"\s+content="[^"]*"/,
+      /<meta\s+property="og:description"[\s\S]*?content="[^"]*"/,
       `<meta property="og:description" content="${escapeHtml(description)}"`,
     )
-    .replace('<div id="root"></div>', `<div id="root">${body}</div>`)
+    .replace(/<meta\s+property="og:url"[\s\S]*?content="[^"]*"/, `<meta property="og:url" content="${url}"`)
+    .replace(
+      /<meta\s+name="twitter:title"[\s\S]*?content="[^"]*"/,
+      `<meta name="twitter:title" content="${escapeHtml(title)}"`,
+    )
+    .replace(
+      /<meta\s+name="twitter:description"[\s\S]*?content="[^"]*"/,
+      `<meta name="twitter:description" content="${escapeHtml(description)}"`,
+    )
+    .replace(/<link\s+rel="canonical"[\s\S]*?href="[^"]*"/, `<link rel="canonical" href="${url}"`)
+  if (!keepJsonLd) {
+    html = html
+      .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '')
+      .replace('</head>', `    ${jsonLd}\n  </head>`)
+  }
+  return html
 }
 
 export function prerenderGuidesPlugin(): Plugin {
@@ -234,15 +366,24 @@ export function prerenderGuidesPlugin(): Plugin {
       const indexPath = path.join(dist, 'index.html')
       if (!fs.existsSync(indexPath)) return
 
-      const template = fs.readFileSync(indexPath, 'utf8')
+      const template = setRoot(fs.readFileSync(indexPath, 'utf8'), '')
       const guides = JSON.parse(
         fs.readFileSync(path.resolve(process.cwd(), 'src/content/guides.json'), 'utf8'),
       ) as Guide[]
 
-      const writePage = (slug: string, title: string, description: string, body: string) => {
+      const writePage = (
+        slug: string,
+        title: string,
+        description: string,
+        body: string,
+        robots?: string,
+      ) => {
         const dir = path.join(dist, slug)
         fs.mkdirSync(dir, { recursive: true })
-        fs.writeFileSync(path.join(dir, 'index.html'), applyShell(template, title, description, body))
+        fs.writeFileSync(
+          path.join(dir, 'index.html'),
+          applyShell(template, title, description, body, `/${slug}`, robots),
+        )
       }
 
       writePage(
@@ -253,6 +394,7 @@ export function prerenderGuidesPlugin(): Plugin {
       )
 
       for (const guide of guides) {
+        if (guide.slug === 'jungian-cognitive-functions-test') continue
         writePage(guide.slug, `${guide.seoTitle} | Jung Functions Quiz`, guide.seoDescription, articleHtml(guide))
       }
 
@@ -262,6 +404,7 @@ export function prerenderGuidesPlugin(): Plugin {
       const pages = JSON.parse(
         fs.readFileSync(path.resolve(process.cwd(), 'src/content/pages.json'), 'utf8'),
       ) as {
+        home: HomeCopy
         typesPage?: { populationNote?: string }
         about: { seoTitle: string; seoDescription: string; title: string; lede: string }
         paywall: {
@@ -292,10 +435,20 @@ export function prerenderGuidesPlugin(): Plugin {
         `<article class="section"><div class="wrap prose"><p class="eyebrow">jungology</p><h1 class="serif-title">Notes on buying</h1><p class="lede">The Jung Functions Quiz, the eight scores, and the choice of lead and support stay free. Your Type in Depth can be unlocked after Stripe checkout.</p><h2>What you are buying</h2><p>Your Type in Depth is a longer Beebe reading of the stack you just scored. It is an educational text, not psychotherapy, not a diagnosis, and not the MBTI® instrument.</p><h2>Keys</h2><p>After payment, Stripe should return you to this site with a key in the link. That key unlocks the reading in this browser.</p><h2>Refunds</h2><p>These are one-time digital readings. If checkout failed or the key did not unlock, write from the email on the Stripe receipt.</p><h2>Privacy</h2><p>There is no account. Quiz answers stay in this browser session. They are not sent to a server. After a finished quiz, the site may record which type was suggested and which stack you left on the results page, as counts only. Cloudflare and Google Analytics may count page views, not answers.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
       )
 
+      const landing = guides.find((guide) => guide.slug === 'jungian-cognitive-functions-test')
+      if (landing) {
+        writePage(
+          landing.slug,
+          `${landing.seoTitle} | Jung Functions Quiz`,
+          landing.seoDescription,
+          homeHtml(pages.home, guides, landing),
+        )
+      }
+
       writePage(
         'quiz',
-        'Jungology | Free Cognitive Functions Test',
-        'Jungology is a free online cognitive functions test. Fifty-two statements, scored in your browser.',
+        'Jung Functions Quiz | Jungology',
+        'Jungology is a free online cognitive functions test. Fifty-two statements. Tap how true each one is. Enable JavaScript to take it in this page.',
         `<article class="section"><div class="wrap prose"><p class="eyebrow">quiz</p><h1 class="serif-title">Jung Functions Quiz</h1><p class="lede">Jungology is a free online cognitive functions test. Fifty-two statements. Tap how true each one is. Enable JavaScript to take it in this page.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
       )
 
@@ -313,10 +466,53 @@ export function prerenderGuidesPlugin(): Plugin {
         `<article class="section"><div class="wrap prose"><h1 class="serif-title">Your Type in Depth</h1><p class="lede">${escapeHtml(pages.paywall.mapPage.seoDescription)}</p><p>Take the free quiz first, then unlock the longer reading.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
       )
 
+      writePage(
+        'results',
+        'Your results | Jung Functions Quiz',
+        'Finish the quiz to see the eight function-attitudes and the leading function.',
+        `<article class="section"><div class="wrap prose"><h1 class="serif-title">Your results</h1><p class="lede">Finish the quiz to see the eight function-attitudes. Enable JavaScript to read them in this page.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+        'noindex,follow',
+      )
+      writePage(
+        'clarify',
+        'Follow-up | Jung Functions Quiz',
+        'A short follow-up when two function-attitudes score too close.',
+        `<article class="section"><div class="wrap prose"><h1 class="serif-title">Follow-up</h1><p class="lede">Enable JavaScript to finish the close-pair questions.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+        'noindex,follow',
+      )
+      writePage(
+        'compatibility',
+        'Compatibility | Jung Functions Quiz',
+        'Compatibility readings are paused.',
+        `<article class="section"><div class="wrap prose"><h1 class="serif-title">Compatibility</h1><p class="lede">This reading is paused for now. If you already unlocked it, enable JavaScript to open it in this browser.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+        'noindex,follow',
+      )
+      writePage(
+        'admin',
+        'Edit | Jung Functions Quiz',
+        'Local editor and type census. Not a public page.',
+        `<article class="section"><div class="wrap prose"><h1 class="serif-title">Edit</h1><p class="lede">This page is not for public indexing.</p></div></article>`,
+        'noindex,nofollow',
+      )
+
+      fs.writeFileSync(
+        indexPath,
+        applyShell(
+          template,
+          pages.home.seoTitle,
+          pages.home.seoDescription,
+          homeHtml(pages.home, guides),
+          '/',
+          'index,follow',
+          true,
+        ),
+      )
+
       writeSitemap(
         guides.map((guide) => guide.slug),
         path.join(dist, 'sitemap.xml'),
       )
+      checkSeo(dist)
     },
   }
 }

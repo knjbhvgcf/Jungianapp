@@ -1,5 +1,6 @@
 import { Button } from '../components/Button'
 import { Seo } from '../components/Seo'
+import { QUIZ_PATH } from '../lib/quizPath'
 
 export function NotFound() {
   return (
@@ -16,7 +17,7 @@ export function NotFound() {
             <p>That URL is not part of this quiz, so head home or start the test.</p>
           <div className="hero__actions">
             <Button to="/">Home</Button>
-            <Button to="/quiz" variant="ghost">
+            <Button to={QUIZ_PATH} variant="ghost">
               Take the quiz
             </Button>
           </div>

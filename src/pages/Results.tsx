@@ -42,6 +42,7 @@ import {
 import { typePath } from '../data/personalityTypes'
 import { PopulationShare } from '../components/PopulationShare'
 import { reportTypeCensus } from '../lib/typeCensus'
+import { QUIZ_PATH } from '../lib/quizPath'
 
 export function Results() {
   const navigate = useNavigate()
@@ -129,7 +130,7 @@ export function Results() {
             <h1 className="serif-title">{results.emptyTitle}</h1>
             <p className="mono-stat">{results.emptyStat}</p>
             <p>{results.emptyBody}</p>
-            <Button to="/quiz">{results.beginQuiz}</Button>
+            <Button to={QUIZ_PATH}>{results.beginQuiz}</Button>
           </div>
         </section>
       </>
@@ -316,7 +317,7 @@ export function Results() {
               onChange={(emptyBody) => patchResults({ emptyBody })}
             />
             <EditableButton
-              to="/quiz"
+              to={QUIZ_PATH}
               label="Begin quiz"
               value={results.beginQuiz}
               onChange={(beginQuiz) => patchResults({ beginQuiz })}
@@ -599,7 +600,7 @@ export function Results() {
 
         <div className="wrap results-actions">
           <EditableButton
-            to="/quiz"
+            to={QUIZ_PATH}
             label="Retake"
             value={results.retake}
             onChange={(retake) => patchResults({ retake })}
@@ -610,7 +611,7 @@ export function Results() {
             value={results.clearAnswers}
             onClick={() => {
               clearAnswers()
-              navigate('/quiz')
+              navigate(QUIZ_PATH)
             }}
             onChange={(clearAnswersLabel) => patchResults({ clearAnswers: clearAnswersLabel })}
           />
