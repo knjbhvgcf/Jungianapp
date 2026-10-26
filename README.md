@@ -22,7 +22,7 @@ npm run preview
 
 `npm run build` prerenders every sitemap URL and then fails if a URL that was already public would 404, lose its canonical, or pick up `noindex`. The list lives in `seo/published-paths.json` and only grows. Jungology App URLs (`/workspace`) stay out of the sitemap and prerender `noindex`. Unknown paths use `404.html` so they do not clone the homepage.
 
-To retire a page, add a **301** in `public/_redirects` first (same pattern as `/dossier` → `/type-in-depth`). Do not remove a slug and push. New pages are fine; they are added to that list on build. Do not set `VITE_WORKSPACE_OFFERED` on the live production build until launch; the quiz HTML must stay the indexed site.
+To retire a page, add a **301** in `public/_redirects` first (same pattern as `/dossier` → `/type-in-depth`). Do not remove a slug and push. New pages are fine; they are added to that list on build. Jungology App is on when `VITE_WORKSPACE_OFFERED=true` is set on the production build. Workspace URLs stay out of the sitemap and prerender `noindex`.
 
 ## Free hosting
 

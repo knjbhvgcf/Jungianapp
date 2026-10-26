@@ -34,7 +34,7 @@ function GuideInline({ text }: { text: string }) {
 
 const LANDING_FAQ = {
   q: 'What is a Jungian cognitive functions test?',
-  a: 'You rate eighty-four statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. There is no account, and the letters, if they appear, are a name for the stack — not the thing that was measured.',
+  a: 'You rate eighty-four statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. The quiz does not need an account, and the letters, if they appear, are a name for the stack — not the thing that was measured.',
 }
 
 export function Home() {

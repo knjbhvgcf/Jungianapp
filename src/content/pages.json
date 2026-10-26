@@ -1,7 +1,7 @@
 {
   "home": {
     "seoTitle": "Jungology | Free Cognitive Functions Test",
-    "seoDescription": "Jungology is a free online cognitive functions test. Eighty-four statements, eight function scores, and a likely type. About twelve minutes, no account, scored in your browser.",
+    "seoDescription": "Jungology is a free online cognitive functions test. Eighty-four statements, eight function scores, and a likely type. About twelve minutes, scored in your browser.",
     "title": "Jungology",
     "stat": "8 functions · 84 questions · John Beebe model",
     "lede": "Jungology is a free online cognitive functions test.\n\nThe first Delphic maxim states “Know thyself”, it is at the core of everything we encounter in life, the lens through which we look, the vantage point from which we jump forward.\n\nMost four-letter quizzes dont score the functions. This one does: eighty-four statements about how you notice, decide, and take in a situation.\n\nLet’s discover your personality type!",
@@ -28,7 +28,7 @@
     "faq": [
       {
         "q": "What is Jungology?",
-        "a": "Jungology is a free online cognitive functions test. You rate eighty-four statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. There is no account."
+        "a": "Jungology is a free online cognitive functions test. You rate eighty-four statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. The quiz does not need an account."
       },
       {
         "q": "What are Jung’s function-attitudes?",
@@ -48,7 +48,7 @@
       },
       {
         "q": "Do you store my answers?",
-        "a": "There is no account. Your answers stay in this browser session until you close the tab or start over, and they are not sent to a server. After you finish, the site may record which type was suggested and which stack you left on the results page, as counts only, so the quiz can be checked against published population shares. Cloudflare and Google Analytics may count page views, not answers."
+        "a": "Quiz answers stay in this browser until you start over, and they are not sent to a server. After you finish, the site may record which type was suggested and which stack you left on the results page, as counts only, so the quiz can be checked against published population shares. Jungology App is optional: a sign-in link by email can keep type, people, and journal for that address. Cloudflare and Google Analytics may count page views, not answers."
       },
       {
         "q": "What if two attitudes are equally strong, as Fi and Ti both at 88%?",
@@ -116,7 +116,7 @@
       {
         "heading": "Privacy",
         "paragraphs": [
-          "There is no account and no database of answers. Quiz answers stay in this browser until you start over; they are never sent to a server. After a finished quiz, the site may record the suggested type and the stack left on the results page, as counts, not the answers that produced them. Cloudflare and Google Analytics may count page views — which pages you open, not your answers or scores. Unlock state is stored in this browser so you do not have to paste the key every time."
+          "There is no database of quiz answers. Ratings stay in this browser until you start over; they are never sent to a server. After a finished quiz, the site may record the suggested type and the stack left on the results page, as counts, not the answers that produced them. Jungology App is optional: a sign-in link by email can keep type, people, and journal for that address. Cloudflare and Google Analytics may count page views — which pages you open, not your answers or scores. Unlock keys stay in this browser so you do not have to paste them every time."
         ]
       }
     ]

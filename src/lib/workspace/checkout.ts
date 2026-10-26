@@ -47,11 +47,12 @@ function paymentLink(email: string) {
   }
 }
 
-export async function startWorkspaceCheckout(email: string, customerId?: string) {
+export async function startWorkspaceCheckout(email: string) {
   const response = await fetch('/api/workspace-checkout', {
     method: 'POST',
+    credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, customerId }),
+    body: '{}',
   })
   let apiError = ''
   if (response.ok) {
@@ -80,17 +81,16 @@ export async function startWorkspaceCheckout(email: string, customerId?: string)
   throw new Error(apiError || 'Stripe is not set up yet.')
 }
 
-export async function startWorkspacePortal(customerId?: string) {
-  if (customerId?.startsWith('cus_')) {
-    const response = await fetch('/api/workspace-portal', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ customerId }),
-    })
-    if (response.ok) {
-      const body = (await response.json()) as { url?: string }
-      if (body.url) return body.url
-    }
+export async function startWorkspacePortal() {
+  const response = await fetch('/api/workspace-portal', {
+    method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: '{}',
+  })
+  if (response.ok) {
+    const body = (await response.json()) as { url?: string }
+    if (body.url) return body.url
   }
   const href = workspacePortalUrl()
   if (href) return href

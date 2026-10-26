@@ -20,5 +20,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["vite.config.ts", "cmsPlugin.ts", "typeCensusPlugin.ts", "workspaceStripePlugin.ts", "workspaceAccountPlugin.ts", "prerenderGuides.ts", "sitemap.ts", "seoGuard.ts"]
+  "include": ["vite.config.ts", "cmsPlugin.ts", "typeCensusPlugin.ts", "workspaceAccountPlugin.ts", "prerenderGuides.ts", "sitemap.ts", "seoGuard.ts"]
 }

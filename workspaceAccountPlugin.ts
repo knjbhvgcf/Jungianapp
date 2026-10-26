@@ -3,11 +3,13 @@ import path from 'node:path'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import type { Plugin } from 'vite'
 import {
+  checkoutForRequest,
   confirmPaidForRequest,
   handleWorkspaceStripeWebhook,
   houseForRequest,
   logoutCookie,
   normalizeEmail,
+  portalForRequest,
   requestMagicLink,
   saveHouseForRequest,
   signedInEmail,
@@ -110,7 +112,9 @@ export function workspaceAccountPlugin(base: Omit<AccountEnv, 'WORKSPACE_HOUSES'
           pathName !== '/api/workspace-house' &&
           pathName !== '/api/workspace-paid' &&
           pathName !== '/api/workspace-session' &&
-          pathName !== '/api/workspace-stripe'
+          pathName !== '/api/workspace-stripe' &&
+          pathName !== '/api/workspace-checkout' &&
+          pathName !== '/api/workspace-portal'
         ) {
           next()
           return
@@ -242,6 +246,32 @@ export function workspaceAccountPlugin(base: Omit<AccountEnv, 'WORKSPACE_HOUSES'
               return
             }
             sendJson(res, 200, result.info)
+            return
+          }
+
+          if (pathName === '/api/workspace-checkout' && req.method === 'POST') {
+            const result = await checkoutForRequest(env, {
+              cookieHeader: cookieHeader(req),
+              origin,
+            })
+            if (!result.ok) {
+              sendJson(res, result.status, { error: result.error })
+              return
+            }
+            sendJson(res, 200, { url: result.url })
+            return
+          }
+
+          if (pathName === '/api/workspace-portal' && req.method === 'POST') {
+            const result = await portalForRequest(env, {
+              cookieHeader: cookieHeader(req),
+              origin,
+            })
+            if (!result.ok) {
+              sendJson(res, result.status, { error: result.error })
+              return
+            }
+            sendJson(res, 200, { url: result.url })
             return
           }
 

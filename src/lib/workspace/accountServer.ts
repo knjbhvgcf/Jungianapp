@@ -1,4 +1,6 @@
 import {
+  createWorkspaceCheckoutSession,
+  createWorkspacePortalSession,
   readStripeCustomerEmail,
   readWorkspaceCheckoutSession,
   verifyStripeWebhookSignature,
@@ -440,6 +442,33 @@ export async function confirmPaidForRequest(
   const saved = await writeHouseRecord(env, next)
   if (!saved.ok) return saved
   return { ok: true as const, house: saved.house }
+}
+
+export async function checkoutForRequest(
+  env: AccountEnv,
+  opts: { cookieHeader: string | null; origin: string },
+) {
+  const who = await signedInEmail(env, opts.cookieHeader)
+  if (!who.ok) return who
+  const house = (await readHouse(env, who.email)) ?? emptyAccountHouse(who.email)
+  return createWorkspaceCheckoutSession(env, {
+    email: who.email,
+    origin: opts.origin,
+    customerId: house.stripeCustomerId,
+  })
+}
+
+export async function portalForRequest(
+  env: AccountEnv,
+  opts: { cookieHeader: string | null; origin: string },
+) {
+  const who = await signedInEmail(env, opts.cookieHeader)
+  if (!who.ok) return who
+  const house = await readHouse(env, who.email)
+  return createWorkspacePortalSession(env, {
+    customerId: house?.stripeCustomerId ?? '',
+    origin: opts.origin,
+  })
 }
 
 function stripeObjectId(value: unknown) {

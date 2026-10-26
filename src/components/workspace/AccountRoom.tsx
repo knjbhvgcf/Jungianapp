@@ -43,7 +43,7 @@ export function AccountRoom() {
     setPayError('')
     setBusy(true)
     try {
-      window.location.href = await startWorkspaceCheckout(account.email, account.stripeCustomerId)
+      window.location.href = await startWorkspaceCheckout(account.email)
     } catch (caught) {
       setPayError(caught instanceof Error ? caught.message : 'Could not open checkout.')
       setBusy(false)
@@ -54,7 +54,7 @@ export function AccountRoom() {
     setPayError('')
     setBusy(true)
     try {
-      window.location.href = await startWorkspacePortal(account.stripeCustomerId)
+      window.location.href = await startWorkspacePortal()
     } catch (caught) {
       setPayError(caught instanceof Error ? caught.message : 'Could not open billing.')
       setBusy(false)

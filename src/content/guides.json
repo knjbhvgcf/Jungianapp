@@ -244,11 +244,11 @@
   {
     "slug": "jungian-cognitive-functions-test",
     "seoTitle": "Jungian Cognitive Functions Test",
-    "seoDescription": "A free Jungian cognitive functions test. Eighty-four statements score Jung’s eight function-attitudes in your browser, then a likely type. About twelve minutes, no account, not the official MBTI® instrument.",
+    "seoDescription": "A free Jungian cognitive functions test. Eighty-four statements score Jung’s eight function-attitudes in your browser, then a likely type. About twelve minutes, not the official MBTI® instrument.",
     "eyebrow": "free quiz",
     "title": "Jungian cognitive functions test",
     "stat": "eighty-four statements · eight function-attitudes",
-    "lede": "This is a free Jungian cognitive functions test. You rate eighty-four statements; the site scores all eight function-attitudes in your browser, then suggests a likely type. There is no account, and the letters, if they appear, are a name for the stack — not the thing that was measured.",
+    "lede": "This is a free Jungian cognitive functions test. You rate eighty-four statements; the site scores all eight function-attitudes in your browser, then suggests a likely type. The quiz does not need an account, and the letters, if they appear, are a name for the stack — not the thing that was measured.",
     "related": [
       "jungian-cognitive-functions",
       "jung-vs-mbti",
@@ -287,7 +287,7 @@
       {
         "heading": "Answers stay in this browser",
         "paragraphs": [
-          "There is no account and no database of answers. The ratings stay on this computer until you start over. After a finished quiz, the site may record which type was suggested and which stack you left on the results page, as counts only, so the test can be checked against published population shares."
+          "There is no database of answers. The ratings stay on this computer until you start over. After a finished quiz, the site may record which type was suggested and which stack you left on the results page, as counts only, so the test can be checked against published population shares. Jungology App is optional and uses a sign-in link by email."
         ]
       }
     ]
@@ -332,7 +332,7 @@
       {
         "heading": "When to use which",
         "paragraphs": [
-          "If you need the official MBTI instrument for work or certification, take it from a licensed provider. If you want an educational reading of Jung’s eight function-attitudes, scored in the browser with no account, this quiz is built for that, and the letters it shows are a way of naming the stack, not a claim to be Myers-Briggs."
+          "If you need the official MBTI instrument for work or certification, take it from a licensed provider. If you want an educational reading of Jung’s eight function-attitudes, scored in the browser, this quiz is built for that, and the letters it shows are a way of naming the stack, not a claim to be Myers-Briggs."
         ]
       }
     ]
