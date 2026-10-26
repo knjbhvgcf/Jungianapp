@@ -91,7 +91,7 @@ export function Quiz() {
     <>
       <Seo
         title="Jung Functions Quiz | Jungology"
-        description="Jungology is a free online cognitive functions test. Fifty-two statements, scored in your browser."
+        description="Jungology is a free online cognitive functions test. Eighty-four statements, scored in your browser."
         path={QUIZ_PATH}
       />
 

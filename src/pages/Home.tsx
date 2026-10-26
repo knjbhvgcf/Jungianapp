@@ -34,7 +34,7 @@ function GuideInline({ text }: { text: string }) {
 
 const LANDING_FAQ = {
   q: 'What is a Jungian cognitive functions test?',
-  a: 'You rate fifty-two statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. There is no account, and the letters, if they appear, are a name for the stack — not the thing that was measured.',
+  a: 'You rate eighty-four statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. There is no account, and the letters, if they appear, are a name for the stack — not the thing that was measured.',
 }
 
 export function Home() {
@@ -251,7 +251,7 @@ function HomeView({ landing = false }: { landing?: boolean }) {
           <h2 id="guides-heading">Further reading</h2>
           <p className="section__intro">
             These pages start with type theory, the four-letter code, and the function stack, then
-            the distinctions behind the fifty-two statements, for those who want to look more
+            the distinctions behind the eighty-four statements, for those who want to look more
             closely at the ideas behind the quiz.
           </p>
           <ul className="guide-index guide-index--home">

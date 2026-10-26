@@ -20,9 +20,9 @@ npm run preview
 
 ## SEO (do not drop indexed URLs)
 
-`npm run build` prerenders every sitemap URL and then fails if a URL that was already public would 404, lose its canonical, or pick up `noindex`. The list lives in `seo/published-paths.json` and only grows.
+`npm run build` prerenders every sitemap URL and then fails if a URL that was already public would 404, lose its canonical, or pick up `noindex`. The list lives in `seo/published-paths.json` and only grows. Jungology App URLs (`/workspace`) stay out of the sitemap and prerender `noindex`. Unknown paths use `404.html` so they do not clone the homepage.
 
-To retire a page, add a **301** in `public/_redirects` first (same pattern as `/dossier` → `/type-in-depth`). Do not remove a slug and push. New pages are fine; they are added to that list on build.
+To retire a page, add a **301** in `public/_redirects` first (same pattern as `/dossier` → `/type-in-depth`). Do not remove a slug and push. New pages are fine; they are added to that list on build. Do not set `VITE_WORKSPACE_OFFERED` on the live production build until launch; the quiz HTML must stay the indexed site.
 
 ## Free hosting
 
@@ -73,6 +73,20 @@ On the live Cloudflare Pages project **jungianapp**:
 
 `GET /api/type-stats` is password-gated. `POST /api/type-stats` is public on purpose (counts only) and is origin-checked on the live Function.
 
+## Jungology App accounts
+
+Continue with email sends a one-time link. Clicking it sets an HttpOnly cookie and loads the house JSON (type, eight percentages, people, journal). Quiz answers never leave the browser.
+
+`npm run dev` needs no paid services and no API keys. Houses are stored in `.data/workspace-kv.json` (gitignored). If Resend is unset, the sign-in link is printed in the terminal and shown on Join. The public site never shows that link.
+
+On the live Cloudflare Pages project **jungianapp** (free plan):
+
+1. **Settings → Functions** → bind a KV namespace named `WORKSPACE_HOUSES`.
+2. Set `SESSION_SECRET` (any long random string). Live Join will not sign people in if this is empty.
+3. Set `RESEND_API_KEY` (Resend free tier). Without it, live Join cannot send mail. Verify `jungology.com` in Resend and send from `Jungology <hello@jungology.com>` (`RESEND_FROM`).
+
+Sign out clears this device. The house stays in KV.
+
 ## Your Type in Depth (optional paid unlock)
 
 The quiz stays free. Your Type in Depth is a one-time unlock of a longer Beebe reading at `/type-in-depth`.
@@ -93,19 +107,13 @@ Old `/dossier` links redirect to `/type-in-depth`.
 
 Compatibility is not currently for sale. Set `COMPATIBILITY_OFFERED` to `true` in `src/lib/unlock.ts` to offer it again. Existing unlocks and keys still open `/compatibility`.
 
-## See your type ($1, optional)
+## Results save offer
 
-After the quiz, a popup offers **Your type for $1** or **No thanks, I'll see it for free**. This is a separate product. It does not open Type in Depth.
+After the quiz, a popup offers **Save your results** (Jungology App: 7 days free, then $14 / month) or **No thanks, maybe later**. Scores stay visible either way. This is not a $1 type reveal and does not lock results.
 
-1. Create a Stripe Payment Link, one-time **$1 USD**.
-2. After payment, redirect to `https://jungology.com/results?key=YOUR-REVEAL-KEY`.
-3. Add to `.env` and to the **jungianapp** Cloudflare Production variables, then redeploy:
+Unsigned people go to `/workspace/join`. Subscribe uses `VITE_WORKSPACE_CHECKOUT_URL` (Stripe Payment Link). After payment, redirect to `https://jungology.com/workspace?checkout=success&session_id={CHECKOUT_SESSION_ID}` and set `STRIPE_SECRET_KEY` on Pages so the account can confirm paid.
 
-```
-VITE_REVEAL_CHECKOUT_URL=https://your-type-payment-link
-VITE_REVEAL_UNLOCK_KEYS=YOUR-REVEAL-KEY
-VITE_REVEAL_PRICE=$1
-```
+Cancel and renew update the stored plan through `POST /api/workspace-stripe`. In Stripe: Developers → Webhooks → Add endpoint `https://jungology.com/api/workspace-stripe` for `checkout.session.completed`, `customer.subscription.updated`, and `customer.subscription.deleted`. Put the signing secret in `STRIPE_WEBHOOK_SECRET` on Pages. Rooms stay open either way; the account line is what changes.
 
 ## Project layout
 

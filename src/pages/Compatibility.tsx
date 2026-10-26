@@ -24,6 +24,7 @@ import {
   COMPATIBILITY_OFFERED,
   isProductUnlocked,
   tryUnlockKey,
+  TYPE_IN_DEPTH_OFFERED,
   TYPE_IN_DEPTH_PATH,
 } from '../lib/unlock'
 
@@ -125,7 +126,7 @@ export function Compatibility() {
     stored && hero === stored.hero && parents.includes(stored.parent)
       ? stored.parent
       : hero && profile
-        ? preferredParent(hero, profile.scores)
+        ? preferredParent(hero, profile.scores, profile.pairs)
         : draft?.stack[1]
   const quizSelected =
     hero && parent && profile ? matchForSpine(profile.matches, hero, parent) : profile?.matches[0]
@@ -252,13 +253,15 @@ export function Compatibility() {
                   value={compatPage.backToResultsButton}
                   onChange={(backToResultsButton) => patchCompat({ backToResultsButton })}
                 />
-                <EditableButton
-                  to={TYPE_IN_DEPTH_PATH}
-                  variant="ghost"
-                  label="Map button"
-                  value={compatPage.mapButton}
-                  onChange={(mapButton) => patchCompat({ mapButton })}
-                />
+                {TYPE_IN_DEPTH_OFFERED ? (
+                  <EditableButton
+                    to={TYPE_IN_DEPTH_PATH}
+                    variant="ghost"
+                    label="Map button"
+                    value={compatPage.mapButton}
+                    onChange={(mapButton) => patchCompat({ mapButton })}
+                  />
+                ) : null}
               </div>
             </>
           ) : COMPATIBILITY_OFFERED ? (

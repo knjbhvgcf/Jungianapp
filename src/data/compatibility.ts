@@ -131,6 +131,13 @@ function copyFor(me: PersonalityType, them: PersonalityType, kind: CompatKind): 
   }
 }
 
+export function relationReading(me: PersonalityType, them: PersonalityType) {
+  const kind = kindFor(me, them)
+  const meta = KIND_META[kind]
+  const { note, detail } = copyFor(me, them, kind)
+  return { kind, label: meta.label, charge: meta.charge, note, detail }
+}
+
 export function compatibilityFor(me: PersonalityType): CompatRow[] {
   return PERSONALITY_TYPES.map((other) => {
     const kind = kindFor(me, other)

@@ -1,0 +1,162 @@
+[
+  {
+    "hero": "Ni",
+    "parent": "Te",
+    "text": "I see where things are heading, then I build a plan or system that can actually carry that picture."
+  },
+  {
+    "hero": "Ni",
+    "parent": "Te",
+    "text": "An inner vision is not finished until it has a working order in the world — steps, calendars, results other people can check."
+  },
+  {
+    "hero": "Ni",
+    "parent": "Fe",
+    "text": "I see where things are heading, then I try to bring people with me toward a meaning we can share."
+  },
+  {
+    "hero": "Ni",
+    "parent": "Fe",
+    "text": "An inner vision is not finished until it has a human climate it can live in — a we, a tone, a way of being together."
+  },
+  {
+    "hero": "Ne",
+    "parent": "Ti",
+    "text": "I open many possibilities, then I pressure-test them until the idea itself holds together."
+  },
+  {
+    "hero": "Ne",
+    "parent": "Ti",
+    "text": "A new option only counts if I can take it apart and see whether the logic is sound."
+  },
+  {
+    "hero": "Ne",
+    "parent": "Fi",
+    "text": "I open many possibilities, then I check which ones still feel honest to me."
+  },
+  {
+    "hero": "Ne",
+    "parent": "Fi",
+    "text": "A new option only counts if it still sits right with my own sense of what matters."
+  },
+  {
+    "hero": "Si",
+    "parent": "Te",
+    "text": "I rely on what has already proved itself, then I put that known good into a working order others can follow."
+  },
+  {
+    "hero": "Si",
+    "parent": "Te",
+    "text": "Experience becomes useful when it is turned into a standard, a procedure, a way things get done."
+  },
+  {
+    "hero": "Si",
+    "parent": "Fe",
+    "text": "I rely on what has already proved itself, then I use it to keep people comfortable and cared for."
+  },
+  {
+    "hero": "Si",
+    "parent": "Fe",
+    "text": "Experience becomes useful when it tells me what this person, this house, this group needs to remain well."
+  },
+  {
+    "hero": "Se",
+    "parent": "Ti",
+    "text": "I read the actual scene in front of me, then I find the clever angle that will work on this object, now."
+  },
+  {
+    "hero": "Se",
+    "parent": "Ti",
+    "text": "What is real is what I can do with my hands and my timing — the model has to fit the thing in front of me."
+  },
+  {
+    "hero": "Se",
+    "parent": "Fi",
+    "text": "I read the actual scene in front of me, then I ask whether this moment is still true to what I care about."
+  },
+  {
+    "hero": "Se",
+    "parent": "Fi",
+    "text": "What is real is presence — the look, the night, the body — and I will not fake a feeling that is not mine."
+  },
+  {
+    "hero": "Ti",
+    "parent": "Ne",
+    "text": "I build an inner model of how something works, then I hunt for new cases that could break or complete it."
+  },
+  {
+    "hero": "Ti",
+    "parent": "Ne",
+    "text": "Understanding comes first; I keep the laboratory open and feed it more possibilities rather than closing on a useful answer too soon."
+  },
+  {
+    "hero": "Ti",
+    "parent": "Se",
+    "text": "I build an inner model of how something works, then I test it on the actual object with my hands."
+  },
+  {
+    "hero": "Ti",
+    "parent": "Se",
+    "text": "Understanding comes first; I take the thing apart and use it until the model and the object agree."
+  },
+  {
+    "hero": "Te",
+    "parent": "Ni",
+    "text": "I organize people and facts toward a result, guided by a long inner picture of where this should go."
+  },
+  {
+    "hero": "Te",
+    "parent": "Ni",
+    "text": "The plan is in service of a destination I already see — not a to-do list that wandered in without an end."
+  },
+  {
+    "hero": "Te",
+    "parent": "Si",
+    "text": "I organize people and facts toward a result, using methods that have already worked."
+  },
+  {
+    "hero": "Te",
+    "parent": "Si",
+    "text": "The plan is in service of a proven standard — what can be repeated, handed on, and shown."
+  },
+  {
+    "hero": "Fi",
+    "parent": "Ne",
+    "text": "I protect a private sense of what is right, then I look for lives and paths in which that compass could still be true."
+  },
+  {
+    "hero": "Fi",
+    "parent": "Ne",
+    "text": "The inner yes-or-no comes first; the outer world is a field of maybe’s I search for a place that still feels like me."
+  },
+  {
+    "hero": "Fi",
+    "parent": "Se",
+    "text": "I protect a private sense of what is right, then I put it into this moment — a gesture, a craft, a way of being in the room."
+  },
+  {
+    "hero": "Fi",
+    "parent": "Se",
+    "text": "The inner yes-or-no comes first; style and presence are how that value becomes real without a speech."
+  },
+  {
+    "hero": "Fe",
+    "parent": "Ni",
+    "text": "I read the feeling of the group, then I hold a picture of who we could become together."
+  },
+  {
+    "hero": "Fe",
+    "parent": "Ni",
+    "text": "The we comes first; I work toward a shared future that has a face, not only a pleasant evening."
+  },
+  {
+    "hero": "Fe",
+    "parent": "Si",
+    "text": "I read the feeling of the group, then I keep the customs and care that make belonging possible."
+  },
+  {
+    "hero": "Fe",
+    "parent": "Si",
+    "text": "The we comes first; I remember who needs what, and what the house needs to remain a house."
+  }
+]

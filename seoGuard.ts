@@ -99,6 +99,25 @@ export function checkSeo(dist = path.resolve(process.cwd(), 'dist')) {
     errors.push('robots.txt must not Disallow: /')
   }
 
+  const appPaths = sitemap.filter((pagePath) => pagePath === '/workspace' || pagePath.startsWith('/workspace/'))
+  if (appPaths.length) {
+    errors.push(`Jungology App URLs must stay out of the sitemap: ${appPaths.join(', ')}`)
+  }
+
+  for (const appPath of ['/workspace', '/workspace/join', '/workspace/keep']) {
+    const file = distFileFor(dist, appPath)
+    if (!fs.existsSync(file)) continue
+    const html = fs.readFileSync(file, 'utf8')
+    if (!isNoindex(html)) {
+      errors.push(`${appPath} is an app URL and must be prerendered noindex,nofollow.`)
+    }
+  }
+
+  const notFoundFile = path.join(dist, '404.html')
+  if (fs.existsSync(notFoundFile) && !isNoindex(fs.readFileSync(notFoundFile, 'utf8'))) {
+    errors.push('404.html must be noindex so unknown URLs do not clone the homepage.')
+  }
+
   for (const pagePath of published) {
     const redirect = redirects.get(pagePath)
     if (redirect) continue

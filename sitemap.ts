@@ -12,6 +12,8 @@ const CORE = [
   { loc: '/guides', priority: '0.7' },
 ]
 
+/** App rooms stay out of this list. They prerender noindex and must not compete with the quiz. */
+
 function typeCodes() {
   try {
     const types = JSON.parse(

@@ -83,7 +83,7 @@ function scoredItem(question: Question, answers: Answers) {
 }
 
 function itemsFor(functionId: FunctionId) {
-  return QUESTIONS.filter((question) => question.functionId === functionId)
+  return QUESTIONS.filter((question) => question.functionId === functionId && !question.pairParent)
 }
 
 function facetMean(functionId: FunctionId, facet: QuestionFacet, answers: Answers) {

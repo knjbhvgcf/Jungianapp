@@ -96,8 +96,6 @@ export function About() {
           ))}
 
           <p>
-            <Link to="/type-in-depth">Your Type in Depth</Link>
-            {' · '}
             <Link to="/legal">Notes on buying</Link>
           </p>
           <p>

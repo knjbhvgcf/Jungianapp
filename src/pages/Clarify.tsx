@@ -92,6 +92,7 @@ export function Clarify() {
         title="A few more questions | Jung Functions Quiz"
         description="A short follow-up when two answers were too close."
         path="/clarify"
+        robots="noindex,follow"
       />
 
       <section className="section quiz">

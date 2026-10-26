@@ -4,6 +4,8 @@ export const TYPE_IN_DEPTH_PATH = '/type-in-depth'
 export const COMPAT_PATH = '/compatibility'
 /** Flip to true to sell Compatibility again. */
 export const COMPATIBILITY_OFFERED = false
+/** Off the public site until the reading lives in Jungology App. */
+export const TYPE_IN_DEPTH_OFFERED = false
 
 const STORAGE: Record<UnlockProduct, string> = {
   map: 'jung-functions.dossier.unlock.v1',
@@ -28,6 +30,7 @@ export function productPrice(product: UnlockProduct) {
 
 export function productCheckoutUrl(product: UnlockProduct) {
   if (product === 'compat' && !COMPATIBILITY_OFFERED) return ''
+  if (product === 'map' && !TYPE_IN_DEPTH_OFFERED) return ''
   const raw =
     product === 'compat'
       ? import.meta.env.VITE_COMPAT_CHECKOUT_URL

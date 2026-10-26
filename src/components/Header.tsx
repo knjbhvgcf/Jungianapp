@@ -1,7 +1,14 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { QUIZ_PATH } from '../lib/quizPath'
-import { COMPATIBILITY_OFFERED, TYPE_IN_DEPTH_PATH } from '../lib/unlock'
+import { COMPATIBILITY_OFFERED } from '../lib/unlock'
+import {
+  WORKSPACE_JOIN_PATH,
+  WORKSPACE_NAME,
+  WORKSPACE_OFFERED,
+  WORKSPACE_PATH,
+} from '../lib/workspace/offered'
+import { useHouse } from '../lib/workspace/store'
 import { Face, MenuDots } from './Icons'
 
 const links = [
@@ -10,13 +17,42 @@ const links = [
   { to: '/types', label: 'Sprouts' },
   { to: '/guides', label: 'Guides' },
   { to: '/about', label: 'About' },
-  { to: TYPE_IN_DEPTH_PATH, label: 'Your Type in Depth' },
   ...(COMPATIBILITY_OFFERED ? [{ to: '/compatibility', label: 'Compatibility' }] : []),
-  ...(import.meta.env.DEV ? [{ to: '/admin', label: 'Edit' }] : []),
 ]
 
 export function Header() {
+  const location = useLocation()
   const [open, setOpen] = useState(false)
+  const house = useHouse()
+  const inApp = WORKSPACE_OFFERED && location.pathname.startsWith(WORKSPACE_PATH)
+  const inHouse = inApp && Boolean(house)
+
+  if (inApp) {
+    return (
+      <header className="site-header">
+        <div className="wrap site-header__inner site-header__inner--app">
+          <Link to={QUIZ_PATH} className="site-header__text">
+            quiz
+          </Link>
+          <Link to={inHouse ? WORKSPACE_PATH : WORKSPACE_JOIN_PATH} className="brand">
+            Jungology
+            <small>App</small>
+          </Link>
+          {inHouse ? (
+            <button
+              type="button"
+              className="site-header__text site-header__text--end"
+              onClick={() => window.dispatchEvent(new Event('jungology:account'))}
+            >
+              account
+            </button>
+          ) : (
+            <span />
+          )}
+        </div>
+      </header>
+    )
+  }
 
   return (
     <header className="site-header">
@@ -58,6 +94,26 @@ export function Header() {
             {link.label}
           </NavLink>
         ))}
+        {WORKSPACE_OFFERED ? (
+          <NavLink
+            to={house ? WORKSPACE_PATH : WORKSPACE_JOIN_PATH}
+            className={() =>
+              location.pathname.startsWith(WORKSPACE_PATH) ? 'is-active' : undefined
+            }
+            onClick={() => setOpen(false)}
+          >
+            {WORKSPACE_NAME}
+          </NavLink>
+        ) : null}
+        {import.meta.env.DEV ? (
+          <NavLink
+            to="/admin"
+            className={({ isActive }) => (isActive ? 'is-active' : undefined)}
+            onClick={() => setOpen(false)}
+          >
+            Edit
+          </NavLink>
+        ) : null}
       </nav>
     </header>
   )

@@ -36,13 +36,15 @@ import {
   productHref,
   productPrice,
   tryUnlockTypeReveal,
-  typeRevealHref,
-  typeRevealPrice,
 } from '../lib/unlock'
 import { typePath } from '../data/personalityTypes'
 import { PopulationShare } from '../components/PopulationShare'
 import { reportTypeCensus } from '../lib/typeCensus'
 import { QUIZ_PATH } from '../lib/quizPath'
+import { WORKSPACE_JOIN_PATH, WORKSPACE_OFFERED, WORKSPACE_PATH, WORKSPACE_PRICE } from '../lib/workspace/offered'
+import { encodeShareLine } from '../lib/workspace/sharePacket'
+import { loadResultSnapshot, snapshotFromType } from '../lib/workspace/snapshot'
+import { saveSelfSnapshot, useHouse } from '../lib/workspace/store'
 
 export function Results() {
   const navigate = useNavigate()
@@ -95,26 +97,130 @@ export function Results() {
         ? parentId
         : stored && nextHero === stored.hero && parents.includes(stored.parent)
           ? stored.parent
-          : preferredParent(nextHero, profile.scores)
+          : preferredParent(nextHero, profile.scores, profile.pairs)
     const chosen = matchForSpine(profile.matches, nextHero, nextParent) ?? profile.matches[0]
     const selectedCode = chosen?.code
     if (!selectedCode) return
     void reportTypeCensus({ suggested: suggestedCode, selected: selectedCode })
   }, [clarify, complete, editing, heroId, parentId, profile, readings, stored])
-  const mapUnlocked = isProductUnlocked('map')
   const compatUnlocked = isProductUnlocked('compat')
   const showCompat = COMPATIBILITY_OFFERED || compatUnlocked || editing
-  const mapPrice = productPrice('map')
   const compatPrice = productPrice('compat')
-  const revealPrice = typeRevealPrice()
-  const showGate = complete && !offerDismissed
+  const previewOffer =
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('offer') === '1'
+  const showGate = WORKSPACE_OFFERED && ((complete && !offerDismissed) || previewOffer)
+  const house = useHouse()
+  const saveHref = house ? WORKSPACE_PATH : WORKSPACE_JOIN_PATH
 
   function patchResults(partial: Partial<typeof results>) {
     patchPages((pages) => ({ ...pages, results: { ...pages.results, ...partial } }))
   }
 
-  if (complete && needsFollowUp(answers, clarify) && !editing) {
+  function stayOnFree() {
+    chooseFreeTier()
+    setOfferDismissed(true)
+  }
+
+  function saveResults(event?: { preventDefault: () => void }) {
+    const snapshot = loadResultSnapshot()
+    if (house?.self && snapshot && house.self.code !== snapshot.code) {
+      event?.preventDefault()
+      if (!window.confirm(`Replace ${house.self.code} on Me with ${snapshot.code}?`)) return
+      saveSelfSnapshot(snapshot)
+      navigate(WORKSPACE_PATH)
+      return
+    }
+    if (snapshot && house) saveSelfSnapshot(snapshot)
+  }
+
+  const gatePopup = (
+    <div className="results-popup" role="dialog" aria-modal="true" aria-labelledby="results-popup-title">
+      <div className="results-popup__card">
+        <div className="results-popup__intro">
+          {editing ? (
+            <Editable
+              as="h1"
+              className="serif-title"
+              label="Offer title"
+              value={results.offerTitle}
+              onChange={(offerTitle) => patchResults({ offerTitle })}
+            />
+          ) : (
+            <h1 id="results-popup-title" className="serif-title">
+              {results.offerTitle}
+            </h1>
+          )}
+          {editing ? (
+            <Editable
+              as="p"
+              className="mono-stat"
+              label="Offer price"
+              multiline={false}
+              value={results.offerStat}
+              onChange={(offerStat) => patchResults({ offerStat })}
+            />
+          ) : (
+            <p className="mono-stat">{fillCopy(results.offerStat, { price: WORKSPACE_PRICE })}</p>
+          )}
+          {editing ? (
+            <Editable
+              as="p"
+              className="note"
+              label="Offer note"
+              multiline={false}
+              value={results.offerNote}
+              onChange={(offerNote) => patchResults({ offerNote })}
+            />
+          ) : (
+            <p className="note">{results.offerNote}</p>
+          )}
+        </div>
+        {editing ? (
+          <EditableButton
+            to={saveHref}
+            label="Save results CTA"
+            value={results.offerCta}
+            onChange={(offerCta) => patchResults({ offerCta })}
+          />
+        ) : (
+          <Button to={saveHref} onClick={saveResults}>
+            {results.offerCta}
+          </Button>
+        )}
+        {editing ? (
+          <Editable
+            as="span"
+            className="stay-free"
+            label="See it free"
+            multiline={false}
+            value={results.stayFree}
+            onChange={(stayFree) => patchResults({ stayFree })}
+          />
+        ) : (
+          <button type="button" className="stay-free" onClick={stayOnFree}>
+            {results.stayFree}
+          </button>
+        )}
+      </div>
+    </div>
+  )
+
+  if (complete && needsFollowUp(answers, clarify) && !editing && !previewOffer) {
     return <Navigate to="/clarify" replace />
+  }
+
+  if (showGate && !editing) {
+    return (
+      <>
+        <Seo
+          title={results.seoTitleEmpty}
+          description={results.seoDescriptionEmpty}
+          path="/results"
+          robots="noindex,follow"
+        />
+        <section className="section results results-gate">{gatePopup}</section>
+      </>
+    )
   }
 
   if ((!complete || !profile) && !editing) {
@@ -124,6 +230,7 @@ export function Results() {
           title={results.seoTitleEmpty}
           description={results.seoDescriptionEmpty}
           path="/results"
+          robots="noindex,follow"
         />
         <section className="section">
           <div className="wrap screen empty-state">
@@ -147,7 +254,7 @@ export function Results() {
       : stored && hero === stored.hero && parents.includes(stored.parent)
         ? stored.parent
         : hero && profile
-          ? preferredParent(hero, profile.scores)
+          ? preferredParent(hero, profile.scores, profile.pairs)
           : draft?.stack[1]
 
   const selected =
@@ -175,7 +282,7 @@ export function Results() {
 
   function chooseHero(next: FunctionId) {
     if (!profile) return
-    const nextParent = preferredParent(next, allScores)
+    const nextParent = preferredParent(next, allScores, profile.pairs)
     setHeroId(next)
     setParentId(nextParent)
     saveStackChoice({ hero: next, parent: nextParent })
@@ -188,7 +295,11 @@ export function Results() {
   }
 
   async function copySummary() {
+    const percents = Object.fromEntries((profile?.scores ?? []).map((score) => [score.id, score.percent]))
+    const shareBase = snapshotFromType(selectedCode)
+    const share = shareBase && profile ? encodeShareLine({ ...shareBase, percents }) : ''
     const lines = [
+      ...(share ? [share, ''] : []),
       `Jungology · Jung Functions Quiz · Psychological Types + Beebe`,
       `${selectedCode} ${selectedTitle} (${selectedConfidence}% fit)`,
       `Hero / Heroine: ${heroFn} · Parent: ${parentFn}`,
@@ -205,70 +316,6 @@ export function Results() {
     }
   }
 
-  function stayOnFree() {
-    chooseFreeTier()
-    setOfferDismissed(true)
-  }
-
-  const gatePopup = (
-    <div className="results-popup" role="dialog" aria-modal="true" aria-labelledby="results-popup-title">
-      <div className="results-popup__card">
-        {editing ? (
-          <Editable
-            as="h1"
-            className="serif-title"
-            label="Offer title"
-            value={results.offerTitle}
-            onChange={(offerTitle) => patchResults({ offerTitle })}
-          />
-        ) : (
-          <h1 id="results-popup-title" className="serif-title">
-            {results.offerTitle}
-          </h1>
-        )}
-        {editing ? (
-          <EditableButton
-            to={typeRevealHref()}
-            label="See type CTA"
-            value={results.offerCta}
-            onChange={(offerCta) => patchResults({ offerCta })}
-          />
-        ) : (
-          <Button to={typeRevealHref()} onClick={() => trackBeginCheckout('reveal', typeRevealHref())}>
-            {fillCopy(results.offerCta, { price: revealPrice })}
-          </Button>
-        )}
-        {editing ? (
-          <Editable
-            as="span"
-            className="stay-free"
-            label="See it free"
-            multiline={false}
-            value={results.stayFree}
-            onChange={(stayFree) => patchResults({ stayFree })}
-          />
-        ) : (
-          <button type="button" className="stay-free" onClick={stayOnFree}>
-            {results.stayFree}
-          </button>
-        )}
-      </div>
-    </div>
-  )
-
-  if (showGate && !editing) {
-    return (
-      <>
-        <Seo
-          title={results.seoTitleEmpty}
-          description={results.seoDescriptionEmpty}
-          path="/results"
-        />
-        <section className="section results results-gate">{gatePopup}</section>
-      </>
-    )
-  }
-
   return (
     <>
       <Seo
@@ -283,6 +330,7 @@ export function Results() {
             : results.seoDescriptionEmpty
         }
         path="/results"
+        robots="noindex,follow"
       />
 
       <section className={`section results${editing ? ' results-gate-edit' : ''}`}>
@@ -397,20 +445,14 @@ export function Results() {
             </p>
           ) : null}
           <div className="hero__actions">
+            {WORKSPACE_OFFERED ? (
+              <Button to={saveHref} onClick={saveResults}>
+                {results.offerCta}
+              </Button>
+            ) : null}
             <Button to={typePath(selectedCode)} variant="ghost">
               {selectedTitle} page
             </Button>
-            <EditableButton
-              to={productHref('map', mapUnlocked)}
-              label={mapUnlocked ? 'Open map' : 'Unlock map'}
-              value={mapUnlocked ? results.openMap : results.unlockMap}
-              onClick={
-                mapUnlocked ? undefined : () => trackBeginCheckout('map', productHref('map', false))
-              }
-              onChange={(value) =>
-                patchResults(mapUnlocked ? { openMap: value } : { unlockMap: value })
-              }
-            />
             {showCompat ? (
               <EditableButton
                 to={productHref('compat', compatUnlocked)}
@@ -457,58 +499,47 @@ export function Results() {
           </div>
         ) : null}
 
+        {WORKSPACE_OFFERED || showCompat ? (
         <div className="wrap upsell-grid">
-          <aside className="upsell">
-            <Editable
-              as="p"
-              className="eyebrow"
-              label="Map eyebrow"
-              multiline={false}
-              value={results.mapEyebrow}
-              onChange={(mapEyebrow) => patchResults({ mapEyebrow })}
-            />
-            <Editable
-              as="h2"
-              label="Map title"
-              value={mapUnlocked ? results.mapTitle : results.mapTitleLocked}
-              onChange={(value) =>
-                patchResults(mapUnlocked ? { mapTitle: value } : { mapTitleLocked: value })
-              }
-            />
-            {editing ? (
-              <Editable
-                as="p"
-                label="Map body"
-                value={mapUnlocked ? results.mapBodyUnlocked : results.mapBodyLocked}
-                onChange={(value) =>
-                  patchResults(
-                    mapUnlocked ? { mapBodyUnlocked: value } : { mapBodyLocked: value },
-                  )
-                }
-              />
-            ) : (
-              <p>
-                {mapUnlocked
-                  ? results.mapBodyUnlocked
-                  : fillCopy(results.mapBodyLocked, { price: mapPrice })}
-              </p>
-            )}
-            <EditableButton
-              to={productHref('map', mapUnlocked)}
-              label="Map CTA"
-              value={
-                mapUnlocked
-                  ? results.mapCtaUnlocked
-                  : fillCopy(results.mapCtaLocked, { price: mapPrice })
-              }
-              onClick={
-                mapUnlocked ? undefined : () => trackBeginCheckout('map', productHref('map', false))
-              }
-              onChange={(value) =>
-                patchResults(mapUnlocked ? { mapCtaUnlocked: value } : { mapCtaLocked: value })
-              }
-            />
-          </aside>
+          {WORKSPACE_OFFERED ? (
+            <aside className="upsell">
+              {editing ? (
+                <Editable
+                  as="p"
+                  className="eyebrow"
+                  label="Save eyebrow"
+                  multiline={false}
+                  value={results.saveEyebrow}
+                  onChange={(saveEyebrow) => patchResults({ saveEyebrow })}
+                />
+              ) : (
+                <p className="eyebrow">{results.saveEyebrow}</p>
+              )}
+              {editing ? (
+                <Editable
+                  as="h2"
+                  label="Offer title"
+                  value={results.offerTitle}
+                  onChange={(offerTitle) => patchResults({ offerTitle })}
+                />
+              ) : (
+                <h2>{results.offerTitle}</h2>
+              )}
+              {editing ? (
+                <Editable
+                  as="p"
+                  label="Save body"
+                  value={results.saveBody}
+                  onChange={(saveBody) => patchResults({ saveBody })}
+                />
+              ) : (
+                <p>{fillCopy(results.saveBody, { price: WORKSPACE_PRICE })}</p>
+              )}
+              <Button to={saveHref} onClick={saveResults}>
+                {results.offerCta}
+              </Button>
+            </aside>
+          ) : null}
           {showCompat ? (
             <aside className="upsell">
               <Editable
@@ -567,6 +598,7 @@ export function Results() {
             </aside>
           ) : null}
         </div>
+        ) : null}
 
         {profile && selected && hero && parent ? (
           <div className="wrap" id="stack">
@@ -599,31 +631,33 @@ export function Results() {
         ) : null}
 
         <div className="wrap results-actions">
-          <EditableButton
-            to={QUIZ_PATH}
-            label="Retake"
-            value={results.retake}
-            onChange={(retake) => patchResults({ retake })}
-          />
-          <EditableButton
-            variant="ghost"
-            label="Clear answers"
-            value={results.clearAnswers}
-            onClick={() => {
-              clearAnswers()
-              navigate(QUIZ_PATH)
-            }}
-            onChange={(clearAnswersLabel) => patchResults({ clearAnswers: clearAnswersLabel })}
-          />
-          <EditableButton
-            variant="ghost"
-            label="Copy summary"
-            value={copied ? results.copied : results.copySummary}
-            onClick={() => void copySummary()}
-            onChange={(value) =>
-              patchResults(copied ? { copied: value } : { copySummary: value })
-            }
-          />
+          <div className="results-actions__row">
+            <EditableButton
+              to={QUIZ_PATH}
+              label="Retake"
+              value={results.retake}
+              onChange={(retake) => patchResults({ retake })}
+            />
+            <EditableButton
+              variant="ghost"
+              label="Clear answers"
+              value={results.clearAnswers}
+              onClick={() => {
+                clearAnswers()
+                navigate(QUIZ_PATH)
+              }}
+              onChange={(clearAnswersLabel) => patchResults({ clearAnswers: clearAnswersLabel })}
+            />
+            <EditableButton
+              variant="ghost"
+              label="Copy summary"
+              value={copied ? results.copied : results.copySummary}
+              onClick={() => void copySummary()}
+              onChange={(value) =>
+                patchResults(copied ? { copied: value } : { copySummary: value })
+              }
+            />
+          </div>
           {editing ? (
             <Editable
               as="span"

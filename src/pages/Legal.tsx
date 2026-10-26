@@ -17,19 +17,21 @@ export function Legal() {
           <p className="mono-stat">one-time unlocks · answers stay here</p>
           <p className="lede">
             The Jung Functions Quiz, the eight scores, and the choice of lead and support stay
-            free. Your Type in Depth can be unlocked after Stripe checkout.
+            free. Your Type in Depth is paused on the public site for now. Existing keys still
+            open the reading in this browser.
           </p>
 
           <h2>What you are buying</h2>
           <p>
-            Your Type in Depth is a longer Beebe reading of the stack you just scored. It is an
-            educational text, not psychotherapy, not a diagnosis, and not the MBTI® instrument.
+            Earlier Type in Depth purchases were a one-time Beebe reading of the stack you scored.
+            It is an educational text, not psychotherapy, not a diagnosis, and not the MBTI®
+            instrument.
           </p>
 
           <h2>Keys</h2>
           <p>
-            After payment, Stripe should return you to this site with a key in the link. That key
-            unlocks the reading in this browser. Keep the email receipt.
+            If you already have a Stripe key, that key still unlocks the reading in this browser.
+            Keep the email receipt.
           </p>
 
           <h2>Refunds</h2>

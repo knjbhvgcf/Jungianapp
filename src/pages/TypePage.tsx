@@ -17,7 +17,6 @@ import {
   useTypeDraft,
 } from '../lib/editMode'
 import { QUIZ_PATH } from '../lib/quizPath'
-import { TYPE_IN_DEPTH_PATH } from '../lib/unlock'
 import { NotFound } from './NotFound'
 
 const STACK_LABELS = [
@@ -197,10 +196,7 @@ function TypePageBody({ code }: { code: string }) {
             {' · '}
             <Link to="/type-theory">Type theory</Link>
           </p>
-          <p>
-            The longer reading — Beebe’s eight, the day, work, relating, and the shadow — opens
-            after the quiz, in Your Type in Depth. This page is the public face of the sprout.
-          </p>
+          <p>This page is the public face of the sprout.</p>
           <Editable
             as="p"
             className="note"
@@ -213,9 +209,6 @@ function TypePageBody({ code }: { code: string }) {
               }))
             }
           />
-          <p>
-            <Button to={TYPE_IN_DEPTH_PATH}>Your Type in Depth</Button>
-          </p>
         </div>
 
         {previous && next ? (

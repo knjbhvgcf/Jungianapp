@@ -101,13 +101,14 @@ export function applyFollowUpToProfile(
 ): QuizProfile {
   const scores = scoresAfterFollowUp(profile.scores, clarify)
   if (scores === profile.scores) return profile
-  const matches = rankTypes(scores)
+  const matches = rankTypes(scores, profile.pairs)
   const top = matches[0]
   return {
     scores,
     matches,
     differentiation: differentiationIndex(scores),
     beebe: top ? beebePlacements(top, scores) : [],
+    pairs: profile.pairs,
   }
 }
 

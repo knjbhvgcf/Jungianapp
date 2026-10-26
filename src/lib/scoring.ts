@@ -1,5 +1,6 @@
 import { BEEBE_ROLES, beebeStack, type FunctionStack } from '../data/beebe'
 import { FUNCTION_IDS, FUNCTIONS, type FunctionId } from '../data/functions'
+import { pairKey, rivalParent } from '../data/pairs'
 import { PERSONALITY_TYPES, type PersonalityType } from '../data/personalityTypes'
 import { QUESTIONS, type Question } from '../data/questions'
 
@@ -24,11 +25,20 @@ export type BeebePlacement = {
   percent: number
 }
 
+export type PairScore = {
+  hero: FunctionId
+  parent: FunctionId
+  key: string
+  raw: number
+  percent: number
+}
+
 export type QuizProfile = {
   scores: FunctionScore[]
   matches: TypeMatch[]
   differentiation: number
   beebe: BeebePlacement[]
+  pairs: PairScore[]
 }
 
 function scoredValue(question: Question, value: number) {
@@ -44,6 +54,7 @@ export function scoreFunctions(
   const count = Object.fromEntries(FUNCTION_IDS.map((id) => [id, 0])) as Record<FunctionId, number>
 
   for (const question of questions) {
+    if (question.pairParent) continue
     const value = answers[question.id]
     if (value == null) continue
     raw[question.functionId] += scoredValue(question, value)
@@ -70,7 +81,44 @@ function byPercent(scores: FunctionScore[]) {
   >
 }
 
-export function rankTypes(scores: FunctionScore[]): TypeMatch[] {
+export function scorePairs(answers: Answers, questions: Question[] = QUESTIONS): PairScore[] {
+  const buckets = new Map<string, { hero: FunctionId; parent: FunctionId; raw: number; n: number }>()
+  for (const question of questions) {
+    const parent = question.pairParent
+    if (!parent) continue
+    const value = answers[question.id]
+    if (value == null) continue
+    const key = pairKey(question.functionId, parent)
+    const current = buckets.get(key) ?? {
+      hero: question.functionId,
+      parent,
+      raw: 0,
+      n: 0,
+    }
+    current.raw += value
+    current.n += 1
+    buckets.set(key, current)
+  }
+  return [...buckets.values()]
+    .map((bucket) => {
+      const minRaw = bucket.n
+      const span = bucket.n * 4
+      return {
+        hero: bucket.hero,
+        parent: bucket.parent,
+        key: pairKey(bucket.hero, bucket.parent),
+        raw: bucket.raw,
+        percent: span === 0 ? 0 : Math.round(((bucket.raw - minRaw) / span) * 100),
+      }
+    })
+    .sort((left, right) => right.percent - left.percent || left.key.localeCompare(right.key))
+}
+
+function pairPercentOf(pairs: PairScore[], hero: FunctionId, parent: FunctionId) {
+  return pairs.find((item) => item.hero === hero && item.parent === parent)?.percent ?? 0
+}
+
+export function rankTypes(scores: FunctionScore[], pairs: PairScore[] = []): TypeMatch[] {
   const p = byPercent(scores)
   const first = scores[0]?.id
   const second = scores[1]?.id
@@ -98,6 +146,12 @@ export function rankTypes(scores: FunctionScore[]): TypeMatch[] {
     else fit -= 1.6
     if (second === parent) fit += 0.45
     if (first === anima || first === demon) fit -= 1.1
+
+    const pair = pairPercentOf(pairs, hero, parent) / 100
+    const rival = rivalParent(hero, parent)
+    const rivalScore = rival ? pairPercentOf(pairs, hero, rival) / 100 : 0
+    fit += 3.2 * pair
+    fit -= 1.4 * rivalScore
 
     return { ...type, fit, confidence: 0, fullStack }
   }).sort((a, b) => b.fit - a.fit || a.code.localeCompare(b.code))
@@ -148,7 +202,8 @@ export function beebePlacements(type: TypeMatch, scores: FunctionScore[]): Beebe
 
 export function buildProfile(answers: Answers): QuizProfile {
   const scores = scoreFunctions(answers)
-  const matches = rankTypes(scores)
+  const pairs = scorePairs(answers)
+  const matches = rankTypes(scores, pairs)
   const top = matches[0]
   const beebe = top ? beebePlacements(top, scores) : []
 
@@ -157,6 +212,7 @@ export function buildProfile(answers: Answers): QuizProfile {
     matches,
     differentiation: differentiationIndex(scores),
     beebe,
+    pairs,
   }
 }
 
@@ -192,8 +248,21 @@ export function parentForHeroAnima(hero: FunctionId, anima: FunctionId): Functio
   return PERSONALITY_TYPES.find((type) => type.stack[0] === hero && type.stack[3] === anima)?.stack[1]
 }
 
-export function preferredParent(hero: FunctionId, scores: FunctionScore[]): FunctionId {
+export function preferredParent(
+  hero: FunctionId,
+  scores: FunctionScore[],
+  pairs: PairScore[] = [],
+): FunctionId {
   const parents = validParentsForHero(hero)
+  if (pairs.length && parents.length > 1) {
+    const ranked = [...parents].sort((left, right) => {
+      const gap = pairPercentOf(pairs, hero, right) - pairPercentOf(pairs, hero, left)
+      if (gap !== 0) return gap
+      return (scores.find((score) => score.id === right)?.percent ?? 0) -
+        (scores.find((score) => score.id === left)?.percent ?? 0)
+    })
+    if (pairPercentOf(pairs, hero, ranked[0] ?? hero) > 0) return ranked[0] ?? parents[0] ?? hero
+  }
   const ranked = [...scores].filter((score) => parents.includes(score.id))
   return ranked[0]?.id ?? parents[0] ?? hero
 }

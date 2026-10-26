@@ -1,4 +1,7 @@
-import { Outlet } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
+import { WORKSPACE_OFFERED, WORKSPACE_PATH } from '../lib/workspace/offered'
+import { hydrateHouse } from '../lib/workspace/store'
 import { Analytics } from './Analytics'
 import { EditBar } from './EditBar'
 import { Footer } from './Footer'
@@ -6,11 +9,23 @@ import { Header } from './Header'
 import { ScrollToTop } from './ScrollToTop'
 
 export function Layout() {
+  const location = useLocation()
+  const darkHouse = WORKSPACE_OFFERED && location.pathname.startsWith(WORKSPACE_PATH)
+
+  useEffect(() => {
+    document.body.classList.toggle('workspace-skin', darkHouse)
+    return () => document.body.classList.remove('workspace-skin')
+  }, [darkHouse])
+
+  useEffect(() => {
+    if (WORKSPACE_OFFERED) void hydrateHouse()
+  }, [])
+
   return (
     <>
       <Analytics />
       <ScrollToTop />
-      <EditBar />
+      {darkHouse ? null : <EditBar />}
       <a className="skip-link" href="#main">
         Skip to content
       </a>

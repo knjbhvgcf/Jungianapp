@@ -28,6 +28,7 @@ export function shouldTrackPath(pathname: string) {
 export function analyticsPagePath(pathname: string, search: string) {
   const params = new URLSearchParams(search.startsWith('?') ? search.slice(1) : search)
   params.delete('key')
+  params.delete('session_id')
   const cleaned = params.toString()
   return cleaned ? `${pathname}?${cleaned}` : pathname
 }
@@ -78,12 +79,13 @@ export function trackPageView(pathname: string, search = '') {
   })
 }
 
-export type CommerceItem = 'reveal' | 'map' | 'compat'
+export type CommerceItem = 'reveal' | 'map' | 'compat' | 'workspace'
 
 const PURCHASE_FLAG: Record<CommerceItem, string> = {
   reveal: 'jung-ga.purchase.reveal.v1',
   map: 'jung-ga.purchase.map.v1',
   compat: 'jung-ga.purchase.compat.v1',
+  workspace: 'jung-ga.purchase.workspace.v1',
 }
 
 const CATALOG: Record<
@@ -93,6 +95,7 @@ const CATALOG: Record<
   reveal: { item_id: 'type-reveal', item_name: 'Your type', fallbackPrice: 1 },
   map: { item_id: 'type-in-depth', item_name: 'Your Type in Depth', fallbackPrice: 3 },
   compat: { item_id: 'compatibility', item_name: 'Compatibility', fallbackPrice: 1 },
+  workspace: { item_id: 'workspace', item_name: 'Jungology App', fallbackPrice: 14 },
 }
 
 function dollars(raw: string | undefined, fallback: number) {
@@ -104,6 +107,7 @@ function catalogPrice(item: CommerceItem) {
   const row = CATALOG[item]
   if (item === 'reveal') return dollars(import.meta.env.VITE_REVEAL_PRICE, row.fallbackPrice)
   if (item === 'compat') return dollars(import.meta.env.VITE_COMPAT_PRICE, row.fallbackPrice)
+  if (item === 'workspace') return dollars(import.meta.env.VITE_WORKSPACE_PRICE, row.fallbackPrice)
   return dollars(import.meta.env.VITE_DOSSIER_PRICE, row.fallbackPrice)
 }
 

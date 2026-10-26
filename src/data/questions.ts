@@ -1,7 +1,9 @@
+import pairBank from '../content/pairs.json'
 import bank from '../content/questions.json'
+import { pairKey } from './pairs'
 import type { FunctionId } from './functions'
 
-export type QuestionFacet = 'orientation' | 'process' | 'criterion' | 'reverse'
+export type QuestionFacet = 'orientation' | 'process' | 'criterion' | 'reverse' | 'pair'
 
 export type Question = {
   id: string
@@ -9,6 +11,7 @@ export type Question = {
   functionId: FunctionId
   facet: QuestionFacet
   reverse?: boolean
+  pairParent?: FunctionId
 }
 
 type ItemDraft = Omit<Question, 'id'>
@@ -43,7 +46,26 @@ function itemsForFacet(facet: QuestionFacet): Question[] {
   ).flat()
 }
 
-export const QUESTIONS: Question[] = FACET_ORDER.flatMap((facet) => itemsForFacet(facet))
+const pairCounts = new Map<string, number>()
+const PAIR_QUESTIONS: Question[] = (
+  pairBank as { hero: FunctionId; parent: FunctionId; text: string }[]
+).map((item) => {
+  const key = pairKey(item.hero, item.parent)
+  const n = (pairCounts.get(key) ?? 0) + 1
+  pairCounts.set(key, n)
+  return {
+    id: `q-${key}-${n}`,
+    text: item.text,
+    functionId: item.hero,
+    facet: 'pair' as const,
+    pairParent: item.parent,
+  }
+})
+
+export const QUESTIONS: Question[] = [
+  ...FACET_ORDER.flatMap((facet) => itemsForFacet(facet)),
+  ...PAIR_QUESTIONS,
+]
 
 export function isHeroPhaseQuestion(question: Question) {
   return HERO_PHASE_FACETS.includes(question.facet)

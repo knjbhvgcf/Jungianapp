@@ -14,6 +14,10 @@ import { Results } from './pages/Results'
 import { TypePage, TypesIndex } from './pages/TypePage'
 import { QUIZ_PATH, TEST_LANDING_PATH } from './lib/quizPath'
 import { TYPE_IN_DEPTH_PATH } from './lib/unlock'
+import { WORKSPACE_JOIN_PATH, WORKSPACE_KEEP_PATH, WORKSPACE_OFFERED, WORKSPACE_PATH } from './lib/workspace/offered'
+import { WorkspaceHouse } from './pages/WorkspaceHouse'
+import { WorkspaceJoin } from './pages/WorkspaceJoin'
+import { WorkspaceKeep } from './pages/WorkspaceKeep'
 
 function RedirectDossier() {
   const location = useLocation()
@@ -48,6 +52,13 @@ export default function App() {
         <Route path="/types" element={<TypesIndex />} />
         <Route path="/types/:code" element={<TypePage />} />
         <Route path="/admin" element={<Admin />} />
+        {WORKSPACE_OFFERED ? (
+          <>
+            <Route path={WORKSPACE_PATH} element={<WorkspaceHouse />} />
+            <Route path={WORKSPACE_JOIN_PATH} element={<WorkspaceJoin />} />
+            <Route path={WORKSPACE_KEEP_PATH} element={<WorkspaceKeep />} />
+          </>
+        ) : null}
         <Route path="/:slug" element={<GuidePage />} />
         <Route path="*" element={<NotFound />} />
       </Route>

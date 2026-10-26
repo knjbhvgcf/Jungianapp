@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { ArchetypeSheet } from '../components/ArchetypeSheet'
 import { MapExtras, MapExtrasTeaser } from '../components/MapExtras'
@@ -36,6 +36,7 @@ import {
   isProductUnlocked,
   productHref,
   tryUnlockKey,
+  TYPE_IN_DEPTH_OFFERED,
   TYPE_IN_DEPTH_PATH,
 } from '../lib/unlock'
 import type { PersonalityType } from '../data/personalityTypes'
@@ -101,6 +102,7 @@ export function Dossier() {
           title={mapPage.emptySeoTitle}
           description={mapPage.emptySeoDescription}
           path={TYPE_IN_DEPTH_PATH}
+          robots={TYPE_IN_DEPTH_OFFERED ? undefined : 'noindex,follow'}
         />
         <section className="section">
           <div className="wrap screen empty-state">
@@ -118,12 +120,26 @@ export function Dossier() {
                   {mapPage.beginQuiz}
                 </Button>
               </>
-            ) : (
+            ) : TYPE_IN_DEPTH_OFFERED ? (
               <>
                 <h1 className="serif-title">{mapPage.emptyTitle}</h1>
                 <p className="mono-stat">{mapPage.emptyStat}</p>
                 <p>{mapPage.emptyBody}</p>
                 <Button to={QUIZ_PATH}>{mapPage.beginQuiz}</Button>
+              </>
+            ) : (
+              <>
+                <h1 className="serif-title">Your Type in Depth</h1>
+                <p className="mono-stat">moving into Jungology App</p>
+                <p>
+                  This reading is paused on the public site. If you already have a key from an
+                  earlier checkout, open this page with the key in the link, or paste it after you
+                  finish the quiz.
+                </p>
+                <Button to={QUIZ_PATH}>{mapPage.beginQuiz}</Button>
+                <Button to="/results" variant="ghost">
+                  Back to results
+                </Button>
               </>
             )}
           </div>
@@ -142,7 +158,7 @@ export function Dossier() {
       : stored && hero === stored.hero && parents.includes(stored.parent)
         ? stored.parent
         : hero && profile
-          ? preferredParent(hero, profile.scores)
+          ? preferredParent(hero, profile.scores, profile.pairs)
           : draft?.stack[1]
   const quizSelected =
     hero && parent && profile ? matchForSpine(profile.matches, hero, parent) : profile?.matches[0]
@@ -159,7 +175,7 @@ export function Dossier() {
 
   function chooseHero(next: FunctionId) {
     if (!profile) return
-    const nextParent = preferredParent(next, scores)
+    const nextParent = preferredParent(next, scores, profile.pairs)
     setHeroId(next)
     setParentId(nextParent)
     saveStackChoice({ hero: next, parent: nextParent })
@@ -175,10 +191,15 @@ export function Dossier() {
     <>
       <Seo
         title={
-          showUnlocked ? `${selected.title} in depth | Jung Functions Quiz` : mapPage.seoLockedTitle
+          showUnlocked
+            ? `${selected.title} in depth | Jung Functions Quiz`
+            : TYPE_IN_DEPTH_OFFERED
+              ? mapPage.seoLockedTitle
+              : 'Your Type in Depth | Jung Functions Quiz'
         }
         description={mapPage.seoDescription}
         path={TYPE_IN_DEPTH_PATH}
+        robots={TYPE_IN_DEPTH_OFFERED ? undefined : 'noindex,follow'}
       />
 
       <article className="section dossier">
@@ -266,7 +287,7 @@ export function Dossier() {
               onHeroChange={chooseHero}
               onParentChange={chooseParent}
             />
-          ) : (
+          ) : TYPE_IN_DEPTH_OFFERED ? (
             <>
               {quizSelected ? (
                 <MapExtrasTeaser selected={quizSelected} />
@@ -278,6 +299,8 @@ export function Dossier() {
                 </Link>
               </p>
             </>
+          ) : (
+            <MapPausedPanel onUnlocked={() => setUnlocked(true)} backLabel={mapPage.backToResults} />
           )}
           {editing ? (
             <>
@@ -546,5 +569,60 @@ function UnlockedReading({
         <EditHint>Stack tools appear here after a quiz is finished on this browser.</EditHint>
       ) : null}
     </>
+  )
+}
+
+function MapPausedPanel({
+  onUnlocked,
+  backLabel,
+}: {
+  onUnlocked: () => void
+  backLabel: string
+}) {
+  const [key, setKey] = useState('')
+  const [error, setError] = useState('')
+  const copy = useSiteCopy().paywall.map
+
+  function submit(event: FormEvent) {
+    event.preventDefault()
+    if (tryUnlockKey(key, 'map')) {
+      setError('')
+      onUnlocked()
+      return
+    }
+    setError(copy.error)
+  }
+
+  return (
+    <aside className="unlock-panel">
+      <p className="eyebrow">moving into Jungology App</p>
+      <h2>Your Type in Depth</h2>
+      <p>
+        This reading is paused on the public site. If you already unlocked it, it still opens in
+        this browser. If you have a key from an earlier checkout, enter it below.
+      </p>
+      <form className="unlock-form" onSubmit={submit}>
+        <label htmlFor="map-key">{copy.keyLabel}</label>
+        <div className="unlock-form__row">
+          <input
+            id="map-key"
+            name="key"
+            value={key}
+            onChange={(event) => setKey(event.target.value)}
+            autoComplete="off"
+            placeholder={copy.keyPlaceholder}
+          />
+          <Button type="submit" variant="ghost">
+            {copy.unlockButton}
+          </Button>
+        </div>
+        {error ? <p className="unlock-form__error">{error}</p> : null}
+      </form>
+      <p>
+        <Link to="/results" className="text-link">
+          {backLabel}
+        </Link>
+      </p>
+    </aside>
   )
 }

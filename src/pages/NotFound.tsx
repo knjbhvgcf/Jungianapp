@@ -9,6 +9,7 @@ export function NotFound() {
         title="Page not found | Jung Functions Quiz"
         description="That page does not exist. Return home or take the quiz."
         path="/404"
+        robots="noindex,nofollow"
       />
       <section className="section">
           <div className="wrap screen empty-state">
