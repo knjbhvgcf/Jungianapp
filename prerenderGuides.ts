@@ -266,7 +266,7 @@ function homeHtml(home: HomeCopy, guides: Guide[], landing?: Guide) {
     ? [
         {
           q: 'What is a Jungian cognitive functions test?',
-          a: 'You rate eighty-four statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. The quiz does not need an account, and the letters, if they appear, are a name for the stack — not the thing that was measured.',
+          a: 'You rate fifty-two statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. The quiz does not need an account, and the letters, if they appear, are a name for the stack — not the thing that was measured.',
         },
         ...home.faq.filter((item) => item.q !== 'What is Jungology?'),
       ]
@@ -456,8 +456,8 @@ export function prerenderGuidesPlugin(): Plugin {
       writePage(
         'quiz',
         'Jung Functions Quiz | Jungology',
-        'Jungology is a free online cognitive functions test. Eighty-four statements. Tap how true each one is. Enable JavaScript to take it in this page.',
-        `<article class="section"><div class="wrap prose"><p class="eyebrow">quiz</p><h1 class="serif-title">Jung Functions Quiz</h1><p class="lede">Jungology is a free online cognitive functions test. Eighty-four statements. Tap how true each one is. Enable JavaScript to take it in this page.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
+        'Jungology is a free online cognitive functions test. Fifty-two statements. Tap how true each one is. Enable JavaScript to take it in this page.',
+        `<article class="section"><div class="wrap prose"><p class="eyebrow">quiz</p><h1 class="serif-title">Jung Functions Quiz</h1><p class="lede">Jungology is a free online cognitive functions test. Fifty-two statements. Tap how true each one is. Enable JavaScript to take it in this page.</p><p><a href="/quiz">Begin the quiz</a></p></div></article>`,
       )
 
       writePage(

@@ -1,17 +1,17 @@
 {
   "home": {
     "seoTitle": "Jungology | Free Cognitive Functions Test",
-    "seoDescription": "Jungology is a free online cognitive functions test. Eighty-four statements, eight function scores, and a likely type. About twelve minutes, scored in your browser.",
+    "seoDescription": "Jungology is a free online cognitive functions test. Fifty-two statements, eight function scores, and a likely type. About eight minutes, scored in your browser.",
     "title": "Jungology",
-    "stat": "8 functions · 84 questions · John Beebe model",
-    "lede": "Jungology is a free online cognitive functions test.\n\nThe first Delphic maxim states “Know thyself”, it is at the core of everything we encounter in life, the lens through which we look, the vantage point from which we jump forward.\n\nMost four-letter quizzes dont score the functions. This one does: eighty-four statements about how you notice, decide, and take in a situation.\n\nLet’s discover your personality type!",
+    "stat": "8 functions · 52 questions · John Beebe model",
+    "lede": "Jungology is a free online cognitive functions test.\n\nThe first Delphic maxim states “Know thyself”, it is at the core of everything we encounter in life, the lens through which we look, the vantage point from which we jump forward.\n\nMost four-letter quizzes dont score the functions. This one does: fifty-two statements about how you notice, decide, and take in a situation.\n\nLet’s discover your personality type!",
     "image": "/home/hero.jpg?v=1787110066816",
     "beginQuiz": "Begin the quiz",
     "howHeading": "How it works",
     "steps": [
       {
-        "title": "Answer eighty-four Questions",
-        "body": "Each Question offers a small reflection on the way you tend to perceive, decide, or experience the world. Consider each one carefully, and choose how true it feels for you. The complete set takes most people around twelve minutes."
+        "title": "Answer fifty-two Questions",
+        "body": "Each Question offers a small reflection on the way you tend to perceive, decide, or experience the world. Consider each one carefully, and choose how true it feels for you. The complete set takes most people around eight minutes."
       },
       {
         "title": "A short follow-up, only if needed",
@@ -28,7 +28,7 @@
     "faq": [
       {
         "q": "What is Jungology?",
-        "a": "Jungology is a free online cognitive functions test. You rate eighty-four statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. The quiz does not need an account."
+        "a": "Jungology is a free online cognitive functions test. You rate fifty-two statements; the site scores Jung’s eight function-attitudes in your browser, then suggests a likely type. The quiz does not need an account."
       },
       {
         "q": "What are Jung’s function-attitudes?",
@@ -44,7 +44,7 @@
       },
       {
         "q": "How long does the quiz take?",
-        "a": "There are eighty-four statements. Tap a number to move on. Most people finish in about twelve minutes. If two answers are too close, a few extra choices come after the eighty-four, not in the middle."
+        "a": "There are fifty-two statements. Tap a number to move on. Most people finish in about eight minutes. If two answers are too close, a few extra choices come after the fifty-two, not in the middle."
       },
       {
         "q": "Do you store my answers?",
@@ -52,7 +52,7 @@
       },
       {
         "q": "What if two attitudes are equally strong, as Fi and Ti both at 88%?",
-        "a": "When two functions land that close, the eighty-four items are not enough, so after the quiz you get a short follow-up: which sentence sounds more like you. Those answers are folded into the percentages. If they still split, you can try a different lead on the results page."
+        "a": "When two functions land that close, the fifty-two items are not enough, so after the quiz you get a short follow-up: which sentence sounds more like you. Those answers are folded into the percentages. If they still split, you can try a different lead on the results page."
       },
       {
         "q": "What is Your Type in Depth?",
@@ -79,7 +79,7 @@
       {
         "heading": "The item bank",
         "paragraphs": [
-          "There are eighty-four original statements. You rate each from 1 to 5, and a tap moves you on. If two functions are still close after the eighty-four, a short follow-up at the end names the lead. The totals appear as 0–100% bars."
+          "There are fifty-two original statements. You rate each from 1 to 5, and a tap moves you on. If two functions are still close after the fifty-two, a short follow-up at the end names the lead. The totals appear as 0–100% bars."
         ]
       },
       {
@@ -92,7 +92,7 @@
         "heading": "How a type is suggested",
         "paragraphs": [
           "Each of the sixteen types is scored with the Hero / Heroine first, so a type whose leading function is not your strongest score is set aside, while the Parent is rewarded next, the Eternal Child moderately, and the Inferior (Anima / Animus) only slightly. The model also wants the lead to outrank its opposite-attitude twin. If two functions score close, free results let you pick the Hero / Heroine and the Parent.",
-          "When two functions land together — Fi and Ti both high, or Ni and Ne — the totals are not enough, so after the eighty-four the quiz asks a short follow-up: five forced choices between those two, not another set of ratings. Those answers are folded into the percentages, the winner’s bar rises and the other falls, and that is what names the lead. If they still split, you can try a different lead on the results page."
+          "When two functions land together — Fi and Ti both high, or Ni and Ne — the totals are not enough, so after the fifty-two the quiz asks a short follow-up: five forced choices between those two, not another set of ratings. Those answers are folded into the percentages, the winner’s bar rises and the other falls, and that is what names the lead. If they still split, you can try a different lead on the results page."
         ]
       },
       {
@@ -128,10 +128,10 @@
     "seoDescription": "The superior function appears as {heroName}. A reading of the eight function-attitudes, not a diagnosis.",
     "emptyTitle": "No save",
     "emptyStat": "quiz not finished",
-    "emptyBody": "Take the eighty-four-question quiz to see your personality type.",
+    "emptyBody": "Take the fifty-two-question quiz to see your personality type.",
     "beginQuiz": "Begin the quiz",
     "scoresHeading": "Function-attitude scores",
-    "scoresIntro": "Each bar is that function-attitude’s statements, including a reverse item, and when two leads were close the follow-up answers are folded into the total. Working-pair items help choose the type without adding to these bars.",
+    "scoresIntro": "Each bar is six statements drawn from Jung’s account of that function-attitude, including one reverse item, and when two leads were close the follow-up answers are folded into the total.",
     "arrangeStack": "Not quite this type?",
     "openMap": "Open Your Type in Depth",
     "unlockMap": "Your Type in Depth",
