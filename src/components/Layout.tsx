@@ -13,8 +13,15 @@ export function Layout() {
   const darkHouse = WORKSPACE_OFFERED && location.pathname.startsWith(WORKSPACE_PATH)
 
   useEffect(() => {
+    const theme = document.querySelector('meta[name="theme-color"]')
+    document.documentElement.classList.toggle('workspace-skin', darkHouse)
     document.body.classList.toggle('workspace-skin', darkHouse)
-    return () => document.body.classList.remove('workspace-skin')
+    theme?.setAttribute('content', darkHouse ? '#161616' : '#ffffff')
+    return () => {
+      document.documentElement.classList.remove('workspace-skin')
+      document.body.classList.remove('workspace-skin')
+      theme?.setAttribute('content', '#ffffff')
+    }
   }, [darkHouse])
 
   useEffect(() => {

@@ -22,6 +22,7 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--bg);
 }
 
 body {
@@ -2439,15 +2440,36 @@ span.is-editable[data-edit]::after {
   font-weight: 700;
 }
 
+html.workspace-skin,
 body.workspace-skin {
   --bg: #161616;
   --ink: #eceae4;
   --muted: #c8c4ba;
   --faint: #9a958c;
   --line: #eceae4;
-  background: var(--bg);
+  background: #161616;
   color: var(--ink);
   color-scheme: dark;
+}
+
+html.workspace-skin,
+html.workspace-skin body,
+html.workspace-skin #root {
+  min-height: 100%;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+}
+
+html.workspace-skin::after {
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 19;
+  height: calc(7rem + env(safe-area-inset-bottom, 0px));
+  background: #161616;
+  pointer-events: none;
 }
 
 body.workspace-skin .site-header,
