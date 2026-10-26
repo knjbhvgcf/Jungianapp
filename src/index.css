@@ -2520,13 +2520,21 @@ button.workspace-head__edit {
   text-align: center;
 }
 
+.section.workspace {
+  padding-bottom: 0;
+}
+
 .workspace .mono-stat,
 .workspace .wrap.screen .eyebrow {
   text-align: center;
 }
 
 .workspace .wrap.screen {
-  padding-bottom: 15rem;
+  padding-bottom: 1.2rem;
+}
+
+.workspace:has(.workspace-rooms) .wrap.screen {
+  padding-bottom: calc(4.8rem + env(safe-area-inset-bottom, 0px));
 }
 
 .workspace-rooms {
@@ -2566,9 +2574,18 @@ body.workspace-skin .workspace-rooms {
   color: var(--muted);
 }
 
-.workspace-rooms .btn--ghost:hover:not(:disabled) {
-  background: transparent;
-  color: var(--ink);
+.workspace-rooms .btn--primary,
+.workspace-rooms .btn--primary:hover:not(:disabled),
+.workspace-rooms .btn[aria-selected='true'] {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .workspace-rooms .btn--ghost:hover:not(:disabled) {
+    background: transparent;
+    color: var(--ink);
+  }
 }
 
 .workspace-people {

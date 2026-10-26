@@ -795,29 +795,49 @@ export function WorkspaceHouse() {
         <nav className="workspace-rooms" role="tablist" aria-label={WORKSPACE_NAME}>
           <button
             type="button"
+            role="tab"
+            aria-selected={room === 'me'}
             className={room === 'me' ? 'btn btn--primary' : 'btn btn--ghost'}
-            onClick={() => goToRoom('me')}
+            onClick={(event) => {
+              goToRoom('me')
+              event.currentTarget.blur()
+            }}
           >
             Me
           </button>
           <button
             type="button"
+            role="tab"
+            aria-selected={room === 'library'}
             className={room === 'library' ? 'btn btn--primary' : 'btn btn--ghost'}
-            onClick={() => goToRoom('library')}
+            onClick={(event) => {
+              goToRoom('library')
+              event.currentTarget.blur()
+            }}
           >
             Library
           </button>
           <button
             type="button"
+            role="tab"
+            aria-selected={room === 'journal'}
             className={room === 'journal' ? 'btn btn--primary' : 'btn btn--ghost'}
-            onClick={() => goToRoom('journal')}
+            onClick={(event) => {
+              goToRoom('journal')
+              event.currentTarget.blur()
+            }}
           >
             Journal
           </button>
           <button
             type="button"
+            role="tab"
+            aria-selected={room === 'compat'}
             className={room === 'compat' ? 'btn btn--primary' : 'btn btn--ghost'}
-            onClick={() => openCompat()}
+            onClick={(event) => {
+              openCompat()
+              event.currentTarget.blur()
+            }}
           >
             Compare
           </button>
