@@ -97,7 +97,10 @@ export async function startWorkspacePortal() {
   throw new Error('Stripe billing portal is not set up yet.')
 }
 
-export async function settleWorkspaceCheckout(sessionId: string | null) {
+export async function settleWorkspaceCheckout(
+  sessionId: string | null,
+  opts?: { quiet?: boolean },
+) {
   const id = sessionId?.startsWith('cs_') ? sessionId : ''
   try {
     const house = await confirmWorkspacePaid(id)
@@ -112,8 +115,11 @@ export async function settleWorkspaceCheckout(sessionId: string | null) {
   } catch (caught) {
     const detail = caught instanceof Error ? caught.message : ''
     if (
+      opts?.quiet &&
       !id &&
-      (detail.includes('no active trial') || detail.includes('not set up'))
+      (detail.includes('No Stripe trial') ||
+        detail.includes('no active trial') ||
+        detail.includes('not set up'))
     ) {
       return false
     }

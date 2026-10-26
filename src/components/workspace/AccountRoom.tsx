@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../Button'
 import {
+  settleWorkspaceCheckout,
   startWorkspaceCheckout,
   startWorkspacePortal,
   takeCheckoutNote,
@@ -133,7 +134,7 @@ export function WorkspacePaywall({ note = '' }: { note?: string }) {
   const navigate = useNavigate()
   const house = useHouse()
   const [payError, setPayError] = useState('')
-  const [busy, setBusy] = useState(false)
+  const [busy, setBusy] = useState<'checkout' | 'sync' | null>(null)
   const [leaving, setLeaving] = useState(false)
   const [checkoutNote, setCheckoutNote] = useState(note)
 
@@ -143,6 +144,7 @@ export function WorkspacePaywall({ note = '' }: { note?: string }) {
 
   if (!house) return null
   const account = house
+  const blocked = Boolean(busy) || leaving
 
   async function subscribe() {
     if (!looksLikeEmail(account.email)) {
@@ -150,13 +152,21 @@ export function WorkspacePaywall({ note = '' }: { note?: string }) {
       return
     }
     setPayError('')
-    setBusy(true)
+    setBusy('checkout')
     try {
       window.location.href = await startWorkspaceCheckout(account.email)
     } catch (caught) {
       setPayError(caught instanceof Error ? caught.message : 'Could not open checkout.')
-      setBusy(false)
+      setBusy(null)
     }
+  }
+
+  async function alreadyStarted() {
+    setPayError('')
+    setBusy('sync')
+    await settleWorkspaceCheckout(null)
+    setCheckoutNote(takeCheckoutNote())
+    setBusy(null)
   }
 
   async function leave() {
@@ -170,14 +180,17 @@ export function WorkspacePaywall({ note = '' }: { note?: string }) {
       <p className="eyebrow">{WORKSPACE_PRICE_LINE}</p>
       <h1 className="serif-title">{WORKSPACE_NAME}</h1>
       <p className="lede">Start the 7-day trial to open the rooms. Cancel anytime on Stripe.</p>
+      <p className="note">Signed in as {account.email}. That has to match the Stripe receipt.</p>
       {checkoutNote ? <p className="note">{checkoutNote}</p> : null}
-      <p className="note">{account.email}</p>
       {payError ? <p className="note">{payError}</p> : null}
-      <div className="hero__actions">
-        <Button type="button" disabled={busy} onClick={() => void subscribe()}>
-          {busy ? 'Opening Stripe' : 'Start 7 days free'}
+      <div className="workspace-account-actions">
+        <Button type="button" disabled={blocked} onClick={() => void subscribe()}>
+          {busy === 'checkout' ? 'Opening Stripe' : 'Start 7 days free'}
         </Button>
-        <Button type="button" variant="ghost" disabled={leaving} onClick={() => void leave()}>
+        <Button type="button" variant="ghost" disabled={blocked} onClick={() => void alreadyStarted()}>
+          {busy === 'sync' ? 'Checking Stripe' : 'I already started'}
+        </Button>
+        <Button type="button" variant="ghost" disabled={blocked} onClick={() => void leave()}>
           Sign out
         </Button>
       </div>

@@ -447,7 +447,11 @@ export async function confirmPaidForRequest(
     const found = await findLiveWorkspaceSubscription(env, email)
     if (!found.ok) return found
     if (!found.subscription) {
-      return { ok: false as const, status: 402, error: 'Stripe has no active trial for this email.' }
+      return {
+        ok: false as const,
+        status: 402,
+        error: `No Stripe trial on ${email}. Sign out and sign in with the email on the Stripe receipt.`,
+      }
     }
     const saved = await activateHouse(env, {
       email,

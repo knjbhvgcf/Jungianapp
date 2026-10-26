@@ -219,7 +219,9 @@ export function WorkspaceHouse() {
     if (checkout !== 'success' && !sessionId?.startsWith('cs_') && workspaceUnlocked(house)) return
     checkoutSettled.current = true
     void (async () => {
-      const ok = await settleWorkspaceCheckout(sessionId)
+      const ok = await settleWorkspaceCheckout(sessionId, {
+        quiet: !sessionId?.startsWith('cs_') && checkout !== 'success',
+      })
       setBillingNote(takeCheckoutNote())
       if (ok) window.history.replaceState({}, '', WORKSPACE_PATH)
     })()
