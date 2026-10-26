@@ -47,7 +47,7 @@ export async function confirmWorkspacePaid(sessionId: string) {
     method: 'POST',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ sessionId }),
+    body: JSON.stringify(sessionId ? { sessionId } : {}),
   })
   if (!response.ok) throw new Error(await readError(response, 'Could not confirm payment.'))
   return (await response.json()) as WorkspaceHouse

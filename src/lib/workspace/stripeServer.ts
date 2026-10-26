@@ -36,11 +36,14 @@ async function stripeRequest(env: StripeEnv, method: 'GET' | 'POST', path: strin
     Authorization: `Bearer ${key}`,
   }
   const init: RequestInit = { method, headers }
+  let href = `${STRIPE}${path}`
   if (method === 'POST') {
     headers['Content-Type'] = 'application/x-www-form-urlencoded'
     init.body = new URLSearchParams(params ?? {}).toString()
+  } else if (params && Object.keys(params).length > 0) {
+    href += `?${new URLSearchParams(params).toString()}`
   }
-  const response = await fetch(`${STRIPE}${path}`, init)
+  const response = await fetch(href, init)
   const body = (await response.json()) as {
     error?: { message?: string }
     url?: string
@@ -52,6 +55,15 @@ async function stripeRequest(env: StripeEnv, method: 'GET' | 'POST', path: strin
     customer_email?: string | null
     customer_details?: { email?: string | null }
     email?: string | null
+    data?: Array<{
+      id?: string
+      status?: string
+      payment_status?: string
+      email?: string | null
+      customer?: string | { id?: string }
+      subscription?: string | { id?: string }
+      customer_details?: { email?: string | null }
+    }>
   }
   if (!response.ok) {
     return {
@@ -86,6 +98,7 @@ export async function createWorkspaceCheckoutSession(
     allow_promotion_codes: 'true',
     'metadata[product]': 'workspace',
     'metadata[email]': opts.email,
+    'subscription_data[trial_period_days]': '7',
     'subscription_data[metadata][product]': 'workspace',
     'subscription_data[metadata][email]': opts.email,
   }
@@ -115,7 +128,7 @@ export async function readWorkspaceCheckoutSession(env: StripeEnv, sessionId: st
     `/checkout/sessions/${encodeURIComponent(sessionId)}`,
   )
   if (!result.ok) return result
-  const paid = result.body.payment_status === 'paid' || result.body.status === 'complete'
+  const paid = checkoutSessionReady(result.body)
   const info: CheckoutSessionInfo = {
     paid,
     email: result.body.customer_details?.email || result.body.customer_email || undefined,
@@ -123,6 +136,78 @@ export async function readWorkspaceCheckoutSession(env: StripeEnv, sessionId: st
     subscription: customerId(result.body.subscription) || undefined,
   }
   return { ok: true as const, info }
+}
+
+function checkoutSessionReady(body: { status?: string; payment_status?: string }) {
+  return (
+    body.payment_status === 'paid' ||
+    body.payment_status === 'no_payment_required' ||
+    body.status === 'complete'
+  )
+}
+
+function subscriptionLive(status: string) {
+  return status === 'active' || status === 'trialing'
+}
+
+export async function findLiveWorkspaceSubscription(env: StripeEnv, email: string) {
+  const wanted = email.trim().toLowerCase()
+  const customers: Array<{ id?: string; email?: string | null }> = []
+
+  const listed = await stripeRequest(env, 'GET', '/customers', { email, limit: '10' })
+  if (listed.ok) customers.push(...(listed.body.data ?? []))
+
+  const searched = await stripeRequest(env, 'GET', '/customers/search', {
+    query: `email:'${wanted.replace(/'/g, '')}'`,
+    limit: '10',
+  })
+  if (searched.ok) customers.push(...(searched.body.data ?? []))
+
+  if (customers.length === 0) {
+    const recent = await stripeRequest(env, 'GET', '/customers', { limit: '30' })
+    if (recent.ok) {
+      customers.push(
+        ...(recent.body.data ?? []).filter((row) => (row.email ?? '').toLowerCase() === wanted),
+      )
+    }
+  }
+
+  const seen = new Set<string>()
+  for (const row of customers) {
+    const id = row.id ?? ''
+    if (!id.startsWith('cus_') || seen.has(id)) continue
+    seen.add(id)
+    const subs = await stripeRequest(env, 'GET', '/subscriptions', {
+      customer: id,
+      status: 'all',
+      limit: '10',
+    })
+    if (!subs.ok) return subs
+    const live = (subs.body.data ?? []).find((item) => subscriptionLive(item.status ?? ''))
+    if (live?.id?.startsWith('sub_')) {
+      return {
+        ok: true as const,
+        customer: id,
+        subscription: live.id,
+      }
+    }
+  }
+
+  const sessions = await stripeRequest(env, 'GET', '/checkout/sessions', { limit: '25' })
+  if (sessions.ok) {
+    for (const row of sessions.body.data ?? []) {
+      const sessionEmail = (row.customer_details?.email || row.email || '').toLowerCase()
+      if (sessionEmail !== wanted) continue
+      if (!checkoutSessionReady(row) && !subscriptionLive(row.status ?? '')) continue
+      const customer = customerId(row.customer)
+      const subscription = customerId(row.subscription)
+      if (customer.startsWith('cus_') && subscription.startsWith('sub_')) {
+        return { ok: true as const, customer, subscription }
+      }
+    }
+  }
+
+  return { ok: true as const, customer: '', subscription: '' }
 }
 
 export async function createWorkspacePortalSession(

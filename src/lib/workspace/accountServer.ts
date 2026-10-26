@@ -1,6 +1,7 @@
 import {
   createWorkspaceCheckoutSession,
   createWorkspacePortalSession,
+  findLiveWorkspaceSubscription,
   readStripeCustomerEmail,
   readWorkspaceCheckoutSession,
   verifyStripeWebhookSignature,
@@ -414,6 +415,23 @@ export async function saveHouseForRequest(
   return { ok: true as const, house: saved.house }
 }
 
+async function activateHouse(
+  env: AccountEnv,
+  opts: { email: string; customer?: string; subscription?: string },
+) {
+  const existing = (await readHouse(env, opts.email)) ?? emptyAccountHouse(opts.email)
+  const next: WorkspaceHouse = {
+    ...existing,
+    email: opts.email,
+    auth: 'email',
+    plan: 'active',
+    stripeCustomerId: opts.customer || existing.stripeCustomerId,
+    stripeSubscriptionId: opts.subscription || existing.stripeSubscriptionId,
+    planUpdatedAt: new Date().toISOString(),
+  }
+  return writeHouseRecord(env, next)
+}
+
 export async function confirmPaidForRequest(
   env: AccountEnv,
   opts: { cookieHeader: string | null; sessionId: string },
@@ -424,25 +442,35 @@ export async function confirmPaidForRequest(
   if (!email) {
     return { ok: false as const, status: 401, error: 'Sign in with email.' }
   }
-  const result = await readWorkspaceCheckoutSession(env, opts.sessionId)
+  const sessionId = opts.sessionId.trim()
+  if (!sessionId) {
+    const found = await findLiveWorkspaceSubscription(env, email)
+    if (!found.ok) return found
+    if (!found.subscription) {
+      return { ok: false as const, status: 402, error: 'Stripe has no active trial for this email.' }
+    }
+    const saved = await activateHouse(env, {
+      email,
+      customer: found.customer,
+      subscription: found.subscription,
+    })
+    if (!saved.ok) return saved
+    return { ok: true as const, house: saved.house }
+  }
+  const result = await readWorkspaceCheckoutSession(env, sessionId)
   if (!result.ok) return result
   if (!result.info.paid) {
-    return { ok: false as const, status: 402, error: 'Stripe did not mark this checkout as paid.' }
+    return {
+      ok: false as const,
+      status: 402,
+      error: 'Stripe has not finished this trial checkout.',
+    }
   }
-  if (result.info.email && normalizeEmail(result.info.email) !== email) {
-    return { ok: false as const, status: 403, error: 'That checkout belongs to a different email.' }
-  }
-  const existing = (await readHouse(env, email)) ?? emptyAccountHouse(email)
-  const next: WorkspaceHouse = {
-    ...existing,
+  const saved = await activateHouse(env, {
     email,
-    auth: 'email',
-    plan: 'active',
-    stripeCustomerId: result.info.customer || existing.stripeCustomerId,
-    stripeSubscriptionId: result.info.subscription || existing.stripeSubscriptionId,
-    planUpdatedAt: new Date().toISOString(),
-  }
-  const saved = await writeHouseRecord(env, next)
+    customer: result.info.customer,
+    subscription: result.info.subscription,
+  })
   if (!saved.ok) return saved
   return { ok: true as const, house: saved.house }
 }

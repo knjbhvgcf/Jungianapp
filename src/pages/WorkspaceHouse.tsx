@@ -19,6 +19,7 @@ import { QUIZ_PATH } from '../lib/quizPath'
 import {
   markWorkspaceCheckoutCanceled,
   settleWorkspaceCheckout,
+  takeCheckoutNote,
 } from '../lib/workspace/checkout'
 import {
   WORKSPACE_JOIN_PATH,
@@ -172,6 +173,7 @@ export function WorkspaceHouse() {
   const [youSeat, setYouSeat] = useState<number | null>(null)
   const [accountOpen, setAccountOpen] = useState(false)
   const checkoutSettled = useRef(false)
+  const [billingNote, setBillingNote] = useState('')
   const [meCopied, setMeCopied] = useState(false)
   const [note, setNote] = useState('')
   const [name, setName] = useState('')
@@ -206,12 +208,20 @@ export function WorkspaceHouse() {
     if (!house || checkoutSettled.current) return
     const params = new URLSearchParams(location.search)
     const checkout = params.get('checkout')
-    if (checkout !== 'success' && checkout !== 'cancel') return
+    const sessionId = params.get('session_id')
+    if (checkout === 'cancel') {
+      checkoutSettled.current = true
+      markWorkspaceCheckoutCanceled()
+      setBillingNote(takeCheckoutNote())
+      window.history.replaceState({}, '', WORKSPACE_PATH)
+      return
+    }
+    if (checkout !== 'success' && !sessionId?.startsWith('cs_') && workspaceUnlocked(house)) return
     checkoutSettled.current = true
-    window.history.replaceState({}, '', WORKSPACE_PATH)
     void (async () => {
-      if (checkout === 'cancel') markWorkspaceCheckoutCanceled()
-      else await settleWorkspaceCheckout(params.get('session_id'))
+      const ok = await settleWorkspaceCheckout(sessionId)
+      setBillingNote(takeCheckoutNote())
+      if (ok) window.history.replaceState({}, '', WORKSPACE_PATH)
     })()
   }, [house, location.search])
 
@@ -274,7 +284,7 @@ export function WorkspaceHouse() {
           robots="noindex,nofollow"
         />
         <section className="section workspace">
-          <WorkspacePaywall />
+          <WorkspacePaywall note={billingNote} />
         </section>
       </>
     )

@@ -98,14 +98,9 @@ export async function startWorkspacePortal() {
 }
 
 export async function settleWorkspaceCheckout(sessionId: string | null) {
-  if (!sessionId?.startsWith('cs_')) {
-    setCheckoutNote(
-      `Stripe came back, but this page could not confirm payment. ${WORKSPACE_NAME} is not marked subscribed.`,
-    )
-    return false
-  }
+  const id = sessionId?.startsWith('cs_') ? sessionId : ''
   try {
-    const house = await confirmWorkspacePaid(sessionId)
+    const house = await confirmWorkspacePaid(id)
     applyRemoteHouse(house)
     if (house.plan !== 'active') {
       setCheckoutNote(`Stripe did not mark ${WORKSPACE_NAME} as paid.`)
@@ -114,9 +109,17 @@ export async function settleWorkspaceCheckout(sessionId: string | null) {
     trackPurchase('workspace')
     setCheckoutNote(`Stripe has ${WORKSPACE_NAME} at ${WORKSPACE_PRICE} / month.`)
     return true
-  } catch {
+  } catch (caught) {
+    const detail = caught instanceof Error ? caught.message : ''
+    if (
+      !id &&
+      (detail.includes('no active trial') || detail.includes('not set up'))
+    ) {
+      return false
+    }
     setCheckoutNote(
-      `Stripe checkout came back, but this page could not confirm it. ${WORKSPACE_NAME} is not marked subscribed.`,
+      detail ||
+        `Stripe checkout came back, but this page could not confirm it. ${WORKSPACE_NAME} is not marked subscribed.`,
     )
     return false
   }

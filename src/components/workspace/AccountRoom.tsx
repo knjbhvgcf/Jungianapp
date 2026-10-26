@@ -129,18 +129,17 @@ export function AccountRoom() {
   )
 }
 
-export function WorkspacePaywall() {
+export function WorkspacePaywall({ note = '' }: { note?: string }) {
   const navigate = useNavigate()
   const house = useHouse()
   const [payError, setPayError] = useState('')
   const [busy, setBusy] = useState(false)
   const [leaving, setLeaving] = useState(false)
-  const [checkoutNote, setCheckoutNote] = useState('')
+  const [checkoutNote, setCheckoutNote] = useState(note)
 
   useEffect(() => {
-    const note = takeCheckoutNote()
     if (note) setCheckoutNote(note)
-  }, [])
+  }, [note])
 
   if (!house) return null
   const account = house
