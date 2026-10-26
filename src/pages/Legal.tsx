@@ -17,7 +17,7 @@ export function Legal() {
           <p className="mono-stat">Jungology App · answers stay here</p>
           <p className="lede">
             The Jung Functions Quiz, the eight scores, and the choice of lead and support stay
-            free. Jungology App is optional: seven days free, then $14 / month, cancel anytime.
+            free. Jungology App is optional: seven days free, then $10 USD/month, cancel anytime.
             Your Type in Depth is paused on the public site for now. Existing keys still open
             the reading in this browser.
           </p>

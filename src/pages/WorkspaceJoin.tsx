@@ -69,17 +69,20 @@ export function WorkspaceJoin() {
     <>
       <Seo
         title={`${WORKSPACE_NAME} | Jungology`}
-        description="People in your life, and whether this hour is ordinary, a loop, or grip."
+        description="Save people in your life as their type, invite friends to the quiz, compare types, and journal ordinary, loop, or grip."
         path="/workspace/join"
         robots="noindex,nofollow"
       />
       <section className="section workspace">
         <div className="wrap screen">
-          <p className="eyebrow">{WORKSPACE_PRICE_LINE}</p>
+          <p className="eyebrow">
+            {WORKSPACE_PRICE_LINE}. Cancel anytime.
+          </p>
           <h1 className="serif-title">{WORKSPACE_NAME}</h1>
           <p className="lede">
-            People in your life, and whether this hour is ordinary, a loop, or grip. Start with
-            email, then the 7-day trial. The rooms open after Stripe.
+            Save people in your life as their type, invite friends to take the quiz and get their
+            percentage results, compare types. A journal entry keeps data on whether you're in an
+            ordinary, a loop, or grip state. Start with email, then the 7-day trial.
           </p>
           {expired ? <p className="note">That sign-in link is used or has expired.</p> : null}
           {status === 'unknown' ? <p className="note">Opening the account…</p> : null}

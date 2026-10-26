@@ -95,7 +95,7 @@ const CATALOG: Record<
   reveal: { item_id: 'type-reveal', item_name: 'Your type', fallbackPrice: 1 },
   map: { item_id: 'type-in-depth', item_name: 'Your Type in Depth', fallbackPrice: 3 },
   compat: { item_id: 'compatibility', item_name: 'Compatibility', fallbackPrice: 1 },
-  workspace: { item_id: 'workspace', item_name: 'Jungology App', fallbackPrice: 14 },
+  workspace: { item_id: 'workspace', item_name: 'Jungology App', fallbackPrice: 10 },
 }
 
 function dollars(raw: string | undefined, fallback: number) {

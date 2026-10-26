@@ -535,6 +535,8 @@ export function Results() {
               ) : (
                 <p>{fillCopy(results.saveBody, { price: WORKSPACE_PRICE })}</p>
               )}
+              <p className="mono-stat">{fillCopy(results.offerStat, { price: WORKSPACE_PRICE })}</p>
+              <p className="note">{results.offerNote}</p>
               <Button to={saveHref} onClick={saveResults}>
                 {results.offerCta}
               </Button>

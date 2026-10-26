@@ -109,7 +109,7 @@ Compatibility is not currently for sale. Set `COMPATIBILITY_OFFERED` to `true` i
 
 ## Results save offer
 
-After the quiz, a popup offers **Save your results** (Jungology App: 7 days free, then $14 / month) or **No thanks, maybe later**. Scores stay visible either way. This is not a $1 type reveal and does not lock results.
+After the quiz, a popup offers **Save your results** (Jungology App: 7 days free, then $10 USD/month) or **No thanks, maybe later**. Scores stay visible either way. This is not a $1 type reveal and does not lock results.
 
 Unsigned people go to `/workspace/join`. Subscribe uses `VITE_WORKSPACE_CHECKOUT_URL` (Stripe Payment Link). After payment, redirect to `https://jungology.com/workspace?checkout=success&session_id={CHECKOUT_SESSION_ID}` and set `STRIPE_SECRET_KEY` on Pages so the account can confirm paid.
 
