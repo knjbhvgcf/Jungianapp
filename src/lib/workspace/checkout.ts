@@ -6,7 +6,7 @@ import { applyRemoteHouse } from './store'
 const CHECKOUT_NOTE_KEY = 'jung-functions.workspace.checkout.v1'
 
 /** Public Payment Link. Env overrides this if Cloudflare has it. */
-const FALLBACK_WORKSPACE_CHECKOUT_URL = 'https://buy.stripe.com/6oUfZj4ZdeA3crQeTMeIw03'
+const FALLBACK_WORKSPACE_CHECKOUT_URL = 'https://buy.stripe.com/6oU7sN8bpajN3VkeTMeIw04'
 
 function looksLikeEmail(value: string) {
   return /^\S+@\S+\.\S+$/.test(value)
