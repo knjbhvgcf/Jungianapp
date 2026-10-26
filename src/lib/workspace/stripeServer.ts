@@ -94,17 +94,19 @@ export async function createWorkspaceCheckoutSession(
     'line_items[0][quantity]': '1',
     success_url: `${opts.origin}/workspace?checkout=success&session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${opts.origin}/workspace?checkout=cancel`,
-    client_reference_id: opts.email.slice(0, 200),
     allow_promotion_codes: 'true',
     'metadata[product]': 'workspace',
-    'metadata[email]': opts.email,
     'subscription_data[trial_period_days]': '7',
     'subscription_data[metadata][product]': 'workspace',
-    'subscription_data[metadata][email]': opts.email,
+  }
+  if (opts.email) {
+    params.client_reference_id = opts.email.slice(0, 200)
+    params['metadata[email]'] = opts.email
+    params['subscription_data[metadata][email]'] = opts.email
   }
   if (opts.customerId?.startsWith('cus_')) {
     params.customer = opts.customerId
-  } else {
+  } else if (opts.email) {
     params.customer_email = opts.email
   }
   const result = await stripeRequest(env, 'POST', '/checkout/sessions', params)

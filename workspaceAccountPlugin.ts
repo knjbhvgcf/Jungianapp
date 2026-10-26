@@ -220,12 +220,13 @@ export function workspaceAccountPlugin(base: Omit<AccountEnv, 'WORKSPACE_HOUSES'
             const result = await confirmPaidForRequest(env, {
               cookieHeader: cookieHeader(req),
               sessionId: String(payload.sessionId ?? ''),
+              origin,
             })
             if (!result.ok) {
               sendJson(res, result.status, { error: result.error })
               return
             }
-            sendJson(res, 200, result.house)
+            sendJson(res, 200, result.house, result.setCookie)
             return
           }
 

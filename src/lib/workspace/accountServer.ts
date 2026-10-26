@@ -434,27 +434,27 @@ async function activateHouse(
 
 export async function confirmPaidForRequest(
   env: AccountEnv,
-  opts: { cookieHeader: string | null; sessionId: string },
+  opts: { cookieHeader: string | null; sessionId: string; origin: string },
 ) {
   const secret = requireSessionSecret(env)
   if (!secret.ok) return secret
-  const email = await emailFromSession(secret.secret, opts.cookieHeader)
-  if (!email) {
-    return { ok: false as const, status: 401, error: 'Sign in with email.' }
-  }
+  const signedIn = await emailFromSession(secret.secret, opts.cookieHeader)
   const sessionId = opts.sessionId.trim()
   if (!sessionId) {
-    const found = await findLiveWorkspaceSubscription(env, email)
+    if (!signedIn) {
+      return { ok: false as const, status: 401, error: 'Sign in with email.' }
+    }
+    const found = await findLiveWorkspaceSubscription(env, signedIn)
     if (!found.ok) return found
     if (!found.subscription) {
       return {
         ok: false as const,
         status: 402,
-        error: `No Stripe trial on ${email}. Sign out and sign in with the email on the Stripe receipt.`,
+        error: `No Stripe trial on ${signedIn}. Sign out and sign in with the email on the Stripe receipt.`,
       }
     }
     const saved = await activateHouse(env, {
-      email,
+      email: signedIn,
       customer: found.customer,
       subscription: found.subscription,
     })
@@ -470,13 +470,26 @@ export async function confirmPaidForRequest(
       error: 'Stripe has not finished this trial checkout.',
     }
   }
+  const email = result.info.email ? normalizeEmail(result.info.email) : signedIn
+  if (!email || !looksLikeEmail(email)) {
+    return {
+      ok: false as const,
+      status: 402,
+      error: 'Stripe did not give an email for this checkout.',
+    }
+  }
   const saved = await activateHouse(env, {
     email,
     customer: result.info.customer,
     subscription: result.info.subscription,
   })
   if (!saved.ok) return saved
-  return { ok: true as const, house: saved.house }
+  const cookie = await makeSessionValue(secret.secret, email)
+  return {
+    ok: true as const,
+    house: saved.house,
+    setCookie: sessionCookieHeader(cookie, opts.origin, SESSION_TTL_SEC),
+  }
 }
 
 export async function checkoutForRequest(
@@ -484,13 +497,16 @@ export async function checkoutForRequest(
   opts: { cookieHeader: string | null; origin: string },
 ) {
   const who = await signedInEmail(env, opts.cookieHeader)
-  if (!who.ok) return who
-  const house = (await readHouse(env, who.email)) ?? emptyAccountHouse(who.email)
-  return createWorkspaceCheckoutSession(env, {
-    email: who.email,
-    origin: opts.origin,
-    customerId: house.stripeCustomerId,
-  })
+  if (who.ok) {
+    const house = (await readHouse(env, who.email)) ?? emptyAccountHouse(who.email)
+    return createWorkspaceCheckoutSession(env, {
+      email: who.email,
+      origin: opts.origin,
+      customerId: house.stripeCustomerId,
+    })
+  }
+  if (who.status !== 401) return who
+  return createWorkspaceCheckoutSession(env, { email: '', origin: opts.origin })
 }
 
 export async function portalForRequest(

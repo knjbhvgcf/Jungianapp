@@ -96,7 +96,7 @@ function schedulePush(house: WorkspaceHouse) {
 }
 
 export function applyRemoteHouse(house: WorkspaceHouse) {
-  if (sessionStatus !== 'in') return house
+  sessionStatus = 'in'
   applyingRemote = true
   const next = writeHouse(house)
   applyingRemote = false
@@ -155,6 +155,7 @@ export async function hydrateHouse() {
     try {
       const result = await fetchWorkspaceHouse()
       if (result.status === 401) {
+        if (sessionStatus === 'in') return
         sessionStatus = 'out'
         emit()
         return

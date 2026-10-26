@@ -174,6 +174,11 @@ export function WorkspaceHouse() {
   const [accountOpen, setAccountOpen] = useState(false)
   const checkoutSettled = useRef(false)
   const [billingNote, setBillingNote] = useState('')
+  const [claimingStripe, setClaimingStripe] = useState(() => {
+    if (typeof window === 'undefined') return false
+    const params = new URLSearchParams(window.location.search)
+    return params.get('session_id')?.startsWith('cs_') || params.get('checkout') === 'success'
+  })
   const [meCopied, setMeCopied] = useState(false)
   const [note, setNote] = useState('')
   const [name, setName] = useState('')
@@ -205,27 +210,37 @@ export function WorkspaceHouse() {
   }, [house, location.search, navigate])
 
   useEffect(() => {
-    if (!house || checkoutSettled.current) return
+    if (checkoutSettled.current) return
     const params = new URLSearchParams(location.search)
     const checkout = params.get('checkout')
     const sessionId = params.get('session_id')
     if (checkout === 'cancel') {
       checkoutSettled.current = true
+      setClaimingStripe(false)
       markWorkspaceCheckoutCanceled()
       setBillingNote(takeCheckoutNote())
-      window.history.replaceState({}, '', WORKSPACE_PATH)
+      navigate(WORKSPACE_PATH, { replace: true })
       return
     }
-    if (checkout !== 'success' && !sessionId?.startsWith('cs_') && workspaceUnlocked(house)) return
+    const fromStripe = checkout === 'success' || Boolean(sessionId?.startsWith('cs_'))
+    if (!fromStripe) {
+      if (!house || workspaceUnlocked(house)) return
+      checkoutSettled.current = true
+      void (async () => {
+        const ok = await settleWorkspaceCheckout(null, { quiet: true })
+        setBillingNote(takeCheckoutNote())
+        if (ok) navigate(WORKSPACE_PATH, { replace: true })
+      })()
+      return
+    }
     checkoutSettled.current = true
     void (async () => {
-      const ok = await settleWorkspaceCheckout(sessionId, {
-        quiet: !sessionId?.startsWith('cs_') && checkout !== 'success',
-      })
+      const ok = await settleWorkspaceCheckout(sessionId)
       setBillingNote(takeCheckoutNote())
-      if (ok) window.history.replaceState({}, '', WORKSPACE_PATH)
+      setClaimingStripe(false)
+      if (ok) navigate(WORKSPACE_PATH, { replace: true })
     })()
-  }, [house, location.search])
+  }, [house, location.search, navigate])
 
   useEffect(() => {
     function openAccount() {
@@ -264,17 +279,32 @@ export function WorkspaceHouse() {
     setRoom('compat')
   }
 
-  if (status === 'unknown') {
+  if (status === 'unknown' || claimingStripe) {
     return (
       <section className="section workspace">
         <div className="wrap screen">
-          <p className="lede">Opening the account…</p>
+          <p className="lede">
+            {claimingStripe ? 'Opening your account from Stripe…' : 'Opening the account…'}
+          </p>
+          {billingNote ? <p className="note">{billingNote}</p> : null}
         </div>
       </section>
     )
   }
 
-  if (!house) return <Navigate to={WORKSPACE_JOIN_PATH} replace />
+  if (!house) {
+    if (billingNote) {
+      return (
+        <section className="section workspace">
+          <div className="wrap screen">
+            <p className="lede">{billingNote}</p>
+            <Button to={WORKSPACE_JOIN_PATH}>Back to join</Button>
+          </div>
+        </section>
+      )
+    }
+    return <Navigate to={WORKSPACE_JOIN_PATH} replace />
+  }
 
   if (!workspaceUnlocked(house)) {
     return (

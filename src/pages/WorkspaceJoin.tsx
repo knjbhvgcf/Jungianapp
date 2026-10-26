@@ -3,6 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { Seo } from '../components/Seo'
 import { requestWorkspaceLink } from '../lib/workspace/accountClient'
+import { startWorkspaceCheckout } from '../lib/workspace/checkout'
 import {
   WORKSPACE_KEEP_PATH,
   WORKSPACE_NAME,
@@ -23,16 +24,23 @@ export function WorkspaceJoin() {
   const status = useAccountStatus()
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
-  const [busy, setBusy] = useState(false)
+  const [busy, setBusy] = useState<'trial' | 'link' | null>(null)
   const [sent, setSent] = useState(false)
   const [devLink, setDevLink] = useState('')
-  const expired = new URLSearchParams(location.search).get('link') === 'expired'
+  const params = new URLSearchParams(location.search)
+  const expired = params.get('link') === 'expired'
   const host = typeof window === 'undefined' ? '' : window.location.hostname
   const localPreview = host === '127.0.0.1' || host === 'localhost'
+  const stripeReturn =
+    params.get('session_id')?.startsWith('cs_') || params.get('checkout') === 'success'
 
   useEffect(() => {
     void hydrateHouse()
   }, [])
+
+  if (stripeReturn) {
+    return <Navigate to={`${WORKSPACE_PATH}${location.search}`} replace />
+  }
 
   if (status === 'in' && house) {
     if (!workspaceUnlocked(house)) return <Navigate to={WORKSPACE_PATH} replace />
@@ -43,6 +51,17 @@ export function WorkspaceJoin() {
     return <Navigate to={WORKSPACE_PATH} replace />
   }
 
+  async function startTrial() {
+    setBusy('trial')
+    setError('')
+    try {
+      window.location.href = await startWorkspaceCheckout('')
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'Could not open Stripe.')
+      setBusy(null)
+    }
+  }
+
   async function onEmail(event: FormEvent) {
     event.preventDefault()
     const trimmed = email.trim()
@@ -50,7 +69,7 @@ export function WorkspaceJoin() {
       setError('Need an email this account can belong to.')
       return
     }
-    setBusy(true)
+    setBusy('link')
     setError('')
     setSent(false)
     setDevLink('')
@@ -61,7 +80,7 @@ export function WorkspaceJoin() {
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'Could not make the sign-in link.')
     } finally {
-      setBusy(false)
+      setBusy(null)
     }
   }
 
@@ -69,7 +88,7 @@ export function WorkspaceJoin() {
     <>
       <Seo
         title={`${WORKSPACE_NAME} | Jungology`}
-        description="Save people in your life as their type, invite friends to the quiz, compare types, and journal ordinary, loop, or grip."
+        description="Start the 7-day trial. The account is created from the email you use on Stripe."
         path="/workspace/join"
         robots="noindex,nofollow"
       />
@@ -80,13 +99,19 @@ export function WorkspaceJoin() {
           </p>
           <h1 className="serif-title">{WORKSPACE_NAME}</h1>
           <p className="lede">
-            Save people in your life as their type, invite friends to take the quiz and get their
-            percentage results, compare types. A journal entry keeps data on whether you're in an
-            ordinary, a loop, or grip state. Start with email, then the 7-day trial.
+            Start the 7-day trial on Stripe first. The account is created from the email you enter
+            there, so the rooms open on that address.
           </p>
           {expired ? <p className="note">That sign-in link is used or has expired.</p> : null}
           {status === 'unknown' ? <p className="note">Opening the account…</p> : null}
+          {error ? <p className="note">{error}</p> : null}
+          <div className="workspace-account-actions">
+            <Button type="button" disabled={Boolean(busy)} onClick={() => void startTrial()}>
+              {busy === 'trial' ? 'Opening Stripe' : 'Start 7 days free'}
+            </Button>
+          </div>
           <form className="workspace-add" onSubmit={(event) => void onEmail(event)}>
+            <p className="note">Already have an account? Sign in with that email.</p>
             <label>
               Email
               <input
@@ -100,9 +125,8 @@ export function WorkspaceJoin() {
                 autoComplete="email"
               />
             </label>
-            {error ? <p className="note">{error}</p> : null}
-            <Button type="submit" disabled={busy}>
-              {busy ? 'Making the link' : 'Continue with email'}
+            <Button type="submit" variant="ghost" disabled={Boolean(busy)}>
+              {busy === 'link' ? 'Making the link' : 'Email me a sign-in link'}
             </Button>
           </form>
           {sent && !devLink ? (

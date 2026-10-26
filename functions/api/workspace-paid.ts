@@ -6,11 +6,10 @@ import {
 
 type PagesContext = { request: Request; env: AccountEnv }
 
-function json(status: number, body: unknown) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { 'Content-Type': 'application/json' },
-  })
+function json(status: number, body: unknown, setCookie?: string) {
+  const headers = new Headers({ 'Content-Type': 'application/json' })
+  if (setCookie) headers.set('Set-Cookie', setCookie)
+  return new Response(JSON.stringify(body), { status, headers })
 }
 
 export async function onRequestPost(context: PagesContext) {
@@ -27,7 +26,8 @@ export async function onRequestPost(context: PagesContext) {
   const result = await confirmPaidForRequest(env, {
     cookieHeader: request.headers.get('Cookie'),
     sessionId: String(payload.sessionId ?? ''),
+    origin: new URL(request.url).origin,
   })
   if (!result.ok) return json(result.status, { error: result.error })
-  return json(200, result.house)
+  return json(200, result.house, result.setCookie)
 }

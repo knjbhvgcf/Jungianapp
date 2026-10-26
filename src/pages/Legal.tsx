@@ -25,7 +25,8 @@ export function Legal() {
           <h2>What you are buying</h2>
           <p>
             Jungology App is an email account for people, journal hours, and the type you keep.
-            The rooms open after the trial starts, and they close when the Stripe period ends.
+            Start the 7-day trial on Stripe first. The account is created from the email you
+            enter there, and the rooms close when the Stripe period ends.
             Earlier Type in Depth purchases were a one-time
             Beebe reading of the stack you scored. It is an educational text, not psychotherapy,
             not a diagnosis, and not the MBTI® instrument.
