@@ -7,6 +7,7 @@ import {
   WORKSPACE_NAME,
   WORKSPACE_OFFERED,
   WORKSPACE_PATH,
+  workspaceUnlocked,
 } from '../lib/workspace/offered'
 import { useHouse } from '../lib/workspace/store'
 import { Face, MenuDots } from './Icons'
@@ -25,7 +26,8 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const house = useHouse()
   const inApp = WORKSPACE_OFFERED && location.pathname.startsWith(WORKSPACE_PATH)
-  const inHouse = inApp && Boolean(house)
+  const signedIn = inApp && Boolean(house)
+  const inHouse = signedIn && workspaceUnlocked(house)
 
   if (inApp) {
     return (
@@ -34,7 +36,7 @@ export function Header() {
           <Link to={QUIZ_PATH} className="site-header__text">
             quiz
           </Link>
-          <Link to={inHouse ? WORKSPACE_PATH : WORKSPACE_JOIN_PATH} className="brand">
+          <Link to={signedIn ? WORKSPACE_PATH : WORKSPACE_JOIN_PATH} className="brand">
             Jungology
             <small>App</small>
           </Link>

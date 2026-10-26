@@ -7,7 +7,13 @@ import {
   takeCheckoutNote,
   workspacePortalUrl,
 } from '../../lib/workspace/checkout'
-import { WORKSPACE_JOIN_PATH, WORKSPACE_PRICE, WORKSPACE_PRICE_LINE } from '../../lib/workspace/offered'
+import {
+  WORKSPACE_JOIN_PATH,
+  WORKSPACE_NAME,
+  WORKSPACE_PRICE,
+  WORKSPACE_PRICE_LINE,
+  workspaceUnlocked,
+} from '../../lib/workspace/offered'
 import { signOut, useHouse } from '../../lib/workspace/store'
 
 function looksLikeEmail(value: string) {
@@ -32,7 +38,7 @@ export function AccountRoom() {
 
   const people = account.people.length
   const hours = account.hours.length
-  const subscribed = account.plan === 'active'
+  const subscribed = workspaceUnlocked(account)
   const canManage = subscribed && (Boolean(account.stripeCustomerId) || Boolean(workspacePortalUrl()))
 
   async function subscribe() {
@@ -120,5 +126,62 @@ export function AccountRoom() {
         </Button>
       </div>
     </>
+  )
+}
+
+export function WorkspacePaywall() {
+  const navigate = useNavigate()
+  const house = useHouse()
+  const [payError, setPayError] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [leaving, setLeaving] = useState(false)
+  const [checkoutNote, setCheckoutNote] = useState('')
+
+  useEffect(() => {
+    const note = takeCheckoutNote()
+    if (note) setCheckoutNote(note)
+  }, [])
+
+  if (!house) return null
+  const account = house
+
+  async function subscribe() {
+    if (!looksLikeEmail(account.email)) {
+      setPayError('Need an email Stripe can send the receipt to.')
+      return
+    }
+    setPayError('')
+    setBusy(true)
+    try {
+      window.location.href = await startWorkspaceCheckout(account.email)
+    } catch (caught) {
+      setPayError(caught instanceof Error ? caught.message : 'Could not open checkout.')
+      setBusy(false)
+    }
+  }
+
+  async function leave() {
+    setLeaving(true)
+    await signOut()
+    navigate(WORKSPACE_JOIN_PATH)
+  }
+
+  return (
+    <div className="wrap screen">
+      <p className="eyebrow">{WORKSPACE_PRICE_LINE}</p>
+      <h1 className="serif-title">{WORKSPACE_NAME}</h1>
+      <p className="lede">Start the 7-day trial to open the rooms. Cancel anytime on Stripe.</p>
+      {checkoutNote ? <p className="note">{checkoutNote}</p> : null}
+      <p className="note">{account.email}</p>
+      {payError ? <p className="note">{payError}</p> : null}
+      <div className="hero__actions">
+        <Button type="button" disabled={busy} onClick={() => void subscribe()}>
+          {busy ? 'Opening Stripe' : 'Start 7 days free'}
+        </Button>
+        <Button type="button" variant="ghost" disabled={leaving} onClick={() => void leave()}>
+          Sign out
+        </Button>
+      </div>
+    </div>
   )
 }

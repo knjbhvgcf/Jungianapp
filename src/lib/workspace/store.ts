@@ -86,6 +86,7 @@ function currentHouse(): WorkspaceHouse | null {
 
 function schedulePush(house: WorkspaceHouse) {
   if (sessionStatus !== 'in' || typeof window === 'undefined') return
+  if (house.plan !== 'active') return
   window.clearTimeout(pushTimer)
   pushTimer = window.setTimeout(() => {
     void putWorkspaceHouse(house)

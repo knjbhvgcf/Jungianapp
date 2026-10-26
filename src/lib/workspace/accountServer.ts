@@ -400,6 +400,9 @@ export async function saveHouseForRequest(
     return { ok: false as const, status: 400, error: 'Need a house with people and hours lists.' }
   }
   const existing = await readHouse(env, email)
+  if ((existing?.plan ?? 'none') !== 'active') {
+    return { ok: false as const, status: 402, error: 'Start the trial to use Jungology App.' }
+  }
   const next: WorkspaceHouse = {
     ...parsed,
     ...serverBilling(existing),

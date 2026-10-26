@@ -4,7 +4,7 @@ import { Button } from '../components/Button'
 import { ScoreBar } from '../components/ScoreBar'
 import { Seo } from '../components/Seo'
 import { FUNCTION_IDS } from '../data/functions'
-import { WORKSPACE_JOIN_PATH, WORKSPACE_NAME, WORKSPACE_PATH } from '../lib/workspace/offered'
+import { WORKSPACE_JOIN_PATH, WORKSPACE_NAME, WORKSPACE_PATH, workspaceUnlocked } from '../lib/workspace/offered'
 import { loadResultSnapshot } from '../lib/workspace/snapshot'
 import {
   hydrateHouse,
@@ -35,6 +35,7 @@ export function WorkspaceKeep() {
   }
 
   if (!house) return <Navigate to={WORKSPACE_JOIN_PATH} replace />
+  if (!workspaceUnlocked(house)) return <Navigate to={WORKSPACE_PATH} replace />
   if (house.self) return <Navigate to={WORKSPACE_PATH} replace />
   if (!snapshot) return <Navigate to={WORKSPACE_PATH} replace />
   const kept = snapshot

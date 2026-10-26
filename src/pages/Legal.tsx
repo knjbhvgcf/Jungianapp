@@ -25,7 +25,8 @@ export function Legal() {
           <h2>What you are buying</h2>
           <p>
             Jungology App is an email account for people, journal hours, and the type you keep.
-            Rooms stay open if you cancel. Earlier Type in Depth purchases were a one-time
+            The rooms open after the trial starts, and they close when the Stripe period ends.
+            Earlier Type in Depth purchases were a one-time
             Beebe reading of the stack you scored. It is an educational text, not psychotherapy,
             not a diagnosis, and not the MBTI® instrument.
           </p>

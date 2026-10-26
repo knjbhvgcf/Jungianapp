@@ -4,7 +4,7 @@ import { Button } from '../components/Button'
 import { Seo } from '../components/Seo'
 import { StackPicker } from '../components/StackPicker'
 import { TypePortrait } from '../components/TypePortrait'
-import { AccountRoom } from '../components/workspace/AccountRoom'
+import { AccountRoom, WorkspacePaywall } from '../components/workspace/AccountRoom'
 import { CompatPair } from '../components/workspace/CompatPair'
 import { EightChart } from '../components/workspace/EightChart'
 import { HouseMap } from '../components/workspace/HouseMap'
@@ -25,6 +25,7 @@ import {
   WORKSPACE_KEEP_PATH,
   WORKSPACE_NAME,
   WORKSPACE_PATH,
+  workspaceUnlocked,
 } from '../lib/workspace/offered'
 import { encodeShareLine, hasPercents, snapshotFromShare } from '../lib/workspace/sharePacket'
 import { loadResultSnapshot, snapshotFromType } from '../lib/workspace/snapshot'
@@ -189,7 +190,7 @@ export function WorkspaceHouse() {
   }, [])
 
   useEffect(() => {
-    if (!house) return
+    if (!house || !workspaceUnlocked(house)) return
     if (house.self) {
       pullQuizPercents()
       return
@@ -211,7 +212,6 @@ export function WorkspaceHouse() {
     void (async () => {
       if (checkout === 'cancel') markWorkspaceCheckoutCanceled()
       else await settleWorkspaceCheckout(params.get('session_id'))
-      setAccountOpen(true)
     })()
   }, [house, location.search])
 
@@ -263,6 +263,22 @@ export function WorkspaceHouse() {
   }
 
   if (!house) return <Navigate to={WORKSPACE_JOIN_PATH} replace />
+
+  if (!workspaceUnlocked(house)) {
+    return (
+      <>
+        <Seo
+          title={`${WORKSPACE_NAME} | Jungology`}
+          description="Start the 7-day trial to open Me, journal, library, and compare."
+          path="/workspace"
+          robots="noindex,nofollow"
+        />
+        <section className="section workspace">
+          <WorkspacePaywall />
+        </section>
+      </>
+    )
+  }
 
   function goToRoom(next: Room) {
     setRoom(next)

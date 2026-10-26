@@ -113,7 +113,7 @@ After the quiz, a popup offers **Save your results** (Jungology App: 7 days free
 
 Unsigned people go to `/workspace/join`. Subscribe uses `VITE_WORKSPACE_CHECKOUT_URL` (Stripe Payment Link). After payment, redirect to `https://jungology.com/workspace?checkout=success&session_id={CHECKOUT_SESSION_ID}` and set `STRIPE_SECRET_KEY` on Pages so the account can confirm paid.
 
-Cancel and renew update the stored plan through `POST /api/workspace-stripe`. In Stripe: Developers → Webhooks → Add endpoint `https://jungology.com/api/workspace-stripe` for `checkout.session.completed`, `customer.subscription.updated`, and `customer.subscription.deleted`. Put the signing secret in `STRIPE_WEBHOOK_SECRET` on Pages. Rooms stay open either way; the account line is what changes.
+Cancel and renew update the stored plan through `POST /api/workspace-stripe`. In Stripe: Developers → Webhooks → Add endpoint `https://jungology.com/api/workspace-stripe` for `checkout.session.completed`, `customer.subscription.updated`, and `customer.subscription.deleted`. Put the signing secret in `STRIPE_WEBHOOK_SECRET` on Pages. The rooms stay closed until Stripe marks the trial or subscription active.
 
 ## Project layout
 

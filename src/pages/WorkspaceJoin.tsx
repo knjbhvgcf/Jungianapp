@@ -3,7 +3,13 @@ import { Navigate, useLocation } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { Seo } from '../components/Seo'
 import { requestWorkspaceLink } from '../lib/workspace/accountClient'
-import { WORKSPACE_KEEP_PATH, WORKSPACE_NAME, WORKSPACE_PATH, WORKSPACE_PRICE_LINE } from '../lib/workspace/offered'
+import {
+  WORKSPACE_KEEP_PATH,
+  WORKSPACE_NAME,
+  WORKSPACE_PATH,
+  WORKSPACE_PRICE_LINE,
+  workspaceUnlocked,
+} from '../lib/workspace/offered'
 import { loadResultSnapshot } from '../lib/workspace/snapshot'
 import { hydrateHouse, keepSnapshotWasSkipped, useAccountStatus, useHouse } from '../lib/workspace/store'
 
@@ -29,6 +35,7 @@ export function WorkspaceJoin() {
   }, [])
 
   if (status === 'in' && house) {
+    if (!workspaceUnlocked(house)) return <Navigate to={WORKSPACE_PATH} replace />
     const snapshot = loadResultSnapshot()
     if (!house.self && snapshot && !keepSnapshotWasSkipped(snapshot)) {
       return <Navigate to={WORKSPACE_KEEP_PATH} replace />
@@ -71,7 +78,8 @@ export function WorkspaceJoin() {
           <p className="eyebrow">{WORKSPACE_PRICE_LINE}</p>
           <h1 className="serif-title">{WORKSPACE_NAME}</h1>
           <p className="lede">
-            People in your life, and whether this hour is ordinary, a loop, or grip.
+            People in your life, and whether this hour is ordinary, a loop, or grip. Start with
+            email, then the 7-day trial. The rooms open after Stripe.
           </p>
           {expired ? <p className="note">That sign-in link is used or has expired.</p> : null}
           {status === 'unknown' ? <p className="note">Opening the account…</p> : null}
