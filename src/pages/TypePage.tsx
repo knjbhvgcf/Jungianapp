@@ -70,7 +70,7 @@ export function TypesIndex() {
 
 export function TypePage() {
   const { code = '' } = useParams()
-  const listed = typeByCode(code)
+  const listed = typeByCode(code.replace(/\/+$/, ''))
   if (!listed) return <NotFound />
 
   return <TypePageBody code={listed.code} />

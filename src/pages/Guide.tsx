@@ -5,6 +5,7 @@ import { Editable, EditSeo } from '../components/Editable'
 import { Seo } from '../components/Seo'
 import { useEditMode, useGuidesDraft } from '../lib/editMode'
 import { QUIZ_PATH } from '../lib/quizPath'
+import { routePath } from '../lib/site'
 import { parseGuideBlock, parseGuideInline, type GuideDiagram } from '../lib/guideMarkup'
 import { NotFound } from './NotFound'
 
@@ -198,7 +199,7 @@ function useGuide(slug: string) {
 
 export function GuidePage() {
   const { pathname } = useLocation()
-  const slug = pathname.replace(/^\//, '')
+  const slug = routePath(pathname).replace(/^\//, '')
   const guide = useGuide(slug)
   const { editing, patchGuide } = useEditMode()
   const all = useGuidesDraft()

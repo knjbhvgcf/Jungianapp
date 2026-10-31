@@ -9,7 +9,6 @@ import { Dossier } from './pages/Dossier'
 import { GuidePage, GuidesIndex } from './pages/Guide'
 import { Home, TestLanding } from './pages/Home'
 import { Legal } from './pages/Legal'
-import { NotFound } from './pages/NotFound'
 import { Quiz } from './pages/Quiz'
 import { Results } from './pages/Results'
 import { TypePage, TypesIndex } from './pages/TypePage'
@@ -66,7 +65,7 @@ export default function App() {
             ]
           : null}
         {slash('/:slug', <GuidePage />)}
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<GuidePage />} />
       </Route>
     </Routes>
   )
