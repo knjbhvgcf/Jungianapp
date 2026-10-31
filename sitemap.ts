@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { canonicalPath } from './src/lib/site.ts'
 import { rememberPublishedPaths } from './seoGuard.ts'
 
 const CORE = [
@@ -45,7 +46,7 @@ export function writeSitemap(guideSlugs: string[], dest = 'public/sitemap.xml') 
   const body = urls
     .map(
       (url) => `  <url>
-    <loc>${origin}${url.loc === '/' ? '/' : url.loc}</loc>
+    <loc>${origin}${canonicalPath(url.loc)}</loc>
     <changefreq>monthly</changefreq>
     <priority>${url.priority}</priority>
   </url>`,

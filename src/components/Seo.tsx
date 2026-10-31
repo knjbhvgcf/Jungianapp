@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { SITE_OG_IMAGE, SITE_ORIGIN } from '../lib/site'
+import { canonicalPath, SITE_OG_IMAGE, SITE_ORIGIN } from '../lib/site'
 
 type SeoProps = {
   title: string
@@ -26,7 +26,7 @@ export function Seo({ title, description, path = '/', robots, jsonLd }: SeoProps
     const host = window.location.hostname
     const origin =
       host === 'localhost' || host === '127.0.0.1' ? window.location.origin : SITE_ORIGIN
-    const url = `${origin}${path}`
+    const url = `${origin}${canonicalPath(path)}`
     const image = `${origin}${SITE_OG_IMAGE}`
 
     document.title = title

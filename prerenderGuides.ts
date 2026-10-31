@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import type { Plugin } from 'vite'
 import { parseGuideBlock, parseGuideInline, type GuideDiagram } from './src/lib/guideMarkup.ts'
+import { canonicalUrl } from './src/lib/site.ts'
 import { FUNCTION_LIST } from './src/data/functions.ts'
 import { writeSitemap } from './sitemap.ts'
 import { checkSeo } from './seoGuard.ts'
@@ -324,7 +325,7 @@ function applyShell(
   robots = 'index,follow',
   keepJsonLd = false,
 ) {
-  const url = `https://jungology.com${pagePath === '/' ? '/' : pagePath}`
+  const url = canonicalUrl(pagePath)
   const jsonLd = `<script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'WebPage',

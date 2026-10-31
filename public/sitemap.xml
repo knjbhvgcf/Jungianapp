@@ -6,167 +6,172 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types</loc>
+    <loc>https://jungology.com/quiz/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jungology.com/type-in-depth</loc>
+    <loc>https://jungology.com/types/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jungology.com/type-in-depth/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jungology.com/about</loc>
+    <loc>https://jungology.com/about/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://jungology.com/legal</loc>
+    <loc>https://jungology.com/legal/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://jungology.com/guides</loc>
+    <loc>https://jungology.com/guides/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/intj</loc>
+    <loc>https://jungology.com/types/intj/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/intp</loc>
+    <loc>https://jungology.com/types/intp/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/entj</loc>
+    <loc>https://jungology.com/types/entj/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/entp</loc>
+    <loc>https://jungology.com/types/entp/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/infj</loc>
+    <loc>https://jungology.com/types/infj/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/infp</loc>
+    <loc>https://jungology.com/types/infp/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/enfj</loc>
+    <loc>https://jungology.com/types/enfj/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/enfp</loc>
+    <loc>https://jungology.com/types/enfp/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/istj</loc>
+    <loc>https://jungology.com/types/istj/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/isfj</loc>
+    <loc>https://jungology.com/types/isfj/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/estj</loc>
+    <loc>https://jungology.com/types/estj/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/esfj</loc>
+    <loc>https://jungology.com/types/esfj/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/istp</loc>
+    <loc>https://jungology.com/types/istp/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/isfp</loc>
+    <loc>https://jungology.com/types/isfp/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/estp</loc>
+    <loc>https://jungology.com/types/estp/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/types/esfp</loc>
+    <loc>https://jungology.com/types/esfp/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/type-theory</loc>
+    <loc>https://jungology.com/type-theory/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jungology.com/four-letter-code</loc>
+    <loc>https://jungology.com/four-letter-code/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jungology.com/function-stack</loc>
+    <loc>https://jungology.com/function-stack/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jungology.com/jungian-cognitive-functions</loc>
+    <loc>https://jungology.com/jungian-cognitive-functions/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/jungian-cognitive-functions-test</loc>
+    <loc>https://jungology.com/jungian-cognitive-functions-test/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jungology.com/jung-vs-mbti</loc>
+    <loc>https://jungology.com/jung-vs-mbti/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/ni-vs-ne</loc>
+    <loc>https://jungology.com/ni-vs-ne/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/fi-vs-ti</loc>
+    <loc>https://jungology.com/fi-vs-ti/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/infj-vs-infp</loc>
+    <loc>https://jungology.com/infj-vs-infp/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/infj-overtyping</loc>
+    <loc>https://jungology.com/infj-overtyping/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/si-vs-se</loc>
+    <loc>https://jungology.com/si-vs-se/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jungology.com/fe-vs-te</loc>
+    <loc>https://jungology.com/fe-vs-te/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

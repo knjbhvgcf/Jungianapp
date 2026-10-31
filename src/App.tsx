@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { About } from './pages/About'
@@ -29,37 +30,42 @@ function RedirectDossier() {
   )
 }
 
+function slash(path: string, element: ReactElement) {
+  const clean = path.replace(/\/+$/, '')
+  return [
+    <Route key={clean} path={clean} element={element} />,
+    <Route key={`${clean}/`} path={`${clean}/`} element={element} />,
+  ]
+}
+
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path={QUIZ_PATH} element={<Quiz />} />
-        <Route path={`${QUIZ_PATH}/`} element={<Quiz />} />
-        <Route path={TEST_LANDING_PATH} element={<TestLanding />} />
-        <Route path="/clarify" element={<Clarify />} />
-        <Route path="/results" element={<Results />} />
-        <Route path={TYPE_IN_DEPTH_PATH} element={<Dossier />} />
-        <Route path={`${TYPE_IN_DEPTH_PATH}/`} element={<Dossier />} />
-        <Route path="/dossier" element={<RedirectDossier />} />
-        <Route path="/dossier/" element={<RedirectDossier />} />
-        <Route path="/compatibility" element={<Compatibility />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/legal" element={<Legal />} />
-        <Route path="/guides" element={<GuidesIndex />} />
-        <Route path="/4-letter-code" element={<Navigate to="/four-letter-code" replace />} />
-        <Route path="/the-stack" element={<Navigate to="/function-stack" replace />} />
-        <Route path="/types" element={<TypesIndex />} />
-        <Route path="/types/:code" element={<TypePage />} />
-        <Route path="/admin" element={<Admin />} />
-        {WORKSPACE_OFFERED ? (
-          <>
-            <Route path={WORKSPACE_PATH} element={<WorkspaceHouse />} />
-            <Route path={WORKSPACE_JOIN_PATH} element={<WorkspaceJoin />} />
-            <Route path={WORKSPACE_KEEP_PATH} element={<WorkspaceKeep />} />
-          </>
-        ) : null}
-        <Route path="/:slug" element={<GuidePage />} />
+        {slash(QUIZ_PATH, <Quiz />)}
+        {slash(TEST_LANDING_PATH, <TestLanding />)}
+        {slash('/clarify', <Clarify />)}
+        {slash('/results', <Results />)}
+        {slash(TYPE_IN_DEPTH_PATH, <Dossier />)}
+        {slash('/dossier', <RedirectDossier />)}
+        {slash('/compatibility', <Compatibility />)}
+        {slash('/about', <About />)}
+        {slash('/legal', <Legal />)}
+        {slash('/guides', <GuidesIndex />)}
+        {slash('/4-letter-code', <Navigate to="/four-letter-code" replace />)}
+        {slash('/the-stack', <Navigate to="/function-stack" replace />)}
+        {slash('/types', <TypesIndex />)}
+        {slash('/types/:code', <TypePage />)}
+        {slash('/admin', <Admin />)}
+        {WORKSPACE_OFFERED
+          ? [
+              ...slash(WORKSPACE_PATH, <WorkspaceHouse />),
+              ...slash(WORKSPACE_JOIN_PATH, <WorkspaceJoin />),
+              ...slash(WORKSPACE_KEEP_PATH, <WorkspaceKeep />),
+            ]
+          : null}
+        {slash('/:slug', <GuidePage />)}
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

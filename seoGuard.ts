@@ -1,7 +1,8 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { canonicalUrl, SITE_ORIGIN } from './src/lib/site.ts'
 
-const ORIGIN = 'https://jungology.com'
+const ORIGIN = SITE_ORIGIN
 const PUBLISHED = path.resolve(process.cwd(), 'seo/published-paths.json')
 const REDIRECTS = path.resolve(process.cwd(), 'public/_redirects')
 
@@ -63,7 +64,7 @@ function distFileFor(dist: string, pagePath: string) {
 }
 
 function hasCanonical(html: string, pagePath: string) {
-  const url = `${ORIGIN}${pagePath === '/' ? '/' : pagePath}`
+  const url = canonicalUrl(pagePath)
   return html.includes(`rel="canonical"`) && html.includes(`href="${url}"`)
 }
 
@@ -137,7 +138,7 @@ export function checkSeo(dist = path.resolve(process.cwd(), 'dist')) {
       errors.push(`${pagePath} is prerendered with noindex. Indexed URLs must stay index,follow.`)
     }
     if (!hasCanonical(html, pagePath)) {
-      errors.push(`${pagePath} is missing a self-canonical to ${ORIGIN}${pagePath === '/' ? '/' : pagePath}.`)
+      errors.push(`${pagePath} is missing a self-canonical to ${canonicalUrl(pagePath)}.`)
     }
     if (!/<h1[\s>]/i.test(html)) {
       errors.push(`${pagePath} has no H1 in the prerendered HTML.`)
