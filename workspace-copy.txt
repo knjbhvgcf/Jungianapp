@@ -1,0 +1,1044 @@
+JUNGOLOGY APP COPY
+==================
+Edit any line. Leave {placeholders} as they are — the app fills those in
+(names, types, Fi, Te, etc.).
+
+When you are done, send this file back and the lines can be put in Jungology App.
+
+The 52 quiz statements are in quiz-questions.txt.
+
+
+--------------------------------
+BOTTOM MENU
+--------------------------------
+Me
+Library
+Journal
+Compare
+
+
+--------------------------------
+HOME
+--------------------------------
+Eyebrow:
+  Jungology App
+
+Title:
+  Jungology
+
+Stat:
+  8 functions · 52 questions
+
+Lede:
+  The first Delphic maxim states “Know thyself”, it is at the core of everything we encounter in life, the lens through which we look, the vantage point from which we jump forward.
+
+Most four-letter quizzes dont score the functions. This one does: fifty-two statements about how you notice, decide, and take in a situation.
+
+Let’s discover your personality type!
+
+Buttons:
+  Begin the quiz
+  Continue the quiz
+  Open rooms
+  Sixteen sprouts
+
+Accessibility on the wizard portrait:
+  INFJ Mystic
+
+
+--------------------------------
+QUIZ
+--------------------------------
+Opening:
+  Opening the quiz…
+
+Progress:
+  Question {n} of 52
+
+Resume:
+  You left off here. Back to home.
+
+Likert hint:
+  1 strongly disagree · 5 strongly agree
+
+Likert (1 to 5):
+  Strongly disagree
+  Disagree
+  Neutral
+  Agree
+  Strongly agree
+
+Buttons:
+  Back
+  Next
+  See results
+
+Hint if they have not tapped yet:
+  Tap a number to continue
+
+
+--------------------------------
+FOLLOW-UP (when two leads were close)
+--------------------------------
+Opening:
+  Opening the follow-up…
+
+One close pair:
+  Two answers were too close to name a type yet. Pick the sentence that sounds more like you.
+
+Several close pairs:
+  {pair names} were close. Pick the sentence that sounds more like you.
+
+Button:
+  Back
+
+
+--------------------------------
+RESULTS
+--------------------------------
+Eyebrow:
+  closest type
+
+Heading:
+  Eight scores
+
+Note:
+  Answers stayed on this phone.
+
+Buttons:
+  Send type and percentages
+  Sending…
+  Keep on Me
+  Meet this sprout
+  Sixteen sprouts
+  Start over
+
+Invite notes:
+  Need a type and the eight percentages.
+  Sent. They can look for it in Library.
+  Need a type and the eight percentages. We dont share your answers.
+
+Could not name a type:
+  Could not name a type from those answers.
+
+Opening:
+  Opening results…
+
+
+--------------------------------
+SIXTEEN SPROUTS
+--------------------------------
+Eyebrow:
+  sprouts
+
+Title:
+  Sixteen sprouts
+
+Lede:
+  Each sprout is a result of your leading function and auxillary function. Meet them before the
+  quiz, or come back after.
+
+Buttons:
+  Begin the quiz
+  Back
+  All sprouts
+
+One sprout, eyebrow:
+  sprout
+
+One sprout, heading:
+  Cognitive stack
+
+Empty:
+  That sprout is not here.
+
+
+SPROUT TITLES AND ONE-LINES
+---------------------------
+INTJ  Mastermind
+  Holds a long-range inner picture of how things should unfold, and then builds, in the shared world, the systems by which that picture might be made real without being sold too soon to mere usefulness.
+
+INTP  Sage
+  Takes ideas apart until the inner logic holds, and then branches, by extraverted intuition, into the new cases the model still cannot answer, preferring a true unfinished thought to a useful false close.
+
+ENTJ  Architect-King
+  Moves people and plans toward a visible goal, guided by a sense of the most effective path, and by an inner picture of where the whole campaign is tending, which extraverted thinking then undertakes to make happen.
+
+ENTP  Trickster Inventor
+  Opens possibilities in the object-world and in conversation, and then pressure-tests them for inner consistency, keeping the field from hardening too soon, and sometimes from hardening at all.
+
+INFJ  Mystic
+  Reads the deeper pattern in people and situations, and then works, by extraverted feeling, to bring the group toward a meaning that can almost be seen, as if the we had a soul that had not yet learned to speak.
+
+INFP  Dreamer
+  Protects an inner sense of what matters, often before it can be justified in public terms, and then explores the many lives in which that compass might still be true.
+
+ENFJ  Mentor
+  Gathers people around a shared feeling of purpose and an inner picture of who they could become together, hospitality here being not manners but a theory of the human, enacted.
+
+ENFP  Wanderer
+  Sees potential in people and ideas, and then checks, by a private standard of worth, which of those paths is still honest to pursue, spark remaining the method and sincerity the law.
+
+ISTJ  Keeper of the Scrolls
+  Keeps what has already been paid for in experience, and then organizes the present so that duties are met with care, duty itself being, in this stack, a form of love.
+
+ISFJ  Heart Guardian
+  Remembers what people need and what has been promised, and then maintains a climate of practical care, the house remaining a house because someone has stored, in the body, how it is kept.
+
+ESTJ  Steward
+  Sets standards, assigns roles, and uses proven methods so that the group actually delivers, trusting what can be shown, repeated, and handed on without a mystic preface.
+
+ESFJ  Caretaker
+  Tends relationships and shared customs so that everyone knows they belong and the day can run, hospitality being a craft by which the we is kept from coming apart.
+
+ISTP  Craftsman
+  Understands a system by taking it apart, and then acts on what the present situation actually requires, words remaining extra until they are a tool, and the object remaining the test.
+
+ISFP  Artisan
+  Moves from an inner sense of taste and worth, expressed through present, sensory, often quiet action, so that style can be a moral fact and the body a court of first instance.
+
+ESTP  Warrior
+  Reads the room and the moment, and then improvises a clever next move, life being a set of actual conditions rather than a briefing, timing the gift and later metabolizing the cost.
+
+ESFP  Bard
+  Brings energy, style, and feeling into the here and now, and then organizes enough to keep the moment alive, asking, if honest, whether the night was true as well as vivid.
+
+
+--------------------------------
+SHARED CHROME
+--------------------------------
+edit
+close
+Back (the ‹ arrow; aria label: Back)
+
+Tap a seat.
+
+Ego
+Shadow
+
+Seat short names (on the chart buttons):
+  Hero
+  Parent
+  Child
+  Inferior
+  Opposing
+  Critic
+  Trickster
+  Demon
+
+Seat full names (in the tap-open note):
+  Hero / Heroine
+  Parent
+  Eternal Child
+  Inferior
+  Opposing Nemesis
+  Critic
+  Trickster
+  Demon
+
+Seat notes (when you tap a seat):
+  Hero / Heroine:
+    The leading conscious function. Identity, competence, what you trust first.
+  Parent:
+    The supporting function. How you foster, teach, and take responsibility.
+  Eternal Child:
+    Play, relief, and inflation. Younger, less reliable, often charming.
+  Inferior:
+    The inferior function. Aspiration, embarrassment, and what you project onto others.
+  Opposing Nemesis:
+    The opposite attitude of the Hero / Heroine. Contrariness, “yes, but,” and defensive spin.
+  Critic:
+    The shadow of the Parent. Criticism, limit-setting, and bitterness.
+  Trickster:
+    The shadow of the Eternal Child. Double binds, mischief, and escape hatches.
+  Demon:
+    The most unconscious. Undermining — and, in later work, a source of transformation.
+
+Eight functions (name, then the one-line that shows when a seat is open):
+  Ni  Introverted Intuition
+      Follows underlying patterns and a sense of where things are heading.
+  Ne  Extraverted Intuition
+      Explores alternatives, connections, and what could be true.
+  Si  Introverted Sensing
+      Compares the present with personal history, precedent, and bodily familiarity.
+  Se  Extraverted Sensing
+      Tracks what is happening now through direct sensory contact and action.
+  Ti  Introverted Thinking
+      Builds precise mental models and checks them for consistency.
+  Te  Extraverted Thinking
+      Organizes people, plans, and metrics so that results actually happen.
+  Fi  Introverted Feeling
+      Checks choices against an inner sense of authenticity and rightness.
+  Fe  Extraverted Feeling
+      Reads the group mood and works toward harmony, inclusion, and morale.
+
+
+--------------------------------
+JOIN (before Jungology App opens)
+--------------------------------
+Eyebrow:
+  7 days free, then {price} / month
+
+Title:
+  Jungology App
+
+Lede:
+  People in your life, and whether this hour is ordinary, a loop, or grip.
+
+Label:
+  Email
+
+Placeholder:
+  you@gmail.com
+
+Note, bad email:
+  Need an email this account can belong to.
+
+Button:
+  Continue with email
+  Making the link
+  Open the sign-in link
+
+Note, after send (this preview, no mail):
+  This preview does not send mail. Open the link to sign in.
+
+Note, after send (inbox):
+  Check that inbox. The link lasts 15 minutes.
+
+Note, expired link:
+  That sign-in link is used or has expired.
+
+Note, opening:
+  Opening the account…
+
+
+--------------------------------
+APP STORE PAYWALL (iOS)
+--------------------------------
+Eyebrow:
+  7 days free, then {price} / month
+
+Title:
+  Jungology App
+
+Lede:
+  People in your life, and whether this hour is ordinary, a loop, or grip.
+
+Buttons:
+  Start 7 days free
+  Opening the App Store
+  Restore purchases
+  Restoring
+  The quiz stays free
+
+Notes:
+  Open this build from TestFlight or the App Store to subscribe.
+  Cancel anytime in your Apple ID subscriptions.
+  No subscription to restore on this Apple ID.
+  The App Store does not have this subscription yet.
+
+Checking:
+  Checking the App Store…
+
+
+--------------------------------
+APP STORE ACCOUNT (iOS Me)
+--------------------------------
+Stat:
+  Jungology App on the App Store
+  No App Store subscription on this phone
+
+Buttons:
+  Restore purchases
+  Restoring
+  Manage on the App Store
+  Opening
+
+Notes:
+  Restored.
+  No subscription to restore on this Apple ID.
+  Could not open Apple ID subscriptions.
+
+
+--------------------------------
+KEEP QUIZ SNAPSHOT
+--------------------------------
+Eyebrow:
+  this browser already knows
+
+Title:
+  Save the snapshot?
+
+Stat line:
+  {code} · {hero} Hero · {parent} Parent
+
+Lede:
+  Type and eight percentages can go to this account. Skip, and there is no self until you
+  retake or type the letters in.
+
+Buttons:
+  Save to this account
+  Skip
+
+
+--------------------------------
+ACCOUNT
+--------------------------------
+Title:
+  Account
+
+Lede:
+  7 days free, then {price} / month. Cancel anytime.
+
+Buttons:
+  Start 7 days free
+  Opening Stripe
+  Manage on Stripe
+  Download a copy
+  Sign out
+
+Sign out confirm:
+  This signs this device out. The library stays on the account.
+
+Caption:
+  This account holds
+
+Note, checkout return:
+  Stripe has Jungology App at {price} / month.
+  Stripe was closed. Nothing was charged.
+
+List:
+  {email}
+  {price} / month on Stripe
+  {code}
+  No type yet
+  {n} person / people in the library
+  {n} journal hour / hours
+
+Confirm, sign out:
+  This removes your library and journal on this device. Download a copy first if you want to keep it.
+
+
+--------------------------------
+ME
+--------------------------------
+Chart caption:
+  My eight seats. Tap a seat.
+
+Score bars caption:
+  Eight functions, strongest first.
+
+Stat:
+  {title}
+
+Under the type, when there are quiz percentages:
+  The letters are the type you chose. The numbers are the last quiz.
+
+Header (site):
+  quiz
+  account
+
+Buttons:
+  Retake the quiz
+  Begin the quiz
+  Pick a type
+  Sixteen sprouts
+  Not quite this type?
+  Close
+  Copy for a friend
+  Copy the line
+  Copied
+
+Copy fold lede:
+  This is your type and eight percentages. Not the answers. They paste the line in Library.
+
+Copy fold, no line yet:
+  No quiz percentages yet. Take the quiz so there is a line to copy.
+  Name a type, or take the quiz, so there is a line to copy.
+
+Empty Me, title:
+  Name a type
+
+Empty Me, lede:
+  Keep a type here, or take the quiz. Scores stay on this phone.
+
+Picker title:
+  Sixteen types
+
+Leads / supports:
+  Leads
+  Supports
+
+Note, no quiz percentages:
+  No quiz percentages yet.
+
+Empty (has a quiz in this browser):
+  Keep this type
+
+Empty (no quiz):
+  Pick a lead below, or take the quiz.
+
+Fold:
+  Not quite this type?
+
+
+--------------------------------
+LIBRARY
+--------------------------------
+Eyebrow:
+  Library
+
+Title:
+  People
+
+Lede:
+  People you keep a chart of, and public figures you have named.
+
+Empty:
+  No one yet.
+
+Section:
+  Public figures
+
+Waiting on quiz (under a name):
+  · waiting on quiz
+
+No type yet (under a name, older):
+  · no type yet
+
+Has a type from the quiz:
+  · {code} · quiz
+
+Buttons:
+  Add someone
+  Add a public figure
+  Maps (once there is someone in a named group)
+
+Default relation if they leave “who they are” blank:
+  Friend
+
+
+--------------------------------
+FIRST WEEK
+--------------------------------
+Shown once after they keep a type, if Library has no one they actually know.
+Public figures do not count. Skip once and it does not come back.
+
+Eyebrow:
+  This week
+
+Title:
+  One person you know
+
+Name lede:
+  Partner, parent, friend. Not Einstein. Not Luffy. Public figures wait in Library.
+
+Group:
+  Group
+  Family, work, band
+
+Invite lede:
+  Send {name} the quiz. They send type and eight percentages from Results.
+
+Compare lede:
+  {name} is in. See you two side by side.
+
+Buttons:
+  Add
+  Copy quiz link
+  Share quiz invite
+  Look for their result
+  Keep
+  Compare
+  Skip for now
+
+Skip note:
+  They stay in Library if you already added them. Come back when you want.
+
+
+LIBRARY — MAP
+-------------
+You name each group (Family, work, band). Maps is that group. Not household vs team.
+
+Title:
+  Maps
+
+Lede:
+  Who leads with what in {group name}. Not a ranking.
+
+Empty:
+  Name a group, then add people to it.
+
+Group name field:
+  Group name
+  placeholder: Family, work, band
+  Keep {name} (native, while the typed name is not saved yet)
+
+Pills:
+  The names you gave the groups
+
+Groups:
+  Perceiving
+  Judging
+
+Empty room:
+  empty
+
+Chip for Me:
+  You · {code}
+
+Tie lines:
+  {name} is the same stack.
+  {name} leads with {function}, your {seat}.
+
+Need a type on Me:
+  Name a type on Me first. The map follows that stack.
+
+Solo:
+  Add someone and name the group they belong in.
+
+Waiting:
+  {names} has/have no type yet.
+
+
+LIBRARY — PUBLIC FIGURES
+------------------------
+Title:
+  Public figures
+
+Lede:
+  People, fiction, and anime. Named types. Not a quiz.
+
+Search label:
+  Search
+
+Search placeholder:
+  Name, story, anime, or type
+
+Empty search:
+  No one by that name.
+
+Sections (collapsed until you tap, or until you search):
+  Public figures · {count}
+  Fiction · {count}
+  Anime · {count}
+
+Already kept:
+  · in library
+
+Person file:
+  Named type. Not a quiz.
+
+Circle option:
+  Public figures
+
+
+LIBRARY — ADD
+-------------
+Title:
+  Add
+
+Labels:
+  Name
+  Who they are to you
+  Their type, if you know it
+  Group
+
+Placeholder (who they are):
+  Partner, mother, friend
+
+Group placeholder:
+  Family, work, band
+
+Existing groups:
+  Choose an existing group
+
+Edit group:
+  Group
+  Public figures
+
+First type option:
+  I don't know yet
+
+Button:
+  Add
+
+
+LIBRARY — A PERSON
+------------------
+Compare button (on their profile):
+  Compare
+
+Invite:
+  Share quiz invite
+  Copy quiz link
+  Copied
+  Look for their result
+  Looking…
+
+Invite share line:
+  Jungology quiz: {invite url}
+
+Invite notes:
+  Nothing yet. They finish the quiz and send from Results.
+  Kept {code}.
+  That invite is not valid.
+  Could not look for their result.
+  Could not send the type.
+  Invites are not bound yet.
+
+Ping (when they send, it lands here):
+  {name} sent {code}.
+  Compare
+  Dismiss
+  · sent {code}
+
+Results send:
+  Sent. They get a ping.
+
+Device prompt (browser, once):
+  Allow notifications so a ping can land when they send.
+
+Share lede:
+  Send them the invite. They send type and eight percentages from Results. You can also paste a line here.
+
+Paste label:
+  Paste their percentages
+
+Paste placeholder:
+  jungology INFP Fi72 Ne64 …
+
+Paste error:
+  Need a type and the eight percentages. Not the answers.
+
+Paste button:
+  Keep these percentages
+
+No type yet:
+  Name their type with Edit, or paste percentages.
+
+Chart caption:
+  {name}'s eight seats. Tap a seat.
+
+Edit labels:
+  Name
+  Who they are to you
+  Their type
+  Group
+
+Edit placeholder:
+  Partner, mother, friend
+
+Edit first type option:
+  I don't know yet
+
+Edit group:
+  Family, work, band
+  Public figures
+
+Edit button:
+  Save
+
+Remove:
+  Remove from library
+
+Confirm, remove:
+  Remove {name} from the library?
+
+Notes label:
+  Notes
+Placeholder:
+  What you notice
+
+Remember label:
+  Remember
+Placeholder:
+  What you want to keep about them
+
+
+--------------------------------
+JOURNAL
+--------------------------------
+Title:
+  Journal
+
+Lede:
+  How is this hour?
+
+No type on Me yet:
+  Name a type on Me first. Ordinary, loop, and grip follow that stack.
+
+Tiles (title, then the small hint when there is no type yet):
+  Ordinary    Hero + Parent
+  Loop        Hero + Child
+  Grip        Inferior
+
+Hint when there is a type (filled in as functions):
+  Ordinary    {hero} + {parent}
+  Loop        {hero} + {child}
+  Grip        {inferior}
+
+Chart (only after they pick a mood):
+  {Ordinary/Loop/Grip}. Lit seats are who is on stage for {code}.
+
+Before they pick a weather:
+  Tap ordinary, loop, or grip. Then how long it lasted.
+
+How long (heading):
+  How long
+
+How long tiles (title, then hint):
+  Minutes     A short stretch
+  An hour     This stretch
+  The day     Morning to night
+
+How long, as used in the year list:
+  minutes
+  an hour
+  the day
+
+Lead-in before the hour advice:
+  These minutes.
+  This hour.
+  This day.
+
+Note label:
+  Optional note
+Placeholder:
+  What happened
+
+Keep buttons:
+  Keep these minutes
+  Keep this hour
+  Keep this day
+
+Graph caption:
+  Ordinary up. Grip down.
+
+Graph lanes:
+  Ordinary
+  Loop
+  Grip
+
+
+JOURNAL — ORDINARY / LOOP / GRIP COPY
+-------------------------------------
+No type named yet:
+
+  Ordinary
+    Hero and Parent are in the room. Name your type on Me to see which functions that is.
+    Keep the Parent in the room: one maybe, one walk.
+
+  Loop
+    Hero and Eternal Child. Parent offline. Comfort standing in for a choice.
+    One unused tab, one walk without the usual route, one what-if that is not a plan.
+
+  Grip
+    Inferior has the building. Hero is offline. It is stress, not a new type.
+    Unload one responsibility. Restore the Hero. Do not retake the quiz and rename yourself from this hour.
+
+With a type ({function} becomes e.g. Fi (introverted feeling)):
+
+  Ordinary
+    Hero and Parent are in the room. For you that is {hero function} and {parent function}. You know what matters. Options are open.
+    Keep the Parent in the room: one maybe, one walk. Do not use a fine hour to work on {inferior function}.
+
+  Loop
+    Hero and Eternal Child. Parent offline. {hero function} and {child function} nest. Comfort standing in for a choice.
+    One unused tab, one walk without the usual route, one what-if that is not a plan.
+
+  Grip
+    Inferior {inferior function} has the building. {hero function} is offline. It is stress, not a new type.
+    Unload one responsibility. Restore {hero function}. Do not retake the quiz and rename yourself from this hour.
+
+
+--------------------------------
+COMPARE
+--------------------------------
+Eyebrow:
+  Compare
+
+Title:
+  Pick two
+
+Lede:
+  Pick two. People you've added, public figures, or any of the sixteen types.
+
+Dropdown labels:
+  This one
+  With
+
+Swap:
+  Swap
+
+Dropdown groups:
+  People
+  Public figures (once you have named one)
+  Types
+
+Options:
+  Me · {code}
+  {name} · {code}
+  {name} · waiting on quiz
+  {name} · no type yet
+  Choose
+
+Empty:
+  Pick someone or a type on the right.
+  Name a type on Me, or pick two from the lists.
+
+Lead-in when two are picked:
+  {name} leads with {function}. In {other} that is {seat}.
+  You lead with {function}. In {other} that is {seat}.
+
+Chart groups:
+  Ego
+  Shadow
+
+Mark on a lit seat:
+  {name}'s Hero
+  your Hero
+
+Hint before tapping a seat:
+  Tap a seat. Same row is the same seat in both.
+
+When a row is open:
+  {You/name}: {function} {percent%}. {You/name}: {function} {percent%}.
+  Then the seat note, then the two function one-liners.
+
+Caption under a portrait, if they have quiz percentages:
+  {name} · {code} · {hero} {percent%}
+
+Column headers:
+  You
+  {name}
+
+Where the eight differ (only if both have quiz percentages):
+  Where the eight differ · {function} {left%}% / {right%}%
+
+Longer reading:
+  The longer reading
+  Close
+
+
+COMPARE — RELATION LABELS (the mono line)
+-----------------------------------------
+Same stack
+Same Hero / Heroine
+Hero / Heroine and Parent swapped
+Speaks your Parent
+Speaks your Eternal Child
+Inferior (Anima / Animus) pull
+Opposing Nemesis
+Critic
+Trickster
+Demon
+
+Charge words after the label:
+  steady
+  mixed
+  charged
+
+
+COMPARE — SHORT NOTE WHEN YOU TAP THE LIT SEAT
+----------------------------------------------
+same:
+  You will not have to translate. The risk is collusion — two of you postponing the same weak function.
+
+sister:
+  You recognise the drive at once and argue about how people ought to be looked after.
+
+mirror:
+  Each of you lives as identity what the other uses to foster. Respect, and a quiet fight over who decides.
+
+parent:
+  They sound like competence in the function by which you look after the world. Relief, or a lecture.
+
+child:
+  Play is easy. Being taken equally seriously is not.
+
+anima:
+  Fascination and irritation travel together. You may want them to carry this function for you.
+
+opposing:
+  Arguments that sound like you turned the other way. Same function, opposite attitude.
+
+senex:
+  You may hear a critic where they hear a standard.
+
+trickster:
+  Humour, loopholes, and binds. What feels like play can also be an escape neither of you named.
+
+demon:
+  Uncanny heat. They are fluent in what you almost never meet as a skill in yourself.
+
+
+COMPARE — LONG NOTE ABOVE THE CHARTS
+-----------------------------------
+{title} = their type title (Dreamer, Mastermind…)
+{mine} = your type title
+{theirHero} {theirParent} {myHero} {myParent} {myChild} {myAnima} = function letters
+{fn} = letter plus full name, e.g. Te (Extraverted Thinking)
+
+same:
+  Two of the same type, {mine}, share a language, and therefore a blind spot, so that recognition is swift and collusion no less so, each taking the other’s ease as proof that the map is already complete.
+
+sister:
+  The {title} leads with your same Hero / Heroine, {theirHero}, and cares with {theirParent} instead of {myParent}, so that the aim is shared and the stewardship is not, which is a kinship close enough to breed both relief and rivalry.
+
+mirror:
+  The {title} leads with {theirHero}, which is your Parent, and supports with {theirParent}, which is your Hero / Heroine, so that each of you lives as identity what the other uses to foster.
+
+parent:
+  The {title} leads with {fn theirHero}, which is how you foster, so that they sound like competence in the very function by which you look after the world, a resemblance that can be a relief or a lecture.
+
+child:
+  The {title} leads with {fn theirHero}, which is your Eternal Child, so that play is easy and being taken equally seriously is not, a sweetness that can restore you and a slight that can quietly accumulate.
+
+anima:
+  The {title} leads with {fn theirHero}, which is your Inferior (Anima / Animus), so that fascination, irritation, and projection travel together here, as they do wherever the unconscious has borrowed a human face.
+
+opposing:
+  The {title} leads with {fn theirHero}, the other attitude of your Hero / Heroine, so that arguments arise which sound like you turned inside out, a quarrel with the peculiar heat of a dispute inside one house.
+
+senex:
+  The {title} leads with {fn theirHero}, the shadow of your Parent, so that you may hear a critic where they hear a standard, and the ear you bring will decide half of what is said.
+
+trickster:
+  The {title} leads with {fn theirHero}, the shadow of your Eternal Child, so that humour, loopholes, and binds gather here, and what feels like play may also be an escape neither of you has agreed to name.
+
+demon:
+  The {title} leads with {fn theirHero}, your most unconscious function, so that an uncanny heat gathers here, which may be transformation and may be wreckage, and which will not, in any case, be moderate.
+
+
+COMPARE — LONGER DETAIL (same ten kinds; under The longer reading)
+----------------------------------------------------------------------------------------
+same:
+  You will not have to explain {fn myHero} or {fn myParent}, which is a rest, and the risk is that you double the same inflation, both of you postponing {fn myAnima}, both of you treating {fn myChild} as a holiday instead of a limit; use each other as witnesses rather than as confirmation that nothing further is required of the psyche, for sameness soothes, and it also conceals.
+
+sister:
+  You will recognise the {fn myHero} at once and argue about how people and problems ought to be looked after, their Parent, {fn theirParent}, being not a lesser version of your own but the other valid Parent for your Hero / Heroine; rivalry shows itself when one of you treats the other’s care as an amateur performance of a task you privately believe you were born to do.
+
+mirror:
+  This is often high respect and a quiet struggle over who decides, for they inhabit as the self what you inhabit as care, and you inhabit as the self what they inhabit as help; collaboration is excellent when the work needs both, and intimacy needs an explicit agreement about who is leading a given domain, or you will parent each other and then compete, each feeling, not without reason, that the other has taken the chair that was already theirs.
+
+parent:
+  You may feel useful, impressed, or talked down to, and they may feel taken seriously or treated as a tool of your Hero / Heroine, their Parent being {fn theirParent}; the pairing is easy for projects, and the watch is the urge to keep them in the advisor’s chair instead of letting them be a person with an aim of their own, which your Parent function, left unexamined, will not think to ask.
+
+child:
+  They can restore you, and you can infantilize them, their Parent being {fn theirParent}, which is adult in a way you may not expect if you meet only their Hero / Heroine; if they meet only your Eternal Child, they will not know when you are actually in charge, and both misreadings are kinds of fondness that eventually ask to be corrected.
+
+anima:
+  The Inferior (Anima / Animus) often wears this face, and you may want them to carry {theirHero} for you and then resent that they are merely human at it, they supporting with {fn theirParent}; the work is to relate to them rather than to the missing piece they appear to be, and to practise your own Inferior in small doses so that the relationship is not your only classroom, a classroom which, overloaded, becomes a theatre of salvation and blame.
+
+opposing:
+  They are not your opposite so much as your {myHero} facing the other way, and debates can clarify or never end, their Parent being {fn theirParent}; if you hear only a block, you miss the defense, for sometimes they are protecting an aim your Hero / Heroine is steamrolling, and it is worth naming the shared function before you name the fight, lest you spend years opposing what is already, in another attitude, your own.
+
+senex:
+  The Critic is the Parent after kindness has left the building, which is a projection until it is not, their Parent being {fn theirParent}; you can use them as a boundary you will not set, or dismiss their competence because it arrives without nurture, and the question is whether they are attacking or whether you are hearing your own withheld no, which has been waiting for a mouth.
+
+trickster:
+  They can get you out of a trap and into one you cannot afterwards explain, their Parent being {fn theirParent}; if you recruit them as an escape hatch, you will later call them slippery, and a clean request beats a double message from either of you, for the Trickster, invited as a door, resents being blamed for the draught.
+
+demon:
+  You rarely meet this function as a skill in yourself, so that their fluency can feel like too much, too blunt, or strangely like a missing Parent, they supporting with {fn theirParent}; reality-test the projection before you merge or exile, for used well they show you a value you swore was not yours, and used unthinkingly this pairing becomes a morality play in which no one is allowed to be merely human.

@@ -1,0 +1,1002 @@
+PUBLIC FIGURES
+==============
+Named types. Not a quiz, not a diagnosis.
+
+People, fiction, and anime. One figure per block.
+Keep the Name / Role / Type labels. Add Kind for fiction or anime.
+Type must be one of the sixteen codes (INFJ, ESTP, …).
+Kind is Public, Fiction, or Anime. Leave Kind off for a public figure.
+Send this file back when you want the catalog updated.
+
+
+Carl Jung
+Role: Psychologist
+Type: INFJ
+
+Fyodor Dostoevsky
+Role: Novelist
+Type: INFJ
+
+Plato
+Role: Philosopher
+Type: INFJ
+
+Nelson Mandela
+Role: President
+Type: INFJ
+
+Cate Blanchett
+Role: Actor
+Type: INFJ
+
+Alicia Keys
+Role: Singer
+Type: INFJ
+
+Daniel Day-Lewis
+Role: Actor
+Type: INFJ
+
+Rooney Mara
+Role: Actor
+Type: INFJ
+
+Gandalf
+Role: The Lord of the Rings
+Type: INFJ
+Kind: Fiction
+
+Atticus Finch
+Role: To Kill a Mockingbird
+Type: INFJ
+Kind: Fiction
+
+Elsa
+Role: Frozen
+Type: INFJ
+Kind: Fiction
+
+Armin Arlert
+Role: Attack on Titan
+Type: INFJ
+Kind: Anime
+
+Rei Ayanami
+Role: Evangelion
+Type: INFJ
+Kind: Anime
+
+Kaworu Nagisa
+Role: Evangelion
+Type: INFJ
+Kind: Anime
+
+J. R. R. Tolkien
+Role: Writer
+Type: INFP
+
+Virginia Woolf
+Role: Writer
+Type: INFP
+
+William Shakespeare
+Role: Playwright
+Type: INFP
+
+Vincent van Gogh
+Role: Painter
+Type: INFP
+
+Tim Burton
+Role: Filmmaker
+Type: INFP
+
+Billie Eilish
+Role: Singer
+Type: INFP
+
+Kurt Cobain
+Role: Musician
+Type: INFP
+
+Johnny Depp
+Role: Actor
+Type: INFP
+
+Frodo Baggins
+Role: The Lord of the Rings
+Type: INFP
+Kind: Fiction
+
+Harry Potter
+Role: Harry Potter
+Type: INFP
+Kind: Fiction
+
+Luke Skywalker
+Role: Star Wars
+Type: INFP
+Kind: Fiction
+
+Shinji Ikari
+Role: Evangelion
+Type: INFP
+Kind: Anime
+
+Tanjiro Kamado
+Role: Demon Slayer
+Type: INFP
+Kind: Anime
+
+Chihiro
+Role: Spirited Away
+Type: INFP
+Kind: Anime
+
+Martin Luther King Jr.
+Role: Minister
+Type: ENFJ
+
+Maya Angelou
+Role: Poet
+Type: ENFJ
+
+Oprah Winfrey
+Role: Television host
+Type: ENFJ
+
+Barack Obama
+Role: President
+Type: ENFJ
+
+Jennifer Lawrence
+Role: Actor
+Type: ENFJ
+
+Emma Watson
+Role: Actor
+Type: ENFJ
+
+Jennifer Garner
+Role: Actor
+Type: ENFJ
+
+Demi Lovato
+Role: Singer
+Type: ENFJ
+
+Wonder Woman
+Role: DC
+Type: ENFJ
+Kind: Fiction
+
+Margaery Tyrell
+Role: Game of Thrones
+Type: ENFJ
+Kind: Fiction
+
+Professor X
+Role: X-Men
+Type: ENFJ
+Kind: Fiction
+
+All Might
+Role: My Hero Academia
+Type: ENFJ
+Kind: Anime
+
+Momo Yaoyorozu
+Role: My Hero Academia
+Type: ENFJ
+Kind: Anime
+
+Jiraiya
+Role: Naruto
+Type: ENFJ
+Kind: Anime
+
+Robin Williams
+Role: Actor
+Type: ENFP
+
+Walt Disney
+Role: Filmmaker
+Type: ENFP
+
+Mark Twain
+Role: Writer
+Type: ENFP
+
+Salvador Dalí
+Role: Painter
+Type: ENFP
+
+Jim Carrey
+Role: Actor
+Type: ENFP
+
+Robert Downey Jr.
+Role: Actor
+Type: ENFP
+
+Zendaya
+Role: Actor
+Type: ENFP
+
+Quentin Tarantino
+Role: Filmmaker
+Type: ENFP
+
+Peter Parker
+Role: Marvel
+Type: ENFP
+Kind: Fiction
+
+Elizabeth Bennet
+Role: Pride and Prejudice
+Type: ENFP
+Kind: Fiction
+
+Anna of Arendelle
+Role: Frozen
+Type: ENFP
+Kind: Fiction
+
+Naruto Uzumaki
+Role: Naruto
+Type: ENFP
+Kind: Anime
+
+Howl
+Role: Howl's Moving Castle
+Type: ENFP
+Kind: Anime
+
+Anya Forger
+Role: Spy x Family
+Type: ENFP
+Kind: Anime
+
+Friedrich Nietzsche
+Role: Philosopher
+Type: INTJ
+
+Nikola Tesla
+Role: Inventor
+Type: INTJ
+
+Isaac Newton
+Role: Physicist
+Type: INTJ
+
+C. S. Lewis
+Role: Writer
+Type: INTJ
+
+Christopher Nolan
+Role: Filmmaker
+Type: INTJ
+
+Benedict Cumberbatch
+Role: Actor
+Type: INTJ
+
+Christian Bale
+Role: Actor
+Type: INTJ
+
+Arnold Schwarzenegger
+Role: Actor
+Type: INTJ
+
+Batman
+Role: DC
+Type: INTJ
+Kind: Fiction
+
+Mr. Darcy
+Role: Pride and Prejudice
+Type: INTJ
+Kind: Fiction
+
+Doctor Strange
+Role: Marvel
+Type: INTJ
+Kind: Fiction
+
+Light Yagami
+Role: Death Note
+Type: INTJ
+Kind: Anime
+
+Lelouch Lamperouge
+Role: Code Geass
+Type: INTJ
+Kind: Anime
+
+Sasuke Uchiha
+Role: Naruto
+Type: INTJ
+Kind: Anime
+
+Albert Einstein
+Role: Physicist
+Type: INTP
+
+Marie Curie
+Role: Physicist
+Type: INTP
+
+Charles Darwin
+Role: Naturalist
+Type: INTP
+
+Abraham Lincoln
+Role: President
+Type: INTP
+
+Bill Gates
+Role: Entrepreneur
+Type: INTP
+
+Tina Fey
+Role: Comedian
+Type: INTP
+
+Kristen Stewart
+Role: Actor
+Type: INTP
+
+Jesse Eisenberg
+Role: Actor
+Type: INTP
+
+Sherlock Holmes
+Role: Sherlock Holmes
+Type: INTP
+Kind: Fiction
+
+Bruce Banner
+Role: Marvel
+Type: INTP
+Kind: Fiction
+
+Data
+Role: Star Trek
+Type: INTP
+Kind: Fiction
+
+L Lawliet
+Role: Death Note
+Type: INTP
+Kind: Anime
+
+Shikamaru Nara
+Role: Naruto
+Type: INTP
+Kind: Anime
+
+Senku Ishigami
+Role: Dr. Stone
+Type: INTP
+Kind: Anime
+
+Napoleon Bonaparte
+Role: General
+Type: ENTJ
+
+Margaret Thatcher
+Role: Prime minister
+Type: ENTJ
+
+Steve Jobs
+Role: Entrepreneur
+Type: ENTJ
+
+Franklin D. Roosevelt
+Role: President
+Type: ENTJ
+
+Gordon Ramsay
+Role: Chef
+Type: ENTJ
+
+Meryl Streep
+Role: Actor
+Type: ENTJ
+
+Beyoncé
+Role: Singer
+Type: ENTJ
+
+Charlize Theron
+Role: Actor
+Type: ENTJ
+
+Princess Leia
+Role: Star Wars
+Type: ENTJ
+Kind: Fiction
+
+Miranda Priestly
+Role: The Devil Wears Prada
+Type: ENTJ
+Kind: Fiction
+
+Azula
+Role: Avatar
+Type: ENTJ
+Kind: Fiction
+
+Roy Mustang
+Role: Fullmetal Alchemist
+Type: ENTJ
+Kind: Anime
+
+Erwin Smith
+Role: Attack on Titan
+Type: ENTJ
+Kind: Anime
+
+Seto Kaiba
+Role: Yu-Gi-Oh
+Type: ENTJ
+Kind: Anime
+
+Socrates
+Role: Philosopher
+Type: ENTP
+
+Richard Feynman
+Role: Physicist
+Type: ENTP
+
+Benjamin Franklin
+Role: Inventor
+Type: ENTP
+
+Leonardo da Vinci
+Role: Artist
+Type: ENTP
+
+Tom Hanks
+Role: Actor
+Type: ENTP
+
+Ryan Reynolds
+Role: Actor
+Type: ENTP
+
+Conan O'Brien
+Role: Television host
+Type: ENTP
+
+Amy Poehler
+Role: Comedian
+Type: ENTP
+
+Tony Stark
+Role: Marvel
+Type: ENTP
+Kind: Fiction
+
+Deadpool
+Role: Marvel
+Type: ENTP
+Kind: Fiction
+
+Joker
+Role: DC
+Type: ENTP
+Kind: Fiction
+
+Edward Elric
+Role: Fullmetal Alchemist
+Type: ENTP
+Kind: Anime
+
+Gojo Satoru
+Role: Jujutsu Kaisen
+Type: ENTP
+Kind: Anime
+
+Okabe Rintaro
+Role: Steins;Gate
+Type: ENTP
+Kind: Anime
+
+Queen Elizabeth II
+Role: Monarch
+Type: ISTJ
+
+George Washington
+Role: President
+Type: ISTJ
+
+Angela Merkel
+Role: Chancellor
+Type: ISTJ
+
+Warren Buffett
+Role: Investor
+Type: ISTJ
+
+Natalie Portman
+Role: Actor
+Type: ISTJ
+
+Matt Damon
+Role: Actor
+Type: ISTJ
+
+Anthony Hopkins
+Role: Actor
+Type: ISTJ
+
+Jeff Bezos
+Role: Entrepreneur
+Type: ISTJ
+
+Aragorn
+Role: The Lord of the Rings
+Type: ISTJ
+Kind: Fiction
+
+Ned Stark
+Role: Game of Thrones
+Type: ISTJ
+Kind: Fiction
+
+Ellen Ripley
+Role: Alien
+Type: ISTJ
+Kind: Fiction
+
+Mikasa Ackerman
+Role: Attack on Titan
+Type: ISTJ
+Kind: Anime
+
+Byakuya Kuchiki
+Role: Bleach
+Type: ISTJ
+Kind: Anime
+
+Kyoko Kirigiri
+Role: Danganronpa
+Type: ISTJ
+Kind: Anime
+
+Florence Nightingale
+Role: Nurse
+Type: ISFJ
+
+Fred Rogers
+Role: Television host
+Type: ISFJ
+
+Mother Teresa
+Role: Humanitarian
+Type: ISFJ
+
+Rosa Parks
+Role: Activist
+Type: ISFJ
+
+Kate Middleton
+Role: Princess
+Type: ISFJ
+
+Vin Diesel
+Role: Actor
+Type: ISFJ
+
+Selena Gomez
+Role: Singer
+Type: ISFJ
+
+Chris Evans
+Role: Actor
+Type: ISFJ
+
+Samwise Gamgee
+Role: The Lord of the Rings
+Type: ISFJ
+Kind: Fiction
+
+John Watson
+Role: Sherlock Holmes
+Type: ISFJ
+Kind: Fiction
+
+Cinderella
+Role: Cinderella
+Type: ISFJ
+Kind: Fiction
+
+Violet Evergarden
+Role: Violet Evergarden
+Type: ISFJ
+Kind: Anime
+
+Tohru Honda
+Role: Fruits Basket
+Type: ISFJ
+Kind: Anime
+
+Sakura Haruno
+Role: Naruto
+Type: ISFJ
+Kind: Anime
+
+Julius Caesar
+Role: Statesman
+Type: ESTJ
+
+Henry Ford
+Role: Industrialist
+Type: ESTJ
+
+John D. Rockefeller
+Role: Industrialist
+Type: ESTJ
+
+Vince Lombardi
+Role: Coach
+Type: ESTJ
+
+Martha Stewart
+Role: Television host
+Type: ESTJ
+
+Michelle Obama
+Role: Lawyer
+Type: ESTJ
+
+Alec Baldwin
+Role: Actor
+Type: ESTJ
+
+Judge Judy
+Role: Judge
+Type: ESTJ
+
+Hermione Granger
+Role: Harry Potter
+Type: ESTJ
+Kind: Fiction
+
+Buzz Lightyear
+Role: Toy Story
+Type: ESTJ
+Kind: Fiction
+
+Regina George
+Role: Mean Girls
+Type: ESTJ
+Kind: Fiction
+
+Asuka Langley Soryu
+Role: Evangelion
+Type: ESTJ
+Kind: Anime
+
+Erza Scarlet
+Role: Fairy Tail
+Type: ESTJ
+Kind: Anime
+
+Nami
+Role: One Piece
+Type: ESTJ
+Kind: Anime
+
+Dolly Parton
+Role: Singer
+Type: ESFJ
+
+Aretha Franklin
+Role: Singer
+Type: ESFJ
+
+Taylor Swift
+Role: Singer
+Type: ESFJ
+
+Whitney Houston
+Role: Singer
+Type: ESFJ
+
+Jennifer Aniston
+Role: Actor
+Type: ESFJ
+
+Hugh Jackman
+Role: Actor
+Type: ESFJ
+
+Ariana Grande
+Role: Singer
+Type: ESFJ
+
+Jennifer Lopez
+Role: Singer
+Type: ESFJ
+
+Superman
+Role: DC
+Type: ESFJ
+Kind: Fiction
+
+Woody
+Role: Toy Story
+Type: ESFJ
+Kind: Fiction
+
+Princess Peach
+Role: Super Mario
+Type: ESFJ
+Kind: Fiction
+
+Usagi Tsukino
+Role: Sailor Moon
+Type: ESFJ
+Kind: Anime
+
+Winry Rockbell
+Role: Fullmetal Alchemist
+Type: ESFJ
+Kind: Anime
+
+Ochaco Uraraka
+Role: My Hero Academia
+Type: ESFJ
+Kind: Anime
+
+Amelia Earhart
+Role: Aviator
+Type: ISTP
+
+Bruce Lee
+Role: Martial artist
+Type: ISTP
+
+Clint Eastwood
+Role: Actor
+Type: ISTP
+
+Michael Jordan
+Role: Athlete
+Type: ISTP
+
+Keanu Reeves
+Role: Actor
+Type: ISTP
+
+Scarlett Johansson
+Role: Actor
+Type: ISTP
+
+Tom Hardy
+Role: Actor
+Type: ISTP
+
+Harrison Ford
+Role: Actor
+Type: ISTP
+
+Katniss Everdeen
+Role: The Hunger Games
+Type: ISTP
+Kind: Fiction
+
+Arya Stark
+Role: Game of Thrones
+Type: ISTP
+Kind: Fiction
+
+Wolverine
+Role: X-Men
+Type: ISTP
+Kind: Fiction
+
+Levi Ackerman
+Role: Attack on Titan
+Type: ISTP
+Kind: Anime
+
+Spike Spiegel
+Role: Cowboy Bebop
+Type: ISTP
+Kind: Anime
+
+Roronoa Zoro
+Role: One Piece
+Type: ISTP
+Kind: Anime
+
+Frida Kahlo
+Role: Painter
+Type: ISFP
+
+Prince
+Role: Musician
+Type: ISFP
+
+Michael Jackson
+Role: Singer
+Type: ISFP
+
+Wolfgang Amadeus Mozart
+Role: Composer
+Type: ISFP
+
+Lady Gaga
+Role: Musician
+Type: ISFP
+
+Rihanna
+Role: Singer
+Type: ISFP
+
+Audrey Hepburn
+Role: Actor
+Type: ISFP
+
+Princess Diana
+Role: Princess
+Type: ISFP
+
+Eleven
+Role: Stranger Things
+Type: ISFP
+Kind: Fiction
+
+Zuko
+Role: Avatar
+Type: ISFP
+Kind: Fiction
+
+Rapunzel
+Role: Tangled
+Type: ISFP
+Kind: Fiction
+
+Nezuko Kamado
+Role: Demon Slayer
+Type: ISFP
+Kind: Anime
+
+Giyu Tomioka
+Role: Demon Slayer
+Type: ISFP
+Kind: Anime
+
+San
+Role: Princess Mononoke
+Type: ISFP
+Kind: Anime
+
+Ernest Hemingway
+Role: Writer
+Type: ESTP
+
+Madonna
+Role: Musician
+Type: ESTP
+
+Theodore Roosevelt
+Role: President
+Type: ESTP
+
+Winston Churchill
+Role: Prime minister
+Type: ESTP
+
+Angelina Jolie
+Role: Actor
+Type: ESTP
+
+Eddie Murphy
+Role: Actor
+Type: ESTP
+
+Miley Cyrus
+Role: Singer
+Type: ESTP
+
+Dwayne Johnson
+Role: Actor
+Type: ESTP
+
+Han Solo
+Role: Star Wars
+Type: ESTP
+Kind: Fiction
+
+James Bond
+Role: James Bond
+Type: ESTP
+Kind: Fiction
+
+Indiana Jones
+Role: Indiana Jones
+Type: ESTP
+Kind: Fiction
+
+Katsuki Bakugo
+Role: My Hero Academia
+Type: ESTP
+Kind: Anime
+
+Inosuke Hashibira
+Role: Demon Slayer
+Type: ESTP
+Kind: Anime
+
+Natsu Dragneel
+Role: Fairy Tail
+Type: ESTP
+Kind: Anime
+
+Marilyn Monroe
+Role: Actor
+Type: ESFP
+
+Elvis Presley
+Role: Singer
+Type: ESFP
+
+Pablo Picasso
+Role: Painter
+Type: ESFP
+
+Elton John
+Role: Musician
+Type: ESFP
+
+Will Smith
+Role: Actor
+Type: ESFP
+
+Katy Perry
+Role: Singer
+Type: ESFP
+
+Adele
+Role: Singer
+Type: ESFP
+
+Britney Spears
+Role: Singer
+Type: ESFP
+
+Jack Sparrow
+Role: Pirates of the Caribbean
+Type: ESFP
+Kind: Fiction
+
+Harley Quinn
+Role: DC
+Type: ESFP
+Kind: Fiction
+
+Thor
+Role: Marvel
+Type: ESFP
+Kind: Fiction
+
+Monkey D. Luffy
+Role: One Piece
+Type: ESFP
+Kind: Anime
+
+Son Goku
+Role: Dragon Ball
+Type: ESFP
+Kind: Anime
+
+Yuji Itadori
+Role: Jujutsu Kaisen
+Type: ESFP
+Kind: Anime

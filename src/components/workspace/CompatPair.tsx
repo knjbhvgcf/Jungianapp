@@ -1,54 +1,14 @@
-import { useState } from 'react'
-import { BEEBE_ROLES, beebeStack } from '../../data/beebe'
-import { relationReading, type CompatKind } from '../../data/compatibility'
+import { useEffect, useState } from 'react'
 import { FUNCTIONS } from '../../data/functions'
 import type { PersonalityType } from '../../data/personalityTypes'
+import {
+  compareCaption,
+  compareView,
+  PLACE,
+  scoreLabel,
+} from '../../lib/workspace/compareView'
 import type { ResultSnapshot } from '../../lib/workspace/types'
-import { hasPercents } from '../../lib/workspace/sharePacket'
 import { TypePortrait } from '../TypePortrait'
-import { EightChart } from './EightChart'
-import { PercentBars } from './PercentBars'
-
-const PLACE: Record<CompatKind, string> = {
-  same: 'You will not have to translate. The risk is collusion — two of you postponing the same weak function.',
-  sister: 'You recognise the drive at once and argue about how people ought to be looked after.',
-  mirror: 'Each of you lives as identity what the other uses to foster. Respect, and a quiet fight over who decides.',
-  parent: 'They sound like competence in the function by which you look after the world. Relief, or a lecture.',
-  child: 'Play is easy. Being taken equally seriously is not.',
-  anima: 'Fascination and irritation travel together. You may want them to carry this function for you.',
-  opposing: 'Arguments that sound like you turned the other way. Same function, opposite attitude.',
-  senex: 'You may hear a critic where they hear a standard.',
-  trickster: 'Humour, loopholes, and binds. What feels like play can also be an escape neither of you named.',
-  demon: 'Uncanny heat. They are fluent in what you almost never meet as a skill in yourself.',
-}
-
-function seatName(person: { name: string; type: PersonalityType }) {
-  if (person.name === 'Me') return 'you'
-  if (person.name === person.type.title) return person.type.code
-  return person.name
-}
-
-function whose(name: string) {
-  return name === 'you' ? 'your' : `${name}'s`
-}
-
-function scoreOf(percents: ResultSnapshot['percents'] | undefined, id: string) {
-  const value = percents?.[id as keyof ResultSnapshot['percents']]
-  return typeof value === 'number' ? ` ${value}%` : ''
-}
-
-function captionFor(person: {
-  name: string
-  type: PersonalityType
-  percents?: ResultSnapshot['percents']
-}) {
-  const hero = person.type.stack[0]
-  const score = scoreOf(person.percents, hero)
-  if (person.name === 'Me' || person.name === person.type.title) {
-    return `${person.type.code} · ${person.name === 'Me' ? 'Me' : person.type.title}${score ? ` · ${hero}${score}` : ''}`
-  }
-  return `${person.name} · ${person.type.code}${score ? ` · ${hero}${score}` : ''}`
-}
 
 export function CompatPair({
   left,
@@ -57,110 +17,109 @@ export function CompatPair({
   left: { name: string; type: PersonalityType; percents?: ResultSnapshot['percents'] }
   right: { name: string; type: PersonalityType; percents?: ResultSnapshot['percents'] }
 }) {
-  const [open, setOpen] = useState<number | null>(null)
-  const reading = relationReading(left.type, right.type)
-  const reverse = relationReading(right.type, left.type)
-  const leftSeats = beebeStack(left.type.stack)
-  const rightSeats = beebeStack(right.type.stack)
-  const inLeftIndex = leftSeats.indexOf(right.type.stack[0])
-  const inRightIndex = rightSeats.indexOf(left.type.stack[0])
-  const inLeft = inLeftIndex >= 0 ? BEEBE_ROLES[inLeftIndex] : null
-  const inRight = inRightIndex >= 0 ? BEEBE_ROLES[inRightIndex] : null
-  const leftName = seatName(left)
-  const rightName = seatName(right)
-  const role = open != null ? BEEBE_ROLES[open] : null
-  const leftFn = open != null ? leftSeats[open] : null
-  const rightFn = open != null ? rightSeats[open] : null
+  const view = compareView(left, right)
+  const [open, setOpen] = useState<number | null>(view.inLeftIndex >= 0 ? view.inLeftIndex : 0)
+  const seat = open != null ? view.seats[open] : null
 
-  function pick(index: number) {
-    setOpen((current) => (current === index ? null : index))
-  }
+  useEffect(() => {
+    setOpen(view.inLeftIndex >= 0 ? view.inLeftIndex : 0)
+  }, [left.name, left.type.code, right.name, right.type.code, view.inLeftIndex])
 
   return (
     <>
-      {inLeft ? (
+      {view.inLeftIndex >= 0 ? (
         <p className="lede">
-          {rightName === 'you' ? 'You' : rightName} lead{rightName === 'you' ? '' : 's'} with{' '}
-          {right.type.stack[0]}. In {leftName} that is {inLeft.label}.
-          {inRight ? (
+          {view.rightName === 'you' ? 'You' : view.rightName} lead
+          {view.rightName === 'you' ? '' : 's'} with {right.type.stack[0]}. In {view.leftName} that is{' '}
+          {view.seats[view.inLeftIndex]?.full}.
+          {view.inRightIndex >= 0 ? (
             <>
               {' '}
-              {leftName === 'you' ? 'You' : leftName} lead{leftName === 'you' ? '' : 's'} with {left.type.stack[0]}.
-              In {rightName} that is {inRight.label}.
+              {view.leftName === 'you' ? 'You' : view.leftName} lead
+              {view.leftName === 'you' ? '' : 's'} with {left.type.stack[0]}. In {view.rightName} that is{' '}
+              {view.seats[view.inRightIndex]?.full}.
             </>
           ) : null}
         </p>
       ) : null}
       <p className="mono-stat">
-        {reading.label}
-        {reading.charge ? ` · ${reading.charge}` : ''}
+        {view.reading.label}
+        {view.reading.charge ? ` · ${view.reading.charge}` : ''}
       </p>
-      <p className="lede">{reading.note}</p>
+      <p className="lede">{view.reading.note}</p>
       <div className="workspace-compat-cols">
-        <div>
-          <figure>
-            <TypePortrait hero={left.type.stack[0]} image={left.type.image} alt={left.type.code} />
-            <figcaption>{captionFor(left)}</figcaption>
-          </figure>
-          {inLeftIndex >= 0 ? (
-            <EightChart
-              layout="stack"
-              quiet
-              stack={left.type.stack}
-              percents={left.percents}
-              marks={[{ index: inLeftIndex, label: `${whose(rightName)} Hero` }]}
-              selected={open}
-              onSelect={pick}
-            />
-          ) : null}
-          {hasPercents(left.percents) && hasPercents(right.percents) ? (
-            <PercentBars percents={left.percents} caption="" />
-          ) : null}
-        </div>
-        <div>
-          <figure>
-            <TypePortrait hero={right.type.stack[0]} image={right.type.image} alt={right.type.code} />
-            <figcaption>{captionFor(right)}</figcaption>
-          </figure>
-          {inRightIndex >= 0 ? (
-            <EightChart
-              layout="stack"
-              quiet
-              stack={right.type.stack}
-              percents={right.percents}
-              marks={[{ index: inRightIndex, label: `${whose(leftName)} Hero` }]}
-              selected={open}
-              onSelect={pick}
-            />
-          ) : null}
-          {hasPercents(left.percents) && hasPercents(right.percents) ? (
-            <PercentBars percents={right.percents} caption="" />
-          ) : null}
-        </div>
+        <figure>
+          <TypePortrait hero={left.type.stack[0]} image={left.type.image} alt={left.type.code} />
+          <figcaption>{compareCaption(left)}</figcaption>
+        </figure>
+        <figure>
+          <TypePortrait hero={right.type.stack[0]} image={right.type.image} alt={right.type.code} />
+          <figcaption>{compareCaption(right)}</figcaption>
+        </figure>
       </div>
-      {role && leftFn && rightFn ? (
+      <div className="workspace-seat-table">
+        <div className="workspace-seat-head">
+          <span />
+          <span>{view.leftLabel}</span>
+          <span>{view.rightLabel}</span>
+        </div>
+        {view.seats.map((row) => (
+          <div key={row.index}>
+            {row.index === 0 ? <p className="workspace-seat-ring">Ego</p> : null}
+            {row.index === 4 ? <p className="workspace-seat-ring">Shadow</p> : null}
+            <button
+              type="button"
+              className={open === row.index ? 'workspace-seat-row is-open' : 'workspace-seat-row'}
+              aria-pressed={open === row.index}
+              onClick={() => setOpen(row.index)}
+            >
+              <span className="workspace-seat-role">{row.short}</span>
+              <span className="workspace-seat-fn">
+                {scoreLabel(row.leftFn, row.leftPct)}
+                {row.markLeft ? <small>{row.markLeft}</small> : null}
+              </span>
+              <span className="workspace-seat-fn">
+                {scoreLabel(row.rightFn, row.rightPct)}
+                {row.markRight ? <small>{row.markRight}</small> : null}
+              </span>
+            </button>
+          </div>
+        ))}
+      </div>
+      {seat ? (
         <div className="workspace-rail">
-          <p className="workspace-rail__kicker">{role.label}</p>
+          <p className="workspace-rail__kicker">{seat.full}</p>
           <p>
-            {leftName === 'you' ? 'You' : leftName}: {leftFn}
-            {scoreOf(left.percents, leftFn)}. {rightName === 'you' ? 'You' : rightName}: {rightFn}
-            {scoreOf(right.percents, rightFn)}.
+            {view.leftName === 'you' ? 'You' : view.leftName}: {scoreLabel(seat.leftFn, seat.leftPct)}.{' '}
+            {view.rightName === 'you' ? 'You' : view.rightName}: {scoreLabel(seat.rightFn, seat.rightPct)}.
           </p>
-          <p>{role.blurb}</p>
+          <p>{seat.blurb}</p>
           <p>
-            {FUNCTIONS[leftFn].name}. {FUNCTIONS[leftFn].summary}
+            {FUNCTIONS[seat.leftFn].name}. {FUNCTIONS[seat.leftFn].summary}
           </p>
-          {rightFn !== leftFn ? (
+          {seat.rightFn !== seat.leftFn ? (
             <p>
-              {FUNCTIONS[rightFn].name}. {FUNCTIONS[rightFn].summary}
+              {FUNCTIONS[seat.rightFn].name}. {FUNCTIONS[seat.rightFn].summary}
             </p>
           ) : null}
-          {open === inLeftIndex ? <p>{PLACE[reading.kind]}</p> : null}
-          {open === inRightIndex && inRightIndex !== inLeftIndex ? <p>{PLACE[reverse.kind]}</p> : null}
+          {open === view.inLeftIndex ? <p>{PLACE[view.reading.kind]}</p> : null}
+          {open === view.inRightIndex && view.inRightIndex !== view.inLeftIndex ? (
+            <p>{PLACE[view.reverse.kind]}</p>
+          ) : null}
         </div>
       ) : (
         <p className="workspace-chart__hint">Tap a seat. Same row is the same seat in both.</p>
       )}
+      {view.gaps.length ? (
+        <p className="note">
+          Where the eight differ
+          {view.gaps.map((gap) => ` · ${gap.id} ${gap.left}% / ${gap.right}%`).join('')}
+        </p>
+      ) : null}
+      <details className="stack-fold">
+        <summary>The longer reading</summary>
+        <p className="lede">{view.reading.detail}</p>
+      </details>
     </>
   )
 }

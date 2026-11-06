@@ -1,10 +1,12 @@
 import { useSyncExternalStore } from 'react'
 import { fetchWorkspaceHouse, logoutWorkspace, putWorkspaceHouse } from './accountClient'
+import { isFiguresId, placeInGroup, resolveGroup, withGroup } from './circle'
 import { loadResultSnapshot } from './snapshot'
 import type {
   HourSpan,
   HourTag,
   HourWeather,
+  InvitePing,
   ResultSnapshot,
   WorkspaceAccountPatch,
   WorkspaceHouse,
@@ -262,19 +264,67 @@ export function saveSelfSnapshot(snapshot: ResultSnapshot | null) {
   return writeHouse({ ...house, self: snapshot, hours })
 }
 
+export function skipFirstWeek() {
+  const house = loadHouse()
+  if (!house) return null
+  return writeHouse({ ...house, firstWeek: { ...house.firstWeek, skipped: true } })
+}
+
+export function finishFirstWeek() {
+  const house = loadHouse()
+  if (!house) return null
+  return writeHouse({ ...house, firstWeek: { ...house.firstWeek, done: true } })
+}
+
+export function keepGroup(name: string) {
+  const house = loadHouse()
+  if (!house) return { house: null, group: null }
+  const group = resolveGroup(house, name)
+  if (!group) return { house, group: null }
+  return { house: writeHouse(withGroup(house, group)), group }
+}
+
+export function renameGroup(id: string, name: string) {
+  const house = loadHouse()
+  if (!house) return null
+  const trimmed = name.trim()
+  if (!trimmed || isFiguresId(id) || isFiguresId(trimmed)) return house
+  const current = withGroup(house, resolveGroup(house, id) ?? { id, name: trimmed })
+  return writeHouse({
+    ...current,
+    groups: (current.groups ?? []).map((group) => (group.id === id ? { ...group, name: trimmed } : group)),
+  })
+}
+
+export function addFirstWeekPerson(person: Omit<WorkspacePerson, 'id'>) {
+  const house = loadHouse()
+  if (!house) return null
+  const placed = placeInGroup(house, person.circle)
+  const next: WorkspacePerson = { ...person, id: crypto.randomUUID(), circle: placed.circle }
+  return writeHouse({
+    ...placed.house,
+    people: [...placed.house.people, next],
+    firstWeek: { ...placed.house.firstWeek, personId: next.id, skipped: false, done: false },
+  })
+}
+
 export function addPerson(person: Omit<WorkspacePerson, 'id'>) {
   const house = loadHouse()
   if (!house) return null
-  const next: WorkspacePerson = { ...person, id: crypto.randomUUID() }
-  return writeHouse({ ...house, people: [...house.people, next] })
+  const placed = placeInGroup(house, person.circle)
+  const next: WorkspacePerson = { ...person, id: crypto.randomUUID(), circle: placed.circle }
+  return writeHouse({ ...placed.house, people: [...placed.house.people, next] })
 }
 
 export function updatePerson(id: string, patch: Partial<WorkspacePerson>) {
   const house = loadHouse()
   if (!house) return null
+  const placed = patch.circle !== undefined ? placeInGroup(house, patch.circle) : { house, circle: patch.circle }
   return writeHouse({
-    ...house,
-    people: house.people.map((person) => (person.id === id ? { ...person, ...patch } : person)),
+    ...placed.house,
+    people: placed.house.people.map((person) =>
+      person.id === id ? { ...person, ...patch, circle: placed.circle ?? patch.circle ?? person.circle } : person,
+    ),
   })
 }
 
@@ -284,6 +334,43 @@ export function applyPersonSnapshot(id: string, snapshot: ResultSnapshot) {
     code: snapshot.code,
     percents: snapshot.percents,
     source: 'quiz',
+  })
+}
+
+export function keepInviteArrival(personId: string, snapshot: ResultSnapshot) {
+  const house = loadHouse()
+  if (!house) return null
+  const person = house.people.find((item) => item.id === personId)
+  if (!person) return house
+  const same =
+    person.code === snapshot.code &&
+    JSON.stringify(person.percents ?? {}) === JSON.stringify(snapshot.percents ?? {})
+  const people = house.people.map((item) =>
+    item.id === personId
+      ? { ...item, code: snapshot.code, percents: snapshot.percents, source: 'quiz' as const }
+      : item,
+  )
+  const already = (house.pings ?? []).some(
+    (ping) => ping.personId === personId && ping.code === snapshot.code && !ping.seen,
+  )
+  const ping: InvitePing = {
+    id: crypto.randomUUID(),
+    personId,
+    name: person.name,
+    code: snapshot.code,
+    at: new Date().toISOString(),
+  }
+  const pings = already ? house.pings : [ping, ...(house.pings ?? [])].slice(0, 8)
+  if (same && already) return house
+  return writeHouse({ ...house, people, pings })
+}
+
+export function dismissPing(id: string) {
+  const house = loadHouse()
+  if (!house) return null
+  return writeHouse({
+    ...house,
+    pings: (house.pings ?? []).map((ping) => (ping.id === id ? { ...ping, seen: true } : ping)),
   })
 }
 

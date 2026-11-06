@@ -1,6 +1,6 @@
 import { FUNCTION_IDS, type FunctionId } from '../../data/functions'
 import { typeByCode } from '../../data/personalityTypes'
-import { snapshotFromType } from './snapshot'
+import { snapshotFromType } from './fromType'
 import type { ResultSnapshot } from './types'
 
 const TYPE_RE = /\b(ENFJ|ENFP|ENTJ|ENTP|ESFJ|ESFP|ESTJ|ESTP|INFJ|INFP|INTJ|INTP|ISFJ|ISFP|ISTJ|ISTP)\b/i

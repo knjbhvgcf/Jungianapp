@@ -1,0 +1,29 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "../src/data/**/*.ts",
+    "../src/lib/scoring.ts",
+    "../src/lib/clarify.ts",
+    "../src/lib/tieBreak.ts",
+    "../src/lib/workspace/types.ts",
+    "../src/lib/workspace/fromType.ts",
+    "../src/lib/workspace/weather.ts",
+    "../src/lib/workspace/sharePacket.ts",
+    "../src/lib/workspace/compatPick.ts",
+    "../src/lib/workspace/compareView.ts",
+    "../src/lib/workspace/circle.ts",
+    "../src/lib/workspace/firstWeek.ts",
+    "../src/lib/workspace/invitePacket.ts",
+    "../src/lib/workspace/inviteClient.ts",
+    "../src/lib/workspace/inviteWatch.ts",
+    "../src/lib/typeCensusShared.ts",
+    "../src/content/schema.ts",
+    "../src/content/**/*.json"
+  ]
+}

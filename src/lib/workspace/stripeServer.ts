@@ -55,6 +55,8 @@ async function stripeRequest(env: StripeEnv, method: 'GET' | 'POST', path: strin
     customer_email?: string | null
     customer_details?: { email?: string | null }
     email?: string | null
+    trial_end?: number | null
+    cancel_at_period_end?: boolean
     data?: Array<{
       id?: string
       status?: string
@@ -63,6 +65,7 @@ async function stripeRequest(env: StripeEnv, method: 'GET' | 'POST', path: strin
       customer?: string | { id?: string }
       subscription?: string | { id?: string }
       customer_details?: { email?: string | null }
+      trial_end?: number | null
     }>
   }
   if (!response.ok) {
@@ -148,8 +151,27 @@ function checkoutSessionReady(body: { status?: string; payment_status?: string }
   )
 }
 
-function subscriptionLive(status: string) {
-  return status === 'active' || status === 'trialing'
+export function subscriptionEntitled(sub: { status?: string; trial_end?: number | null }) {
+  const status = sub.status ?? ''
+  if (status === 'active' || status === 'past_due') return true
+  if (status !== 'trialing') return false
+  const trialEnd = typeof sub.trial_end === 'number' ? sub.trial_end : 0
+  if (trialEnd > 0 && trialEnd * 1000 <= Date.now()) return false
+  return true
+}
+
+export async function readWorkspaceSubscription(env: StripeEnv, subscriptionId: string) {
+  if (!subscriptionId.startsWith('sub_')) {
+    return { ok: true as const, live: false, customer: '', subscription: '' }
+  }
+  const result = await stripeRequest(env, 'GET', `/subscriptions/${encodeURIComponent(subscriptionId)}`)
+  if (!result.ok) return result
+  return {
+    ok: true as const,
+    live: subscriptionEntitled(result.body),
+    customer: customerId(result.body.customer),
+    subscription: result.body.id?.startsWith('sub_') ? result.body.id : subscriptionId,
+  }
 }
 
 export async function findLiveWorkspaceSubscription(env: StripeEnv, email: string) {
@@ -185,7 +207,7 @@ export async function findLiveWorkspaceSubscription(env: StripeEnv, email: strin
       limit: '10',
     })
     if (!subs.ok) return subs
-    const live = (subs.body.data ?? []).find((item) => subscriptionLive(item.status ?? ''))
+    const live = (subs.body.data ?? []).find((item) => subscriptionEntitled(item))
     if (live?.id?.startsWith('sub_')) {
       return {
         ok: true as const,
@@ -200,12 +222,13 @@ export async function findLiveWorkspaceSubscription(env: StripeEnv, email: strin
     for (const row of sessions.body.data ?? []) {
       const sessionEmail = (row.customer_details?.email || row.email || '').toLowerCase()
       if (sessionEmail !== wanted) continue
-      if (!checkoutSessionReady(row) && !subscriptionLive(row.status ?? '')) continue
+      if (!checkoutSessionReady(row) && !subscriptionEntitled(row)) continue
       const customer = customerId(row.customer)
       const subscription = customerId(row.subscription)
-      if (customer.startsWith('cus_') && subscription.startsWith('sub_')) {
-        return { ok: true as const, customer, subscription }
-      }
+      if (!customer.startsWith('cus_') || !subscription.startsWith('sub_')) continue
+      const current = await readWorkspaceSubscription(env, subscription)
+      if (!current.ok) return current
+      if (current.live) return { ok: true as const, customer, subscription }
     }
   }
 

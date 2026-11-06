@@ -1,0 +1,329 @@
+Jungology quiz questions
+
+Edit the sentence under each ID. Keep the ID lines (Ni-1, Ne-Fi-1, …).
+A reverse item scores the opposite way if someone agrees with it.
+Pair items (Ni-Fe, Ne-Ti, …) ask how two functions work together. They help choose the type.
+Send this file back when you want the live quiz updated.
+
+========================================================================
+Ni — Introverted Intuition  (8 questions)
+========================================================================
+
+Ni-1
+Inner images show me the direction of a situation before the outer facts are complete.
+
+Ni-2
+Events interest me mainly as signs of a pattern I cannot yet point to in the room.
+
+Ni-3
+I often arrive at an inner conviction and only later reconstruct the steps that led there.
+
+Ni-4
+I would rather follow one unfolding inner vision than keep many outer options in play.
+
+Ni-5
+I sense where something is tending as if I had already seen the end of the story.
+
+Ni-6 reverse
+I rarely know where a situation is going until the outer facts have already lined up.
+
+Ni-7
+I tend to keep my hopes and dreams close to me, and don't enjoy sharing prospective ideas with people close to me.
+
+Ni-8
+I like to explore ideas alone but when it comes to doing the work I like to do it in a group.
+
+========================================================================
+Ne — Extraverted Intuition  (8 questions)
+========================================================================
+
+Ne-1
+I notice what a situation could become, not only what it presently is.
+
+Ne-2
+One outer fact quickly suggests several other paths that are not yet real.
+
+Ne-3
+I scent connections between things that have not been linked yet.
+
+Ne-4
+Once a possibility has been realized, my interest often moves on to the next one.
+
+Ne-5
+I feel most alive when the field of outer options is still open.
+
+Ne-6 reverse
+Once I have one path that could work, I do not go looking for other ones.
+
+Ne-7
+I enjoy telling people close to me about all the different possibilities and opportunities that excite me.
+
+Ne-8
+I like to explore ideas with people but when it comes to doing the work I like to be alone and go inwards.
+
+========================================================================
+Si — Introverted Sensing  (6 questions)
+========================================================================
+
+Si-1
+What I notice first is the impression an object leaves in me, not only its public properties.
+
+Si-2
+The present is vivid to me when it echoes something I have already lived in the body.
+
+Si-3
+I judge a new situation by how it compares with my inner store of sensory memory.
+
+Si-4
+Familiar sequences and bodily baselines tell me whether something is “as it should be.”
+
+Si-5
+A thing can look ordinary to others and still carry a dense private texture for me.
+
+Si-6 reverse
+I do not check a new moment against how this kind of moment has felt before.
+
+========================================================================
+Se — Extraverted Sensing  (6 questions)
+========================================================================
+
+Se-1
+I trust the concrete facts of this moment more than a theory about them.
+
+Se-2
+Texture, movement, timing, and impact tell me what is real.
+
+Se-3
+I would rather act on what is here than wait for a hidden meaning.
+
+Se-4
+My attention locks onto the actual object or scene in front of me.
+
+Se-5
+Pleasure, pain, and aesthetic impact in the present guide my next move.
+
+Se-6 reverse
+I often take in the room only afterwards, if I notice the scene at all.
+
+========================================================================
+Ti — Introverted Thinking  (6 questions)
+========================================================================
+
+Ti-1
+I need the idea itself to be consistent, even if it is not yet useful in the world.
+
+Ti-2
+I measure claims against an inner model of how the thing must work.
+
+Ti-3
+A popular explanation bothers me if it is logically hollow.
+
+Ti-4
+I would rather refine a definition than apply a ready-made formula.
+
+Ti-5
+I think in order to understand, not first of all in order to arrange the outer world.
+
+Ti-6 reverse
+I can accept an explanation that works well enough even if I cannot make it consistent.
+
+========================================================================
+Te — Extraverted Thinking  (6 questions)
+========================================================================
+
+Te-1
+I trust a conclusion more when it follows from data others can also check.
+
+Te-2
+I organize people, time, and facts according to an objective standard.
+
+Te-3
+An argument that cannot be put to a practical test soon loses me.
+
+Te-4
+I want thinking to produce an order that works in the shared world.
+
+Te-5
+Results that can be shown matter more to me than the elegance of an inner theory.
+
+Te-6 reverse
+I can leave a plan unarranged if the inner idea still feels unfinished.
+
+========================================================================
+Fi — Introverted Feeling  (6 questions)
+========================================================================
+
+Fi-1
+A choice is wrong for me if it violates a private value, even when it is popular.
+
+Fi-2
+My feeling about something can be intense while little of it shows.
+
+Fi-3
+I know what I love or reject before I can justify it in public terms.
+
+Fi-4
+I would rather stay loyal to an inner standard than to good manners.
+
+Fi-5
+Collective taste does not settle whether something is right for me.
+
+Fi-6 reverse
+I can set a private value aside when keeping it would make things awkward.
+
+========================================================================
+Fe — Extraverted Feeling  (6 questions)
+========================================================================
+
+Fe-1
+I know what is fitting by reading the feeling-tone of the people involved.
+
+Fe-2
+I adjust what I show so that the relation between us stays intact.
+
+Fe-3
+What “one” does — the received value of the group — weighs on my choices.
+
+Fe-4
+I feel responsible for whether the atmosphere between people is bearable.
+
+Fe-5
+A decision that is logically neat still feels unfinished if it injures the group.
+
+Fe-6 reverse
+I do not take the room’s mood as a reason to change what I will do.
+
+========================================================================
+Working pairs  (how two functions work together)
+========================================================================
+
+--- Ni-Te ---
+
+Ni-Te-1
+I see where things are heading, then I build a plan or system that can actually carry that picture.
+
+Ni-Te-2
+An inner vision is not finished until it has a working order in the world — steps, calendars, results other people can check.
+
+--- Ni-Fe ---
+
+Ni-Fe-1
+I see where things are heading, then I try to bring people with me toward a meaning we can share.
+
+Ni-Fe-2
+An inner vision is not finished until it has a human climate it can live in — a we, a tone, a way of being together.
+
+--- Ne-Ti ---
+
+Ne-Ti-1
+I open many possibilities, then I pressure-test them until the idea itself holds together.
+
+Ne-Ti-2
+A new option only counts if I can take it apart and see whether the logic is sound.
+
+--- Ne-Fi ---
+
+Ne-Fi-1
+I open many possibilities, then I check which ones still feel honest to me.
+
+Ne-Fi-2
+A new option only counts if it still sits right with my own sense of what matters.
+
+--- Si-Te ---
+
+Si-Te-1
+I rely on what has already proved itself, then I put that known good into a working order others can follow.
+
+Si-Te-2
+Experience becomes useful when it is turned into a standard, a procedure, a way things get done.
+
+--- Si-Fe ---
+
+Si-Fe-1
+I rely on what has already proved itself, then I use it to keep people comfortable and cared for.
+
+Si-Fe-2
+Experience becomes useful when it tells me what this person, this house, this group needs to remain well.
+
+--- Se-Ti ---
+
+Se-Ti-1
+I read the actual scene in front of me, then I find the clever angle that will work on this object, now.
+
+Se-Ti-2
+What is real is what I can do with my hands and my timing — the model has to fit the thing in front of me.
+
+--- Se-Fi ---
+
+Se-Fi-1
+I read the actual scene in front of me, then I ask whether this moment is still true to what I care about.
+
+Se-Fi-2
+What is real is presence — the look, the night, the body — and I will not fake a feeling that is not mine.
+
+--- Ti-Ne ---
+
+Ti-Ne-1
+I build an inner model of how something works, then I hunt for new cases that could break or complete it.
+
+Ti-Ne-2
+Understanding comes first; I keep the laboratory open and feed it more possibilities rather than closing on a useful answer too soon.
+
+--- Ti-Se ---
+
+Ti-Se-1
+I build an inner model of how something works, then I test it on the actual object with my hands.
+
+Ti-Se-2
+Understanding comes first; I take the thing apart and use it until the model and the object agree.
+
+--- Te-Ni ---
+
+Te-Ni-1
+I organize people and facts toward a result, guided by a long inner picture of where this should go.
+
+Te-Ni-2
+The plan is in service of a destination I already see — not a to-do list that wandered in without an end.
+
+--- Te-Si ---
+
+Te-Si-1
+I organize people and facts toward a result, using methods that have already worked.
+
+Te-Si-2
+The plan is in service of a proven standard — what can be repeated, handed on, and shown.
+
+--- Fi-Ne ---
+
+Fi-Ne-1
+I protect a private sense of what is right, then I look for lives and paths in which that compass could still be true.
+
+Fi-Ne-2
+The inner yes-or-no comes first; the outer world is a field of maybe’s I search for a place that still feels like me.
+
+--- Fi-Se ---
+
+Fi-Se-1
+I protect a private sense of what is right, then I put it into this moment — a gesture, a craft, a way of being in the room.
+
+Fi-Se-2
+The inner yes-or-no comes first; style and presence are how that value becomes real without a speech.
+
+--- Fe-Ni ---
+
+Fe-Ni-1
+I read the feeling of the group, then I hold a picture of who we could become together.
+
+Fe-Ni-2
+The we comes first; I work toward a shared future that has a face, not only a pleasant evening.
+
+--- Fe-Si ---
+
+Fe-Si-1
+I read the feeling of the group, then I keep the customs and care that make belonging possible.
+
+Fe-Si-2
+The we comes first; I remember who needs what, and what the house needs to remain a house.
+
+========================================================================
+Total: 84 questions

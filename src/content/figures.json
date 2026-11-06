@@ -1,0 +1,1218 @@
+[
+  {
+    "name": "Carl Jung",
+    "role": "Psychologist",
+    "code": "INFJ"
+  },
+  {
+    "name": "Fyodor Dostoevsky",
+    "role": "Novelist",
+    "code": "INFJ"
+  },
+  {
+    "name": "Plato",
+    "role": "Philosopher",
+    "code": "INFJ"
+  },
+  {
+    "name": "Nelson Mandela",
+    "role": "President",
+    "code": "INFJ"
+  },
+  {
+    "name": "Cate Blanchett",
+    "role": "Actor",
+    "code": "INFJ"
+  },
+  {
+    "name": "Alicia Keys",
+    "role": "Singer",
+    "code": "INFJ"
+  },
+  {
+    "name": "Daniel Day-Lewis",
+    "role": "Actor",
+    "code": "INFJ"
+  },
+  {
+    "name": "Rooney Mara",
+    "role": "Actor",
+    "code": "INFJ"
+  },
+  {
+    "name": "J. R. R. Tolkien",
+    "role": "Writer",
+    "code": "INFP"
+  },
+  {
+    "name": "Virginia Woolf",
+    "role": "Writer",
+    "code": "INFP"
+  },
+  {
+    "name": "William Shakespeare",
+    "role": "Playwright",
+    "code": "INFP"
+  },
+  {
+    "name": "Vincent van Gogh",
+    "role": "Painter",
+    "code": "INFP"
+  },
+  {
+    "name": "Tim Burton",
+    "role": "Filmmaker",
+    "code": "INFP"
+  },
+  {
+    "name": "Billie Eilish",
+    "role": "Singer",
+    "code": "INFP"
+  },
+  {
+    "name": "Kurt Cobain",
+    "role": "Musician",
+    "code": "INFP"
+  },
+  {
+    "name": "Johnny Depp",
+    "role": "Actor",
+    "code": "INFP"
+  },
+  {
+    "name": "Martin Luther King Jr.",
+    "role": "Minister",
+    "code": "ENFJ"
+  },
+  {
+    "name": "Maya Angelou",
+    "role": "Poet",
+    "code": "ENFJ"
+  },
+  {
+    "name": "Oprah Winfrey",
+    "role": "Television host",
+    "code": "ENFJ"
+  },
+  {
+    "name": "Barack Obama",
+    "role": "President",
+    "code": "ENFJ"
+  },
+  {
+    "name": "Jennifer Lawrence",
+    "role": "Actor",
+    "code": "ENFJ"
+  },
+  {
+    "name": "Emma Watson",
+    "role": "Actor",
+    "code": "ENFJ"
+  },
+  {
+    "name": "Jennifer Garner",
+    "role": "Actor",
+    "code": "ENFJ"
+  },
+  {
+    "name": "Demi Lovato",
+    "role": "Singer",
+    "code": "ENFJ"
+  },
+  {
+    "name": "Robin Williams",
+    "role": "Actor",
+    "code": "ENFP"
+  },
+  {
+    "name": "Walt Disney",
+    "role": "Filmmaker",
+    "code": "ENFP"
+  },
+  {
+    "name": "Mark Twain",
+    "role": "Writer",
+    "code": "ENFP"
+  },
+  {
+    "name": "Salvador Dalí",
+    "role": "Painter",
+    "code": "ENFP"
+  },
+  {
+    "name": "Jim Carrey",
+    "role": "Actor",
+    "code": "ENFP"
+  },
+  {
+    "name": "Robert Downey Jr.",
+    "role": "Actor",
+    "code": "ENFP"
+  },
+  {
+    "name": "Zendaya",
+    "role": "Actor",
+    "code": "ENFP"
+  },
+  {
+    "name": "Quentin Tarantino",
+    "role": "Filmmaker",
+    "code": "ENFP"
+  },
+  {
+    "name": "Friedrich Nietzsche",
+    "role": "Philosopher",
+    "code": "INTJ"
+  },
+  {
+    "name": "Nikola Tesla",
+    "role": "Inventor",
+    "code": "INTJ"
+  },
+  {
+    "name": "Isaac Newton",
+    "role": "Physicist",
+    "code": "INTJ"
+  },
+  {
+    "name": "C. S. Lewis",
+    "role": "Writer",
+    "code": "INTJ"
+  },
+  {
+    "name": "Christopher Nolan",
+    "role": "Filmmaker",
+    "code": "INTJ"
+  },
+  {
+    "name": "Benedict Cumberbatch",
+    "role": "Actor",
+    "code": "INTJ"
+  },
+  {
+    "name": "Christian Bale",
+    "role": "Actor",
+    "code": "INTJ"
+  },
+  {
+    "name": "Arnold Schwarzenegger",
+    "role": "Actor",
+    "code": "INTJ"
+  },
+  {
+    "name": "Albert Einstein",
+    "role": "Physicist",
+    "code": "INTP"
+  },
+  {
+    "name": "Marie Curie",
+    "role": "Physicist",
+    "code": "INTP"
+  },
+  {
+    "name": "Charles Darwin",
+    "role": "Naturalist",
+    "code": "INTP"
+  },
+  {
+    "name": "Abraham Lincoln",
+    "role": "President",
+    "code": "INTP"
+  },
+  {
+    "name": "Bill Gates",
+    "role": "Entrepreneur",
+    "code": "INTP"
+  },
+  {
+    "name": "Tina Fey",
+    "role": "Comedian",
+    "code": "INTP"
+  },
+  {
+    "name": "Kristen Stewart",
+    "role": "Actor",
+    "code": "INTP"
+  },
+  {
+    "name": "Jesse Eisenberg",
+    "role": "Actor",
+    "code": "INTP"
+  },
+  {
+    "name": "Napoleon Bonaparte",
+    "role": "General",
+    "code": "ENTJ"
+  },
+  {
+    "name": "Margaret Thatcher",
+    "role": "Prime minister",
+    "code": "ENTJ"
+  },
+  {
+    "name": "Steve Jobs",
+    "role": "Entrepreneur",
+    "code": "ENTJ"
+  },
+  {
+    "name": "Franklin D. Roosevelt",
+    "role": "President",
+    "code": "ENTJ"
+  },
+  {
+    "name": "Gordon Ramsay",
+    "role": "Chef",
+    "code": "ENTJ"
+  },
+  {
+    "name": "Meryl Streep",
+    "role": "Actor",
+    "code": "ENTJ"
+  },
+  {
+    "name": "Beyoncé",
+    "role": "Singer",
+    "code": "ENTJ"
+  },
+  {
+    "name": "Charlize Theron",
+    "role": "Actor",
+    "code": "ENTJ"
+  },
+  {
+    "name": "Socrates",
+    "role": "Philosopher",
+    "code": "ENTP"
+  },
+  {
+    "name": "Richard Feynman",
+    "role": "Physicist",
+    "code": "ENTP"
+  },
+  {
+    "name": "Benjamin Franklin",
+    "role": "Inventor",
+    "code": "ENTP"
+  },
+  {
+    "name": "Leonardo da Vinci",
+    "role": "Artist",
+    "code": "ENTP"
+  },
+  {
+    "name": "Tom Hanks",
+    "role": "Actor",
+    "code": "ENTP"
+  },
+  {
+    "name": "Ryan Reynolds",
+    "role": "Actor",
+    "code": "ENTP"
+  },
+  {
+    "name": "Conan O'Brien",
+    "role": "Television host",
+    "code": "ENTP"
+  },
+  {
+    "name": "Amy Poehler",
+    "role": "Comedian",
+    "code": "ENTP"
+  },
+  {
+    "name": "Queen Elizabeth II",
+    "role": "Monarch",
+    "code": "ISTJ"
+  },
+  {
+    "name": "George Washington",
+    "role": "President",
+    "code": "ISTJ"
+  },
+  {
+    "name": "Angela Merkel",
+    "role": "Chancellor",
+    "code": "ISTJ"
+  },
+  {
+    "name": "Warren Buffett",
+    "role": "Investor",
+    "code": "ISTJ"
+  },
+  {
+    "name": "Natalie Portman",
+    "role": "Actor",
+    "code": "ISTJ"
+  },
+  {
+    "name": "Matt Damon",
+    "role": "Actor",
+    "code": "ISTJ"
+  },
+  {
+    "name": "Anthony Hopkins",
+    "role": "Actor",
+    "code": "ISTJ"
+  },
+  {
+    "name": "Jeff Bezos",
+    "role": "Entrepreneur",
+    "code": "ISTJ"
+  },
+  {
+    "name": "Florence Nightingale",
+    "role": "Nurse",
+    "code": "ISFJ"
+  },
+  {
+    "name": "Fred Rogers",
+    "role": "Television host",
+    "code": "ISFJ"
+  },
+  {
+    "name": "Mother Teresa",
+    "role": "Humanitarian",
+    "code": "ISFJ"
+  },
+  {
+    "name": "Rosa Parks",
+    "role": "Activist",
+    "code": "ISFJ"
+  },
+  {
+    "name": "Kate Middleton",
+    "role": "Princess",
+    "code": "ISFJ"
+  },
+  {
+    "name": "Vin Diesel",
+    "role": "Actor",
+    "code": "ISFJ"
+  },
+  {
+    "name": "Selena Gomez",
+    "role": "Singer",
+    "code": "ISFJ"
+  },
+  {
+    "name": "Chris Evans",
+    "role": "Actor",
+    "code": "ISFJ"
+  },
+  {
+    "name": "Julius Caesar",
+    "role": "Statesman",
+    "code": "ESTJ"
+  },
+  {
+    "name": "Henry Ford",
+    "role": "Industrialist",
+    "code": "ESTJ"
+  },
+  {
+    "name": "John D. Rockefeller",
+    "role": "Industrialist",
+    "code": "ESTJ"
+  },
+  {
+    "name": "Vince Lombardi",
+    "role": "Coach",
+    "code": "ESTJ"
+  },
+  {
+    "name": "Martha Stewart",
+    "role": "Television host",
+    "code": "ESTJ"
+  },
+  {
+    "name": "Michelle Obama",
+    "role": "Lawyer",
+    "code": "ESTJ"
+  },
+  {
+    "name": "Alec Baldwin",
+    "role": "Actor",
+    "code": "ESTJ"
+  },
+  {
+    "name": "Judge Judy",
+    "role": "Judge",
+    "code": "ESTJ"
+  },
+  {
+    "name": "Dolly Parton",
+    "role": "Singer",
+    "code": "ESFJ"
+  },
+  {
+    "name": "Aretha Franklin",
+    "role": "Singer",
+    "code": "ESFJ"
+  },
+  {
+    "name": "Taylor Swift",
+    "role": "Singer",
+    "code": "ESFJ"
+  },
+  {
+    "name": "Whitney Houston",
+    "role": "Singer",
+    "code": "ESFJ"
+  },
+  {
+    "name": "Jennifer Aniston",
+    "role": "Actor",
+    "code": "ESFJ"
+  },
+  {
+    "name": "Hugh Jackman",
+    "role": "Actor",
+    "code": "ESFJ"
+  },
+  {
+    "name": "Ariana Grande",
+    "role": "Singer",
+    "code": "ESFJ"
+  },
+  {
+    "name": "Jennifer Lopez",
+    "role": "Singer",
+    "code": "ESFJ"
+  },
+  {
+    "name": "Amelia Earhart",
+    "role": "Aviator",
+    "code": "ISTP"
+  },
+  {
+    "name": "Bruce Lee",
+    "role": "Martial artist",
+    "code": "ISTP"
+  },
+  {
+    "name": "Clint Eastwood",
+    "role": "Actor",
+    "code": "ISTP"
+  },
+  {
+    "name": "Michael Jordan",
+    "role": "Athlete",
+    "code": "ISTP"
+  },
+  {
+    "name": "Keanu Reeves",
+    "role": "Actor",
+    "code": "ISTP"
+  },
+  {
+    "name": "Scarlett Johansson",
+    "role": "Actor",
+    "code": "ISTP"
+  },
+  {
+    "name": "Tom Hardy",
+    "role": "Actor",
+    "code": "ISTP"
+  },
+  {
+    "name": "Harrison Ford",
+    "role": "Actor",
+    "code": "ISTP"
+  },
+  {
+    "name": "Frida Kahlo",
+    "role": "Painter",
+    "code": "ISFP"
+  },
+  {
+    "name": "Prince",
+    "role": "Musician",
+    "code": "ISFP"
+  },
+  {
+    "name": "Michael Jackson",
+    "role": "Singer",
+    "code": "ISFP"
+  },
+  {
+    "name": "Wolfgang Amadeus Mozart",
+    "role": "Composer",
+    "code": "ISFP"
+  },
+  {
+    "name": "Lady Gaga",
+    "role": "Musician",
+    "code": "ISFP"
+  },
+  {
+    "name": "Rihanna",
+    "role": "Singer",
+    "code": "ISFP"
+  },
+  {
+    "name": "Audrey Hepburn",
+    "role": "Actor",
+    "code": "ISFP"
+  },
+  {
+    "name": "Princess Diana",
+    "role": "Princess",
+    "code": "ISFP"
+  },
+  {
+    "name": "Ernest Hemingway",
+    "role": "Writer",
+    "code": "ESTP"
+  },
+  {
+    "name": "Madonna",
+    "role": "Musician",
+    "code": "ESTP"
+  },
+  {
+    "name": "Theodore Roosevelt",
+    "role": "President",
+    "code": "ESTP"
+  },
+  {
+    "name": "Winston Churchill",
+    "role": "Prime minister",
+    "code": "ESTP"
+  },
+  {
+    "name": "Angelina Jolie",
+    "role": "Actor",
+    "code": "ESTP"
+  },
+  {
+    "name": "Eddie Murphy",
+    "role": "Actor",
+    "code": "ESTP"
+  },
+  {
+    "name": "Miley Cyrus",
+    "role": "Singer",
+    "code": "ESTP"
+  },
+  {
+    "name": "Dwayne Johnson",
+    "role": "Actor",
+    "code": "ESTP"
+  },
+  {
+    "name": "Marilyn Monroe",
+    "role": "Actor",
+    "code": "ESFP"
+  },
+  {
+    "name": "Elvis Presley",
+    "role": "Singer",
+    "code": "ESFP"
+  },
+  {
+    "name": "Pablo Picasso",
+    "role": "Painter",
+    "code": "ESFP"
+  },
+  {
+    "name": "Elton John",
+    "role": "Musician",
+    "code": "ESFP"
+  },
+  {
+    "name": "Will Smith",
+    "role": "Actor",
+    "code": "ESFP"
+  },
+  {
+    "name": "Katy Perry",
+    "role": "Singer",
+    "code": "ESFP"
+  },
+  {
+    "name": "Adele",
+    "role": "Singer",
+    "code": "ESFP"
+  },
+  {
+    "name": "Britney Spears",
+    "role": "Singer",
+    "code": "ESFP"
+  },
+  {
+    "name": "Gandalf",
+    "role": "The Lord of the Rings",
+    "code": "INFJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Atticus Finch",
+    "role": "To Kill a Mockingbird",
+    "code": "INFJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Elsa",
+    "role": "Frozen",
+    "code": "INFJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Frodo Baggins",
+    "role": "The Lord of the Rings",
+    "code": "INFP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Harry Potter",
+    "role": "Harry Potter",
+    "code": "INFP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Luke Skywalker",
+    "role": "Star Wars",
+    "code": "INFP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Wonder Woman",
+    "role": "DC",
+    "code": "ENFJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Margaery Tyrell",
+    "role": "Game of Thrones",
+    "code": "ENFJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Professor X",
+    "role": "X-Men",
+    "code": "ENFJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Peter Parker",
+    "role": "Marvel",
+    "code": "ENFP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Elizabeth Bennet",
+    "role": "Pride and Prejudice",
+    "code": "ENFP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Anna of Arendelle",
+    "role": "Frozen",
+    "code": "ENFP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Batman",
+    "role": "DC",
+    "code": "INTJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Mr. Darcy",
+    "role": "Pride and Prejudice",
+    "code": "INTJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Doctor Strange",
+    "role": "Marvel",
+    "code": "INTJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Sherlock Holmes",
+    "role": "Sherlock Holmes",
+    "code": "INTP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Bruce Banner",
+    "role": "Marvel",
+    "code": "INTP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Data",
+    "role": "Star Trek",
+    "code": "INTP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Princess Leia",
+    "role": "Star Wars",
+    "code": "ENTJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Miranda Priestly",
+    "role": "The Devil Wears Prada",
+    "code": "ENTJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Azula",
+    "role": "Avatar",
+    "code": "ENTJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Tony Stark",
+    "role": "Marvel",
+    "code": "ENTP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Deadpool",
+    "role": "Marvel",
+    "code": "ENTP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Joker",
+    "role": "DC",
+    "code": "ENTP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Aragorn",
+    "role": "The Lord of the Rings",
+    "code": "ISTJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Ned Stark",
+    "role": "Game of Thrones",
+    "code": "ISTJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Ellen Ripley",
+    "role": "Alien",
+    "code": "ISTJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Samwise Gamgee",
+    "role": "The Lord of the Rings",
+    "code": "ISFJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "John Watson",
+    "role": "Sherlock Holmes",
+    "code": "ISFJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Cinderella",
+    "role": "Cinderella",
+    "code": "ISFJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Hermione Granger",
+    "role": "Harry Potter",
+    "code": "ESTJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Buzz Lightyear",
+    "role": "Toy Story",
+    "code": "ESTJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Regina George",
+    "role": "Mean Girls",
+    "code": "ESTJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Superman",
+    "role": "DC",
+    "code": "ESFJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Woody",
+    "role": "Toy Story",
+    "code": "ESFJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Princess Peach",
+    "role": "Super Mario",
+    "code": "ESFJ",
+    "kind": "fiction"
+  },
+  {
+    "name": "Katniss Everdeen",
+    "role": "The Hunger Games",
+    "code": "ISTP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Arya Stark",
+    "role": "Game of Thrones",
+    "code": "ISTP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Wolverine",
+    "role": "X-Men",
+    "code": "ISTP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Eleven",
+    "role": "Stranger Things",
+    "code": "ISFP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Zuko",
+    "role": "Avatar",
+    "code": "ISFP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Rapunzel",
+    "role": "Tangled",
+    "code": "ISFP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Han Solo",
+    "role": "Star Wars",
+    "code": "ESTP",
+    "kind": "fiction"
+  },
+  {
+    "name": "James Bond",
+    "role": "James Bond",
+    "code": "ESTP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Indiana Jones",
+    "role": "Indiana Jones",
+    "code": "ESTP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Jack Sparrow",
+    "role": "Pirates of the Caribbean",
+    "code": "ESFP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Harley Quinn",
+    "role": "DC",
+    "code": "ESFP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Thor",
+    "role": "Marvel",
+    "code": "ESFP",
+    "kind": "fiction"
+  },
+  {
+    "name": "Armin Arlert",
+    "role": "Attack on Titan",
+    "code": "INFJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Rei Ayanami",
+    "role": "Evangelion",
+    "code": "INFJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Kaworu Nagisa",
+    "role": "Evangelion",
+    "code": "INFJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Shinji Ikari",
+    "role": "Evangelion",
+    "code": "INFP",
+    "kind": "anime"
+  },
+  {
+    "name": "Tanjiro Kamado",
+    "role": "Demon Slayer",
+    "code": "INFP",
+    "kind": "anime"
+  },
+  {
+    "name": "Chihiro",
+    "role": "Spirited Away",
+    "code": "INFP",
+    "kind": "anime"
+  },
+  {
+    "name": "All Might",
+    "role": "My Hero Academia",
+    "code": "ENFJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Momo Yaoyorozu",
+    "role": "My Hero Academia",
+    "code": "ENFJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Jiraiya",
+    "role": "Naruto",
+    "code": "ENFJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Naruto Uzumaki",
+    "role": "Naruto",
+    "code": "ENFP",
+    "kind": "anime"
+  },
+  {
+    "name": "Howl",
+    "role": "Howl's Moving Castle",
+    "code": "ENFP",
+    "kind": "anime"
+  },
+  {
+    "name": "Anya Forger",
+    "role": "Spy x Family",
+    "code": "ENFP",
+    "kind": "anime"
+  },
+  {
+    "name": "Light Yagami",
+    "role": "Death Note",
+    "code": "INTJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Lelouch Lamperouge",
+    "role": "Code Geass",
+    "code": "INTJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Sasuke Uchiha",
+    "role": "Naruto",
+    "code": "INTJ",
+    "kind": "anime"
+  },
+  {
+    "name": "L Lawliet",
+    "role": "Death Note",
+    "code": "INTP",
+    "kind": "anime"
+  },
+  {
+    "name": "Shikamaru Nara",
+    "role": "Naruto",
+    "code": "INTP",
+    "kind": "anime"
+  },
+  {
+    "name": "Senku Ishigami",
+    "role": "Dr. Stone",
+    "code": "INTP",
+    "kind": "anime"
+  },
+  {
+    "name": "Roy Mustang",
+    "role": "Fullmetal Alchemist",
+    "code": "ENTJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Erwin Smith",
+    "role": "Attack on Titan",
+    "code": "ENTJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Seto Kaiba",
+    "role": "Yu-Gi-Oh",
+    "code": "ENTJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Edward Elric",
+    "role": "Fullmetal Alchemist",
+    "code": "ENTP",
+    "kind": "anime"
+  },
+  {
+    "name": "Gojo Satoru",
+    "role": "Jujutsu Kaisen",
+    "code": "ENTP",
+    "kind": "anime"
+  },
+  {
+    "name": "Okabe Rintaro",
+    "role": "Steins;Gate",
+    "code": "ENTP",
+    "kind": "anime"
+  },
+  {
+    "name": "Mikasa Ackerman",
+    "role": "Attack on Titan",
+    "code": "ISTJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Byakuya Kuchiki",
+    "role": "Bleach",
+    "code": "ISTJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Kyoko Kirigiri",
+    "role": "Danganronpa",
+    "code": "ISTJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Violet Evergarden",
+    "role": "Violet Evergarden",
+    "code": "ISFJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Tohru Honda",
+    "role": "Fruits Basket",
+    "code": "ISFJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Sakura Haruno",
+    "role": "Naruto",
+    "code": "ISFJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Asuka Langley Soryu",
+    "role": "Evangelion",
+    "code": "ESTJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Erza Scarlet",
+    "role": "Fairy Tail",
+    "code": "ESTJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Nami",
+    "role": "One Piece",
+    "code": "ESTJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Usagi Tsukino",
+    "role": "Sailor Moon",
+    "code": "ESFJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Winry Rockbell",
+    "role": "Fullmetal Alchemist",
+    "code": "ESFJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Ochaco Uraraka",
+    "role": "My Hero Academia",
+    "code": "ESFJ",
+    "kind": "anime"
+  },
+  {
+    "name": "Levi Ackerman",
+    "role": "Attack on Titan",
+    "code": "ISTP",
+    "kind": "anime"
+  },
+  {
+    "name": "Spike Spiegel",
+    "role": "Cowboy Bebop",
+    "code": "ISTP",
+    "kind": "anime"
+  },
+  {
+    "name": "Roronoa Zoro",
+    "role": "One Piece",
+    "code": "ISTP",
+    "kind": "anime"
+  },
+  {
+    "name": "Nezuko Kamado",
+    "role": "Demon Slayer",
+    "code": "ISFP",
+    "kind": "anime"
+  },
+  {
+    "name": "Giyu Tomioka",
+    "role": "Demon Slayer",
+    "code": "ISFP",
+    "kind": "anime"
+  },
+  {
+    "name": "San",
+    "role": "Princess Mononoke",
+    "code": "ISFP",
+    "kind": "anime"
+  },
+  {
+    "name": "Katsuki Bakugo",
+    "role": "My Hero Academia",
+    "code": "ESTP",
+    "kind": "anime"
+  },
+  {
+    "name": "Inosuke Hashibira",
+    "role": "Demon Slayer",
+    "code": "ESTP",
+    "kind": "anime"
+  },
+  {
+    "name": "Natsu Dragneel",
+    "role": "Fairy Tail",
+    "code": "ESTP",
+    "kind": "anime"
+  },
+  {
+    "name": "Monkey D. Luffy",
+    "role": "One Piece",
+    "code": "ESFP",
+    "kind": "anime"
+  },
+  {
+    "name": "Son Goku",
+    "role": "Dragon Ball",
+    "code": "ESFP",
+    "kind": "anime"
+  },
+  {
+    "name": "Yuji Itadori",
+    "role": "Jujutsu Kaisen",
+    "code": "ESFP",
+    "kind": "anime"
+  }
+]

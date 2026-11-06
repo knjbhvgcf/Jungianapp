@@ -4,6 +4,9 @@ import {
   findLiveWorkspaceSubscription,
   readStripeCustomerEmail,
   readWorkspaceCheckoutSession,
+  readWorkspaceSubscription,
+  stripeConfigured,
+  subscriptionEntitled,
   verifyStripeWebhookSignature,
   type StripeEnv,
 } from './stripeServer.ts'
@@ -311,6 +314,26 @@ export async function requestMagicLink(
     console.log(`Jungology App sign-in link for ${email}:\n${url}`)
     return { ok: true as const, sent: true, devLink: url }
   }
+  const sent = await sendPlainEmail(env, {
+    to: email,
+    subject: 'Sign in to Jungology App',
+    text: `Open this link to sign in to Jungology App. It lasts 15 minutes.\n\n${url}\n\nIf you did not ask for this, ignore it.`,
+  })
+  if (!sent) {
+    return { ok: false as const, status: 502, error: 'Could not send the sign-in link.' }
+  }
+  return { ok: true as const, sent: true as const }
+}
+
+export async function sendPlainEmail(
+  env: AccountEnv,
+  opts: { to: string; subject: string; text: string },
+) {
+  const key = env.RESEND_API_KEY?.trim()
+  if (!key) {
+    console.log(`${opts.subject}\nTo: ${opts.to}\n\n${opts.text}`)
+    return true
+  }
   const from = env.RESEND_FROM?.trim() || 'Jungology <hello@jungology.com>'
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -320,15 +343,12 @@ export async function requestMagicLink(
     },
     body: JSON.stringify({
       from,
-      to: [email],
-      subject: 'Sign in to Jungology App',
-      text: `Open this link to sign in to Jungology App. It lasts 15 minutes.\n\n${url}\n\nIf you did not ask for this, ignore it.`,
+      to: [opts.to],
+      subject: opts.subject,
+      text: opts.text,
     }),
   })
-  if (!response.ok) {
-    return { ok: false as const, status: 502, error: 'Could not send the sign-in link.' }
-  }
-  return { ok: true as const, sent: true as const }
+  return response.ok
 }
 
 export async function verifyMagicLink(env: AccountEnv, opts: { token: string; origin: string }) {
@@ -383,6 +403,7 @@ export async function houseForRequest(
     house = emptyAccountHouse(email)
     await writeHouseRecord(env, house)
   }
+  house = await syncHousePlanFromStripe(env, house)
   return { ok: true as const, house }
 }
 
@@ -562,11 +583,42 @@ function planFromStripeEvent(type: string, object: Record<string, unknown>): Wor
   }
   if (type !== 'customer.subscription.updated') return null
   const status = typeof object.status === 'string' ? object.status : ''
-  if (status === 'active' || status === 'trialing') return 'active'
   if (status === 'canceled' || status === 'unpaid' || status === 'incomplete_expired' || status === 'paused') {
     return 'canceled'
   }
+  if (subscriptionEntitled({
+    status,
+    trial_end: typeof object.trial_end === 'number' ? object.trial_end : null,
+  })) {
+    return 'active'
+  }
+  if (status === 'active' || status === 'trialing') return 'canceled'
   return null
+}
+
+async function syncHousePlanFromStripe(env: AccountEnv, house: WorkspaceHouse) {
+  if ((house.plan ?? 'none') !== 'active') return house
+  if (!stripeConfigured(env)) return house
+
+  let live = false
+  if (house.stripeSubscriptionId?.startsWith('sub_')) {
+    const current = await readWorkspaceSubscription(env, house.stripeSubscriptionId)
+    if (!current.ok) return house
+    live = current.live
+  } else {
+    const found = await findLiveWorkspaceSubscription(env, house.email)
+    if (!found.ok) return house
+    live = Boolean(found.subscription)
+  }
+  if (live) return house
+
+  const next: WorkspaceHouse = {
+    ...house,
+    plan: 'canceled',
+    planUpdatedAt: new Date().toISOString(),
+  }
+  const saved = await writeHouseRecord(env, next)
+  return saved.ok ? saved.house : next
 }
 
 async function houseForStripeIds(

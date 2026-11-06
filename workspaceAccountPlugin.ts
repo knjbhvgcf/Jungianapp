@@ -3,6 +3,7 @@ import path from 'node:path'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import type { Plugin } from 'vite'
 import {
+  allowedOrigin,
   checkoutForRequest,
   confirmPaidForRequest,
   handleWorkspaceStripeWebhook,
@@ -17,6 +18,7 @@ import {
   type AccountEnv,
   type KvStore,
 } from './src/lib/workspace/accountServer.ts'
+import { handleInviteGet, handleInvitePost } from './src/lib/workspace/inviteMailbox.ts'
 import { readWorkspaceCheckoutSession } from './src/lib/workspace/stripeServer.ts'
 
 const STORE = path.resolve(process.cwd(), '.data/workspace-kv.json')
@@ -97,6 +99,24 @@ function cookieHeader(req: IncomingMessage) {
   return Array.isArray(value) ? value.join('; ') : (value ?? null)
 }
 
+function headerGet(req: IncomingMessage, name: string) {
+  const value = req.headers[name.toLowerCase()]
+  return Array.isArray(value) ? value[0] ?? null : value ?? null
+}
+
+function applyInviteCors(req: IncomingMessage, res: ServerResponse) {
+  const origin = headerGet(req, 'origin')
+  if (!origin || !allowedOrigin({ headers: { get: (name) => headerGet(req, name) } })) return
+  res.setHeader('Access-Control-Allow-Origin', origin)
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+}
+
+function sendInviteJson(req: IncomingMessage, res: ServerResponse, status: number, body: unknown) {
+  applyInviteCors(req, res)
+  sendJson(res, status, body)
+}
+
 export function workspaceAccountPlugin(base: Omit<AccountEnv, 'WORKSPACE_HOUSES'>): Plugin {
   const env: AccountEnv = { ...base, WORKSPACE_HOUSES: fileKv() }
 
@@ -114,13 +134,15 @@ export function workspaceAccountPlugin(base: Omit<AccountEnv, 'WORKSPACE_HOUSES'
           pathName !== '/api/workspace-session' &&
           pathName !== '/api/workspace-stripe' &&
           pathName !== '/api/workspace-checkout' &&
-          pathName !== '/api/workspace-portal'
+          pathName !== '/api/workspace-portal' &&
+          pathName !== '/api/workspace-invite'
         ) {
           next()
           return
         }
 
         if (req.method === 'OPTIONS') {
+          if (pathName === '/api/workspace-invite') applyInviteCors(req, res)
           res.statusCode = 204
           res.end()
           return
@@ -273,6 +295,36 @@ export function workspaceAccountPlugin(base: Omit<AccountEnv, 'WORKSPACE_HOUSES'
               return
             }
             sendJson(res, 200, { url: result.url })
+            return
+          }
+
+          if (pathName === '/api/workspace-invite' && req.method === 'POST') {
+            if (!allowedOrigin({ headers: { get: (name) => headerGet(req, name) } })) {
+              sendInviteJson(req, res, 403, { error: 'Forbidden' })
+              return
+            }
+            let payload: unknown
+            try {
+              payload = JSON.parse(await readBody(req))
+            } catch {
+              sendInviteJson(req, res, 400, { error: 'Invalid JSON' })
+              return
+            }
+            const result = await handleInvitePost(env, payload)
+            sendInviteJson(req, res, result.status, result.body)
+            return
+          }
+
+          if (pathName === '/api/workspace-invite' && req.method === 'GET') {
+            if (!allowedOrigin({ headers: { get: (name) => headerGet(req, name) } })) {
+              sendInviteJson(req, res, 403, { error: 'Forbidden' })
+              return
+            }
+            const result = await handleInviteGet(
+              env,
+              new URL(req.url ?? '', origin).searchParams.get('token'),
+            )
+            sendInviteJson(req, res, result.status, result.body)
             return
           }
 

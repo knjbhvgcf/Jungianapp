@@ -1,8 +1,9 @@
+import { useEffect, useRef, useState } from 'react'
 import { BEEBE_ROLES, beebeStack } from '../../data/beebe'
 import { FUNCTIONS, type FunctionId } from '../../data/functions'
 import { typeByCode } from '../../data/personalityTypes'
-import { circleTitle, personCircle, type WorkspaceCircle } from '../../lib/workspace/circle'
-import type { ResultSnapshot, WorkspacePerson } from '../../lib/workspace/types'
+import { groupTitle, personGroupId, type WorkspaceCircle } from '../../lib/workspace/circle'
+import type { ResultSnapshot, WorkspaceGroup, WorkspacePerson } from '../../lib/workspace/types'
 import { Button } from '../Button'
 
 const SHORT: Record<string, string> = {
@@ -37,13 +38,17 @@ function roleAt(self: ResultSnapshot | null, id: FunctionId) {
   return { index, key: role.key, label: SHORT[role.key] ?? role.label }
 }
 
-function membersOf(self: ResultSnapshot | null, people: WorkspacePerson[], circle: WorkspaceCircle) {
+function membersOf(
+  self: ResultSnapshot | null,
+  people: WorkspacePerson[],
+  circle: WorkspaceCircle,
+) {
   const list: Member[] = []
   if (self) {
     list.push({ id: 'me', name: 'You', you: true, hero: self.stack[0], code: self.code })
   }
   for (const person of people) {
-    if (personCircle(person) !== circle) continue
+    if (personGroupId(person) !== circle) continue
     const type = person.code ? typeByCode(person.code) : undefined
     if (!type) continue
     list.push({
@@ -71,55 +76,114 @@ function tieLine(self: ResultSnapshot, person: WorkspacePerson) {
 export function HouseMap({
   self,
   people,
+  groups,
   circle,
   onCircle,
+  onRename,
   onOpenPerson,
   onOpenMe,
   onAdd,
 }: {
   self: ResultSnapshot | null
   people: WorkspacePerson[]
+  groups: WorkspaceGroup[]
   circle: WorkspaceCircle
   onCircle: (circle: WorkspaceCircle) => void
+  onRename?: (id: string, name: string) => void
   onOpenPerson: (id: string) => void
   onOpenMe: () => void
   onAdd?: () => void
 }) {
+  const title = groupTitle(circle, groups)
+  const [draft, setDraft] = useState(title)
+  const focused = useRef(false)
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const members = membersOf(self, people, circle)
-  const waiting = people.filter((person) => personCircle(person) === circle && !person.code)
+  const waiting = people.filter((person) => personGroupId(person) === circle && !person.code)
   const ties = self
     ? people
-        .filter((person) => personCircle(person) === circle)
+        .filter((person) => personGroupId(person) === circle)
         .map((person) => ({ person, line: tieLine(self, person) }))
         .filter((item) => item.line)
     : []
+
+  useEffect(() => {
+    if (!focused.current) setDraft(title)
+  }, [title])
+
+  useEffect(
+    () => () => {
+      if (timer.current) window.clearTimeout(timer.current)
+    },
+    [],
+  )
 
   function open(id: string) {
     if (id === 'me') onOpenMe()
     else onOpenPerson(id)
   }
 
+  function saveName(raw = draft) {
+    const next = raw.trim()
+    if (!next || !circle || next === title) {
+      if (!focused.current) setDraft(title)
+      return
+    }
+    onRename?.(circle, next)
+  }
+
+  function onName(value: string) {
+    setDraft(value)
+    if (timer.current) window.clearTimeout(timer.current)
+    timer.current = window.setTimeout(() => saveName(value), 350)
+  }
+
   return (
     <>
       <p className="lede">
-        {circle === 'team'
-          ? 'Who leads with what on the team. Not a ranking.'
-          : 'Who holds which function at home. Not a ranking.'}
+        {title ? `Who leads with what in ${title}. Not a ranking.` : 'Name a group, then add people to it.'}
       </p>
-      <div className="workspace-tiles workspace-tiles--two">
-        {(['household', 'team'] as const).map((item) => (
-          <button
-            key={item}
-            type="button"
-            className={circle === item ? 'workspace-tile is-on' : 'workspace-tile'}
-            onClick={() => onCircle(item)}
-          >
-            <strong>{circleTitle(item)}</strong>
-            <span>{item === 'team' ? 'Work, clients' : 'Family, home'}</span>
-          </button>
-        ))}
-      </div>
-      {self ? (
+      {groups.length ? (
+        <div className="workspace-pills">
+          {groups.map((group) => (
+            <button
+              key={group.id}
+              type="button"
+              className={circle === group.id ? 'workspace-pill is-on' : 'workspace-pill'}
+              onClick={() => onCircle(group.id)}
+            >
+              {group.name}
+            </button>
+          ))}
+        </div>
+      ) : null}
+      {circle && onRename ? (
+        <div className="workspace-add">
+          <label>
+            Group name
+            <input
+              value={draft}
+              placeholder="Family, work, band"
+              onChange={(event) => onName(event.target.value)}
+              onFocus={() => {
+                focused.current = true
+              }}
+              onBlur={() => {
+                focused.current = false
+                if (timer.current) window.clearTimeout(timer.current)
+                saveName()
+              }}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  event.preventDefault()
+                  event.currentTarget.blur()
+                }
+              }}
+            />
+          </label>
+        </div>
+      ) : null}
+      {self && circle ? (
         GROUPS.map((group) => (
           <div key={group.title} className="workspace-chart__block">
             <span className="workspace-chart__ring-label">{group.title}</span>
@@ -157,7 +221,7 @@ export function HouseMap({
             </div>
           </div>
         ))
-      ) : (
+      ) : self ? null : (
         <p className="note">Name a type on Me first. The map follows that stack.</p>
       )}
       {ties.length ? (
@@ -183,7 +247,7 @@ export function HouseMap({
             <Button onClick={onAdd}>Add someone</Button>
           </div>
         ) : (
-          <p className="note">Add someone and mark them {circleTitle(circle).toLowerCase()}.</p>
+          <p className="note">Add someone and name the group they belong in.</p>
         )
       ) : null}
     </>

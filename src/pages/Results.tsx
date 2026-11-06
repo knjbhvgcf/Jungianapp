@@ -42,6 +42,8 @@ import { PopulationShare } from '../components/PopulationShare'
 import { reportTypeCensus } from '../lib/typeCensus'
 import { QUIZ_PATH } from '../lib/quizPath'
 import { WORKSPACE_JOIN_PATH, WORKSPACE_OFFERED, WORKSPACE_PATH, WORKSPACE_PRICE } from '../lib/workspace/offered'
+import { sendInviteSnapshot } from '../lib/workspace/inviteClient'
+import { clearInviteToken, loadInviteToken } from '../lib/workspace/inviteSession'
 import { encodeShareLine } from '../lib/workspace/sharePacket'
 import { loadResultSnapshot, snapshotFromType } from '../lib/workspace/snapshot'
 import { saveSelfSnapshot, useHouse } from '../lib/workspace/store'
@@ -61,6 +63,9 @@ export function Results() {
   )
   const stored = useMemo(() => loadStackChoice(), [])
   const [copied, setCopied] = useState(false)
+  const [inviteToken] = useState(() => loadInviteToken())
+  const [inviteNote, setInviteNote] = useState('')
+  const [inviteBusy, setInviteBusy] = useState(false)
   const [heroId, setHeroId] = useState<FunctionId | null>(null)
   const [parentId, setParentId] = useState<FunctionId | null>(null)
   const [offerDismissed, setOfferDismissed] = useState(() => {
@@ -131,6 +136,20 @@ export function Results() {
       return
     }
     if (snapshot && house) saveSelfSnapshot(snapshot)
+  }
+
+  async function sendTypeToFriend() {
+    const snapshot = loadResultSnapshot()
+    if (!inviteToken || !snapshot) return
+    setInviteBusy(true)
+    const result = await sendInviteSnapshot(inviteToken, snapshot)
+    setInviteBusy(false)
+    if (result.ok) {
+      clearInviteToken()
+      setInviteNote('Sent. They get a ping.')
+      return
+    }
+    setInviteNote(result.error)
   }
 
   const gatePopup = (
@@ -450,6 +469,11 @@ export function Results() {
                 {results.offerCta}
               </Button>
             ) : null}
+            {inviteToken && !inviteNote.startsWith('Sent') ? (
+              <Button type="button" variant="ghost" onClick={() => void sendTypeToFriend()}>
+                {inviteBusy ? 'Sending…' : 'Send type and percentages'}
+              </Button>
+            ) : null}
             <Button to={typePath(selectedCode)} variant="ghost">
               {selectedTitle} page
             </Button>
@@ -470,6 +494,7 @@ export function Results() {
               />
             ) : null}
           </div>
+          {inviteNote ? <p className="note">{inviteNote}</p> : null}
         </div>
 
         {profile && selected && hero && parent ? (

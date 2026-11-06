@@ -63,6 +63,8 @@ export function Quiz() {
     const next = { ...answers, [question.id]: value }
     setAnswers(next)
     saveAnswers(next)
+    const active = document.activeElement
+    if (active instanceof HTMLElement) active.blur()
     window.clearTimeout(advanceTimer.current)
     advanceTimer.current = window.setTimeout(() => goForward(next), ADVANCE_MS)
   }
@@ -114,7 +116,7 @@ export function Quiz() {
 
           <article className="quiz-card">
             <h1 className="quiz-card__prompt">{question.text}</h1>
-            <LikertScale name={question.id} value={currentValue} onChange={choose} />
+            <LikertScale key={question.id} name={question.id} value={currentValue} onChange={choose} />
           </article>
 
           <div className="quiz-nav">

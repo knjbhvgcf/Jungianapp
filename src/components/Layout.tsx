@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
+import { captureInviteFromLocation } from '../lib/workspace/inviteSession'
 import { WORKSPACE_OFFERED, WORKSPACE_PATH } from '../lib/workspace/offered'
 import { hydrateHouse } from '../lib/workspace/store'
 import { Analytics } from './Analytics'
@@ -23,6 +24,10 @@ export function Layout() {
       theme?.setAttribute('content', '#ffffff')
     }
   }, [darkHouse])
+
+  useEffect(() => {
+    captureInviteFromLocation()
+  }, [location.search])
 
   useEffect(() => {
     if (WORKSPACE_OFFERED) void hydrateHouse()

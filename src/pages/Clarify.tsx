@@ -111,7 +111,7 @@ export function Clarify() {
 
           <article className="quiz-card">
             <h1 className="quiz-card__prompt">{question.prompt}</h1>
-            <fieldset className="clarify-choices">
+            <fieldset key={question.id} className="clarify-choices">
               <legend className="sr-only">Which is more you?</legend>
               {options.map((option) => (
                 <label
